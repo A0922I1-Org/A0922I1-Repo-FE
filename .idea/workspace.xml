@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/output-invoice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/output-invoice.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/body/body.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/body/body.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/body/body.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/body/body.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/footer/footer.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/footer/footer.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/footer/footer.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/footer/footer.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/header/header.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/header/header.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/header/header.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/header/header.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/image-scroll/image-scroll.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/image-scroll/image-scroll.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/image-scroll/image-scroll.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/homepage/image-scroll/image-scroll.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/dienthoai.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/find.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/iphone-14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/laptop.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/logo1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/maycu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/oppo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/pc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/phukien.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/samsung.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/smartwatch.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/spon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/tablet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/vivo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/web.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/assets/images/xiaomi.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,21 +60,36 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2WD6kEZsHgvaOa1KrNzOnN4oKyy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\Desktop\\project\\mobile_shop\\Code\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "BinhPHP-home-page",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Codegym/A0922I1-Repo-FE/mobile-shop/src/assets/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "E:\\Codegym\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Codegym\A0922I1-Repo-FE\mobile-shop\src\assets\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -44,10 +100,14 @@
       <updated>1696254947818</updated>
       <workItem from="1696254953478" duration="88000" />
       <workItem from="1696255481422" duration="181000" />
+      <workItem from="1696302358088" duration="3234000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
