@@ -30,48 +30,21 @@
             <th>Tổng tiền</th>
             <th></th>
           </tr>
+          <tr *ngFor="let item of previewListInputItem;index as i">
+            <td>{{i+1}}</td>
+            <td>{{item.productName}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.costPrice}}</td>
+            <td>{{item.costPrice*item.quantity}}</td>
+            <td><input type="button" (click)="dropItem(i)" class="btn btn-outline-danger" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
+          </tr>
           <tr>
             <td>1</td>
             <td>Nokia N8</td>
             <td>5</td>
             <td>7.000.000</td>
             <td>35.000.000</td>
-            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Blackberry 9780</td>
-            <td>5</td>
-            <td>4.000.000</td>
-            <td>20.000.000</td>
-            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>iphone 8 plus 64gb black</td>
-            <td>5</td>
-            <td>3.000.000</td>
-            <td>15.000.000</td>
-            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>iphone X 64gb black</td>
-            <td>5</td>
-            <td>4.000.000</td>
-            <td>20.000.000</td>
-            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Samsung Galaxy tab A8</td>
-            <td>5</td>
-            <td>4.000.000</td>
-            <td>20.000.000</td>
             <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
                        data-bs-target="#exampleModal-delete" value="Xóa"></td>
           </tr>

@@ -18,14 +18,19 @@
               <div class="row">
                 <div class="col">
                   <label for="add-new-confirm"><span class="error">Lưu ý(*)</span> Chọn vào đây nếu là sản phẩm mới</label>
-                  <input id="add-new-confirm" type="radio">
+                  <input id="add-new-confirm" [value]="isNewProduct" [checked]="isNewProduct" (click)="toggleIsNewProduct()" type="radio">
                 </div>
               </div>
               <table class="row table-form">
                 <tr>
+                  <td colspan="2">
+                    <input name="productId" [(ngModel)]="productId" type="number" >
+                  </td>
+                </tr>
+                <tr>
                   <th>Tên hàng <span class="must-have">(*)</span></th>
-                  <td class="input" colspan="2"><input type="text" class="form-control" value="Iphone XS"
-                                                       disabled></td>
+                  <td class="input" colspan="2"><input type="text" class="form-control" [(ngModel)]="productName"
+                                                       [disabled]="productNameIsDisable"></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -35,8 +40,7 @@
                   <th>Giá <span class="must-have">(*)</span></th>
                   <td class="input" colspan="2">
                     <div class="input-group">
-                      <input type="text" class="form-control" value="10.000.000"
-                             disabled><span class="ms-2">VND</span>
+                      <input type="number" class="form-control" [(ngModel)]="costPrice"><span class="ms-2">VND</span>
                     </div>
                   </td>
                 </tr>
@@ -51,7 +55,7 @@
                 </tr>
                 <tr>
                   <th>Số lượng nhập <span class="must-have">(*)</span></th>
-                  <td class="input" colspan="2"><input type="number" class="form-control" value="50"></td>
+                  <td class="input" colspan="2"><input type="number" [(ngModel)]="quantity" class="form-control"></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -60,7 +64,7 @@
               </table>
               <div class="action row">
                 <div class="col text-center">
-                  <button class="btn btn-outline-warning">Thêm vào phiếu nhập
+                  <button class="btn btn-outline-warning" (click)="addToList()">Thêm vào phiếu nhập
                   </button>
                 </div>
               </div>
@@ -71,7 +75,7 @@
       </div>
     </div>
     <div class="col-sm-12 col-lg-7">
-      <app-input-invoice-preview-list></app-input-invoice-preview-list>
+      <app-input-invoice-preview-list [item]="productToList"></app-input-invoice-preview-list>
     </div>
   </div>
 </div>
