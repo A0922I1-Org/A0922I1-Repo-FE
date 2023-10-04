@@ -11,9 +11,9 @@
           <div class="row">
             <div class="main-content col">
               <div class="row">
-                <button class="col-sm-10 col-md-auto select-option btn btn-outline-secondary">Chọn hàng đã từng nhập kho
+                <button [disabled]="chooseProductInPastDisable" class="col-sm-10 col-md-auto select-option btn btn-outline-secondary">Chọn hàng đã từng nhập kho
                 </button>
-                <button class="col-sm-10 col-md-auto select-option btn btn-outline-secondary">Quét mã QR</button>
+                <button [disabled]="chooseProductInPastDisable"  class="col-sm-10 col-md-auto select-option btn btn-outline-secondary">Quét mã QR</button>
               </div>
               <div class="row">
                 <div class="col">

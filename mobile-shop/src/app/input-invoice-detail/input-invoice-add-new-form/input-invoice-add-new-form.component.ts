@@ -11,6 +11,7 @@ export class InputInvoiceAddNewFormComponent implements OnInit {
   product
   isNewProduct: boolean = false;
   productNameIsDisable = true;
+  chooseProductInPastDisable = false;
 
   // tách riêng các trường ra để validate real time dưới backend
 productToList: ProductInputDto;
@@ -27,6 +28,7 @@ productName: string = "";
   toggleIsNewProduct(){
     this.isNewProduct = !this.isNewProduct;
     this.productNameIsDisable = !this.productNameIsDisable;
+    this.chooseProductInPastDisable = ! this.chooseProductInPastDisable;
     console.log(this.isNewProduct);
   }
 
