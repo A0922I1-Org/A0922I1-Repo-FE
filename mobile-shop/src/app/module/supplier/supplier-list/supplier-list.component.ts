@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Page} from '../../model/page';
-import {Supplier} from '../../model/supplier';
-import {SupplierService} from '../../service/supplier.service';
+import {Page} from '../../../model/page';
+import {Supplier} from '../../../model/supplier';
+import {SupplierService} from '../../../service/supplier.service';
 
 @Component({
   selector: 'app-supplier-list',
@@ -11,7 +11,8 @@ import {SupplierService} from '../../service/supplier.service';
 export class SupplierListComponent implements OnInit {
   page: Page<Supplier>;
 
-  constructor(private supplierService: SupplierService) {}
+  constructor(private supplierService: SupplierService) {
+  }
 
   ngOnInit(): void {
     this.loadSuppliers(1, 8);
