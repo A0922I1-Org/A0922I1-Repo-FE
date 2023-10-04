@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {InputInvoiceDetailService} from "../../service/input-invoice-detail.service";
 import {InputInvoiceDetail} from "../../model/input-invoice-detail";
+import {Page} from "../../model/page";
 
 @Component({
   selector: 'app-input-invoice-detail-list',
@@ -8,11 +9,11 @@ import {InputInvoiceDetail} from "../../model/input-invoice-detail";
   styleUrls: ['./input-invoice-detail-list.component.css']
 })
 export class InputInvoiceDetailListComponent implements OnInit {
-  inputInvoiceList: any[]
+  inputInvoiceList: InputInvoiceDetail[];
 
   constructor(private inputInvoiceService: InputInvoiceDetailService) {
     this.inputInvoiceService.getInputInvoiceList().subscribe(
-      next => this.inputInvoiceList = next
+      next => this.inputInvoiceList = next.content
     )
     console.log(this.inputInvoiceList);
   }

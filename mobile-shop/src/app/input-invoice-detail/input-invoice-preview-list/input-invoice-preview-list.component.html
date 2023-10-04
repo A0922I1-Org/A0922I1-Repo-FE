@@ -1,0 +1,100 @@
+<form action="">
+  <div class="container mt-5">
+    <div class="row ">
+      <div class="col"><h2 class="text-center">Phiếu nhập</h2></div>
+    </div>
+    <div class="row mt-4">
+      <div class="col fw-bold mt-2">Nhà cung cấp <span class="must-have">(*)</span></div>
+      <div class="col-6">
+        <input type="text" value="Apple Inc" class="form-control mt-2"
+               disabled>
+        <div class="error mt-3">Nhà cung cấp không được để trống</div>
+      </div>
+      <div class="col">
+        <input type="button" value="Chọn NCC" class="btn btn-outline-dark"
+               data-bs-toggle="modal"
+               data-bs-target="#exampleModal">
+      </div>
+    </div>
+
+
+    <div class="row mt-3">
+      <div class="row">
+
+        <table class="table table-list table-striped border">
+          <tr>
+            <th>STT</th>
+            <th>Tên hàng</th>
+            <th>Số lượng</th>
+            <th>Đơn giá nhập</th>
+            <th>Tổng tiền</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Nokia N8</td>
+            <td>5</td>
+            <td>7.000.000</td>
+            <td>35.000.000</td>
+            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Blackberry 9780</td>
+            <td>5</td>
+            <td>4.000.000</td>
+            <td>20.000.000</td>
+            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>iphone 8 plus 64gb black</td>
+            <td>5</td>
+            <td>3.000.000</td>
+            <td>15.000.000</td>
+            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>iphone X 64gb black</td>
+            <td>5</td>
+            <td>4.000.000</td>
+            <td>20.000.000</td>
+            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Samsung Galaxy tab A8</td>
+            <td>5</td>
+            <td>4.000.000</td>
+            <td>20.000.000</td>
+            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>Tổng</th>
+            <td>110.000.000</td>
+            <td>VND</td>
+          </tr>
+        </table>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center mb-3">
+      <button class="btn btn-outline-warning" type="submit">Nhập kho</button>
+      <input [routerLink]="['/input-invoice']" type="button"
+                                                                        class="btn btn-outline-danger"
+                                                                        value="Thoát">
+    </div>
+  </div>
+</form>

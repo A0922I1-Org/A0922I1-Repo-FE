@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {InputInvoiceDetail} from "../model/input-invoice-detail";
+import {Page} from "../model/page";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,6 @@ export class InputInvoiceDetailService {
   constructor(private http: HttpClient) { }
 
   getInputInvoiceList(){
-   return this.http.get<InputInvoiceDetail[]>(this.URL_API + '/' + 'list');
+   return this.http.get<Page<InputInvoiceDetail>>(this.URL_API + '/' + 'list');
   }
 }

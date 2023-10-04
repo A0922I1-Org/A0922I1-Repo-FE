@@ -1,0 +1,77 @@
+<p>input-invoice-add-new-form works!</p>
+<div class="container">
+  <div class="row border-bottom text-center header">
+    <h1>Nhập kho</h1>
+  </div>
+
+  <div class="row">
+    <div class="col offset-sm-1 offset-lg-0">
+      <div class="row">
+        <div class="col ms-2">
+          <div class="row">
+            <div class="main-content col">
+              <div class="row">
+                <button class="col-sm-10 col-md-auto select-option btn btn-outline-secondary">Chọn hàng đã từng nhập kho
+                </button>
+                <button class="col-sm-10 col-md-auto select-option btn btn-outline-secondary">Quét mã QR</button>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="add-new-confirm"><span class="error">Lưu ý(*)</span> Chọn vào đây nếu là sản phẩm mới</label>
+                  <input id="add-new-confirm" type="radio">
+                </div>
+              </div>
+              <table class="row table-form">
+                <tr>
+                  <th>Tên hàng <span class="must-have">(*)</span></th>
+                  <td class="input" colspan="2"><input type="text" class="form-control" value="Iphone XS"
+                                                       disabled></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td colspan="2" class="error">Tên hàng không được để trống</td>
+                </tr>
+                <tr>
+                  <th>Giá <span class="must-have">(*)</span></th>
+                  <td class="input" colspan="2">
+                    <div class="input-group">
+                      <input type="text" class="form-control" value="10.000.000"
+                             disabled><span class="ms-2">VND</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="error" colspan="2">Giá không được để trống</td>
+                </tr>
+                <tr>
+                  <th>Hình ảnh hàng hóa</th>
+                  <td colspan="2"><img class="product-image" src="sample.png" alt=""></td>
+
+                </tr>
+                <tr>
+                  <th>Số lượng nhập <span class="must-have">(*)</span></th>
+                  <td class="input" colspan="2"><input type="number" class="form-control" value="50"></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="error" colspan="2">Số lượng không được để trống</td>
+                </tr>
+              </table>
+              <div class="action row">
+                <div class="col text-center">
+                  <button class="btn btn-outline-warning">Thêm vào phiếu nhập
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-7">
+      <app-input-invoice-preview-list></app-input-invoice-preview-list>
+    </div>
+  </div>
+</div>

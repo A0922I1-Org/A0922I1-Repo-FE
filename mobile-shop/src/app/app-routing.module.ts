@@ -6,7 +6,10 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      //Mọi người đặt part dẫn đến module ở đây
+      {
+        path:'input-invoice',
+        loadChildren: () => import('./input-invoice-detail/input-invoice-detail.module').then(m => m.InputInvoiceDetailModule)
+      }
       ]
   }
 ];
