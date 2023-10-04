@@ -5,7 +5,7 @@ import {SupplierListComponent} from './supplier-list/supplier-list.component';
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: SupplierListComponent
   }
 ];

@@ -4,8 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'supplier',
-    loadChildren: () => import('./module/supplier/supplier.module').then(module => module.SupplierModule)
+    path: '',
+    children: [
+      // Mọi người đặt part dẫn đến module ở đây
+      { path: 'supplier',
+        loadChildren: () => import('./module/supplier/supplier.module').then(module => module.SupplierModule)}
+
+      ]
+
   }
 ];
 
