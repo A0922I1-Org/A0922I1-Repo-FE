@@ -1,8 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {SupplierListComponent} from './supplier-list/supplier-list.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'list',
+    component: SupplierListComponent
+  }
+];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

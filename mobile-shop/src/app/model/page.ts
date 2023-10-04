@@ -7,6 +7,7 @@ export interface Page<T> {
       unsorted: boolean;
     };
     offset: number;
+<<<<<<< HEAD
     pageNumber: number;
     pageSize: number;
     paged: boolean;
@@ -17,6 +18,18 @@ export interface Page<T> {
   last: boolean;
   size: number;
   number: number;
+=======
+    pageSize: number;
+    pageNumber: number;
+    paged: boolean;
+    unpaged: boolean;
+  };
+  last: boolean;
+  totalPages: number;
+  totalElements: number;
+  number: number;
+  size: number;
+>>>>>>> NamNPH-list-supplier
   sort: {
     empty: boolean;
     sorted: boolean;
