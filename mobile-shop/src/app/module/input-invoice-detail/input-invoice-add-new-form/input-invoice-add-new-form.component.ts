@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductInputDto} from "../../dto/ProductInputDto";
+import {ProductInputDto} from "../../../dto/ProductInputDto";
 
 @Component({
   selector: 'app-input-invoice-add-new-form',

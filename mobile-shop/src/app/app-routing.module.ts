@@ -8,7 +8,7 @@ const routes: Routes = [
     children: [
       {
         path:'input-invoice',
-        loadChildren: () => import('./input-invoice-detail/input-invoice-detail.module').then(m => m.InputInvoiceDetailModule)
+        loadChildren: () => import('./module/input-invoice-detail/input-invoice-detail.module').then(m => m.InputInvoiceDetailModule)
       }
       ]
   }
