@@ -9,10 +9,6 @@
 =======
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/input-invoice-detail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/input-invoice-detail.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/product.ts" afterDir="false" />
     </list>
 >>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
@@ -81,6 +77,8 @@
       <workItem from="1696336955396" duration="69000" />
       <workItem from="1696337039232" duration="2643000" />
       <workItem from="1696345736117" duration="259000" />
+      <workItem from="1696351980657" duration="212000" />
+      <workItem from="1696352219597" duration="17000" />
     </task>
     <servers />
   </component>
