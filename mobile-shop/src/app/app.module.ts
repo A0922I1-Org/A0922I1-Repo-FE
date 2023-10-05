@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 // @ts-ignore
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+// @ts-ignore
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 
@@ -16,7 +17,6 @@ import { CustomerListComponent } from './customer/customer-list/customer-list.co
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerComponent,
     CustomerListComponent
   ],
   imports: [
