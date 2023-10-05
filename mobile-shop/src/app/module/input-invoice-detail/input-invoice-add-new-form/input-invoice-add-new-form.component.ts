@@ -38,7 +38,10 @@ productName: string = "";
     console.log(this.costPrice);
     console.log(this.quantity);
    this.productToList = new ProductInputDto(this.productId,this.productName,this.costPrice,this.quantity)
-    console.log(this.productToList);
+    this.productId =0;
+    this.productName = "";
+    this.costPrice = 0;
+    this.quantity = 0;
 
   }
 }
