@@ -1,0 +1,33 @@
+/*body{*/
+/*  border: black 2px;*/
+/*}*/
+border{
+  margin: 30px;
+}
+button{
+  margin: 15px 30px 15px 15px;
+}
+.table-cutomers{
+  margin: 50px 200px 0px 200px;
+}
+.table table-striped{
+  margin: 30px;
+}
+
+h2{
+  color: black;
+  size: 35px;
+  font-family: Arial;
+  font-weight: bold;
+}
+.header{
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px ;
+  margin-right: 20px;
+  padding: 10px;
+  background-color: #ffd400;
+}
+.modal-dialog{
+  max-width: 1000px;
+}
