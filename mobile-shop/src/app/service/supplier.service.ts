@@ -8,7 +8,7 @@ import {Supplier} from '../model/supplier';
   providedIn: 'root'
 })
 export class SupplierService {
-  private apiUrl = 'http://localhost:8080/api/suppliers/paged';
+  private apiUrl = 'http://localhost:8080/api/suppliers';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +17,10 @@ export class SupplierService {
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
 
-    return this.http.get<Page<Supplier>>(this.apiUrl, { params });
+    return this.http.get<Page<Supplier>>(this.apiUrl +'/paged', { params });
+  }
+
+  getById(id: number){
+    return this.http.get<Supplier>(this.apiUrl+'/'+id);
   }
 }

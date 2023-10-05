@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-
     path: '',
     children: [
       {
@@ -16,8 +15,6 @@ const routes: Routes = [
         loadChildren: () => import('./module/supplier/supplier.module').then(module => module.SupplierModule)
       }
       ]
-
-
   }
 ];
 
