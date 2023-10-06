@@ -9,13 +9,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { BodyComponent } from './shared/body/body.component';
+import { ImageScrollComponent } from './shared/image-scroll/image-scroll.component';
+import { PhoneDetailsComponent } from './shared/phone-details/phone-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BodyComponent,
+    ImageScrollComponent,
+    PhoneDetailsComponent
   ],
+  entryComponents: [PhoneDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,7 +31,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
