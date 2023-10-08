@@ -24,10 +24,18 @@
   <component name="ChangeListManager">
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/service/service-customer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/service/service-customer.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/customer/customer-list/customer-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/customer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/customer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/service/service-customer.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/service/serviceCustomer/service-customer.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/service/service-customer.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/service/serviceCustomer/service-customer.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +73,13 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\node_modules\typescript\lib" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\service\serviceCustomer" />
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\product" />
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\customer" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -87,6 +102,9 @@
       <workItem from="1696352219597" duration="17000" />
       <workItem from="1696419319285" duration="372000" />
       <workItem from="1696513780814" duration="9842000" />
+      <workItem from="1696589711799" duration="10962000" />
+      <workItem from="1696608282397" duration="726000" />
+      <workItem from="1696733236776" duration="11138000" />
     </task>
     <servers />
   </component>
@@ -106,10 +124,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1696513984685">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1696751004484">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1696513984685" />
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1696751004484" />
     <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1696429581809">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

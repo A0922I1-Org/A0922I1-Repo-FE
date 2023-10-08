@@ -11,13 +11,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 // @ts-ignore
 import { CustomerComponent } from './customer/customer.component';
-import { CustomerListComponent } from './customer/customer-list/customer-list.component';
+import { CustomerListComponent } from './module/customer/customer-list/customer-list.component';
+import { ProductListComponent } from './module/product/product-list/product-list.component';
 
 // @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
