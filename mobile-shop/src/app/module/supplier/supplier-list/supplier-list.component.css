@@ -86,3 +86,16 @@ button.search-icon:hover svg{
   height: 35px;
   width: 35px;
 }
+
+
+.show {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.15s linear;
+}
+
+strong{
+  color: red;
+}
+

@@ -4,66 +4,78 @@
     <div class="mb-3">
       <div class="container">
         <div class="row">
-          <div
-            class="col-xl-10 col-lg-12 col-md-12 col-12 d-flex flex-wrap"
+          <form
+            class="col-xl-10"
+            (ngSubmit)="search()"
           >
             <div
-              class="col-xl-2 col-lg-2 col-md-12 d-flex align-items-center mb-md-2"
+              class="col-xl-12 col-lg-12 col-md-12 col-12 d-flex flex-wrap"
             >
-              <label class="me-2"><b>Tìm kiếm theo:</b></label>
-            </div>
-            <div class="col-xl-5 col-lg-6 col-md-6">
-              <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-11 mb-md-2">
-                  <input
-                    type="text"
-                    class="form-control me-2 custom99"
-                    placeholder="Tên nhà cung cấp"
-                  />
-                </div>
+              <div
+                class="col-xl-2 col-lg-2 col-md-12 d-flex align-items-center mb-md-2"
+              >
+                <label class="me-2"><b>Tìm kiếm theo:</b></label>
+                <!-- end -->
+              </div>
+              <div class="col-xl-5 col-lg-6 col-md-6">
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 col-md-11 mb-md-2">
+                    <input
+                      type="text"
+                      class="form-control me-2 custom99"
+                      placeholder="Tên nhà cung cấp"
+                      [(ngModel)]="searchName"
+                      name="searchName"
+                    />
+                  </div>
 
-                <div class="col-xl-6 col-lg-6 col-md-11">
-                  <input
-                    type="text"
-                    class="form-control me-2 custom99"
-                    placeholder="Địa chỉ nhà cung cấp"
-                  />
+                  <div class="col-xl-6 col-lg-6 col-md-11">
+                    <input
+                      type="text"
+                      class="form-control me-2 custom99"
+                      placeholder="Địa chỉ nhà cung cấp"
+                      [(ngModel)]="searchAddress"
+                      name="searchAddress"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-5 col-lg-4 col-md-6">
+                <div class="row">
+                  <div class="col-xl-1 col-lg-1"></div>
+                  <div class="d-xl-none d-lg-none col-md-1"></div>
+
+                  <div class="col-xl-6 col-lg-9 col-md-11 mb-md-2">
+                    <input
+                      type="text"
+                      class="form-control me-2"
+                      placeholder="SĐT nhà cung cấp"
+                      [(ngModel)]="searchPhone"
+                      name="searchPhone"
+                    />
+                  </div>
+                  <div class="d-xl-none d-lg-none col-md-1"></div>
+
+                  <div class="col-xl-5 col-lg-2 col-md-5 col-md-11">
+                    <button class="ms-2 search-icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        fill="currentColor"
+                        class="bi bi-search"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-xl-5 col-lg-4 col-md-6">
-              <div class="row">
-                <div class="col-xl-1 col-lg-1"></div>
-                <div class="d-xl-none d-lg-none col-md-1"></div>
-
-                <div class="col-xl-6 col-lg-9 col-md-11 mb-md-2">
-                  <input
-                    type="text"
-                    class="form-control me-2"
-                    placeholder="SĐT nhà cung cấp"
-                  />
-                </div>
-                <div class="d-xl-none d-lg-none col-md-1"></div>
-
-                <div class="col-xl-5 col-lg-2 col-md-5 col-md-11">
-                  <button class="ms-2 search-icon">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="25"
-                      height="25"
-                      fill="currentColor"
-                      class="bi bi-search"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          </form>
           <div class="col-xl-2 col-lg-12 col-md-12 col-12">
             <button
               type="button"
@@ -76,6 +88,7 @@
         </div>
       </div>
     </div>
+
 
     <!--  danh sách nhà cung cấp -->
     <div class="container">
@@ -132,11 +145,10 @@
           <td>{{supplier.supplierPhone}}</td>
           <td>{{supplier.supplierEmail}}</td>
           <td>
-              <a class="btn btn-outline-danger default-icon"
-                 data-bs-toggle="modal"
-                 data-bs-target="#exampleModal" [routerLink]="['/supplier/edit', supplier.supplierId]">
-                Xóa
-              </a>
+            <a class="btn btn-outline-danger default-icon"
+               (click)="showDeleteConfirmModal(supplier)">
+              Xóa
+            </a>
 
             <a
               [routerLink]="['/supplier/delete', supplier.supplierId]" class="btn btn-sm btn-danger"
@@ -192,7 +204,7 @@
           <button class="btn btn-outline-primary" (click)="loadSuppliers(page.number, 8)" [disabled]="page.first">
             Trước
           </button>
-          <a>{{page.number+1}}/{{page.totalPages}}</a>
+          <a *ngIf="page">{{page.number+1}}/{{page.totalPages}}</a>
           <button class="btn btn-outline-primary" (click)="loadSuppliers(page.number + 2, 8)" [disabled]="page.last">Sau</button>
         </div>
         <div class="col-1">
@@ -203,3 +215,21 @@
   </div>
 </div>
 
+<!-- Modal xác nhận xóa -->
+<div class="modal" [class.show]="isConfirmModalVisible">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xác nhận xóa nhà cung cấp</h5>
+        <button type="button" class="btn-close" (click)="hideDeleteConfirmModal()"></button>
+      </div>
+      <div class="modal-body">
+        Bạn có muốn xóa nhà cung cấp <strong> {{ supplierToDelete?.supplierName }}</strong> không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="hideDeleteConfirmModal()">Hủy bỏ</button>
+        <button type="button" class="btn btn-outline-danger" (click)="confirmDeleteSupplier()">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+</div>

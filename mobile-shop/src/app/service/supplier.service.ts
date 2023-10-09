@@ -8,7 +8,7 @@ import {Supplier} from '../model/supplier';
   providedIn: 'root'
 })
 export class SupplierService {
-  private apiUrl = 'http://localhost:8080/api/suppliers/paged';
+  private apiUrl = 'http://localhost:8080/api/suppliers';
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +17,29 @@ export class SupplierService {
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
 
-    return this.http.get<Page<Supplier>>(this.apiUrl, { params });
+    return this.http.get<Page<Supplier>>(this.apiUrl + '/paged', { params });
+  }
+
+
+  deleteSupplier(supplierId: string): Observable<void> {
+    const deleteUrl = `${this.apiUrl}/delete/${supplierId}`;
+    return this.http.delete<void>(deleteUrl);
+  }
+
+  searchSuppliers(
+    name: string,
+    address: string,
+    phone: string,
+    pageNo: number,
+    pageSize: number
+  ): Observable<Page<Supplier>> {
+    const params = new HttpParams()
+      .set('name', name)
+      .set('address', address)
+      .set('phone', phone)
+      .set('pageNo', pageNo.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<Page<Supplier>>(this.apiUrl + '/search', { params });
   }
 }

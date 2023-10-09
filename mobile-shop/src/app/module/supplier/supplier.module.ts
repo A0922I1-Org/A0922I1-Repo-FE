@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { SupplierRoutingModule } from './supplier-routing.module';
 import { SupplierListComponent } from './supplier-list/supplier-list.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -10,9 +11,10 @@ import { SupplierListComponent } from './supplier-list/supplier-list.component';
     exports: [
         SupplierListComponent
     ],
-    imports: [
-        CommonModule,
-        SupplierRoutingModule
-    ]
+  imports: [
+    CommonModule,
+    SupplierRoutingModule,
+    FormsModule
+  ]
 })
 export class SupplierModule { }
