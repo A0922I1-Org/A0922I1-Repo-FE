@@ -4,10 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
-    children: [
-      //Mọi người đặt part dẫn đến module ở đây
-      ]
+    path: 'report',
+    loadChildren:() =>import('./module/report/report.module').then(module =>module.ReportModule)
+    // children: [
+    //   //Mọi người đặt part dẫn đến module ở đây
+    //   ]
   }
 ];
 
