@@ -3,6 +3,7 @@ import {ProductInputDto} from "../../../dto/ProductInputDto";
 import {Supplier} from "../../../model/supplier";
 import {InputInvoiceService} from "../../../service/input-invoice.service";
 import {InputInvoiceDetailService} from "../../../service/input-invoice-detail.service";
+import {InputInvoiceDto} from "../../../dto/InputInvoiceDto";
 
 @Component({
   selector: 'app-input-invoice-preview-list',
@@ -14,6 +15,7 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges{
   previewListInputItem: ProductInputDto[] =[];
   supplier: Supplier = null;
   supplierName: string ="";
+  inputInvoiceDto: InputInvoiceDto;
   constructor(private inputInvoiceService: InputInvoiceService,
               private inputInvoiceDetailService: InputInvoiceDetailService) {
   }
@@ -40,6 +42,10 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges{
   addInputInvoice(){
     console.log(this.supplier);
     console.log(this.previewListInputItem);
+    this.inputInvoiceDto = new InputInvoiceDto(this.previewListInputItem, this.supplier);
+    this.inputInvoiceService.addInputInvoiceList(this.inputInvoiceDto).subscribe(
+      next => console.log('ok')
+    );
     // this.inputInvoiceService.addInputInvoiceList(this.supplier).subscribe(
     //   next => this.inputInvoiceDetailService.addInputInvoiceDetail(this.previewListInputItem).
     // )

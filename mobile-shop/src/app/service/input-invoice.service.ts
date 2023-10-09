@@ -4,6 +4,7 @@ import {Page} from "../model/page";
 import {InputInvoiceDetail} from "../model/input-invoice-detail";
 import {Supplier} from "../model/supplier";
 import {InputInvoiceDetailService} from "./input-invoice-detail.service";
+import {InputInvoiceDto} from "../dto/InputInvoiceDto";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class InputInvoiceService {
   constructor(private http: HttpClient,
               private inputInvoiceDetailService: InputInvoiceDetailService) { }
 
-  addInputInvoiceList(supplier: Supplier){
-    return this.http.post<InputInvoiceDetail>(this.URL_API + '/new-input-invoice',supplier);
+  addInputInvoiceList(dto: InputInvoiceDto){
+    return this.http.post<InputInvoiceDetail>(this.URL_API + '/new-input-invoice',dto);
   }
 }
