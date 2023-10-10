@@ -13,6 +13,9 @@ button{
 .table table-striped{
   margin: 30px;
 }
+.hover:hover{
+  color: darkgreen;
+}
 
 h2{
   color: black;

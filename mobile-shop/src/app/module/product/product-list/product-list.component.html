@@ -2,10 +2,11 @@
 <title>Màn Hình Khách Hàng Có Sẵn</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<button type="button" (click)="getListProduct(1,8)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+<button type="button" (click)="getListProduct(0)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
   Chọn Sản Phẩm Có Sẵn
 </button>
 <!-- The Modal -->
+<ng-container *ngIf="products">
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -18,14 +19,14 @@
                 <div class="col-12">
                   <div class="input-group align-items-center">
                     <label class="me-2"><b>Tìm kiếm theo:</b></label>
-                    <select class="form-select me-2 custom-width-35">
-                      <option #option value="name">Tên Sản Phẩm</option>
-                      <option #option value="price">Giá </option>
-                      <option  #option value="cpu">CPU</option>
+                    <select class="form-select me-2 custom-width-35"  [(ngModel)]="option">
+                      <option  value="name">Tên Sản Phẩm</option>
+                      <option  value="price">Giá </option>
+                      <option   value="cpu">CPU</option>
                     </select>
                     <input #search type="text" class="form-control custom-width-35" placeholder="tìm kiếm ">
                     <input #storage type="text" class="form-control custom-width-35" placeholder="tìm kiếm theo dung lượng">
-                    <button (click)="searchProduct(option, search, storage)" class="btn btn-outline-dark m-2 ">Tìm kiếm</button>
+                    <button (click)="searchProduct(search, storage)" class="btn btn-outline-dark m-2 ">Tìm kiếm</button>
                   </div>
                 </div>
                 <div class="col-2">
@@ -51,7 +52,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let pr of products.content; index as i" (click)="findByIdProduct(pr.productId)">
+          <tr *ngFor="let pr of products; index as i" (click)="findByIdProduct(pr.productId)" style="color: darkgreen">
             <th scope="row">{{i+1}}</th>
             <td>{{pr.productName}}</td>
             <td>{{pr.costPrice}}</td>
@@ -61,18 +62,19 @@
           </tbody>
         </table>
       </div>
-<!--       Modal footer -->
-              <div class="modal-footer" style="text-align: center ">
-                <div >
-                  <label style="margin-left: 500px">
-                    <button type="button" class="btn btn-outline-primary" style="margin: 5px">Trước</button>
-                    <button type="button" class="btn btn-outline-primary" style="margin: 5px">1/10</button>
-                    <button type="button" class="btn btn-outline-primary" style="margin: 5px">sau</button>
-                  </label>
-                  <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 450px">Thoát</button>
+      <!--       Modal footer-->
+      <div class="modal-footer" style="width: 1000px">
+        <div>
+          <div *ngIf="page.totalPages > 0">
+            <button (click)="getListProduct(page.number - 1)" [disabled]="page.first"  type="button" class="btn btn-outline-primary" style="margin: 5px">Trước</button>
+            <a>{{page.number+1}}/{{page.totalPages}}</a>
+            <button (click)="getListProduct(page.number + 1)" [disabled]="page.last" type="button" class="btn btn-outline-primary" style="margin: 5px">sau</button>
+          </div>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 350px;">Thoát</button>
+        </div>
+      </div>
 
-                </div>
-              </div>
     </div>
   </div>
 </div>
+</ng-container>

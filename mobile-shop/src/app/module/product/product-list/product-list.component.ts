@@ -8,20 +8,22 @@ import {Page} from "../../../model/page";
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  products: Page<Product>;
+  products: Product [];
   product: Product;
+  option: string;
+  page: Page<Product>;
 
   constructor(private productServiceService: ProductServiceService) { }
 
   ngOnInit(): void {
     console.log("Da vao init")
-    this.getListProduct(1, 8);
+    this.getListProduct(0);
   }
 
-  getListProduct(pageNo: number, pageSize: number) {
-
-    this.productServiceService.listProduct(pageNo, pageSize).subscribe(data => {
-      this.products = data;
+  getListProduct(pageNo: number) {
+    this.productServiceService.listProduct(pageNo).subscribe(data => {
+      this.products = data.content;
+      this.page = data;
       console.log(data);
     })
 
@@ -34,16 +36,15 @@ export class ProductListComponent implements OnInit {
   }
 
 
-  searchProduct(option: HTMLOptionElement, search: HTMLInputElement, storage: HTMLInputElement) {
-    if (option.value === null && search.value === null && storage.value === null){
+  searchProduct(search: HTMLInputElement, storage: HTMLInputElement) {
+    if (this.option === null && search.value === null && storage.value === null){
       this.ngOnInit();
+      console.log(this.ngOnInit());
     }else {
-      this.productServiceService.search(option.value, search.value, storage.value).subscribe(next =>{
-        this.products = next;
-        console.log(this.products);
-        if (this.products.size === 0){
-
-        }
+      this.productServiceService.search(this.option, search.value, storage.value).subscribe(next =>{
+        this.products = next.content;
+        this.page = next;
+        console.log(next);
       })
     }
   }

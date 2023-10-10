@@ -31,3 +31,10 @@ h2{
 .modal-dialog{
   max-width: 1000px;
 }
+.modal-footer{
+  width: max-content;
+  text-align: center;
+}
+.modal-button{
+  text-align: center;
+}

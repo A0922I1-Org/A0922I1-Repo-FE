@@ -13,22 +13,24 @@ import {Page} from "../../../model/page";
 })
 export class CustomerListComponent implements OnInit {
   customer: Customer;
-
-  customers: Page<Customer>;
-
-
+  page: Page<Customer>;
+  customers: Customer [];
+  option: string;
   constructor(private serviceCustomerService: ServiceCustomerService,
               private router: Router) {
+
   }
 
   ngOnInit(): void {
-    this.getListCustomer(1, 4);
+    this.getListCustomer(0);
   }
 
-  getListCustomer(pageNo: number, pageSize: number) {
-    this.serviceCustomerService.listCustomer(pageNo, pageSize).subscribe(data => {
-      this.customers = data;
-      console.log(data);
+  getListCustomer(pageNo: number) {
+    console.log("da vao");
+    this.serviceCustomerService.listCustomer(pageNo).subscribe(data => {
+      this.customers = data.content;
+      this.page = data;
+      console.log(this.page);
     })
   }
 
@@ -39,18 +41,45 @@ export class CustomerListComponent implements OnInit {
     });
   }
 
-  searchCustomer(option: HTMLOptionElement, search: HTMLInputElement, numberPhone: HTMLInputElement) {
-    if (option.value === null && search.value === null && numberPhone.value === null) {
-      this.getListCustomer(1, 8);
-    } else {
-      this.serviceCustomerService.search(option.value, search.value, numberPhone.value).subscribe(data => {
-        this.customers = data;
-        console.log(this.customers);
-        if (this.customers.size === 0) {
-
-        }
-      })
-    }
+  // searchCustomer(search: HTMLInputElement, numberPhone: HTMLInputElement) {
+  //   if (search.value === null && this.option === null) {
+  //     this.serviceCustomerService.searchNumberPhone(numberPhone.value).subscribe(data => {
+  //       this.customers = data.content;
+  //       this.page = data;
+  //       console.log(data);
+  //     })
+  //     } if (numberPhone.value === null && this.option !== null && search.value !== null){
+  //         this.serviceCustomerService.search(this.option, search.value).subscribe(data =>{
+  //           this.customers = data.content;
+  //           this.page = data;
+  //           console.log(data);
+  //         })
+  //     }
+  //     else {
+  //       this.serviceCustomerService.searchAll(this.option, search.value, numberPhone.value).subscribe(data => {
+  //         this.customers = data.content;
+  //         this.page = data;
+  //         console.log(data);
+  //       })
+  //     }
+  //   }
+  // searchCustomer(search: HTMLInputElement, numberPhone: HTMLInputElement) {
+  //   if (search.value === null && this.option === null && numberPhone !== null){
+  //     this.serviceCustomerService.searchAll(this.option, search.value, numberPhone.value).subscribe(data =>{
+  //       this.customers = data.content;
+  //       this.page = data;
+  //       console.log(data);
+  //     })
+  //   }
+  // }
+  searchCustomer(search: HTMLInputElement, numberPhone: HTMLInputElement) {
+    this.serviceCustomerService.searchAll(this.option, search.value, numberPhone.value).subscribe(data => {
+      this.customers = data.content;
+      this.page = data;
+      console.log(data);
+    });
   }
 }
+
+
 
