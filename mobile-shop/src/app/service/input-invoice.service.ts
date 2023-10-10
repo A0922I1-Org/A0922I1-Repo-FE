@@ -16,6 +16,6 @@ export class InputInvoiceService {
               private inputInvoiceDetailService: InputInvoiceDetailService) { }
 
   addInputInvoiceList(dto: InputInvoiceDto){
-    return this.http.post<InputInvoiceDetail>(this.URL_API + '/new-input-invoice',dto);
+    return this.http.post<InputInvoiceDto>(this.URL_API + '/new-input-invoice',dto);
   }
 }
