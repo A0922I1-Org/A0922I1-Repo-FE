@@ -138,4 +138,9 @@ strong {
     font-size: 0.7rem;
     padding: 5px 10px;
   }
+
+  .sort-icon{
+    border: none;
+    background: white;
+  }
 }
