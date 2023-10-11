@@ -3,7 +3,9 @@ import {Brand} from "./brand";
 
 export interface Product {
   productName: string;
-  cost: number;
+  costPrice: number;
+  sellingPrice: number;
+  quantity: number;
   screenSize: string;
   frontCamera: string;
   backCamera: string;
