@@ -17,4 +17,9 @@ export class PhoneDetailsComponent implements OnInit {
     this.phoneDetails = this.phoneDataService.getPhoneDetails();
   }
 
+  formatCurrency(value) {
+
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
 }
