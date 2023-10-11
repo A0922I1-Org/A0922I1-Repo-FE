@@ -42,4 +42,30 @@ export class SupplierService {
 
     return this.http.get<Page<Supplier>>(this.apiUrl + '/search', { params });
   }
+
+  sortByNameSupplier(
+    flag: string,
+    pageNo: number,
+    pageSize: number
+  ): Observable<Page<Supplier>> {
+    const params = new HttpParams()
+      .set('flag', flag.toString())
+      .set('pageNo', pageNo.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<Page<Supplier>>(this.apiUrl + '/sort/name', { params });
+  }
+
+  sortByIdSupplier(
+    flag: string,
+    pageNo: number,
+    pageSize: number
+  ): Observable<Page<Supplier>> {
+    const params = new HttpParams()
+      .set('flag', flag.toString())
+      .set('pageNo', pageNo.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<Page<Supplier>>(this.apiUrl + '/sort/id', { params });
+  }
 }

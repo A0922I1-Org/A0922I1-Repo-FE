@@ -15,6 +15,7 @@ export class SupplierListComponent implements OnInit {
   searchName = '';
   searchAddress = '';
   searchPhone = '';
+  flag = 0;
 
   constructor(private supplierService: SupplierService) {
   }
@@ -54,6 +55,25 @@ export class SupplierListComponent implements OnInit {
     console.log('searchPhone:', this.searchPhone);
 
     this.supplierService.searchSuppliers(this.searchName, this.searchAddress, this.searchPhone, 1, 8)
+      .subscribe(data => {
+        this.page = data;
+        this.isConfirmModalVisible = false;
+      });
+  }
+
+
+  sortByName() {
+    this.flag++;
+    this.supplierService.sortByNameSupplier(this.flag.toString(), 1, 8)
+      .subscribe(data => {
+        this.page = data;
+        this.isConfirmModalVisible = false;
+      });
+  }
+
+  sortById() {
+    this.flag++;
+    this.supplierService.sortByIdSupplier(this.flag.toString(), 1, 8)
       .subscribe(data => {
         this.page = data;
         this.isConfirmModalVisible = false;

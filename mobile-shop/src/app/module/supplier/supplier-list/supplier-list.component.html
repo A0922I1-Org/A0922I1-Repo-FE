@@ -92,13 +92,13 @@
 
     <!--  danh sách nhà cung cấp -->
     <div class="container">
-      <table class="table table-striped table-bordered" *ngIf="page">
+      <table class="table table-bordered table-hover" *ngIf="page">
         <thead>
         <tr>
           <th scope="col">STT</th>
           <th scope="col">
             Mã nhà cung cấp
-            <button class="sort-icon">
+            <button class="sort-icon" (click)="sortById()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -115,7 +115,7 @@
           </th>
           <th scope="col">
             Tên nhà cung cấp
-            <button class="sort-icon">
+            <button class="sort-icon" (click)="sortByName()">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -145,7 +145,7 @@
           <td>{{supplier.supplierPhone}}</td>
           <td>{{supplier.supplierEmail}}</td>
           <td>
-            <a class="btn btn-outline-danger default-icon"
+            <a class="btn btn-outline-danger me-2 default-icon"
                (click)="showDeleteConfirmModal(supplier)">
               Xóa
             </a>
