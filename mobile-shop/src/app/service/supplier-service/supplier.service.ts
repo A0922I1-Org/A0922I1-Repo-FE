@@ -8,7 +8,11 @@ import {Supplier} from '../../model/supplier';
   providedIn: 'root'
 })
 export class SupplierService {
+<<<<<<< HEAD
   private apiUrl = 'http://localhost:8080/api/suppliers';
+=======
+  private apiUrl = 'http://localhost:8080/api/suppliers/'
+>>>>>>> NghiaBH-create-update-Supplier
 
   constructor(private http: HttpClient) {}
 
