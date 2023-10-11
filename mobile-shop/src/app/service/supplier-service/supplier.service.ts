@@ -8,13 +8,21 @@ import {Supplier} from '../../model/supplier';
   providedIn: 'root'
 })
 export class SupplierService {
-<<<<<<< HEAD
+
   private apiUrl = 'http://localhost:8080/api/suppliers';
-=======
-  private apiUrl = 'http://localhost:8080/api/suppliers/'
->>>>>>> NghiaBH-create-update-Supplier
+
 
   constructor(private http: HttpClient) {}
+
+  addNewSupplier(supplier): Observable<Supplier> {
+    return this.http.post<Supplier>(this.apiUrl + '/create', supplier);
+  }
+  findBySupplierId(supplierId: number): Observable<Supplier> {
+    return this.http.get<Supplier>(this.apiUrl + '/edit' + supplierId);
+  }
+  updateSupplier(supplier): Observable<Supplier> {
+    return this.http.post<Supplier>(this.apiUrl + '/update', supplier);
+  }
 
   getAllSuppliers(pageNo: number, pageSize: number): Observable<Page<Supplier>> {
     const params = new HttpParams()

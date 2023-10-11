@@ -16,7 +16,7 @@ const routes: Routes = [
     component: CreateSupplierComponent
   },
   {
-    path: 'update',
+    path: 'edit:supplierId',
     component: UpdateSupplierComponent
   }
 ];
