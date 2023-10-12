@@ -6,6 +6,7 @@ import {RoleGuard} from "./role.guard";
 
 const routes: Routes = [
   {
+
     path: 'login',
     loadChildren: () => import('./model/security/security-routing.module').then(module => module.SecurityRoutingModule),
   },
@@ -25,7 +26,7 @@ const routes: Routes = [
     path: 'changePassword',
     loadChildren: () => import('./model/user-detail/infor-user-routing.module').then(module => module.InforUserRoutingModule),
     canActivate: [AuthGuard], // Áp dụng cả AuthGuard và RoleGuard cho route này
-  },
+  }
 ];
 
 @NgModule({
