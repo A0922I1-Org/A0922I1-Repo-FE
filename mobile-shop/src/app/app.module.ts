@@ -31,9 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     LoginComponent,
     AddUserComponent,
     DateFormatPipe,
-    ChangePasswordComponent
-
-
+    ChangePasswordComponent,
     HeaderComponent,
     FooterComponent,
     BodyComponent,
@@ -49,10 +47,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-
     NgbModule,
-    ModalModule.forRoot()
-
+    ModalModule.forRoot(),
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CarouselModule,
