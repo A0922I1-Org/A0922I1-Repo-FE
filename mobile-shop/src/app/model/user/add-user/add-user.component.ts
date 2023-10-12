@@ -3,10 +3,11 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
 import Swal from "sweetalert2";
 import {UserService} from "../service/user.service";
 import {Router} from "@angular/router";
-import {switchMap} from "rxjs/operators";
+import {catchError, switchMap} from "rxjs/operators";
 import {Employee} from "../module/employee";
 import {User} from "../module/user";
 import {Role} from "../module/role";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'app-add-user',
@@ -54,6 +55,7 @@ export class AddUserComponent implements OnInit {
 
   matchPasswords(control: AbstractControl): { [key: string]: boolean } | null {
     const password = control.get('password').value;
+    console.log(password)
     const confirmPassword = control.get('confirmPassword').value;
     if (password !== confirmPassword) {
       return {'passwordMismatch': true};
@@ -88,41 +90,23 @@ export class AddUserComponent implements OnInit {
     this.userService.checkExistingUsername(username).pipe(
       switchMap((usernameExists) => {
         if (usernameExists) {
-          return Swal.fire({
-            icon: 'error',
-            title: 'Tài khoản đã tồn tại!',
-            text: 'Vui lòng chọn tên tài khoản khác.',
-          });
+          return throwError(new Error('Tài khoản đã tồn tại!'));
         } else {
           return this.userService.checkExistingEmail(email);
         }
       }),
       switchMap((emailExists) => {
         if (emailExists) {
-          return Swal.fire({
-            icon: 'error',
-            title: 'Email đã tồn tại!',
-            text: 'Vui lòng chọn địa chỉ email khác.',
-          });
+          return throwError(new Error('Email đã tồn tại!'));
         } else {
-          this.employee = {
-            nameEmployee: this.formSignUp.get('nameEmployee').value,
-            birthdayEmployee: this.formSignUp.get('birthdayEmployee').value,
-            addressEmployee: this.formSignUp.get('addressEmployee').value,
-            numberPhoneEmployee: this.formSignUp.get('numberPhoneEmployee').value,
-            positionEmployee: this.formSignUp.get('role').value,
-            user: {
-              username: this.formSignUp.get('username').value,
-              password: this.formSignUp.get('confirmPassword').value,
-              email: this.formSignUp.get('email').value,
-              avatar: null
-            },
-            role: [
-               this.formSignUp.get('role').value
-            ]
-          };
-          return this.userService.addEmployee(this.employee);
+          const employee = this.createEmployee();
+          console.log(this.employee)
+          return this.userService.addEmployee(employee);
         }
+      }),
+      catchError((error) => {
+        console.log('Error:', error);
+        return throwError(new Error('Đã xảy ra lỗi.'));
       })
     ).subscribe(
       (data) => {
@@ -130,7 +114,6 @@ export class AddUserComponent implements OnInit {
         this.formSignUp.reset();
         this.router.navigateByUrl('');
 
-        // Hiển thị thông báo thành công sau khi đăng ký thành công
         Swal.fire({
           icon: 'success',
           title: 'Đăng ký thành công!',
@@ -138,13 +121,30 @@ export class AddUserComponent implements OnInit {
         });
       },
       (error) => {
-        console.log('Error:', error);
         Swal.fire({
           icon: 'error',
           title: 'Bị lỗi rồi!',
-          text: 'Bạn không thêm tài khoản thành công',
+          text: error.message,
         });
       }
     );
   }
+
+  createEmployee() {
+    return {
+      nameEmployee: this.formSignUp.get('nameEmployee').value,
+      birthdayEmployee: this.formSignUp.get('birthdayEmployee').value,
+      addressEmployee: this.formSignUp.get('addressEmployee').value,
+      numberPhoneEmployee: this.formSignUp.get('numberPhoneEmployee').value,
+      positionEmployee: this.formSignUp.get('role').value,
+      user: {
+        username: this.formSignUp.get('username').value,
+        password: this.formSignUp.get('confirmPassword').value,
+        email: this.formSignUp.get('email').value,
+        avatar: null
+      },
+      role: [this.formSignUp.get('role').value]
+    };
+  }
+
 }
