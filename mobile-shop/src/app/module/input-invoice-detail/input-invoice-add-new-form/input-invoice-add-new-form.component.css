@@ -8,7 +8,9 @@ div.header,
 div.footer {
   background-color: #ffd400;
 }
-
+div.parent {
+  border: solid 3px beige;
+}
 div.main-content {
   margin: 20px auto;
 }
@@ -98,7 +100,7 @@ button.responsive-icon {
 }
 @media screen and (max-width: 1500px) {
 div.main-content {
-  border-right: black solid 3px;
+  border-right: solid 3px beige;
 }
 }
 @media screen and (max-width: 992px) {

@@ -66,7 +66,7 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges {
     console.log(this.previewListInputItem);
     this.inputInvoiceDto = new InputInvoiceDto(this.previewListInputItem, this.supplier);
     this.inputInvoiceService.addInputInvoiceList(this.inputInvoiceDto).subscribe(
-      next => console.log('ok')
+      next => {console.log('ok'); this.previewListInputItem = []; this.totalCostOfInvoice = 0; }
     );
     // this.inputInvoiceService.addInputInvoiceList(this.supplier).subscribe(
     //   next => this.inputInvoiceDetailService.addInputInvoiceDetail(this.previewListInputItem).

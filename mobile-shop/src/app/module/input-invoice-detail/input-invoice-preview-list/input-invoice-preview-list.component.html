@@ -20,8 +20,10 @@
 
     <div class="row mt-3">
       <div class="row">
-
-        <table class="table table-list table-striped border">
+        <div class="row justify-content-center">
+          <div class="mt-5 mb-5 fw-bolder fs-5 alert-danger col-8" *ngIf="!haveItemInList">Hiện phiếu nhập đang chưa có gì, bạn vui lòng nhập sản phẩm ở form bên trái</div>
+        </div>
+        <table *ngIf="haveItemInList" class="table table-list table-striped border">
           <tr>
             <th>STT</th>
             <th>Tên hàng</th>

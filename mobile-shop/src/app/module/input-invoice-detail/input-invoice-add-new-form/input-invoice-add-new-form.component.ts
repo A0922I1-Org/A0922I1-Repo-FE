@@ -46,7 +46,7 @@ inputDetailForm: FormGroup;
     this.isNewProduct = !this.isNewProduct;
     if (!this.isNewProduct) {
       this.inputDetailForm.get('productName').disable();
-
+      this.inputDetailForm.get('productName').setValue(null);
     } else {
       this.inputDetailForm.get('productName').enable();
       this.inputDetailForm.get('quantity').enable();
