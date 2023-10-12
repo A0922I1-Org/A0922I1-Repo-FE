@@ -1,12 +1,12 @@
-import {Category} from "../model/category";
-import {Brand} from "../model/brand";
+import {Category} from '../model/category';
+import {Brand} from '../model/brand';
 
-export class ProductInputDto{
-  productId:number;
+export class ProductInputDto {
+  productId?: number;
   productName: string;
-  costPrice: number;
+  costPrice?: number;
   sellingPrice?: number;
-  quantity: number;
+  quantity?: number;
   screenSize?: string;
   frontCamera?: string;
   backCamera?: string;
@@ -37,4 +37,5 @@ export class ProductInputDto{
     // this.category=null;
     // this.brand = null;
   }
+
 }

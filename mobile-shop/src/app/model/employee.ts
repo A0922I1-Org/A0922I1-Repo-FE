@@ -3,5 +3,5 @@ export interface Employee {
   birthdayEmployee: Date;
   addressEmployee: string;
   numberPhoneEmployee: string;
-  positionEmployee: string
+  positionEmployee: string;
 }

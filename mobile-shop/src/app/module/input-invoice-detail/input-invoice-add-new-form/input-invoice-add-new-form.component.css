@@ -69,9 +69,16 @@ img.product-image{
 .error{
   color: red;
 }
+.error-hidden{
+  display: none;
+}
 
 td, tr {
   text-align: center;
+}
+tr.error,
+tr.error td{
+  height: 30px;
 }
 td  {
   vertical-align: middle;
@@ -89,9 +96,17 @@ td  {
 button.responsive-icon {
   display: none;
 }
+@media screen and (max-width: 1500px) {
+div.main-content {
+  border-right: black solid 3px;
+}
+}
 @media screen and (max-width: 992px) {
   button.responsive-button {
     display: none;
+  }
+  div.main-content {
+    border-right: none;
   }
   button.responsive-icon{
     display: inline-block;

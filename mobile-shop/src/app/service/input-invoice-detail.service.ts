@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {InputInvoiceDetail} from "../model/input-invoice-detail";
-import {Page} from "../model/page";
-import {ProductInputDto} from "../dto/ProductInputDto";
+import {HttpClient} from '@angular/common/http';
+import {InputInvoiceDetail} from '../model/input-invoice-detail';
+import {Page} from '../model/page';
+import {ProductInputDto} from '../dto/ProductInputDto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InputInvoiceDetailService {
- private readonly URL_API = "http://localhost:8080/input-invoice"
+ private readonly URL_API = 'http://localhost:8080/input-invoice';
 
   constructor(private http: HttpClient) { }
 
-  getInputInvoiceList(){
+  getInputInvoiceList() {
    return this.http.get<Page<InputInvoiceDetail>>(this.URL_API + '/' + 'list');
   }
-  addInputInvoiceDetail(productInput: ProductInputDto[]){
-   return this.http.post<ProductInputDto>(this.URL_API + '/'+ 'new-input-invoice-detail', productInput);
+  validateInputDetail(inputDetail: ProductInputDto) {
+    return this.http.post<ProductInputDto>(this.URL_API + '/' + 'validate', inputDetail);
+  }
+  addInputInvoiceDetail(productInput: ProductInputDto[]) {
+   return this.http.post<ProductInputDto>(this.URL_API + '/' + 'new-input-invoice-detail', productInput);
   }
 }

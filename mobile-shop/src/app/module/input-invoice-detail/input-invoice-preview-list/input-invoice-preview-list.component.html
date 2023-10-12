@@ -8,7 +8,7 @@
       <div class="col-6">
         <input type="text" [value]="supplierName" class="form-control mt-2"
                disabled>
-        <div class="error mt-3">Nhà cung cấp không được để trống</div>
+        <div [hidden]="isSupplierSelected" class="error mt-3">Nhà cung cấp không được để trống</div>
       </div>
       <div class="col">
         <input type="button" value="Chọn NCC" class="btn btn-outline-dark"
@@ -40,20 +40,11 @@
                        data-bs-target="#exampleModal-delete" value="Xóa"></td>
           </tr>
           <tr>
-            <td>1</td>
-            <td>Nokia N8</td>
-            <td>5</td>
-            <td>7.000.000</td>
-            <td>35.000.000</td>
-            <td><input type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                       data-bs-target="#exampleModal-delete" value="Xóa"></td>
-          </tr>
-          <tr>
             <td></td>
             <td></td>
             <td></td>
             <th>Tổng</th>
-            <td>110.000.000</td>
+            <td>{{totalCostOfInvoice}}</td>
             <td>VND</td>
           </tr>
         </table>
@@ -64,7 +55,7 @@
   </div>
   <div class="row">
     <div class="col text-center mb-3">
-      <button (click)="addInputInvoice()" class="btn btn-outline-warning" type="submit">Nhập kho</button>
+      <button [disabled]="!isSupplierSelected || !haveItemInList" (click)="addInputInvoice()" class="btn btn-outline-warning" type="submit">Nhập kho</button>
       <input [routerLink]="['/input-invoice']" type="button"
                                                                         class="btn btn-outline-danger"
                                                                         value="Thoát">

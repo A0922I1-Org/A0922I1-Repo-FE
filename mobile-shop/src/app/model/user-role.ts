@@ -1,5 +1,5 @@
-import {Role} from "./role";
-import {User} from "./user";
+import {Role} from './role';
+import {User} from './user';
 
 export interface UserRole {
   role: Role;

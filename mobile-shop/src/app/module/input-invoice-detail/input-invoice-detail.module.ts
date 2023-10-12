@@ -5,16 +5,21 @@ import { InputInvoiceDetailRoutingModule } from './input-invoice-detail-routing.
 import { InputInvoiceDetailListComponent } from './input-invoice-detail-list/input-invoice-detail-list.component';
 import { InputInvoicePreviewListComponent } from './input-invoice-preview-list/input-invoice-preview-list.component';
 import { InputInvoiceAddNewFormComponent } from './input-invoice-add-new-form/input-invoice-add-new-form.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {  SelectSupplierModalComponent } from './select-supplier-modal/select-supplier-modal.component';
 
 
 @NgModule({
-  declarations: [InputInvoiceDetailListComponent, InputInvoicePreviewListComponent, InputInvoiceAddNewFormComponent, SelectSupplierModalComponent],
-    imports: [
-        CommonModule,
-        InputInvoiceDetailRoutingModule,
-        FormsModule
-    ]
+  declarations:
+    [InputInvoiceDetailListComponent,
+      InputInvoicePreviewListComponent,
+      InputInvoiceAddNewFormComponent,
+      SelectSupplierModalComponent],
+  imports: [
+    CommonModule,
+    InputInvoiceDetailRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class InputInvoiceDetailModule { }
