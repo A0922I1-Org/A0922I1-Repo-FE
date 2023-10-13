@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Page} from "../model/page";
-import {InputInvoiceDetail} from "../model/input-invoice-detail";
-import {Supplier} from "../model/supplier";
+import {Page} from "../../model/page";
+import {InputInvoiceDetail} from "../../model/input-invoice-detail";
+import {Supplier} from "../../model/supplier";
 import {InputInvoiceDetailService} from "./input-invoice-detail.service";
-import {InputInvoiceDto} from "../dto/InputInvoiceDto";
+import {InputInvoiceDto} from "../../dto/InputInvoiceDto";
 
 @Injectable({
   providedIn: 'root'

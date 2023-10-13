@@ -1,8 +1,8 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProductInputDto} from '../../../dto/ProductInputDto';
 import {Supplier} from '../../../model/supplier';
-import {InputInvoiceService} from '../../../service/input-invoice.service';
-import {InputInvoiceDetailService} from '../../../service/input-invoice-detail.service';
+import {InputInvoiceService} from '../../../service/input-invoice/input-invoice.service';
+import {InputInvoiceDetailService} from '../../../service/input-invoice/input-invoice-detail.service';
 import {InputInvoiceDto} from '../../../dto/InputInvoiceDto';
 
 @Component({
@@ -12,6 +12,7 @@ import {InputInvoiceDto} from '../../../dto/InputInvoiceDto';
 })
 export class InputInvoicePreviewListComponent implements OnInit, OnChanges {
   @Input() item: ProductInputDto;
+  @Output() reloadProductListModalSignal = new EventEmitter<boolean>();
   previewListInputItem: ProductInputDto[] = [];
   supplier: Supplier = null;
   supplierName = '';
@@ -28,7 +29,6 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.item && this.item) {
-      console.log(this.item);
       this.previewListInputItem.push(this.item);
       this.totalCostOfInvoice = 0;
       this.haveItemInList = true;
@@ -66,7 +66,13 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges {
     console.log(this.previewListInputItem);
     this.inputInvoiceDto = new InputInvoiceDto(this.previewListInputItem, this.supplier);
     this.inputInvoiceService.addInputInvoiceList(this.inputInvoiceDto).subscribe(
-      next => {console.log('ok'); this.previewListInputItem = []; this.totalCostOfInvoice = 0; }
+      next => {console.log('ok'); this.previewListInputItem = [];
+               this.totalCostOfInvoice = 0;
+               this.supplierName = '';
+               this.isSupplierSelected = false;
+               this.haveItemInList = false;
+               this.reloadProductListModalSignal.emit(true);
+      }
     );
     // this.inputInvoiceService.addInputInvoiceList(this.supplier).subscribe(
     //   next => this.inputInvoiceDetailService.addInputInvoiceDetail(this.previewListInputItem).

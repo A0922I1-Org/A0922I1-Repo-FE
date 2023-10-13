@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {InputInvoiceDetail} from '../model/input-invoice-detail';
-import {Page} from '../model/page';
-import {ProductInputDto} from '../dto/ProductInputDto';
+import {InputInvoiceDetail} from '../../model/input-invoice-detail';
+import {Page} from '../../model/page';
+import {ProductInputDto} from '../../dto/ProductInputDto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class InputInvoiceDetailService {
 
   constructor(private http: HttpClient) { }
 
-  getInputInvoiceList() {
-   return this.http.get<Page<InputInvoiceDetail>>(this.URL_API + '/' + 'list');
+  getInputInvoiceList(pageNo: number) {
+   return this.http.get<Page<InputInvoiceDetail>>(this.URL_API + '/' + 'list' + '?pageNo=' + pageNo);
   }
   validateInputDetail(inputDetail: ProductInputDto) {
     return this.http.post<ProductInputDto>(this.URL_API + '/' + 'validate', inputDetail);

@@ -3,7 +3,26 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
@@ -15,6 +34,13 @@
 =======
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
 >>>>>>> main
+=======
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" afterDir="false" />
+    </list>
+>>>>>>> DuyNN
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,17 +54,22 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/A0922I1-Org/A0922I1-Repo-FE.git" />
+      </set>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
   <component name="ProjectId" id="2WD6kEZsHgvaOa1KrNzOnN4oKyy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
 <<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -67,6 +98,27 @@
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+=======
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../[A0922I1]_Prototype_NamNPH" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\service\serviceCustomer" />
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\product" />
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\customer" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+>>>>>>> DuyNN
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
@@ -84,11 +136,69 @@
       <workItem from="1696351980657" duration="212000" />
       <workItem from="1696352219597" duration="17000" />
       <workItem from="1696419319285" duration="372000" />
+<<<<<<< HEAD
       <workItem from="1696597993093" duration="108000" />
+=======
+      <workItem from="1696513780814" duration="9842000" />
+      <workItem from="1696589711799" duration="10962000" />
+      <workItem from="1696608282397" duration="726000" />
+      <workItem from="1696733236776" duration="11265000" />
+      <workItem from="1696768709427" duration="11505000" />
+      <workItem from="1696842228549" duration="593000" />
+      <workItem from="1696848251947" duration="12707000" />
+      <workItem from="1696866942802" duration="227000" />
+      <workItem from="1696952406193" duration="1672000" />
+>>>>>>> DuyNN
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1696771453036">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1696771453036" />
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1696429581809">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1696429581809">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1696429581808">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1696429581808" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1696429581809">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
+    <state width="254" height="198" key="RunAnythingAction_Filter_Popup" timestamp="1696427090606">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="254" height="198" key="RunAnythingAction_Filter_Popup/0.0.1280.680@0.0.1280.680" timestamp="1696427090606" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1696426612445">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1696426612445" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1696427090599">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1696427090599" />
   </component>
 </project>

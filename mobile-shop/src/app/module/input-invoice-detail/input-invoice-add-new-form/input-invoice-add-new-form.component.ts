@@ -1,8 +1,11 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ProductInputDto} from '../../../dto/ProductInputDto';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {InputInvoiceDetailService} from '../../../service/input-invoice-detail.service';
+import {InputInvoiceDetailService} from '../../../service/input-invoice/input-invoice-detail.service';
 import {HttpErrorResponse} from '@angular/common/http';
+import {Product} from '../../../model/product';
+import {InputInvoiceDetail} from '../../../model/input-invoice-detail';
+import {Page} from '../../../model/page';
 
 @Component({
   selector: 'app-input-invoice-add-new-form',
@@ -26,6 +29,8 @@ export class InputInvoiceAddNewFormComponent implements OnInit {
 productToList: ProductInputDto;
 productToListValidated: ProductInputDto;
 inputDetailForm: FormGroup;
+// Giá trị này được truyền vào component modal product list sau khi đã gởi invoice về server
+  reload: boolean;
   constructor(private inputInvoiceService: InputInvoiceDetailService,
              ) {
     this.inputDetailForm = new FormGroup({
@@ -34,9 +39,6 @@ inputDetailForm: FormGroup;
       costPrice: new FormControl(null, [Validators.required, Validators.min(1)]),
       quantity: new FormControl(null, [Validators.required, Validators.min(1)]),
     });
-    if (!this.isNewProduct) {
-      this.inputDetailForm.get('productName').disable();
-    }
   }
 
   ngOnInit() {
@@ -45,26 +47,15 @@ inputDetailForm: FormGroup;
   toggleIsNewProduct() {
     this.isNewProduct = !this.isNewProduct;
     if (!this.isNewProduct) {
-      this.inputDetailForm.get('productName').disable();
       this.inputDetailForm.get('productName').setValue(null);
     } else {
-      this.inputDetailForm.get('productName').enable();
-      this.inputDetailForm.get('quantity').enable();
-      this.inputDetailForm.get('costPrice').enable();
+      this.inputDetailForm.get('productId').setValue(null);
+      this.inputDetailForm.get('productName').setValue(null);
     }
-    console.log(this.isNewProduct);
   }
-
-  validateInputDetail() {
-
-  }
-
   addToList() {
     // đầu tiên validate gởi về server
     this.productToList = this.inputDetailForm.value;
-    if (!this.isNewProduct) {
-      this.productToList.productName = '';
-    }
     this.inputInvoiceService.validateInputDetail(this.productToList).subscribe(
       next => {
         // this.formIsDone = true;
@@ -83,5 +74,19 @@ inputDetailForm: FormGroup;
         console.log(this.productNameErrorMessage == null);
       }
     );
+  }
+  chooseProductInPast(productEmitted: Product) {
+    this.productToList = new ProductInputDto(productEmitted.productId, productEmitted.productName,
+                                              productEmitted.costPrice,  productEmitted.quantity);
+    this.inputDetailForm.get('productId').setValue(productEmitted.productId);
+    this.inputDetailForm.get('productName').setValue(productEmitted.productName);
+    this.inputDetailForm.get('costPrice').setValue(productEmitted.costPrice);
+    this.inputDetailForm.get('quantity').setValue(productEmitted.quantity);
+  }
+  reloadProductListModal(invoiceSubmited: boolean) {
+    console.log('da vao reloadProductListModal');
+    if (invoiceSubmited) {
+      this.reload = invoiceSubmited;
+    }
   }
 }
