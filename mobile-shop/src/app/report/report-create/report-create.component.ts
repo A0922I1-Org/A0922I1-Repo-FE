@@ -22,8 +22,8 @@ export class ReportCreateComponent implements OnInit {
   private chart: Chart;
   result: any;
   reportForm: FormGroup = new FormGroup({
-    fromDate: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\/\d{2}\/\d{2}$/),dateValidator]),
-    toDate: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\/\d{2}\/\d{2}$/),dateValidator]),
+    fromDate: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/),dateValidator]),
+    toDate: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/),dateValidator]),
     reportType: new FormControl('',),
     productId: new FormControl( '', [Validators.pattern(/^\d+$/)]),
   });
@@ -32,6 +32,7 @@ export class ReportCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   submit() {
