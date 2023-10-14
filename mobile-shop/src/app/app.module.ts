@@ -7,9 +7,6 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CustomerListComponent } from './module/customer/customer-list/customer-list.component';
-import { ProductListComponent } from './module/product/product-list/product-list.component';
-import {ProductModule} from './module/product/product.module';
-
 
 
 @NgModule({
@@ -25,7 +22,7 @@ import {ProductModule} from './module/product/product.module';
     FormsModule,
     ReactiveFormsModule,
     SupplierModule,
-    InputInvoiceDetailModule,
+    InputInvoiceDetailModule
   ],
 
   providers: [],

@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {SupplierService} from '../../../service/supplier.service';
 import {Supplier} from '../../../model/supplier';
-import {HttpParams} from '@angular/common/http';
+import {SupplierService} from '../../../service/supplier-service/supplier.service';
 
 @Component({
   selector: 'app-select-supplier-modal',

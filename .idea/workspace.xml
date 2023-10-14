@@ -25,6 +25,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
 =======
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
@@ -41,6 +42,12 @@
       <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" afterDir="false" />
     </list>
 >>>>>>> DuyNN
+=======
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/service/supplier-service/supplier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/service/supplier-service/supplier.service.ts" afterDir="false" />
+    </list>
+>>>>>>> NamNPH-list-supplier
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,11 +78,15 @@
   </component>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> NamNPH-list-supplier
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
     "git-widget-placeholder": "ManhTX-inputInvoice",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "C:\\Users\\Admin\\Desktop\\project\\mobile_shop\\Code\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib",
@@ -95,6 +106,17 @@
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\Desktop\\project\\mobile_shop\\Code\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
 >>>>>>> main
+=======
+    "git-widget-placeholder": "NghiaBH-create-update-Supplier",
+    "last_opened_file_path": "D:/project_mobie_phone/FE1/A0922I1-Repo-FE",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "D:\\project_mobie_phone\\FE1\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> NamNPH-list-supplier
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -138,6 +160,7 @@
       <workItem from="1696419319285" duration="372000" />
 <<<<<<< HEAD
       <workItem from="1696597993093" duration="108000" />
+<<<<<<< HEAD
 =======
       <workItem from="1696513780814" duration="9842000" />
       <workItem from="1696589711799" duration="10962000" />
@@ -149,6 +172,13 @@
       <workItem from="1696866942802" duration="227000" />
       <workItem from="1696952406193" duration="1672000" />
 >>>>>>> DuyNN
+=======
+      <workItem from="1696830667600" duration="1668000" />
+      <workItem from="1696834420666" duration="273000" />
+      <workItem from="1696835744918" duration="1160000" />
+      <workItem from="1696848096320" duration="11969000" />
+      <workItem from="1697022017334" duration="3866000" />
+>>>>>>> NamNPH-list-supplier
     </task>
     <servers />
   </component>
