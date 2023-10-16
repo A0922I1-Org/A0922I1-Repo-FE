@@ -6,7 +6,7 @@ import {InputInvoiceAddNewFormComponent} from './input-invoice-add-new-form/inpu
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'list',
     component: InputInvoiceDetailListComponent
   },
   {

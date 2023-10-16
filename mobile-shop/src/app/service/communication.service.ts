@@ -1,6 +1,6 @@
 import {Injectable, Injector} from '@angular/core';
-import {Subject} from "rxjs";
-import {HomePageService} from "./home-page.service";
+import {Subject} from 'rxjs';
+import {HomePageService} from './home-page.service';
 
 @Injectable({
   providedIn: 'root'
