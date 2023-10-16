@@ -2,9 +2,12 @@ import {Category} from './category';
 import {Brand} from './brand';
 
 export interface Product {
-  productId: number;
+
+  productId?: number;
   productName: string;
-  cost: number;
+  costPrice: number;
+  sellingPrice: number;
+  quantity: number;
   screenSize: string;
   frontCamera: string;
   backCamera: string;
@@ -12,8 +15,6 @@ export interface Product {
   imageUrl: string;
   productStorage: string;
   description: string;
-  sellingPrice: number;
-  quantity: number;
   category: Category;
   brand: Brand;
 }
