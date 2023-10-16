@@ -19,6 +19,7 @@ export class ProductCreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   validation_messages = {
     productName: [
       {type: 'required', message: 'Tên sản phẩm không được để trống'},
