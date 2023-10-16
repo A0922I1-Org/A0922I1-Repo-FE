@@ -1,6 +1,10 @@
 
 
 
+import {ProductListComponent} from './module/product/product-list/product-list.component';
+
+
+
 import { ProductCreateComponent } from './module/product/product-create/product-create.component';
 import { ProductEditComponent } from './module/product/product-edit/product-edit.component';
 
@@ -52,6 +56,9 @@ import { MatDialogModule } from '@angular/material/dialog';
   declarations: [
     AppComponent,
 
+    ProductListComponent,
+
+
 
     ProductCreateComponent,
     ProductEditComponent,
@@ -79,6 +86,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 
   imports: [
     BrowserModule,
+
     CommonModule,
     HttpClientModule,
 
@@ -97,6 +105,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserAnimationsModule,
     CarouselModule,
     MatDialogModule
+
 
   ],
   providers: [DatePipe],

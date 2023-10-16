@@ -1,3 +1,4 @@
+
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './auth.guard';
@@ -6,6 +7,10 @@ import {RoleGuard} from './role.guard';
 
 
 const routes: Routes = [
+  {
+    path: 'product',
+    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule)
+  },
 
   {path: 'api/managerPurchaseHistory', loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module')
       .then(module => module.ManagerPurchaseHistoryModule)},
@@ -44,12 +49,14 @@ const routes: Routes = [
 
   }
 
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 
 export class AppRoutingModule {
 }
