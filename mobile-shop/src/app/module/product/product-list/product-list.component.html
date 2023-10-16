@@ -1,0 +1,77 @@
+<meta charset="UTF-8">
+<title>Màn Hình Khách Hàng Có Sẵn</title>
+
+<!-- The Modal -->
+<ng-container *ngIf="products">
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="border header"><h2>Chọn Sản Phẩm</h2></div>
+      <div class="modal-header">
+        <div class="border">
+          <div class="mb-3">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="input-group align-items-center">
+                    <label class="me-2"><b>Tìm kiếm theo:</b></label>
+                    <select class="form-select me-2 custom-width-35"  [(ngModel)]="option">
+                      <option  value="">----------!</option>
+                      <option  value="name">Tên Sản Phẩm</option>
+                      <option  value="price">Giá </option>
+                      <option   value="cpu">CPU</option>
+                    </select>
+                    <input #search type="text" class="form-control custom-width-35" placeholder="tìm kiếm ">
+                    <input #storage type="text" class="form-control custom-width-35" placeholder="tìm kiếm theo dung lượng">
+                    <button (click)="searchProduct(search, storage)" class="btn btn-outline-dark m-2 ">Tìm kiếm</button>
+                  </div>
+                </div>
+                <div class="col-2">
+                </div>
+                <div class="col-2">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Giá</th>
+            <th scope="col">CPU</th>
+            <th scope="col">Lưu trữ</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let pr of products; index as i" (click)="findByIdProduct(pr.productId)" style="color: darkgreen" data-bs-dismiss="modal">
+            <th scope="row">{{i+1}}</th>
+            <td>{{pr.productName}}</td>
+            <td>{{pr.costPrice}}</td>
+            <td>{{pr.productCpu}}</td>
+            <td>{{pr.productStorage}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--       Modal footer-->
+      <div class="modal-footer" style="width: 1000px">
+        <div>
+          <div *ngIf="page.totalPages > 0">
+            <button (click)="getListProduct(page.number - 1)" [disabled]="page.first"  type="button" class="btn btn-outline-primary" style="margin: 5px">Trước</button>
+            <a>{{page.number+1}}/{{page.totalPages}}</a>
+            <button (click)="getListProduct(page.number + 1)" [disabled]="page.last" type="button" class="btn btn-outline-primary" style="margin: 5px">sau</button>
+          </div>
+          <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 350px;">Thoát</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</ng-container>

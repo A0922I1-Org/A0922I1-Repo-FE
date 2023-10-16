@@ -1,7 +1,8 @@
-import {Category} from "./category";
-import {Brand} from "./brand";
+import {Category} from './category';
+import {Brand} from './brand';
 
 export interface Product {
+  productId?: number;
   productName: string;
   costPrice: number;
   sellingPrice: number;
