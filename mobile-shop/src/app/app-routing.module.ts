@@ -3,16 +3,10 @@ import {Routes, RouterModule} from '@angular/router';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    children: [
-      // Mọi người đặt part dẫn đến module ở đây
       {
-        path: 'product/list',
+        path: 'product',
         loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule)
       }
-    ]
-  }
 ];
 
 @NgModule({
