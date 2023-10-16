@@ -4,7 +4,12 @@ import {AuthGuard} from './auth.guard';
 import {RoleGuard} from './role.guard';
 
 
+
 const routes: Routes = [
+
+  {path: 'api/managerPurchaseHistory', loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module')
+      .then(module => module.ManagerPurchaseHistoryModule)},
+
 
   {
     path: 'report',
@@ -38,6 +43,7 @@ const routes: Routes = [
     canActivate: [AuthGuard], // Áp dụng cả AuthGuard và RoleGuard cho route này
 
   }
+
 ];
 
 @NgModule({

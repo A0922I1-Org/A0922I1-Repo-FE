@@ -1,5 +1,6 @@
 
 
+
 import { ProductCreateComponent } from './module/product/product-create/product-create.component';
 import { ProductEditComponent } from './module/product/product-edit/product-edit.component';
 
@@ -27,10 +28,14 @@ import {ChangePasswordComponent} from './model/user-detail/change-password/chang
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
+
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+import {ManagerPurchaseHistoryRoutingModule} from './module/manager-purchase-history/manager-purchase-history-routing.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from './shared/header/header.component';
@@ -46,6 +51,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
+
 
     ProductCreateComponent,
     ProductEditComponent,
@@ -75,8 +81,12 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserModule,
     CommonModule,
     HttpClientModule,
+
+    ManagerPurchaseHistoryRoutingModule,
+
     AppRoutingModule,
     ReactiveFormsModule,
+
     FormsModule,
     SupplierModule,
     InputInvoiceDetailModule,
