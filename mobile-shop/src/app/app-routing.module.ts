@@ -1,15 +1,17 @@
-
 import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './auth.guard';
 import {RoleGuard} from './role.guard';
 
 
-
 const routes: Routes = [
 
   {
+    path: 'report',
+    loadChildren: () => import('./module/report/report.module').then(module => module.ReportModule)
+  },
 
+  {
     path: 'input-invoice',
     loadChildren: () => import('./module/input-invoice-detail/input-invoice-detail.module').then(m => m.InputInvoiceDetailModule)
   },
@@ -43,5 +45,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
 

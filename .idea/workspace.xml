@@ -61,6 +61,13 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/report.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/angular.json" afterDir="false" />
+    </list>
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -89,6 +96,7 @@
 >>>>>>> NamNPH-list-supplier
 =======
 
+>>>>>>> main
 >>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +134,22 @@
     <option name="showLibraryContents" value="true" />
   </component>
 <<<<<<< HEAD
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mobile-shop" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -160,10 +184,13 @@
       <recent name="D:\A0922I1-Repo-FE\A0922I1-Repo-FE\mobile-shop\src\app\model\user\module" />
     </key>
   </component>
+>>>>>>> main
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
+<<<<<<< HEAD
+=======
 
 >>>>>>> main
   <component name="PropertiesComponent">{
@@ -219,6 +246,7 @@
 =======
 
 >>>>>>> main
+>>>>>>> main
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
@@ -240,6 +268,9 @@
       <workItem from="1696351980657" duration="212000" />
       <workItem from="1696352219597" duration="17000" />
       <workItem from="1696419319285" duration="372000" />
+<<<<<<< HEAD
+      <workItem from="1696423810056" duration="4327000" />
+=======
 <<<<<<< HEAD
       <workItem from="1696597993093" duration="108000" />
 <<<<<<< HEAD
@@ -265,6 +296,7 @@
 =======
 
 >>>>>>> main
+>>>>>>> main
     </task>
     <servers />
   </component>
@@ -281,6 +313,34 @@
         </entry>
       </map>
     </option>
+<<<<<<< HEAD
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="223" y="63" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1696427297519">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="223" y="63" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.816@0.0.1536.816" timestamp="1696427297519" />
+    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1696427328009">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1696427328009" />
+    <state width="1515" height="208" key="GridCell.Tab.0.bottom" timestamp="1696428205086">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1515" height="208" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1696428205086" />
+    <state width="1515" height="208" key="GridCell.Tab.0.center" timestamp="1696428205086">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1515" height="208" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1696428205086" />
+    <state width="1515" height="208" key="GridCell.Tab.0.left" timestamp="1696428205086">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1515" height="208" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1696428205086" />
+    <state width="1515" height="208" key="GridCell.Tab.0.right" timestamp="1696428205086">
+      <screen x="0" y="0" width="1536" height="816" />
+    </state>
+    <state width="1515" height="208" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1696428205086" />
+=======
 <<<<<<< HEAD
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
@@ -344,6 +404,7 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1696426454723" />
+>>>>>>> main
 >>>>>>> main
   </component>
 </project>

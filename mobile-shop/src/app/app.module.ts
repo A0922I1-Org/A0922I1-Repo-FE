@@ -1,4 +1,11 @@
 
+
+
+
+
+import { ReportCreateComponent } from './module/report/report-create/report-create.component';
+
+
 import {SupplierModule} from './module/supplier/supplier.module';
 import {InputInvoiceDetailModule} from './module/input-invoice-detail/input-invoice-detail.module';
 
@@ -35,6 +42,9 @@ import { MatDialogModule } from '@angular/material/dialog';
   declarations: [
     AppComponent,
 
+    ReportCreateComponent,
+
+
     CustomerListComponent,
 
 
@@ -47,6 +57,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     BodyComponent,
     ImageScrollComponent,
     PhoneDetailsComponent
+
 
   ],
   entryComponents: [PhoneDetailsComponent],
