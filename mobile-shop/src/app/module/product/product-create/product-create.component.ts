@@ -80,10 +80,10 @@ export class ProductCreateComponent implements OnInit {
       {type: 'maxlength', message: 'Thương hiệu phải nhỏ hơn 50 ký tự'}
     ],
   };
-  productCreateForm: FormGroup = new FormGroup({
-    productName: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
-
-  });
+  // productCreateForm: FormGroup = new FormGroup({
+  //   productName: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(50),
+  //
+  // });
 
   showPreview($event: Event) {
 
