@@ -4,10 +4,10 @@ import {Product} from '../../../model/product';
 import {Page} from '../../../model/page';
 @Component({
   selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  templateUrl: './product-select-modal.component.html',
+  styleUrls: ['./product-select-modal.component.css']
 })
-export class ProductListComponent implements OnInit, OnChanges {
+export class ProductSelectModalComponent implements OnInit, OnChanges {
   products: Product [];
   product: Product;
   option: string;

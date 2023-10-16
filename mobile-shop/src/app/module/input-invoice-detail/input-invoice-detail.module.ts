@@ -9,7 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SelectSupplierModalComponent} from './select-supplier-modal/select-supplier-modal.component';
 import {AppModule} from '../../app.module';
 import {ProductModule} from '../product/product.module';
-import {ProductListComponent} from '../product/product-list/product-list.component';
+import {ProductSelectModalComponent} from '../product/product-select-modal/product-select-modal.component';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import {ProductListComponent} from '../product/product-list/product-list.compone
       InputInvoicePreviewListComponent,
       InputInvoiceAddNewFormComponent,
       SelectSupplierModalComponent,
-    ProductListComponent],
+    ProductSelectModalComponent],
   imports: [
     CommonModule,
     InputInvoiceDetailRoutingModule,
