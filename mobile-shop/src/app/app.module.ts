@@ -1,5 +1,9 @@
 
 
+import { ProductCreateComponent } from './module/product/product-create/product-create.component';
+import { ProductEditComponent } from './module/product/product-edit/product-edit.component';
+
+
 
 
 
@@ -38,9 +42,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
+
+    ProductCreateComponent,
+    ProductEditComponent,
+
 
     ReportCreateComponent,
 

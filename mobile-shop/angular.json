@@ -132,9 +132,11 @@
     }
   },
 
+
   "defaultProject": "mobile-shop",
   "cli": {
     "analytics": false
   }
 }
+
 
