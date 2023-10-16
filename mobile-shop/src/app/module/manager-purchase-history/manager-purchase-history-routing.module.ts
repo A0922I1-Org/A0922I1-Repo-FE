@@ -18,8 +18,9 @@ import {
 } from './manager-purchase-history-sort-by-date-output-invoice/manager-purchase-history-sort-by-date-output-invoice.component';
 
 
-const routes: Routes = [{
-  path: 'managerPurchaseHistory',
+const routes: Routes = [
+  {
+  path: '',
   component: ManagerPurchaseHistoryListComponent},
   {path: 'sortByProductName',
   component: ManagerPurchaseHistorySortByProductNameComponent},

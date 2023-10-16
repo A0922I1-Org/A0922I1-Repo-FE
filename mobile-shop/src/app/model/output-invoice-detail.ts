@@ -1,5 +1,5 @@
-import {Product} from "./product";
-import {OutputInvoice} from "./output-invoice";
+import {Product} from './product';
+import {OutputInvoice} from './output-invoice';
 
 export interface OutputInvoiceDetail {
   quantity: number;
