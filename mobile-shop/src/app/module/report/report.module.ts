@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import {CommonModule, DatePipe} from '@angular/common';
 
 import { ReportRoutingModule } from './report-routing.module';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({

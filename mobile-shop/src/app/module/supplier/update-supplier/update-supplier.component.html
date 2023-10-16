@@ -1,0 +1,99 @@
+<form [formGroup]="supplierForm" (ngSubmit)="onUpdate()">
+  <div class="border">
+    <div class="borderSupplier1">Chỉnh sửa nhà cung cấp</div>
+    <div class="container">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <table class="col-12">
+          <tr>
+            <td>
+              <input class="col-12" placeholder="Tên nhà cung cấp" type="hidden" formControlName="supplierId"><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input class="col-12" placeholder="Tên nhà cung cấp" type="text" [ngClass]="{'hasError': supplierName.invalid && checkValid('supplierName')}" formControlName="supplierName">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div *ngIf="supplierName.invalid && (supplierName.dirty || supplierName.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="supplierName.errors.required">
+                  Tên nhà cung cấp không được để trống
+                </div>
+                <div *ngIf="supplierName.errors.maxLength">
+                  Tên nhà cung cấp không đươc vượt qua 50 kí tự
+                </div>
+                <div *ngIf="supplierName.errors.pattern">
+                  Tên nhà cung cấp không đươc có các kí tự đặc biệt
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input class="col-12" placeholder="Số điện thoại" type="text" formControlName="supplierPhone">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div *ngIf="supplierPhone.invalid && (supplierPhone.dirty || supplierPhone.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="supplierPhone.errors.required">
+                  Số điện thoại không được để trống
+                </div>
+                <div *ngIf="supplierPhone.errors.pattern">
+                  Nhập sai định dạng số điện thoại
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input  class="col-12" placeholder="Email" type="text" formControlName="supplierEmail">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div  *ngIf="supplierEmail.invalid && (supplierEmail.dirty || supplierEmail.touched)"
+                    class="alert alert-danger">
+                <div *ngIf="supplierEmail.errors.required">
+                  Email không được để trống
+                </div>
+                <div style="display: inline" *ngIf="supplierEmail.errors.email">
+                  <span>Email chưa đúng định dạng xx@xx.xx</span>
+                </div>
+                <div style="display: inline" *ngIf="supplierEmail.errors.pattern">
+                  <span>, email không chứa kí tự đặc biệt</span>
+                </div>
+              </div>
+          </tr>
+          <tr>
+            <td>
+              <textarea class="col-12" placeholder="Address" type="text" formControlName="supplierAddress"></textarea>
+
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div *ngIf="supplierAddress.invalid && (supplierAddress.dirty || supplierAddress.touched)"
+                   class="alert alert-danger">
+                <div *ngIf="supplierAddress.errors.required">
+                  Địa chỉ không được để trống
+                </div>
+                <div style="display: inline" *ngIf="supplierAddress.errors.pattern">
+                  Địa chỉ không được chứa kí tự đặc biệt
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <button type="submit" class="btn btn-outline-warning mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Lưu</button>
+
+        <button type="button" class="btn btn-outline-dark mx-1">Hủy Bỏ</button>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+</form>

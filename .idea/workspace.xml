@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/security/service/share.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/security/service/token-storage.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/user/module/JwtResponse.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/user/module/LoginRequest.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/user/module/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/role.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/user/module/role.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/user-role.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/model/user.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/tsconfig.json" afterDir="false" />
+    </list>
+
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
@@ -22,11 +60,44 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/report.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mobile-shop/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/angular.json" afterDir="false" />
     </list>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
+<<<<<<< HEAD
+=======
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+>>>>>>> main
+=======
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
+>>>>>>> main
+=======
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" afterDir="false" />
+    </list>
+>>>>>>> DuyNN
+=======
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/service/supplier-service/supplier.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/service/supplier-service/supplier.service.ts" afterDir="false" />
+    </list>
+>>>>>>> NamNPH-list-supplier
+=======
+
+>>>>>>> main
+>>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +118,13 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/A0922I1-Org/A0922I1-Repo-FE.git" />
+      </set>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -55,6 +133,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -69,10 +148,105 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> NamNPH-list-supplier
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
+    "git-widget-placeholder": "ManhTX-inputInvoice",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Admin\\Desktop\\project\\mobile_shop\\Code\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+=======
+=======
+
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mobile-shop" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\A0922I1-Repo-FE\A0922I1-Repo-FE\mobile-shop\src\app\model\security\service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\A0922I1-Repo-FE\A0922I1-Repo-FE\mobile-shop\src\app\model\user" />
+      <recent name="D:\A0922I1-Repo-FE\A0922I1-Repo-FE\mobile-shop\src\app\model\user\module\service" />
+      <recent name="D:\A0922I1-Repo-FE\A0922I1-Repo-FE\mobile-shop\src\app\model\user\module" />
+    </key>
+  </component>
+>>>>>>> main
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\Desktop\\project\\mobile_shop\\Code\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+>>>>>>> main
+=======
+    "git-widget-placeholder": "NghiaBH-create-update-Supplier",
+    "last_opened_file_path": "D:/project_mobie_phone/FE1/A0922I1-Repo-FE",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "D:\\project_mobie_phone\\FE1\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> NamNPH-list-supplier
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+<<<<<<< HEAD
+=======
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../[A0922I1]_Prototype_NamNPH" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\node_modules\typescript\lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\service\serviceCustomer" />
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\product" />
+      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\customer" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+>>>>>>> DuyNN
+=======
+
+>>>>>>> main
+>>>>>>> main
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="" />
@@ -82,6 +256,10 @@
       <updated>1696254947818</updated>
       <workItem from="1696254953478" duration="88000" />
       <workItem from="1696255481422" duration="181000" />
+
+      <workItem from="1696417145186" duration="80000" />
+      <workItem from="1696417226206" duration="9208000" />
+
       <workItem from="1696256714811" duration="2992000" />
       <workItem from="1696311228993" duration="2698000" />
       <workItem from="1696336955396" duration="69000" />
@@ -90,7 +268,35 @@
       <workItem from="1696351980657" duration="212000" />
       <workItem from="1696352219597" duration="17000" />
       <workItem from="1696419319285" duration="372000" />
+<<<<<<< HEAD
       <workItem from="1696423810056" duration="4327000" />
+=======
+<<<<<<< HEAD
+      <workItem from="1696597993093" duration="108000" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <workItem from="1696513780814" duration="9842000" />
+      <workItem from="1696589711799" duration="10962000" />
+      <workItem from="1696608282397" duration="726000" />
+      <workItem from="1696733236776" duration="11265000" />
+      <workItem from="1696768709427" duration="11505000" />
+      <workItem from="1696842228549" duration="593000" />
+      <workItem from="1696848251947" duration="12707000" />
+      <workItem from="1696866942802" duration="227000" />
+      <workItem from="1696952406193" duration="1672000" />
+>>>>>>> DuyNN
+=======
+      <workItem from="1696830667600" duration="1668000" />
+      <workItem from="1696834420666" duration="273000" />
+      <workItem from="1696835744918" duration="1160000" />
+      <workItem from="1696848096320" duration="11969000" />
+      <workItem from="1697022017334" duration="3866000" />
+>>>>>>> NamNPH-list-supplier
+=======
+
+>>>>>>> main
+>>>>>>> main
     </task>
     <servers />
   </component>
@@ -107,6 +313,7 @@
         </entry>
       </map>
     </option>
+<<<<<<< HEAD
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="63" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1696427297519">
@@ -133,5 +340,71 @@
       <screen x="0" y="0" width="1536" height="816" />
     </state>
     <state width="1515" height="208" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1696428205086" />
+=======
+<<<<<<< HEAD
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1696771453036">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1696771453036" />
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1696429581809">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1696429581809">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1696429581808">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1696429581808" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1696429581809">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
+    <state width="254" height="198" key="RunAnythingAction_Filter_Popup" timestamp="1696427090606">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="254" height="198" key="RunAnythingAction_Filter_Popup/0.0.1280.680@0.0.1280.680" timestamp="1696427090606" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1696426612445">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1696426612445" />
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1696427090599">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1696427090599" />
+=======
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="414" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1696421314315">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="414" y="179" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1696421314315" />
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1696426453497">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1696426453497" />
+    <state width="1899" height="285" key="GridCell.Tab.0.bottom" timestamp="1696426454723">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1696426454723" />
+    <state width="1899" height="285" key="GridCell.Tab.0.center" timestamp="1696426454723">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1696426454723" />
+    <state width="1899" height="285" key="GridCell.Tab.0.left" timestamp="1696426454722">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1696426454722" />
+    <state width="1899" height="285" key="GridCell.Tab.0.right" timestamp="1696426454723">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1696426454723" />
+>>>>>>> main
+>>>>>>> main
   </component>
 </project>
