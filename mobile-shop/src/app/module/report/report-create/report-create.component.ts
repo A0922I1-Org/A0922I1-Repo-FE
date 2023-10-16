@@ -1,17 +1,17 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ReportService} from "../../../service/report.service";
-import {Router} from "@angular/router";
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ReportService} from '../../../service/report.service';
+import {Router} from '@angular/router';
 import * as Chart from 'chart.js';
-import {DatePipe} from "@angular/common";
- function dateValidator(control: AbstractControl): { [key: string]: boolean } | null {
+import {DatePipe} from '@angular/common';
+function dateValidator(control: AbstractControl): { [key: string]: boolean } | null {
   const selectedDate = new Date(control.value);
   const currentDate = new Date();
 
   if (selectedDate <= currentDate) {
     return null;
   }
-  return { 'invalidDate': true};
+  return { invalidDate: true};
 }
 @Component({
   selector: 'app-report-create',
@@ -22,9 +22,9 @@ export class ReportCreateComponent implements OnInit {
   private chart: Chart;
   result: any;
   reportForm: FormGroup = new FormGroup({
-    fromDate: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/),dateValidator]),
-    toDate: new FormControl('', [Validators.required,Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/),dateValidator]),
-    reportType: new FormControl('',),
+    fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
+    toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
+    reportType: new FormControl('', ),
     productId: new FormControl( '', [Validators.pattern(/^\d+$/)]),
   });
 
@@ -41,12 +41,12 @@ export class ReportCreateComponent implements OnInit {
       this.reportService.sendReportData(data).subscribe(
         (response) => {
           this.result = response;
-          this.createChart(response)
+          this.createChart(response);
         },
         (error => {
           console.error('Error', error);
         })
-      )
+      );
     } else {
 
     }
