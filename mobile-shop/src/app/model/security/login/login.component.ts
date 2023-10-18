@@ -6,7 +6,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {HttpErrorResponse} from "@angular/common/http";
+import {GoogleLoginProvider, SocialAuthService, SocialUser} from "angularx-social-login";
 
+declare var gapi: any;
 
 @Component({
   selector: 'app-login',
@@ -19,12 +21,16 @@ export class LoginComponent implements OnInit {
   roles: String[];
   returnUrl: string;
   showPassword = false;
+  user: SocialUser;
+  loggedIn: boolean;
+
 
   constructor(private authService: AuthService,
               private shareService: shareService,
               private tokenStorageService: tokenStorageService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private socialAuthService: SocialAuthService) {
   }
 
   ngOnInit(): void {
@@ -59,7 +65,6 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
-
     let timerInterval;
     Swal.fire({
       title: 'Loading....',
@@ -144,5 +149,12 @@ export class LoginComponent implements OnInit {
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+  }
+
+  signInWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+  signOut(): void {
+    this.socialAuthService.signOut();
   }
 }

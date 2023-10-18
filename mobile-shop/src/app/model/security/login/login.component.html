@@ -5,6 +5,7 @@
         <div class="card-body">
           <h5 class="card-title text-isLoggedIncenter"> Đăng Nhập</h5>
           <form class="form-signin" [formGroup]="formLogin">
+            <!-- Các trường nhập tài khoản và mật khẩu -->
             <div class="form-label-group">
               <input formControlName="username" type="text" id="inputEmail" class="form-control"
                      placeholder="Tên tài khoản" autocomplete="current-username">
@@ -17,12 +18,10 @@
               <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="remember_me">
               <label class="custom-control-label" for="customCheck1">Ghi nhớ đăng nhập lần sau</label>
             </div>
-            <div class="my-custom-container">
-              <div class="forgot-password">
-                <p><a href="" routerLink="/reset-password" data-dismiss="modal">Quên mật khẩu ?</a></p>
-              </div>
-            </div>
+            <!-- Nút đăng nhập thông thường -->
             <button class="btn btn-lg btn-primary text-uppercase" type="button" (click)="onLogin()">Đăng nhập</button>
+            <!-- Nút đăng nhập bằng Google -->
+            <button class="btn" #loginRef>Đăng nhập bằng Google</button>
             <button class="btn btn-lg btn-secondary text-uppercase" routerLink="" data-dismiss="modal" type="button">
               Huỷ
             </button>

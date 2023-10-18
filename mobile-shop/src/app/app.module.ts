@@ -1,9 +1,8 @@
-
 import {LoginComponent} from "./model/security/login/login.component";
 import {AddUserComponent} from "./model/user/add-user/add-user.component";
 import {CommonModule, DatePipe} from "@angular/common";
-import { DateFormatPipe } from './date-format.pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {DateFormatPipe} from './date-format.pipe';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalModule} from "ngx-bootstrap/modal";
 import {ChangePasswordComponent} from "./model/user-detail/change-password/change-password.component";
 
@@ -14,20 +13,27 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarouselModule } from 'ngx-owl-carousel-o';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { BodyComponent } from './shared/body/body.component';
-import { ImageScrollComponent } from './shared/image-scroll/image-scroll.component';
-import { PhoneDetailsComponent } from './shared/phone-details/phone-details.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CarouselModule} from 'ngx-owl-carousel-o';
+import {HeaderComponent} from './shared/header/header.component';
+import {FooterComponent} from './shared/footer/footer.component';
+import {BodyComponent} from './shared/body/body.component';
+import {ImageScrollComponent} from './shared/image-scroll/image-scroll.component';
+import {PhoneDetailsComponent} from './shared/phone-details/phone-details.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from 'angularx-social-login';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     LoginComponent,
     AddUserComponent,
     DateFormatPipe,
@@ -36,7 +42,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FooterComponent,
     BodyComponent,
     ImageScrollComponent,
-    PhoneDetailsComponent
+    PhoneDetailsComponent,
 
   ],
   entryComponents: [PhoneDetailsComponent],
@@ -52,10 +58,30 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CarouselModule,
-    MatDialogModule
+    MatDialogModule,
+    SocialLoginModule
 
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '608195998871-uvoa1roaqpvp3nsii7961hjttakd579n.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('clientId')
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

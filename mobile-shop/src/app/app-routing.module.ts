@@ -6,16 +6,17 @@ import {RoleGuard} from "./role.guard";
 
 const routes: Routes = [
   {
-
     path: 'login',
     loadChildren: () => import('./model/security/security-routing.module').then(module => module.SecurityRoutingModule),
   },
   {
     path: 'signUp',
     loadChildren: () => import('./model/user/user-routing.module').then(module => module.UserRoutingModule),
+    canActivate: [AuthGuard,RoleGuard], // Áp dụng AuthGuard cho route này
+    data: { roles: ['ADMIN']}
   },
   {
-    path: 'infor',
+    path: 'profile',
     loadChildren: () => import('./model/user-detail/infor-user-routing.module').then(module => module.InforUserRoutingModule),
     canActivate: [AuthGuard]
   },
