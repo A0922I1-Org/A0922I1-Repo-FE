@@ -31,31 +31,29 @@
             <td>{{managerPurchaseHistory.productName}}</td>
             <td>{{managerPurchaseHistory.totalPrice}}</td>
           </tr>
-          </tbody>*
+          </tbody>
 
         </table>
         <div style="text-align: center" class="button" >
-          <a routerLink="/sortByDateOutputInvoice" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo thời gian</a>
-          <a routerLink="/sortByCustomerName" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tên khách hàng</a>
-          <a routerLink="/sortByProductName" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tên sản phẩm</a>
-          <a routerLink="/sortByQuantity" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo số lượng</a>
-          <a routerLink="/sortByTotalPrice" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tổng tiền</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'time')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo thời gian</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'customerName')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tên khách hàng</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'productName')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tên sản phẩm</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'quantity')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo số lượng</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'totalPrice')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tổng tiền</a>
         </div>
         <div class="container">
           <div class="row">
             <div class="col-5"></div>
             <div class="col-6" *ngIf="page.totalPages > 1">
-              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number, 8)" [disabled]="page.first">
+              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number, 8, sort)" [disabled]="page.first">
                 Trước
               </button>
               <a *ngIf="page">{{page.number+1}}/{{page.totalPages}}</a>
-              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number + 2, 8)" [disabled]="page.last">Sau</button>
+              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number + 2, 8, sort)" [disabled]="page.last">Sau</button>
             </div>
             <div class="col-1">
               <button class="btn btn-outline-dark">Thoát</button>
             </div>
-
-
           </div>
         </div>
       </div>
