@@ -3,6 +3,7 @@ import {HomePageService} from "../../service/home-page.service";
 import {MatDialog} from '@angular/material/dialog';
 import {PhoneDetailsComponent} from '../phone-details/phone-details.component';
 import {PhoneDataService} from "../../service/phone-data.service";
+import {SharedDataService} from '../../service/shared-data.service';
 
 @Component({
   selector: 'app-body',
@@ -12,12 +13,16 @@ import {PhoneDataService} from "../../service/phone-data.service";
 export class BodyComponent implements OnInit {
   products: any[];
 
-  constructor(private dialog: MatDialog, private phoneDataService: PhoneDataService, private homePageService: HomePageService) {
+  constructor(private dialog: MatDialog, private phoneDataService: PhoneDataService, private homePageService: HomePageService,
+              private sharedDataService: SharedDataService) {
   }
 
   ngOnInit() {
     this.homePageService.getProducts().subscribe((data) => {
       this.products = data;
+    });
+    this.sharedDataService.searchResults$.subscribe(results => {
+      this.products = results;
     });
   }
 
@@ -26,4 +31,9 @@ export class BodyComponent implements OnInit {
 
     this.dialog.open(PhoneDetailsComponent);
   }
+  formatCurrency(value) {
+
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
 }
