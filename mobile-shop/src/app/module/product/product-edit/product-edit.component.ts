@@ -21,4 +21,5 @@ export class ProductEditComponent implements OnInit {
   edit() {
 
   }
+  showPreview() {}
 }
