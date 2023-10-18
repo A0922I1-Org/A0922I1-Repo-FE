@@ -1,0 +1,101 @@
+@media screen and (max-width: 768px) {
+  .custom99{
+    margin-top: 10px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  /* Đây là nơi bạn đặt các quy tắc CSS mà bạn muốn áp dụng khi màn hình nhỏ hơn 1200px */
+  .responsive-icon {
+    display: block;
+  }
+  .default-icon{
+    display: none;
+  }
+  tbody tr td:last-child button{
+    border: none;
+    background: none;
+    padding: 10px 0px;
+  }
+  .add-supplier{
+    float: right;
+    margin-top: 10px;
+  }
+
+
+}
+@media screen and (min-width: 1201px) {
+
+  .responsive-icon {
+    display: none;
+  }
+}
+
+
+.custom-width-35 {
+  width: 35%;
+}
+.paging{
+  display: inline-block;
+  float: left;
+}
+.cancel{
+  display: inline-block;
+  float: right;
+}
+.custom2{
+  margin-left: 20px ;
+  margin-right: 20px;
+  padding: 20px;
+}
+.custom1{
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 20px ;
+  margin-right: 20px;
+  padding: 10px;
+  background-color: #ffd400;
+}
+a{
+  text-decoration: none
+}
+.custom3{
+  margin-left: 20px ;
+  margin-right: 20px;
+  padding: 20px;
+  text-align: right;
+}
+
+strong{
+  color: red;
+}
+
+.search-icon{
+  border: none;
+  background: white;
+  width: 30px;
+  height: 30px;
+}
+
+.sort-icon{
+  border: none;
+  background: white;
+
+}
+
+button.search-icon:hover svg{
+  height: 35px;
+  width: 35px;
+}
+
+
+.show {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: opacity 0.15s linear;
+}
+
+strong{
+  color: red;
+}
+

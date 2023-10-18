@@ -1,0 +1,43 @@
+
+.banner {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+  height: 2cm; /* Chiều dọc là 2cm */
+  overflow: hidden; /* Ẩn nội dung vượt quá kích thước */
+}
+
+.navbar {
+  background-color: #ffd400; /* Đặt màu nền thành màu vàng */
+  margin: auto;
+}
+
+.navbar-nav {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar-nav .nav-item {
+  flex: 1;
+  text-align: center;
+}
+
+.searchbar {
+  flex: 1;
+  margin: auto;
+  /*justify-content: flex-start;*/
+  /*width: 5cm;*/
+}
+
+.form-control{
+  width: 50%;
+  margin-left: 6cm;
+}
+.navbar-brand{
+  margin-left: 6cm;
+}
+
+
+
+
