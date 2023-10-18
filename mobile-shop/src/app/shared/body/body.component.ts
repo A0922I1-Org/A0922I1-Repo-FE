@@ -12,6 +12,8 @@ import {SharedDataService} from '../../service/shared-data.service';
 })
 export class BodyComponent implements OnInit {
   products: any[];
+  currentPage: number = 1;
+  itemsPerPage: number = 3;
 
   constructor(private dialog: MatDialog, private phoneDataService: PhoneDataService, private homePageService: HomePageService,
               private sharedDataService: SharedDataService) {
@@ -35,5 +37,29 @@ export class BodyComponent implements OnInit {
 
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+  getPaginatedProducts() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.products.slice(startIndex, endIndex);
+  }
+  goToPreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
 
+  goToNextPage() {
+    const totalPages = Math.ceil(this.products.length / this.itemsPerPage);
+    if (this.currentPage < totalPages) {
+      this.currentPage++;
+    }
+  }
+  canGoToPreviousPage(): boolean {
+    return this.currentPage > 1;
+  }
+
+  canGoToNextPage(): boolean {
+    const totalPages = Math.ceil(this.products.length / this.itemsPerPage);
+    return this.currentPage < totalPages;
+  }
 }
