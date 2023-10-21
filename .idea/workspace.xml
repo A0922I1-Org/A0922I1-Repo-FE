@@ -23,9 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/customer/customer-list/customer-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/module/product/product-list/product-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/src/app/service/serviceProduct/product-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/src/app/service/serviceProduct/product-service.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,13 +45,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="hiddenUrls">
-      <set>
-        <option value="https://github.com/A0922I1-Org/A0922I1-Repo-FE.git" />
-      </set>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -56,19 +54,41 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../project_Nhan_FE/A0922I1-Repo-FE" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../[A0922I1]_Prototype_DuyNN/demo.html" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\node_modules\typescript\lib" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\service\serviceCustomer" />
-      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\product" />
-      <recent name="D:\Module_6\Front_End_A0922I1\A0922I1-Repo-FE\mobile-shop\src\app\module\customer" />
-    </key>
+  <component name="RunManager" selected="npm.start">
+    <configuration name="ng" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/mobile-shop/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="ng" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/mobile-shop/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.ng" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
@@ -91,16 +111,15 @@
       <workItem from="1696351980657" duration="212000" />
       <workItem from="1696352219597" duration="17000" />
       <workItem from="1696419319285" duration="372000" />
-      <workItem from="1696513780814" duration="9842000" />
-      <workItem from="1696589711799" duration="10962000" />
-      <workItem from="1696608282397" duration="726000" />
-      <workItem from="1696733236776" duration="11265000" />
-      <workItem from="1696768709427" duration="11505000" />
-      <workItem from="1696842228549" duration="593000" />
-      <workItem from="1696848251947" duration="12707000" />
-      <workItem from="1696866942802" duration="227000" />
-      <workItem from="1696952406193" duration="2242000" />
-      <workItem from="1697022034438" duration="4182000" />
+      <workItem from="1696597993093" duration="108000" />
+      <workItem from="1696788435133" duration="636000" />
+      <workItem from="1696789279638" duration="629000" />
+      <workItem from="1696810434562" duration="1135000" />
+      <workItem from="1697509491815" duration="36000" />
+      <workItem from="1697633394337" duration="1226000" />
+      <workItem from="1697725139997" duration="349000" />
+      <workItem from="1697817606196" duration="3381000" />
+      <workItem from="1697891502765" duration="11168000" />
     </task>
     <servers />
   </component>
@@ -120,37 +139,41 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1697027593313">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1697899737962">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1697027593313" />
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1696429581809">
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1697899737962" />
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom" timestamp="1697821575110">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
-    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1696429581809">
+    <state width="1259" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1697821575110" />
+    <state width="1259" height="163" key="GridCell.Tab.0.center" timestamp="1697821575110">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
-    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1696429581808">
+    <state width="1259" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1697821575110" />
+    <state width="1259" height="163" key="GridCell.Tab.0.left" timestamp="1697821575110">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1696429581808" />
-    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1696429581809">
+    <state width="1259" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1697821575110" />
+    <state width="1259" height="163" key="GridCell.Tab.0.right" timestamp="1697821575110">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1696429581809" />
-    <state width="254" height="198" key="RunAnythingAction_Filter_Popup" timestamp="1696427090606">
+    <state width="1259" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1697821575110" />
+    <state x="242" y="51" key="MergeDialog" timestamp="1697030504288">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="254" height="198" key="RunAnythingAction_Filter_Popup/0.0.1280.680@0.0.1280.680" timestamp="1696427090606" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1696426612445">
+    <state x="242" y="51" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1697030504288" />
+    <state x="530" y="209" width="489" height="263" key="MultipleFileMergeDialog" timestamp="1697030504296">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1696426612445" />
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup" timestamp="1696427090599">
+    <state x="530" y="209" width="489" height="263" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1697030504296" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1697028437239">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" width="672" height="677" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1696427090599" />
+    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1697028437239" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1697899980793">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1697899980793" />
   </component>
 </project>

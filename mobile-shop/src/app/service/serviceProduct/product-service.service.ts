@@ -9,18 +9,31 @@ import {Page} from "../../model/page";
 })
 export class ProductServiceService {
 
-  private readonly API_URl = 'http://localhost:8080/api/product';
+  private API_URL_CREATE_PRODUCT = 'http://localhost:8080/product/create-product';
+  private API_URL_EDIT_PRODUCT = 'http://localhost:8080/product//edit-product/';
+  private API_URL_FIND_BY_ID = 'http://localhost:8080/api/product';
+  private API_URL_LIST = 'http://localhost:8080/api/product/list';
 
-  constructor(private httpClient: HttpClient) { }
-  listProduct(pageNo: number): Observable<Page<Product>>{
-    const params = new HttpParams()
-      .set('page', pageNo.toString())
-    return this.httpClient.get<Page<Product>>(this.API_URl, {params});
+
+  constructor(private httpClient: HttpClient) {
+  }
+
+  deleteProduct(id: any): Observable<any> {
+    return this.httpClient.delete( this.API_URL_FIND_BY_ID + id);
+  }
+
+  getProductById(id: any): Observable<Product> {
+    return this.httpClient.get<Product>(this.API_URL_FIND_BY_ID + id);
+  }
+
+  getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string,
+                 currentPage: number, pageSize: number, sort: string, direction: boolean): Observable<any> {
+    return this.httpClient.get(this.API_URL_LIST + '?brandName=' + brandName +
+      '&sellingPrice=' + sellingPrice + '&productName=' + productName + '&productCpu=' + productCpu +
+      '&page=' + currentPage + '&size=' + pageSize + '&sort=' + sort + '&direction=' + direction);
   }
   findById(id: number): Observable<Product> {
-    return this.httpClient.get<Product>(this.API_URl + '/' + id);
+    return this.httpClient.get<Product>(this.API_URL_FIND_BY_ID + '/' + id);
   }
-  search(option: string, search: string, productStorage: string): Observable<Page<Product>> {
-    return this.httpClient.get<Page<Product>>(`${this.API_URl}?option=${option}&search=${search}&storage=${productStorage}`);
-  }
+
 }
