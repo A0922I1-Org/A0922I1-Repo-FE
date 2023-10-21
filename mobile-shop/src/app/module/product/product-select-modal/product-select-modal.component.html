@@ -78,7 +78,7 @@
                     </svg>
                   </button>
                 </th>
-                <th class="col-2 col-md-2 col-lg-2">Giá(VND)
+                <th *ngIf="!isOnInput; else isOnInput" class="col-2 col-md-2 col-lg-2">Giá bán (VND)
                   <button style="border: none; background: white"
                           (click)="getProductList(brand,price,name, cpu,'selling_price_product',true)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up"
@@ -96,6 +96,9 @@
                     </svg>
                   </button>
                 </th>
+                <ng-template #isOnInput>
+                  <th class="col-2 col-md-2 col-lg-2">Giá nhập (VND)</th>
+                </ng-template>
                 <th class="col-2 col-md-2 col-lg-2">CPU</th>
                 <th class="col-1 col-md-1 col-lg-1">Lưu trữ</th>
               </tr>
@@ -104,7 +107,10 @@
               <tr *ngFor="let product of products; let i = index" (click)="findByIdProduct(product.productId)" style="color: darkgreen" data-bs-dismiss="modal">
                 <td>{{i + 1}}</td>
                 <td>{{product.productName}}</td>
-                <td>{{product.sellingPrice}}</td>
+                <td *ngIf="!isOnInput; else isOnInput">{{product.sellingPrice}}</td>
+                <ng-template #isOnInput>
+                  <td >{{product.costPrice}}</td>
+                </ng-template>
                 <td>{{product.productCpu}}</td>
                 <td>{{product.productStorage}}</td>
               </tr>

@@ -3,7 +3,7 @@ import {ProductServiceService} from '../../../service/serviceProduct/product-ser
 import {Product} from '../../../model/product';
 import {Page} from '../../../model/page';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 @Component({
   selector: 'app-product-select-modal',
   templateUrl: './product-select-modal.component.html',
@@ -12,6 +12,7 @@ import {Router} from "@angular/router";
 export class ProductSelectModalComponent implements OnInit, OnChanges {
 
   @Input() reload: boolean;
+  isOnInput: boolean;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.reload && this.reload) {
@@ -26,6 +27,16 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
     this.getProductList('', '', '', '', '', true);
     this.searchForm = new FormGroup({
       productName: new FormControl('', [Validators.maxLength(3)])
+    });
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Check if the current route is '/'
+        if (event.url === '/input-invoice/new') {
+          this.isOnInput = true;
+        } else {
+          this.isOnInput = false;
+        }
+      }
     });
   }
 
