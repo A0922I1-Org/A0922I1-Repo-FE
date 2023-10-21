@@ -18,8 +18,7 @@ import {RouterModule} from "@angular/router";
     [InputInvoiceDetailListComponent,
       InputInvoicePreviewListComponent,
       InputInvoiceAddNewFormComponent,
-      SelectSupplierModalComponent,
-    ProductSelectModalComponent],
+      SelectSupplierModalComponent],
   imports: [
     CommonModule,
     InputInvoiceDetailRoutingModule,
