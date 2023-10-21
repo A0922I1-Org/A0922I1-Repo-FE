@@ -3,16 +3,21 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './auth.guard';
 import {RoleGuard} from './role.guard';
+import {HomePageComponent} from "./shared/home-page/home-page.component";
 
 
 
 const routes: Routes = [
   {
+    path: '',
+    component: HomePageComponent,
+  },
+  {
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule)
   },
 
-  {path: 'api/managerPurchaseHistory', loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module')
+  {path: 'managerPurchaseHistory', loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module')
       .then(module => module.ManagerPurchaseHistoryModule)},
 
 
@@ -31,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./model/security/security-routing.module').then(module => module.SecurityRoutingModule),
+    loadChildren: () => import('./model/security/security.module').then(module => module.SecurityModule),
   },
   {
     path: 'signUp',

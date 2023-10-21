@@ -6,7 +6,7 @@ import {InputInvoiceAddNewFormComponent} from './input-invoice-add-new-form/inpu
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: InputInvoiceDetailListComponent
   },
   {
@@ -17,6 +17,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: []
 })
 export class InputInvoiceDetailRoutingModule { }
