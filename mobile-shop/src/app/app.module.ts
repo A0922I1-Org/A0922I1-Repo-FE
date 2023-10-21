@@ -51,7 +51,6 @@ import {HomePageComponent} from "./shared/home-page/home-page.component";
   declarations: [
     AppComponent,
 
-    ProductListComponent,
 
 
     ProductCreateComponent,
