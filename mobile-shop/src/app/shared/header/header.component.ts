@@ -1,39 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import {OwlOptions} from "ngx-owl-carousel-o";
-
+import {SearchService} from '../../service/search.service';
+import { SharedDataService } from '../../service/shared-data.service';
+import {NavigationEnd, Router} from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
-  bannerSlider: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
+  searchQuery: string = '';
+  showSearchInput: boolean;
+  constructor(private searchService: SearchService, private sharedDataService: SharedDataService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Check if the current route is '/'
+        if (event.url === '/') {
+          this.showSearchInput = true;
+        } else {
+          this.showSearchInput = false;
+        }
       }
-    },
-    nav: true
-  };
+    });
+  }
   ngOnInit(): void {
   }
-
+  onSearch() {
+    if (this.searchQuery.trim() !== '') {
+      this.searchService.search(this.searchQuery).subscribe(results => {
+        this.sharedDataService.updateSearchResults(results);
+      });
+    }
+  }
 }

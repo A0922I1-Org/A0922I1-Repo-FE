@@ -22,19 +22,11 @@
 
 <nav class="navbar navbar-light">
   <div class="searchbar">
-    <a class="navbar-brand" href="#"><img src="/assets/images/logo1.png"></a>
-    <input class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..." aria-label="Search">
+    <a class="navbar-brand" href="/"><img src="/assets/images/logo1.png"></a>
+    <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..." aria-label="Search" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
   </div>
-  <button type="button" routerLink="/login" class="btn btn-dark" style="margin-right: 3cm">Login</button>
+  <button type="button" routerLink="login" class="btn btn-dark" style="margin-right: 3cm">Login</button>
 </nav>
-
-<!--<nav class="navbar navbar-light bg-light">-->
-<!--  <a class="navbar-brand"></a>-->
-<!--  <form class="form-inline">-->
-<!--    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-<!--    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--  </form>-->
-<!--</nav>-->
 
 <div class="navbar">
   <div class="container-fluid">
@@ -46,7 +38,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav flex-fill">
           <li class="nav-item active">
-            <a class="nav-link" href="#"><img src="/assets/images/dienthoai.png"></a>
+            <a class="nav-link" routerLink='input-invoice'><img src="/assets/images/dienthoai.png"></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><img src="/assets/images/laptop.png"></a>

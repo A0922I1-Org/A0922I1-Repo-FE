@@ -62,6 +62,12 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
     <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile-shop/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/angular.json" afterDir="false" />
+    </list>
+=======
+<<<<<<< HEAD
+    <list default="true" id="2d709553-9ad6-4ee4-8691-9a90a15fa87e" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/mobile-shop/src/app/model/report.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mobile-shop/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/mobile-shop/angular.json" afterDir="false" />
@@ -96,6 +102,7 @@
 >>>>>>> NamNPH-list-supplier
 =======
 
+>>>>>>> main
 >>>>>>> main
 >>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
@@ -134,6 +141,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -155,11 +164,16 @@
 <<<<<<< HEAD
 =======
 >>>>>>> NamNPH-list-supplier
+>>>>>>> main
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/codegym/All_duan/A0922I1-Repo_Fe/A0922I1-Repo-FE/mobile-shop",
+=======
 <<<<<<< HEAD
     "git-widget-placeholder": "ManhTX-inputInvoice",
     "nodejs_package_manager_path": "npm",
@@ -210,14 +224,20 @@
 =======
     "git-widget-placeholder": "NghiaBH-create-update-Supplier",
     "last_opened_file_path": "D:/project_mobie_phone/FE1/A0922I1-Repo-FE",
+>>>>>>> main
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+<<<<<<< HEAD
+    "ts.external.directory.path": "C:\\codegym\\All_duan\\A0922I1-Repo_Fe\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+=======
     "ts.external.directory.path": "D:\\project_mobie_phone\\FE1\\A0922I1-Repo-FE\\mobile-shop\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
 >>>>>>> NamNPH-list-supplier
+>>>>>>> main
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -269,6 +289,10 @@
       <workItem from="1696352219597" duration="17000" />
       <workItem from="1696419319285" duration="372000" />
 <<<<<<< HEAD
+      <workItem from="1696423194716" duration="67000" />
+      <workItem from="1696423339590" duration="3601000" />
+=======
+<<<<<<< HEAD
       <workItem from="1696423810056" duration="4327000" />
 =======
 <<<<<<< HEAD
@@ -295,6 +319,7 @@
 >>>>>>> NamNPH-list-supplier
 =======
 
+>>>>>>> main
 >>>>>>> main
 >>>>>>> main
     </task>
@@ -406,5 +431,16 @@
     <state width="1899" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1696426454723" />
 >>>>>>> main
 >>>>>>> main
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
