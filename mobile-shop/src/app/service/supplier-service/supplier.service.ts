@@ -1,27 +1,48 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient, HttpParams, HttpErrorResponse} from '@angular/common/http';
+import {from, Observable, throwError} from 'rxjs';
 import {Page} from '../../model/page';
 import {Supplier} from '../../model/supplier';
+import {catchError, map} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SupplierService {
+  dataError: String[];
 
   private apiUrl = 'http://localhost:8080/api/suppliers';
-
 
   constructor(private http: HttpClient) {}
 
   addNewSupplier(supplier): Observable<Supplier> {
-    return this.http.post<Supplier>(this.apiUrl + '/create', supplier);
-  }
+    return this.http.post<Supplier>(this.apiUrl + '/create', supplier)}
+
   findBySupplierId(supplierId: number): Observable<Supplier> {
-    return this.http.get<Supplier>(this.apiUrl + '/edit' + supplierId);
+    return this.http.get<Supplier>(this.apiUrl +`/edit/${supplierId}`).pipe(
+        map(response => {
+            // Xử lý dữ liệu trả về ở đây
+            return response;
+        }),
+        catchError(error => {
+            // Xử lý lỗi ở đây
+            console.error('Error:', error);
+            throw error; // Ném lỗi để có thể được xử lý ở phía component
+        })
+    );
   }
   updateSupplier(supplier): Observable<Supplier> {
-    return this.http.post<Supplier>(this.apiUrl + '/update', supplier);
+    return this.http.post<Supplier>(this.apiUrl + '/update', supplier).pipe(
+      map(response => {
+        // Xử lý dữ liệu trả về ở đây
+        return response;
+      }),
+      catchError(error => {
+        // Xử lý lỗi ở đây
+        console.error('Error:', error);
+        throw error; // Ném lỗi để có thể được xử lý ở phía component
+      })
+    );
   }
 
   getAllSuppliers(pageNo: number, pageSize: number): Observable<Page<Supplier>> {
@@ -84,4 +105,6 @@ export class SupplierService {
   getById(id: number) {
     return this.http.get<Supplier>(this.apiUrl + '/' + id);
   }
+
+
 }

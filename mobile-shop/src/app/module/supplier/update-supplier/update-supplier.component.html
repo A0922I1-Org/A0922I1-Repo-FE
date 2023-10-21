@@ -1,4 +1,4 @@
-<form [formGroup]="supplierForm" (ngSubmit)="onUpdate()">
+<form  [formGroup]="supplierForm" (ngSubmit)="onUpdate()">
   <div class="border">
     <div class="borderSupplier1">Chỉnh sửa nhà cung cấp</div>
     <div class="container">
@@ -16,6 +16,11 @@
             </td>
           </tr>
           <tr>
+            <div *ngFor="let error of errorData | keyvalue">
+              <div class="alert alert-danger" *ngIf="error.key === '1' || error.key === 'email'">
+                {{ error.value }}
+              </div>
+            </div>
             <td>
               <div *ngIf="supplierName.invalid && (supplierName.dirty || supplierName.touched)"
                    class="alert alert-danger">
@@ -38,6 +43,11 @@
           </tr>
           <tr>
             <td>
+              <div *ngFor="let error of errorData | keyvalue">
+                <div class="alert alert-danger" *ngIf="error.key === '2' || error.key === 'email'">
+                  {{ error.value }}
+                </div>
+              </div>
               <div *ngIf="supplierPhone.invalid && (supplierPhone.dirty || supplierPhone.touched)"
                    class="alert alert-danger">
                 <div *ngIf="supplierPhone.errors.required">
@@ -51,21 +61,23 @@
           </tr>
           <tr>
             <td>
-              <input  class="col-12" placeholder="Email" type="text" formControlName="supplierEmail">
+              <input [(ngModel)]="textLower" (ngModelChange)="textToLower($event)"  class="col-12" placeholder="Email" type="text" formControlName="supplierEmail">
             </td>
           </tr>
           <tr>
             <td>
+              <div *ngFor="let error of errorData | keyvalue">
+                <div class="alert alert-danger" *ngIf="error.key === '3' || error.key === 'email'">
+                  {{ error.value }}
+                </div>
+              </div>
               <div  *ngIf="supplierEmail.invalid && (supplierEmail.dirty || supplierEmail.touched)"
                     class="alert alert-danger">
                 <div *ngIf="supplierEmail.errors.required">
                   Email không được để trống
                 </div>
-                <div style="display: inline" *ngIf="supplierEmail.errors.email">
-                  <span>Email chưa đúng định dạng xx@xx.xx</span>
-                </div>
                 <div style="display: inline" *ngIf="supplierEmail.errors.pattern">
-                  <span>, email không chứa kí tự đặc biệt</span>
+                  <span>Email chưa đúng định dạng xxx@xxx.xxx</span>
                 </div>
               </div>
           </tr>
@@ -91,7 +103,7 @@
         </table>
         <button type="submit" class="btn btn-outline-warning mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Lưu</button>
 
-        <button type="button" class="btn btn-outline-dark mx-1">Hủy Bỏ</button>
+        <button routerLink="/supplier/list" type="button" class="btn btn-outline-dark mx-1">Hủy Bỏ</button>
       </div>
       <div class="col-3"></div>
     </div>

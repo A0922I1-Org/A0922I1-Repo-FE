@@ -8,7 +8,9 @@ import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import {FormsModule} from '@angular/forms';
 
 
+
 @NgModule({
+
     declarations: [SupplierListComponent, CreateSupplierComponent, UpdateSupplierComponent],
 
     exports: [
