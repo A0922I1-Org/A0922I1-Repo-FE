@@ -5,10 +5,8 @@ import {SecurityRoutingModule} from "./security-routing.module";
 import {ReactiveFormsModule} from "@angular/forms";
 
 import { UserDetailComponent } from '../user-detail/user-detail/user-detail.component';
-// @ts-ignore
-import { EmployeeInforComponent } from './employee-infor/employee-infor.component';
 @NgModule({
-  declarations: [LoginComponent, UserDetailComponent,EmployeeInforComponent],
+  declarations: [LoginComponent, UserDetailComponent],
   imports: [
     CommonModule,
     SecurityRoutingModule,

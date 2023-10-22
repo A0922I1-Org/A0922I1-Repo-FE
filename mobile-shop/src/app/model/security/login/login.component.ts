@@ -6,9 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-
 declare var gapi: any;
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
