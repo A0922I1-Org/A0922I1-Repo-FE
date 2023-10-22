@@ -9,11 +9,7 @@ import {roLocale} from "ngx-bootstrap/chronos";
 
 
 const routes: Routes = [
-  {
-    path:'',
-    component:HomePageComponent
-    // canActivate: [AuthGuard]
-  },
+
   {
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
@@ -50,7 +46,12 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./model/security/security.module').then(module => module.SecurityModule),
+    loadChildren: () => import('./model/security/security-routing.module').then(module => module.SecurityRoutingModule),
+  },
+  {
+    path:'',
+    component:HomePageComponent
+    // canActivate: [AuthGuard]
   },
   {
     path: 'signUp',
