@@ -62,26 +62,7 @@ import {
     SocialLoginModule
 
   ],
-  providers: [DatePipe,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '608195998871-uvoa1roaqpvp3nsii7961hjttakd579n.apps.googleusercontent.com'
-            )
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId')
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
-  ],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {
