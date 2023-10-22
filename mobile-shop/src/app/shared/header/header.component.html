@@ -22,8 +22,8 @@
 
 <nav class="navbar navbar-light">
   <div class="searchbar">
-    <a class="navbar-brand" href="#"><img src="/assets/images/logo1.png"></a>
-    <input class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..." aria-label="Search">
+    <a class="navbar-brand" href="/"><img src="/assets/images/logo1.png"></a>
+    <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..." aria-label="Search" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
   </div>
   <div>
     <button *ngIf="!isLoggedIn" type="button" class="btn btn-dark" style="margin-right: 3cm" (click)="openThis()">Login</button>
@@ -42,7 +42,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav flex-fill">
           <li class="nav-item active">
-            <a class="nav-link" href="#"><img src="/assets/images/dienthoai.png"></a>
+            <a class="nav-link" routerLink='input-invoice'><img src="/assets/images/dienthoai.png"></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><img src="/assets/images/laptop.png"></a>

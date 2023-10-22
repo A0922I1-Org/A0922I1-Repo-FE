@@ -1,4 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {SearchService} from '../../service/search.service';
+import { SharedDataService } from '../../service/shared-data.service';
+import {NavigationEnd, Router} from '@angular/router';
 import {OwlOptions} from "ngx-owl-carousel-o";
 import jwtDecode from "jwt-decode";
 import {tokenStorageService} from "../../model/security/service/token-storage.service";
@@ -12,68 +15,27 @@ import {shareService} from "../../model/security/service/share.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isLoggedIn = false;
-  username: any;
-  currentUser: string;
-  role = '';
-  returnUrl: string;
-
-  constructor(private tokenStorageService: tokenStorageService,
-              private shareService: shareService,
-              private router: Router,
-              private employeeService: EmployeeService) {
-    this.shareService.getClickEvent().subscribe(() => {
-      this.loadHeader();
+  searchQuery: string = '';
+  showSearchInput: boolean;
+  constructor(private searchService: SearchService, private sharedDataService: SharedDataService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        // Check if the current route is '/'
+        if (event.url === '/') {
+          this.showSearchInput = true;
+        } else {
+          this.showSearchInput = false;
+        }
+      }
     });
   }
   ngOnInit(): void {
-    this.loadHeader();
   }
-
-  loadHeader(): void {
-    if (this.tokenStorageService.getToken()) {
-      this.currentUser = this.tokenStorageService.getUser();
-      this.role = this.tokenStorageService.getRole();
-      this.username = this.tokenStorageService.getUser();
+  onSearch() {
+    if (this.searchQuery.trim() !== '') {
+      this.searchService.search(this.searchQuery).subscribe(results => {
+        this.sharedDataService.updateSearchResults(results);
+      });
     }
-    this.isLoggedIn = this.username != null;
-    console.log(`Role hien tai la ${this.role}`);
-  }
-
-  logOut() {
-    this.tokenStorageService.signOut();
-    this.isLoggedIn = false;
-    this.router.navigate(['/login']);
-  }
-
-
-  bannerSlider: OwlOptions = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: true,
-    dots: false,
-    navSpeed: 700,
-    navText: ['', ''],
-    responsive: {
-      0: {
-        items: 1
-      },
-      400: {
-        items: 2
-      },
-      740: {
-        items: 3
-      },
-      940: {
-        items: 4
-      }
-    },
-    nav: true
-  };
-
-
-  openThis() {
-    this.router.navigate(['/login']);
   }
 }

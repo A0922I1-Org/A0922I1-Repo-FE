@@ -1,13 +1,16 @@
-import {RouterModule, Routes} from "@angular/router";
-import {NgModule} from "@angular/core";
-import {AuthGuard} from "./auth.guard";
-import {RoleGuard} from "./role.guard";
+
+import {RouterModule, Routes} from '@angular/router';
+import {NgModule} from '@angular/core';
+import {AuthGuard} from './auth.guard';
+import {RoleGuard} from './role.guard';
+import {HomePageComponent} from "./shared/home-page/home-page.component";
+
 
 
 const routes: Routes = [
   {
     path: 'login',
-    loadChildren: () => import('./model/security/security-routing.module').then(module => module.SecurityRoutingModule),
+    loadChildren: () => import('./model/security/security.module').then(module => module.SecurityModule),
   },
   {
     path: 'signUp',
@@ -24,12 +27,18 @@ const routes: Routes = [
     path: 'changePassword',
     loadChildren: () => import('./model/user-detail/infor-user-routing.module').then(module => module.InforUserRoutingModule),
     canActivate: [AuthGuard], // Áp dụng cả AuthGuard và RoleGuard cho route này
+
   }
+
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
+
 export class AppRoutingModule {
 }
