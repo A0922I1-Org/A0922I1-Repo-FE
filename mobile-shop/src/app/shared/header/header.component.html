@@ -26,7 +26,7 @@
     <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..." aria-label="Search" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
   </div>
   <div>
-    <button  type="button" class="btn btn-dark" style="margin-right: 3cm">Login</button>
+    <button routerLink="login" type="button" class="btn btn-dark" style="margin-right: 3cm">Login</button>
   </div>
 </nav>
 
