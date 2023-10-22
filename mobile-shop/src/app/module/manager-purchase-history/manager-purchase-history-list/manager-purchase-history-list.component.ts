@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {ManagerPurchaseHistory} from '../../../model/manager-purchase-history';
 import {Page} from '../../../model/page';
 import {ManagerPurchaseHistoryServiceService} from '../../../service/manager-purchase-history-service.service';
-
 @Component({
   selector: 'app-manager-purchase-history-list',
-  templateUrl: './manager-purchase-history-list.component.html',
+  templateUrl:'./manager-purchase-history-list.component.html',
   styleUrls: ['./manager-purchase-history-list.component.css']
 })
 export class ManagerPurchaseHistoryListComponent implements OnInit {

@@ -50,52 +50,31 @@ import {
 @NgModule({
   declarations: [
     AppComponent,
-
-
-
     ProductCreateComponent,
     ProductEditComponent,
-
-
     ReportCreateComponent,
-
-
     CustomerListComponent,
-
-
-
-
-    LoginComponent,
     AddUserComponent,
     DateFormatPipe,
     ChangePasswordComponent,
-
     HeaderComponent,
-    FooterComponent,
-    BodyComponent,
-    ImageScrollComponent,
-    PhoneDetailsComponent,
-
+    FooterComponent
   ],
   entryComponents: [PhoneDetailsComponent],
 
   imports: [
     BrowserModule,
-
     CommonModule,
     HttpClientModule,
     RouterModule,
     SecurityModule,
     ManagerPurchaseHistoryRoutingModule,
-
     SharedModule,
     AppRoutingModule,
     ReactiveFormsModule,
-
     FormsModule,
     SupplierModule,
     InputInvoiceDetailModule,
-
     NgbModule,
     ModalModule.forRoot(),
     ReactiveFormsModule,
@@ -103,8 +82,6 @@ import {
     CarouselModule,
     MatDialogModule,
     SocialLoginModule
-
-
   ],
   providers: [DatePipe],
   exports: [],

@@ -1,11 +1,12 @@
 <ng-container *ngIf="page">
   <div class="container-xl" style="border: white">
-    <div class="table-responsive"  >
+    <div class="table-responsive">
 
       <div>
         <div class="table-title" style="width: 1320px">
-          <div class="row" >
-            <h2 style="color: black; text-align: center;font-weight: bolder; margin-top: 20px">Quản lý lịch sử mua bán</h2>
+          <div class="row">
+            <h2 style="color: black; text-align: center;font-weight: bolder; margin-top: 20px">Quản lý lịch sử mua
+              bán</h2>
           </div>
         </div>
 
@@ -25,8 +26,8 @@
 
           <tr *ngFor="let managerPurchaseHistory of page.content; index as i">
             <th scope="row">{{i + 1}}</th>
-            <td>{{managerPurchaseHistory.dateOutputInvoice | date: 'dd/mm/yyyy'}}</td>
-            <td>{{convertToTime(managerPurchaseHistory.dateOutputInvoice) }}</td>
+            <td>{{managerPurchaseHistory.dateOutputInvoice | date : 'dd/mm/yyyy'}}</td>
+            <td>{{convertToTime ( managerPurchaseHistory.dateOutputInvoice ) }}</td>
             <td>{{managerPurchaseHistory.customerName}}</td>
             <td>{{managerPurchaseHistory.productName}}</td>
             <td>{{managerPurchaseHistory.totalPrice}}</td>
@@ -34,22 +35,30 @@
           </tbody>
 
         </table>
-        <div style="text-align: center" class="button" >
-          <a (click)="loadManagerPurchaseHistory(1,8,'time')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo thời gian</a>
-          <a (click)="loadManagerPurchaseHistory(1,8,'customerName')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tên khách hàng</a>
-          <a (click)="loadManagerPurchaseHistory(1,8,'productName')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tên sản phẩm</a>
-          <a (click)="loadManagerPurchaseHistory(1,8,'quantity')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo số lượng</a>
-          <a (click)="loadManagerPurchaseHistory(1,8,'totalPrice')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp theo tổng tiền</a>
+        <div style="text-align: center" class="button">
+          <a (click)="loadManagerPurchaseHistory(1,8,'time')" style=" margin: 18px" class="btn btn-outline-dark">Sắp xếp
+            theo thời gian</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'customerName')" style=" margin: 18px"
+             class="btn btn-outline-dark">Sắp xếp theo tên khách hàng</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'productName')" style=" margin: 18px" class="btn btn-outline-dark">Sắp
+            xếp theo tên sản phẩm</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'quantity')" style=" margin: 18px" class="btn btn-outline-dark">Sắp
+            xếp theo số lượng</a>
+          <a (click)="loadManagerPurchaseHistory(1,8,'totalPrice')" style=" margin: 18px" class="btn btn-outline-dark">Sắp
+            xếp theo tổng tiền</a>
         </div>
         <div class="container">
           <div class="row">
             <div class="col-5"></div>
             <div class="col-6" *ngIf="page.totalPages > 1">
-              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number, 8, sort)" [disabled]="page.first">
+              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number, 8, sort)"
+                      [disabled]="page.first">
                 Trước
               </button>
-              <a *ngIf="page">{{page.number+1}}/{{page.totalPages}}</a>
-              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number + 2, 8, sort)" [disabled]="page.last">Sau</button>
+              <a *ngIf="page">{{page.number + 1}}/{{page.totalPages}}</a>
+              <button class="btn btn-outline-primary" (click)="loadManagerPurchaseHistory(page.number + 2, 8, sort)"
+                      [disabled]="page.last">Sau
+              </button>
             </div>
             <div class="col-1">
               <button class="btn btn-outline-dark">Thoát</button>
