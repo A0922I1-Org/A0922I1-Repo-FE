@@ -25,7 +25,11 @@
     <a class="navbar-brand" href="/"><img src="/assets/images/logo1.png"></a>
     <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..." aria-label="Search" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
   </div>
-  <button type="button" routerLink="login" class="btn btn-dark" style="margin-right: 3cm">Login</button>
+  <div>
+    <button *ngIf="!isLoggedIn" type="button" class="btn btn-dark" style="margin-right: 3cm" (click)="openThis()">Login</button>
+    <span *ngIf="isLoggedIn">{{username}}</span>
+    <button href="#" class="dropdown-item" (click)="logOut()">Đăng xuất</button>
+  </div>
 </nav>
 
 <div class="navbar">

@@ -10,10 +10,7 @@ import {ReportCreateComponent} from './module/report/report-create/report-create
 
 import {SupplierModule} from './module/supplier/supplier.module';
 import {InputInvoiceDetailModule} from './module/input-invoice-detail/input-invoice-detail.module';
-
 import {CustomerListComponent} from './module/customer/customer-list/customer-list.component';
-
-
 import {LoginComponent} from './model/security/login/login.component';
 import {AddUserComponent} from './model/user/add-user/add-user.component';
 import {CommonModule, DatePipe} from '@angular/common';
@@ -21,18 +18,13 @@ import {DateFormatPipe} from './date-format.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {ChangePasswordComponent} from './model/user-detail/change-password/change-password.component';
-
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 import {ManagerPurchaseHistoryRoutingModule} from './module/manager-purchase-history/manager-purchase-history-routing.module';
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {HeaderComponent} from './shared/header/header.component';
@@ -45,6 +37,14 @@ import {RouterModule, RouterOutlet} from "@angular/router";
 import {SharedModule} from "./shared/shared.module";
 import {SecurityModule} from "./model/security/security.module";
 import {HomePageComponent} from "./shared/home-page/home-page.component";
+
+
+import {
+  FacebookLoginProvider,
+  GoogleLoginProvider,
+  SocialAuthServiceConfig,
+  SocialLoginModule
+} from 'angularx-social-login';
 
 
 @NgModule({
@@ -64,12 +64,17 @@ import {HomePageComponent} from "./shared/home-page/home-page.component";
 
 
 
+
+    LoginComponent,
     AddUserComponent,
     DateFormatPipe,
     ChangePasswordComponent,
 
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BodyComponent,
+    ImageScrollComponent,
+    PhoneDetailsComponent,
 
   ],
   entryComponents: [PhoneDetailsComponent],
@@ -96,7 +101,8 @@ import {HomePageComponent} from "./shared/home-page/home-page.component";
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CarouselModule,
-    MatDialogModule
+    MatDialogModule,
+    SocialLoginModule
 
 
   ],

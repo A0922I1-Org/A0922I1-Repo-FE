@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {SearchService} from '../../service/search.service';
 import { SharedDataService } from '../../service/shared-data.service';
 import {NavigationEnd, Router} from '@angular/router';
+import {OwlOptions} from "ngx-owl-carousel-o";
+import jwtDecode from "jwt-decode";
+import {tokenStorageService} from "../../model/security/service/token-storage.service";
+import {Router} from "@angular/router";
+import {EmployeeService} from "../../model/user-detail/service/infor-user.service";
+import {shareService} from "../../model/security/service/share.service";
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',

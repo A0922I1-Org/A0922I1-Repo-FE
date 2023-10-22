@@ -5,8 +5,9 @@ import {tokenStorageService} from "../service/token-storage.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
-import {HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 
+declare var gapi: any;
 
 @Component({
   selector: 'app-login',
@@ -19,12 +20,15 @@ export class LoginComponent implements OnInit {
   roles: String[];
   returnUrl: string;
   showPassword = false;
+  loggedIn: boolean;
+
 
   constructor(private authService: AuthService,
               private shareService: shareService,
               private tokenStorageService: tokenStorageService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private httpClient: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -59,7 +63,6 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
-
     let timerInterval;
     Swal.fire({
       title: 'Loading....',
@@ -112,7 +115,7 @@ export class LoginComponent implements OnInit {
             showConfirmButton: false,
             timer: 1500,
           });
-          this.authService.isLoggedIn = true;
+          const roles = this.tokenStorageService.getRole();
           this.authService.setToken(data.token);
           this.formLogin.reset();
           this.router.navigateByUrl(this.returnUrl);
@@ -145,4 +148,5 @@ export class LoginComponent implements OnInit {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
+
 }
