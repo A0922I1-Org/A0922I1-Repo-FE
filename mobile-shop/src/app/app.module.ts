@@ -37,6 +37,10 @@ import {
   SocialLoginModule
 } from 'angularx-social-login';
 import {CustomerModule} from "./module/customer/customer.module";
+import {HomePageComponent} from "./shared/home-page/home-page.component";
+import {BodyComponent} from "./shared/body/body.component";
+import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
+
 
 
 @NgModule({
@@ -46,7 +50,10 @@ import {CustomerModule} from "./module/customer/customer.module";
     DateFormatPipe,
     ChangePasswordComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomePageComponent,
+    BodyComponent,
+    ImageScrollComponent
   ],
   entryComponents: [PhoneDetailsComponent],
 

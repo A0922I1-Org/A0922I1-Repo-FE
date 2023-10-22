@@ -9,9 +9,7 @@ import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
-    HomePageComponent,
-    BodyComponent,
-    ImageScrollComponent,
+
     PhoneDetailsComponent],
   imports: [
     CommonModule,
