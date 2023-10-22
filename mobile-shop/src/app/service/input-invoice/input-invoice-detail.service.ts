@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {InputInvoiceDetail} from '../../model/input-invoice-detail';
 import {Page} from '../../model/page';
 import {ProductInputDto} from '../../dto/ProductInputDto';
@@ -12,8 +12,24 @@ export class InputInvoiceDetailService {
 
   constructor(private http: HttpClient) { }
 
-  getInputInvoiceList(pageNo: number) {
-   return this.http.get<Page<InputInvoiceDetail>>(this.URL_API + '/' + 'list' + '?pageNo=' + pageNo);
+  getInputInvoiceList(supplierName:string,productName:string,startDate:string,endDate:string,pageNo:number) {
+    if (supplierName === undefined){supplierName = ''}
+    if (productName === undefined){productName = ''}
+    if (startDate === undefined){startDate = ''}
+    if (endDate === undefined){endDate = ''}
+    return this.http.get<Page<InputInvoiceDetail>>(this.URL_API  +'/list?'
+      + 'supplierName='+supplierName+'&productName='+productName+'&startDate='+startDate+'&endDate='+endDate
+      + '&pageNo=' + pageNo);
+  }
+  search(supplierName:string,productName:string,startDate:string,endDate:string,pageNo:number){
+    if (supplierName === undefined){supplierName = ''}
+    if (productName === undefined){productName = ''}
+    if (startDate === undefined){startDate = ''}
+    if (endDate === undefined){endDate = ''}
+    return this.http.get<Page<InputInvoiceDetail>>(this.URL_API  +'/list?'
+    + 'supplierName='+supplierName+'&productName='+productName+'&startDate='+startDate+'&endDate='+endDate
+    + '&pageNo=' + pageNo);
+
   }
   validateInputDetail(inputDetail: ProductInputDto) {
     return this.http.post<ProductInputDto>(this.URL_API + '/' + 'validate', inputDetail);
