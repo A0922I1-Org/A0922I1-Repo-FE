@@ -9,7 +9,7 @@ import { EmployeeInforComponent } from './employee-infor/employee-infor.componen
 
 
 @NgModule({
-  declarations: [LoginComponent, UserDetailComponent],
+  declarations: [LoginComponent, UserDetailComponent,EmployeeInforComponent],
   imports: [
     CommonModule,
     SecurityRoutingModule,
