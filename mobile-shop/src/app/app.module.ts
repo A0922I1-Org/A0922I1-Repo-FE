@@ -40,7 +40,7 @@ import {CustomerModule} from "./module/customer/customer.module";
 import {HomePageComponent} from "./shared/home-page/home-page.component";
 import {BodyComponent} from "./shared/body/body.component";
 import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
-import {NgxPaginationModule} from "ngx-pagination";
+// import {NgxPaginationModule} from "ngx-pagination";
 import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module";
 
 
@@ -79,7 +79,7 @@ import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module
     CarouselModule,
     MatDialogModule,
     SocialLoginModule,
-    NgxPaginationModule,
+    // NgxPaginationModule,
     OutputInvoiceModule
   ],
   providers: [DatePipe],
