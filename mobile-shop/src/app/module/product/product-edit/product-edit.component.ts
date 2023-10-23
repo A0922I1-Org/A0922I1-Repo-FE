@@ -22,11 +22,19 @@ export class ProductEditComponent implements OnInit {
 
   }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9b58246c0951743c559070c7ad3e313f28391353
 
   showPreview($event: Event) {
     
   }
+<<<<<<< HEAD
 =======
   showPreview() {}
 >>>>>>> main
+=======
+
+>>>>>>> 9b58246c0951743c559070c7ad3e313f28391353
 }
