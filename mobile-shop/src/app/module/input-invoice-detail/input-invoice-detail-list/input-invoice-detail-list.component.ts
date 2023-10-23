@@ -13,26 +13,59 @@ export class InputInvoiceDetailListComponent implements OnInit {
   page: Page<InputInvoiceDetail>;
   inputInvoiceList: InputInvoiceDetail[];
 
+  //Lưu giá trị search từ input để gởi về server
+  supplierName='';
+  productName='';
+  startDate='';
+  endDate='';
+  isSearch=false;
+
   constructor(private inputInvoiceService: InputInvoiceDetailService) {
-    this.inputInvoiceService.getInputInvoiceList(0).subscribe(
-      next => {
-       this.inputInvoiceList = next.content;
-       this.page = next;
-    }
-    );
-    console.log(this.inputInvoiceList);
+    // this.inputInvoiceService.getInputInvoiceList(this.supplierName, this.productName, this.startDate, this.endDate,0).subscribe(
+    //   next => {
+    //    this.inputInvoiceList = next.content;
+    //    this.page = next;
+    // }
+    // );
+      this.getInputDetail(0);
   }
 
   ngOnInit(): void {
   }
 
   getInputDetail(pageNo: number) {
-    this.inputInvoiceService.getInputInvoiceList(pageNo).subscribe(
+    this.inputInvoiceService.getInputInvoiceList(this.supplierName,this.productName,this.startDate,this.endDate,pageNo).subscribe(
       next => {
         this.inputInvoiceList = next.content;
         this.page = next;
       }
     );
-    console.log(this.inputInvoiceList);
+    console.log(this.isSearch);
   }
+  cancelSearch(pageNo: number){
+    this.supplierName='';
+    this.productName='';
+    this.startDate='';
+    this.endDate='';
+    this.inputInvoiceService.getInputInvoiceList(this.supplierName,this.productName,this.startDate,this.endDate,pageNo).subscribe(
+      next => {
+        this.inputInvoiceList = next.content;
+        this.page = next;
+        this.isSearch=false;
+      }
+    );
+  }
+  search(pageNo:number){
+    this.inputInvoiceService.search(this.supplierName, this.productName, this.startDate, this.endDate,pageNo).subscribe(
+      next => {
+        this.inputInvoiceList = next.content;
+        this.page = next
+        if (this.supplierName!=''||this.productName!=''||this.startDate!=''||this.endDate!=''){
+          this.isSearch=true;
+        }
+      }
+    )
+  }
+
+
 }

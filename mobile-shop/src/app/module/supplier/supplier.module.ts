@@ -10,8 +10,15 @@ import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
+<<<<<<< HEAD
 
     declarations: [SupplierListComponent, CreateSupplierComponent, UpdateSupplierComponent],
+=======
+    declarations: [
+      SupplierListComponent,
+      CreateSupplierComponent,
+      UpdateSupplierComponent],
+>>>>>>> main
 
     exports: [
         SupplierListComponent,

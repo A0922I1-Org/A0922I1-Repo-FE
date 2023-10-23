@@ -23,7 +23,6 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Lấy username từ token
     this.username = this.authService.getUsernameFromToken();
     // Gọi service để lấy thông tin Employee dựa trên username
     this.employeeService.getEmployeeByUsername(this.username).subscribe(data => {

@@ -10,6 +10,7 @@ import {SelectSupplierModalComponent} from './select-supplier-modal/select-suppl
 import {AppModule} from '../../app.module';
 import {ProductModule} from '../product/product.module';
 import {ProductSelectModalComponent} from '../product/product-select-modal/product-select-modal.component';
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -17,14 +18,14 @@ import {ProductSelectModalComponent} from '../product/product-select-modal/produ
     [InputInvoiceDetailListComponent,
       InputInvoicePreviewListComponent,
       InputInvoiceAddNewFormComponent,
-      SelectSupplierModalComponent,
-    ProductSelectModalComponent],
+      SelectSupplierModalComponent],
   imports: [
     CommonModule,
     InputInvoiceDetailRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    ProductModule
+    ProductModule,
+    RouterModule
   ]
 })
 export class InputInvoiceDetailModule {

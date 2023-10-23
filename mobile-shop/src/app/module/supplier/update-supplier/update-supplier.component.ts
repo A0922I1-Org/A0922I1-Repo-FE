@@ -23,8 +23,14 @@ export class UpdateSupplierComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private supplierService: SupplierService, private _activatedRoute: ActivatedRoute, private _router: Router) {
     this._activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+<<<<<<< HEAD
       this.supplierId = +paramMap.get('supplierId');
+=======
+      this.supplierId = +paramMap.get('id');
+console.log(this.supplierId);
+>>>>>>> main
       this.supplierService.findBySupplierId(this.supplierId).subscribe(supplier => {
+        console.log(supplier);
         this.supplierForm = new FormGroup({
           supplierId: new FormControl(supplier.supplierId),
           supplierName: new FormControl(supplier.supplierName,

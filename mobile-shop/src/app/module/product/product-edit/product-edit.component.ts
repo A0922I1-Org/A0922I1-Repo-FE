@@ -21,8 +21,12 @@ export class ProductEditComponent implements OnInit {
   edit() {
 
   }
+<<<<<<< HEAD
 
   showPreview($event: Event) {
     
   }
+=======
+  showPreview() {}
+>>>>>>> main
 }

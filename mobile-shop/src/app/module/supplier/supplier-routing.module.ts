@@ -7,7 +7,7 @@ import {UpdateSupplierComponent} from './update-supplier/update-supplier.compone
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: SupplierListComponent
   },
   {
@@ -15,7 +15,11 @@ const routes: Routes = [
     component: CreateSupplierComponent
   },
   {
+<<<<<<< HEAD
     path: 'edit/:supplierId',
+=======
+    path: 'edit/:id',
+>>>>>>> main
     component: UpdateSupplierComponent
   }
 ];
