@@ -1,6 +1,8 @@
 <meta charset="UTF-8">
 <title>Chọn sản phẩm</title>
-
+<button type="button" (click)="getProductList('','','','','',true)" class="btn btn-primary custom-button" data-bs-toggle="modal" data-bs-target="#myModal">
+  Chọn sản phẩm
+</button>
 <!-- The Modal -->
 <ng-container *ngIf="products">
   <div class="modal" id="myModal">
@@ -104,7 +106,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let product of products; let i = index" (click)="findByIdProduct(product.productId)" style="color: darkgreen" data-bs-dismiss="modal">
+              <tr *ngFor="let product of products; let i = index" (click)="findByIdProduct(product.productId)" class="hover" data-bs-dismiss="modal">
                 <td>{{i + 1}}</td>
                 <td>{{product.productName}}</td>
                 <td *ngIf="!isOnInput; else isOnInput">{{product.sellingPrice}}</td>
