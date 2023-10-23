@@ -53,10 +53,11 @@ export class tokenStorageService {
   }
 
   getUser() {
-    if (localStorage.getItem(USER_KEY) !== null) {
-      return JSON.parse(localStorage.getItem(USER_KEY));
+    const userData = localStorage.getItem(USER_KEY) || sessionStorage.getItem(USER_KEY);
+    if (userData) {
+      return JSON.parse(userData);
     } else {
-      return JSON.parse(sessionStorage.getItem(USER_KEY));
+      return null;
     }
   }
 

@@ -114,9 +114,10 @@ export class LoginComponent implements OnInit {
             timer: 1500,
           });
           const roles = this.tokenStorageService.getRole();
+          console.log(roles);
           this.authService.setToken(data.token);
           this.formLogin.reset();
-          this.router.navigateByUrl(this.returnUrl);
+          this.router.navigateByUrl("/home");
           this.shareService.sendClickEvent();
         }
       },
