@@ -30,14 +30,9 @@ const routes: Routes = [
   {
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
-    canActivate: [AuthGuard],
-  {
-    path: 'product',
-    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
-    // canActivate: [AuthGuard,RoleGuard],
-    // data: { roles: ['ADMIN','BUSINESS','SALE',"STORAGE"]}
-
+    canActivate: [AuthGuard]
   },
+
   {
     path: 'api/managerPurchaseHistory',
     loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module').then(module => module.ManagerPurchaseHistoryModule),
@@ -66,13 +61,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent
-  }
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
+    // canActivate: [AuthGuard, RoleGuard],
+    // data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
+  },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)]
 })
 
 

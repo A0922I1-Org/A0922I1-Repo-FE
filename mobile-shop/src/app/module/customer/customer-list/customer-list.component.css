@@ -13,9 +13,7 @@ button{
 .table table-striped{
   margin: 30px;
 }
-.hover:hover{
-  color: darkgreen;
-}
+
 
 h2{
   color: black;
@@ -41,4 +39,18 @@ h2{
 .modal-button{
   text-align: center;
 }
-
+.custom-button{
+  margin-left: -355px;
+  width: 140px;
+  height: 40px;
+  font-size: 0.9em;
+  padding: 0 0;
+  background: #007bff;
+  margin-bottom: 5px;
+  margin-top: -8px;
+}
+.hover:hover {
+  background-color: lightgray; /* Màu nền khi hover */
+  cursor: pointer; /* Thay đổi hình dạng con trỏ khi hover */
+  transition: background-color 0.3s; /* Tạo hiệu ứng chuyển đổi màu nền */
+}

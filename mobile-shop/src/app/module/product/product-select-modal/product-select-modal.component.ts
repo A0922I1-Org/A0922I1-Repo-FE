@@ -4,6 +4,7 @@ import {Product} from '../../../model/product';
 import {Page} from '../../../model/page';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NavigationEnd, Router} from "@angular/router";
+import {ShareDataService} from "../../../service/outputInvoiceService/share-data.service";
 @Component({
   selector: 'app-product-select-modal',
   templateUrl: './product-select-modal.component.html',
@@ -23,10 +24,10 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
   searchForm: FormGroup;
   @Output() productEmitted = new EventEmitter<Product>();
 
-  constructor(private productService: ProductServiceService, private router: Router) {
+  constructor(private productService: ProductServiceService, private router: Router, private shareData: ShareDataService) {
     this.getProductList('', '', '', '', '', true);
     this.searchForm = new FormGroup({
-      productName: new FormControl('', [Validators.maxLength(3)])
+      productName: new FormControl('', [Validators.maxLength(3)]),
     });
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -148,7 +149,7 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
     this.productService.findById(productId).subscribe(data => {
       this.product = data;
       this.productEmitted.emit(this.product);
-      console.log(data);
+      this.shareData.setProductData(data)
     });
 
   }
