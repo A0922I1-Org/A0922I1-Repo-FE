@@ -1,0 +1,198 @@
+<ng-container *ngIf="invoice">
+  <body>
+  <div class="card" xmlns="http://www.w3.org/1999/html" style="height: 95%; margin-top: -50px">
+    <div class="card-top border-bottom text-center" style="background: #ffd400; height: 50px">
+      <span id="logo" style="margin-bottom: 100px">Quản lý bán hàng</span>
+    </div>
+    <div class="card-body">
+      <div class="row upper">
+      </div>
+      <form #register="ngForm" (ngSubmit)="register.form.valid">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="left border">
+              <div class="row">
+                <div class="icons" style="margin-left: 210px">
+                </div>
+                <h4 style="color: black">Thông tin khách hàng</h4>
+              </div>
+
+              <app-customer-list (click)="customer&&getCustomerAndDeleteCustomer()"></app-customer-list>
+              <div class="input-container">
+                <input type="text" id="customerName" [(ngModel)]="customer.customerName" name="customerName"
+                       [ngClass]="{'disabled': dataReceived}"
+                       #customerName="ngModel" maxlength="50" required (input)="saveCustomerData()">
+                <label for="customerName">Họ và tên</label>
+                <p class="error-message active" *ngIf="customerName.touched  && customerName.errors">
+                  <span *ngIf="customerName.touched && customerName.errors.required" style="color: red">Trường này không được để trống</span>
+                </p>
+              </div>
+
+
+              <div class="input-container">
+                <input type="text" id="phoneNumber" [(ngModel)]="customer.customerPhone" #phoneNumber='ngModel'
+                       [ngClass]="{'disabled': dataReceived}"
+                       name="phoneNumber" required (input)="saveCustomerData()">
+                <label for="phoneNumber">Số điện thoại</label>
+                <p class="error-message active" *ngIf="phoneNumber.touched">
+                  <span *ngIf="phoneNumber.touched && phoneNumber.errors?.required" style="color: red">Số điện thoại không được để trống</span>
+                  <span
+                    *ngIf="phoneNumber.touched && !phoneNumber.errors?.required && !isValidPhoneNumber(customer.customerPhone)"
+                    style="color: red">Số điện thoại không hợp lệ</span>
+                </p>
+              </div>
+
+
+              <div class="input-container">
+                <input type="text" id="address" [(ngModel)]="customer.customerAddress" #address="ngModel" name="address"
+                       [ngClass]="{'disabled': dataReceived}"
+                       required (input)="saveCustomerData()">
+                <label for="address">Địa chỉ</label>
+                <p class="error-message active" *ngIf="address.touched && address.errors">
+                  <span *ngIf="address.errors?.required" style="color: red">Trường này không được để trống</span>
+                </p>
+              </div>
+
+              <div class="input-container" style="margin-bottom: 10px">
+                <input type="text" id="email" [(ngModel)]="customer.customerEmail" #email="ngModel" name="email"
+                       [ngClass]="{'disabled': dataReceived}"
+                       required (input)="saveCustomerData()">
+                <label for="email">Email</label>
+                <p class="error-message active" *ngIf="email.touched  ">
+                <span *ngIf="email.errors?.required"
+                      style="color: red">Email không được để trống</span>
+                  <span *ngIf="email.touched && !email.errors?.required && !isValidEmail(customer.customerEmail)"
+                        style="color: red">Địa chỉ email không hợp lệ</span>
+                </p>
+
+              </div>
+
+
+              <span class="header" style="color: black; margin-left: -20px">Thông tin sản phẩm</span>
+              <br>
+              <app-product-list (click)="products && getProduct()"></app-product-list>
+              <form [formGroup]="productForm" (ngSubmit)="saveProduct()" #register="ngForm">
+                <div class="input-container">
+                  <input type="text" id="productName" formControlName="productName" [(ngModel)]="products.productName"
+                         (input)="saveProductData()"
+                         name="productName" class="disabled" required>
+                  <label for="productName">Tên sản phẩm</label>
+                </div>
+
+
+                <div class="input-container">
+                  <input type="text" id="price" formControlName="price" [(ngModel)]="products.sellingPrice" name="price"
+                         (input)="saveProductData()" class="disabled" required>
+                  <label for="price">Giá</label>
+                </div>
+
+                <div class="input-container">
+                  <input type="text" id="quantity" formControlName="quantity" [(ngModel)]="newProduct.qty"
+                         (change)="onQuantityChange($event)" required (input)="saveProductData()">
+                  <label for="quantity">Số lượng</label>
+                  <p class="error-message active">
+                  <span *ngIf="productForm.controls.quantity.touched && productForm.controls.quantity.errors?.required"
+                        style="color: red">Trường này không được để trống</span>
+                    <span *ngIf="newProduct.qty !== null && !isLessThan99(newProduct.qty)" style="color: red">Số lượng phải lớn hơn 0 và nhỏ hơn 99</span>
+                    <span *ngIf="checkQuantity(newProduct.qty)" style="color: red">Số lượng không đủ để cung cấp</span>
+                    <span *ngIf="errorMessage" style="color: red">{{ errorMessage }}</span>
+                  </p>
+
+                </div>
+                <button class="custom-button" type="submit"
+                        [disabled]="!isLessThan99(newProduct.qty) || !productForm.valid||checkQuantity(newProduct.qty) || isSubmitDisabled"
+                        style="margin-left: -390px; margin-top: 10px">+ Thêm sản phẩm
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="right border">
+              <div class="header">Sản phẩm đang mua</div>
+              <div class="row item">
+                <div class="col-8" *ngFor="let product of productList | paginate: {itemsPerPage: 2, currentPage: p}; let i = index">
+                  <div class="row text-muted">{{'Tên sản phẩm: ' + product.productName}}</div>
+                  <div class="row">{{'Giá: ' + product.sellingPrice + ' VND'}}</div>
+                  <div class="row" style="margin-bottom: 20px">{{'Số lượng: ' + product.qty + ' VND'}}</div>
+                  <div class="row">
+                    <span class="delete-icon" (click)="deleteProductByIndex(i)" style="margin-left: 20px; margin-top: -63px;">
+                          <i class="fas fa-trash-alt fa-sm" style="background-color: #f2f2f2; padding: 10px 5px; color: #999999;"></i>
+                    </span>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div *ngIf="productList.length<=0">
+                <h6 style="text-align: center">Chưa có sản phẩm nào được mua.</h6>
+              </div>
+              <div *ngIf="productList.length > 0">
+                <pagination-controls class="my-pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""
+                                     style="text-align: center"></pagination-controls>
+              </div>
+              <hr>
+              <div class="row lower" style="margin-top: 50px">
+                <div class="col text-left" style="margin-left: -5px">Tổng tiền</div>
+                <div class="col text-right" style="margin-left: 130px">{{totalAmount + ' VND'}}</div>
+              </div>
+              <div class="row lower" style="margin-top: 5px">
+                <div class="col text-left" style="margin-left: 10px">Mã giảm giá</div>
+                <div class="col text-right" style="margin-left: 130px">Không có</div>
+              </div>
+              <div class="row lower" style="margin-top: 5px">
+                <div class="col text-left" style="margin-left: 6px"><b>Thanh toán</b></div>
+                <div class="col text-right" style="margin-left: 130px"><b>{{totalAmount + ' VND'}}</b></div>
+              </div>
+              <div class="row lower" style="margin-left: -50px; margin-top: 5px">
+                <div class="col text-left" style="display: block; margin-left: 35px">Hình thức thanh toán</div>
+                <div class="col text-left" style="display: block; margin-left: -50px"></div>
+                <div>
+                  <p for="creditCardRadio" style="margin-top: -28px;margin-left: 110px ">Thẻ tín dụng
+                    <input type="radio" id="creditCardRadio" name="paymentMethod" value="Tín dụng"
+                           [(ngModel)]="invoice.paymentMethod" (change)="onRadioChange()">
+                  </p>
+                </div>
+                <div>
+                  <p for="cashRadio" style="margin-top: -85px; margin-left: 310px;">Tiền mặt
+                    <input type="radio" id="cashRadio" name="paymentMethod" value="Tiền mặt"
+                           [(ngModel)]="invoice.paymentMethod" (change)="onRadioChange()">
+                  </p>
+                </div>
+              </div>
+              <div class="payment-container">
+                <button [hidden]="invoice.paymentMethod !== 'Tín dụng'"
+                        (click)="showMessageAndPay()"
+                        [style.visibility]="invoice.paymentMethod === 'Tín dụng' ? 'visible' : 'hidden'"
+                        class="payment-button">Thanh toán VNPay
+                </button>
+                <br>
+                <button class="btn custom-btn" type="submit" (click)="savePaymentAndGeneratePDF()"
+                        [disabled]="register.form.status==='INVALID'||!isValidEmail(customer.customerEmail)||!isValidPhoneNumber(customer.customerPhone)|| !radioSelected|| productList.length===0">
+                  Tiến hành thanh toán
+                </button>
+                <p class="text-muted text-center">Complimentary Shipping & Returns</p>
+              </div>
+
+
+              <!--          <div class="col-md-4">-->
+              <!--            <button type="button" class="btn btn-secondary btn-lg btn-block"-->
+              <!--                    (click)=" generatePDF('download')">Download Invoice</button>-->
+              <!--            <button type="button" class="btn btn-secondary btn-lg btn-block"-->
+              <!--                    (click)=" generatePDF('print')">Print-->
+              <!--              Invoice</button>-->
+              <!--            <button type="submit" class="btn btn-secondary btn-lg btn-block"-->
+              <!--                    (click)=" generatePDF()">Open-->
+              <!--              Invoice</button>-->
+              <!--          </div>-->
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+    </div>
+  </div>
+  </body>
+</ng-container>
+

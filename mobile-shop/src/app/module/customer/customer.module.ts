@@ -1,21 +1,17 @@
-
+// @ts-ignore
 import { NgModule } from '@angular/core';
+// @ts-ignore
 import { CommonModule } from '@angular/common';
+
 import { CustomerRoutingModule } from './customer-routing.module';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {CustomerListComponent} from "./customer-list/customer-list.component";
 
 
 // @ts-ignore
 @NgModule({
-  declarations: [
-    CustomerListComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    CustomerRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
+    CustomerRoutingModule
   ]
 })
 export class CustomerModule { }

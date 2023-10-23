@@ -1,20 +1,12 @@
-
-import {ProductListComponent} from './product-list/product-list.component';
-
-
+// @ts-ignore
 import { NgModule } from '@angular/core';
-
+// @ts-ignore
 import { Routes, RouterModule } from '@angular/router';
 
 
-const routes: Routes = [
-  {
-    path: '',
-    component: ProductListComponent
-  }
-];
+const routes: Routes = [];
 
-
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

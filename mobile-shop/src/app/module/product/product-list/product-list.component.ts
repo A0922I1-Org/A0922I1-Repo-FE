@@ -1,8 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {Product} from '../../../model/product';
-import {ProductService} from '../../../service/product.service';
-import {Router} from '@angular/router';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {ProductServiceService} from "../../../service/serviceProduct/product-service.service";
+import {Product} from "../../../model/product";
+import {Page} from "../../../model/page";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
+import {ShareDataService} from "../../../service/outputInvoiceService/share-data.service";
+
+
 
 @Component({
   selector: 'app-product-list',
@@ -11,11 +15,15 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ProductListComponent implements OnInit {
   searchForm: FormGroup;
+  private productEmitted: any;
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductServiceService,
+              private router: Router,
+              private shareData: ShareDataService) {
   }
 
   products: Product [] = [];
+  product: Product;
   chooseProductId = 0;
   chooseProductName = '';
   totalPages = 0;
@@ -25,32 +33,34 @@ export class ProductListComponent implements OnInit {
   brand: string;
   price: string;
   name: string;
+  cpu: string;
   sort: string;
 
   ngOnInit(): void {
-    this.getProductList('', '', '', '', true);
+    this.getProductList('', '', '', '', '', true);
     this.searchForm = new FormGroup({
-      productName: new FormControl('', [Validators.maxLength(30)])
+      productName: new FormControl('', [Validators.maxLength(3)])
     });
   }
 
   doDelete(deleteProductId: number) {
     this.productService.deleteProduct(deleteProductId).subscribe(() => {
       alert('Xóa sản phẩm thành công');
-      this.getProductList('', '', '', '', true);
+      this.getProductList('', '', '', '', '', true);
     });
   }
 
-  getProductList(brandName: string, sellingPrice: string, productName: string, sort: string, check: boolean) {
+  getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string,  sort: string, check: boolean) {
     this.brand = brandName;
     this.price = sellingPrice;
     this.name = productName;
+    this.cpu = productCpu;
     if (sort === '') {
       sort = 'product_id';
     }
     this.sort = sort;
     if (check === true) {
-      this.productService.getProductList(brandName, sellingPrice, productName, 1, 8, sort, true).subscribe((response: any) => {
+      this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, true).subscribe((response: any) => {
         if (response == null) {
           this.products = [];
           this.totalPages = 0;
@@ -66,7 +76,7 @@ export class ProductListComponent implements OnInit {
       this.check = check;
     } else if (check === false) {
       {
-        this.productService.getProductList(brandName, sellingPrice, productName, 1, 8, sort, false).subscribe((response: any) => {
+        this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, false).subscribe((response: any) => {
           if (response == null) {
             this.products = [];
             this.totalPages = 0;
@@ -91,7 +101,7 @@ export class ProductListComponent implements OnInit {
 
   onPrevPage() {
     if (this.currentPage > 0) {
-      this.productService.getProductList(this.brand, this.price, this.name, this.currentPage,
+      this.productService.getProductList(this.brand, this.price, this.name, this.cpu,  this.currentPage,
         this.pageSize, this.sort, this.check).subscribe((response: any) => {
         this.products = response.content;
         this.totalPages = response.totalPages;
@@ -103,7 +113,7 @@ export class ProductListComponent implements OnInit {
 
   onNextPage() {
     if (this.currentPage < this.totalPages) {
-      this.productService.getProductList(this.brand, this.price, this.name, this.currentPage + 2,
+      this.productService.getProductList(this.brand, this.price, this.name, this.cpu, this.currentPage + 2,
         this.pageSize, this.sort, this.check).subscribe((response: any) => {
         this.products = response.content;
         this.totalPages = response.totalPages;
@@ -111,5 +121,14 @@ export class ProductListComponent implements OnInit {
         this.pageSize = response.size;
       });
     }
+  }
+
+
+  findByIdProduct(productId: number) {
+    this.productService.findById(productId).subscribe(data => {
+      this.product = data;
+      this.shareData.setProductData(data)
+    });
+
   }
 }

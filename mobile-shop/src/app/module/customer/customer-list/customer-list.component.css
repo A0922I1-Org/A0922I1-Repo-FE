@@ -1,6 +1,4 @@
-/*body{*/
-/*  border: black 2px;*/
-/*}*/
+
 border{
   margin: 30px;
 }
@@ -20,7 +18,7 @@ button{
 h2{
   color: black;
   size: 35px;
-  font-family: Arial;
+  font-family: Arial, serif;
   font-weight: bold;
 }
 .header{
@@ -42,3 +40,13 @@ h2{
   text-align: center;
 }
 
+.custom-button{
+  margin-left: -355px;
+  width: 140px;
+  height: 40px;
+  font-size: 0.9em;
+  padding: 0 0;
+  background: #007bff;
+  margin-bottom: 5px;
+  margin-top: -8px;
+}

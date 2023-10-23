@@ -5,5 +5,4 @@ export interface Customer {
   customerAddress: string;
   customerAge: number;
   customerEmail: string;
-
 }

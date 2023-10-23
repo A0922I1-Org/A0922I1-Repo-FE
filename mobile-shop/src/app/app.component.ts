@@ -1,6 +1,5 @@
-
-import {Component} from '@angular/core';
-
+// @ts-ignore
+import { Component } from '@angular/core';
 
 // @ts-ignore
 @Component({

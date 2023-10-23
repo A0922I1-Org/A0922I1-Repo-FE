@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Product} from '../../model/product';
-import {Page} from '../../model/page';
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Product} from "../../model/product";
+import {Page} from "../../model/page";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductServiceService {
+
   private API_URL_CREATE_PRODUCT = 'http://localhost:8080/product/create-product';
   private API_URL_EDIT_PRODUCT = 'http://localhost:8080/product//edit-product/';
   private API_URL_FIND_BY_ID = 'http://localhost:8080/api/product';
