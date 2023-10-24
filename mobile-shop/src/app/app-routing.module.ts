@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {AuthGuard} from './auth.guard';
 import {RoleGuard} from './role.guard';
 import {HomePageComponent} from "./shared/home-page/home-page.component";
+import {NoAuthGuard} from "./NoAuthGuard";
 
 
 const routes: Routes = [
@@ -10,11 +11,12 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./model/security/security.module').then(module => module.SecurityModule),
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'signUp',
     loadChildren: () => import('./model/user/user-routing.module').then(module => module.UserRoutingModule),
-    canActivate: [AuthGuard, RoleGuard],// Áp dụng AuthGuard cho route này
+    canActivate: [AuthGuard, RoleGuard],
     data: {roles: ['ADMIN']}
   },
   {
@@ -32,6 +34,7 @@ const routes: Routes = [
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
     canActivate: [AuthGuard]
   },
+
   {
     path: 'api/managerPurchaseHistory',
     loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module').then(module => module.ManagerPurchaseHistoryModule),
@@ -60,13 +63,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent
-  }
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
+    canActivate: [AuthGuard, RoleGuard],
+    data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
+  },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)]
 })
 
 

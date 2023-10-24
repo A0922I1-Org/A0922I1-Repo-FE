@@ -35,7 +35,7 @@ export class AddUserComponent implements OnInit {
       addressEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
       numberPhoneEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
       username: ['', [Validators.required, this.lengthValidator(5, 35)]],
-      role: ['', [Validators.required, this.lengthValidator(5, 35)]],
+      role: ['', [Validators.required]],
       email: ['', [Validators.required, this.customEmailValidator]],
       password: ['', [Validators.required, this.lengthValidator(5, 35)]],
       confirmPassword: ['', [Validators.required, this.lengthValidator(5, 35)]],

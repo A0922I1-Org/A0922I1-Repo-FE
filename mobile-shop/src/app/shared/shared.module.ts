@@ -5,6 +5,7 @@ import {BodyComponent} from "./body/body.component";
 import {ImageScrollComponent} from "./image-scroll/image-scroll.component";
 import {PhoneDetailsComponent} from "./phone-details/phone-details.component";
 import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {RouterModule} from "@angular/router";
     PhoneDetailsComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class SharedModule {

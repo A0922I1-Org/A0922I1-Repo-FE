@@ -1,7 +1,7 @@
 
 import {SupplierModule} from './module/supplier/supplier.module';
 import {InputInvoiceDetailModule} from './module/input-invoice-detail/input-invoice-detail.module';
-import {CommonModule, DatePipe} from '@angular/common';
+import {CommonModule, CurrencyPipe, DatePipe} from '@angular/common';
 import {DateFormatPipe} from './date-format.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalModule} from 'ngx-bootstrap/modal';
@@ -35,13 +35,15 @@ import {CustomerModule} from "./module/customer/customer.module";
 import {HomePageComponent} from "./shared/home-page/home-page.component";
 import {BodyComponent} from "./shared/body/body.component";
 import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
-import {UserModule} from "./model/user/user.module";
+import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module";
+import {AddUserComponent} from "./model/user/add-user/add-user.component";
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AddUserComponent,
     DateFormatPipe,
     ChangePasswordComponent,
     HeaderComponent,
@@ -72,6 +74,8 @@ import {UserModule} from "./model/user/user.module";
     CarouselModule,
     MatDialogModule,
     SocialLoginModule,
+    // NgxPaginationModule,
+    OutputInvoiceModule
   ],
   providers: [DatePipe],
   exports: [],

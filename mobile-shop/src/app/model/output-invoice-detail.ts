@@ -1,9 +1,9 @@
-import {Product} from './product';
 import {OutputInvoice} from './output-invoice';
+import {ProductDto} from "../dto/product-dto";
 
-export interface OutputInvoiceDetail {
+export class OutputInvoiceDetail {
   quantity: number;
-  subTotal: number;
-  product: Product;
-  outputInvoice: OutputInvoice;
+  // subTotal: number;
+  productDTO: ProductDto;
+  // outputInvoice: OutputInvoice;
 }

@@ -27,7 +27,7 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Địa chỉ</label>
-              <input formControlName="addressEmployee" type="text" id="inputAddressEmployee" class ="form-control"
+              <input formControlName="addressEmployee" type="text" id="inputAddressEmployee" class="form-control"
               placeholder="Nhập địa chỉ">
               <div *ngIf="formSignUp.get('addressEmployee').invalid && formSignUp.get('addressEmployee').touched"
                    class="text-danger">
@@ -48,7 +48,7 @@
             <div class="mb-3">
               <label class="form-label">Quyền Hạn</label>
               <select formControlName="role" id="inputRole" class="form-select">
-                <option value="" selected disabled>--Chọn vị trí--</option>
+                <option [ngValue]="null" disabled>--Chọn vị trí--</option>
                 <option value="sale">Sale</option>
                 <option value="business">Business</option>
                 <option value="storage">Storage</option>
