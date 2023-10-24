@@ -39,7 +39,6 @@ import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module
 import {AddUserComponent} from "./model/user/add-user/add-user.component";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
