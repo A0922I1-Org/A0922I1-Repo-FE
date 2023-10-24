@@ -30,13 +30,7 @@ const routes: Routes = [
   {
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
-    canActivate: [AuthGuard],
-  {
-    path: 'product',
-    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
-    // canActivate: [AuthGuard,RoleGuard],
-    // data: { roles: ['ADMIN','BUSINESS','SALE',"STORAGE"]}
-
+    canActivate: [AuthGuard]
   },
   {
     path: 'api/managerPurchaseHistory',

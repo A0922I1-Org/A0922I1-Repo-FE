@@ -1,100 +1,147 @@
-  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img
-          src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/10/banner/PK-iPhone-15-1200-44-1200x44.png"
-          class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img
-          src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/09/banner/IP15-1200-44-1200x44.png"
-          class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img
-          src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/10/banner/DH-Ty-Ty-1200-44-1200x44.png"
-          class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+<!--  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">-->
+<!--    <div class="carousel-inner">-->
+<!--      <div class="carousel-item active">-->
+<!--        <img-->
+<!--          src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/10/banner/PK-iPhone-15-1200-44-1200x44.png"-->
+<!--          class="d-block w-100" alt="...">-->
+<!--      </div>-->
+<!--      <div class="carousel-item">-->
+<!--        <img-->
+<!--          src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/09/banner/IP15-1200-44-1200x44.png"-->
+<!--          class="d-block w-100" alt="...">-->
+<!--      </div>-->
+<!--      <div class="carousel-item">-->
+<!--        <img-->
+<!--          src="https://img.tgdd.vn/imgt/f_webp,fit_outside,quality_100/https://cdn.tgdd.vn/2023/10/banner/DH-Ty-Ty-1200-44-1200x44.png"-->
+<!--          class="d-block w-100" alt="...">-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">-->
+<!--      <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+<!--      <span class="visually-hidden">Previous</span>-->
+<!--    </button>-->
+<!--    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">-->
+<!--      <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
+<!--      <span class="visually-hidden">Next</span>-->
+<!--    </button>-->
+<!--  </div>-->
 
-  <nav class="navbar navbar-light">
-    <div class="searchbar">
-      <a class="navbar-brand" href="/"><img src="/assets/images/logo1.png"></a>
-      <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..."
-             aria-label="Search" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
-    </div>
-    <div>
-      <button [hidden]="isLoggedIn" routerLink="/login" type="button" class="btn btn-dark" style="margin-right: 3cm">
-        Login
+<!--  <nav class="navbar navbar-light">-->
+<!--    <div class="searchbar">-->
+<!--      <a class="navbar-brand" href="/"><img src="/assets/images/logo1.png"></a>-->
+<!--      <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..."-->
+<!--             aria-label="Search" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">-->
+<!--    </div>-->
+<!--    <div>-->
+<!--      <button [hidden]="isLoggedIn" routerLink="/login" type="button" class="btn btn-dark" style="margin-right: 3cm">-->
+<!--        Login-->
+<!--      </button>-->
+<!--    </div>-->
+<!--    <div [hidden]="!isLoggedIn">-->
+<!--      <div class="d-flex position-relative justify-content-between align-items-center">-->
+<!--        <span class="text-light">Xin chào: {{username}}</span>-->
+<!--        <a href="#" class="dropdown-item" (click)="logOut()">Đăng xuất</a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+<!--  <div class="navbar">-->
+<!--    <div class="container-fluid">-->
+<!--      <nav class="navbar navbar-expand-md navbar-light navbar-expand-xl py-0">-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"-->
+<!--                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        </button>-->
+
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--          <ul class="navbar-nav flex-fill">-->
+<!--            <li class="nav-item active">-->
+<!--              <a class="nav-link" routerLink='input-invoice'><img src="/assets/images/dienthoai.png"></a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#"><img src="/assets/images/laptop.png"></a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#"><img src="/assets/images/tablet.png"></a>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--              <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-bs-toggle="dropdown">-->
+<!--                <img src="/assets/images/phukien.png">-->
+<!--              </a>-->
+<!--              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">-->
+<!--                <a class="dropdown-item" href="#">Phụ Kiện Di Động</a>-->
+<!--                <a class="dropdown-item" href="#">Phụ Kiện Laptop</a>-->
+<!--                <div class="dropdown-divider"></div>-->
+<!--                <a class="dropdown-item" href="#">Thiết Bị Âm Thanh</a>-->
+<!--                <div class="dropdown-divider"></div>-->
+<!--                <a class="dropdown-item" href="#">Thiết Bị Lưu Trữ</a>-->
+<!--              </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#"><img src="/assets/images/smartwatch.png"></a>-->
+<!--            </li>-->
+<!--            <li class="nav-item">-->
+<!--              <a class="nav-link" href="#"><img src="/assets/images/maycu.png"></a>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--              <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-bs-toggle="dropdown">-->
+<!--                <img src="/assets/images/pc.png">-->
+<!--              </a>-->
+<!--              <div class="dropdown-menu" aria-labelledby="navbarDropdown2">-->
+<!--                <a class="dropdown-item" href="#">Máy In</a>-->
+<!--                <a class="dropdown-item" href="#">Mực In</a>-->
+<!--                <a class="dropdown-item" href="#">Màn Hình Máy Tính</a><a class="dropdown-item" href="#">Máy Tính Để Bàn</a>-->
+<!--              </div>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </nav>-->
+<!--    </div>-->
+<!--  </div>-->
+
+<div class="navbar">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-md navbar-light navbar-expand-xl py-0">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       </button>
-    </div>
-    <div [hidden]="!isLoggedIn">
-      <div class="d-flex position-relative justify-content-between align-items-center">
-        <span class="text-light">Xin chào: {{username}}</span>
-        <a href="#" class="dropdown-item" (click)="logOut()">Đăng xuất</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav flex-fill">
+          <li *ngIf="userRole=='ADMIN'||userRole=='STORAGE'" class="nav-item active">
+            <a class="nav-link" routerLink='input-invoice'>Nhập kho</a>
+          </li>
+          <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item">
+            <a class="nav-link" routerLink='product'>
+              Quản lý sản phẩm
+            </a>
+          </li>
+          <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item">
+            <a class="nav-link" routerLink="api/managerPurchaseHistory">Lịch sử bán hàng</a>
+          </li>
+          <li *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'" class="nav-item">
+            <a class="nav-link" routerLink='report'>Báo cáo doanh số</a>
+          </li>
+          <li *ngIf="userRole=='ADMIN'||userRole=='STORAGE'||userRole=='BUSINESS'" class="nav-item">
+            <a class="nav-link" routerLink='supplier'>Nhà cung cấp</a>
+          </li>
+          <li *ngIf="userRole=='ADMIN'" class="nav-item">
+            <a class="nav-link" routerLink='signUp'>Tạo tài khoản</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" routerLink="profile">Thông tin tài khoản</a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </nav>
-
-  <div class="navbar">
-    <div class="container-fluid">
-      <nav class="navbar navbar-expand-md navbar-light navbar-expand-xl py-0">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div>
+        <button [hidden]="isLoggedIn" routerLink="/login" type="button" class="btn btn-dark" style="margin-right: 3cm">
+          Login
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav flex-fill">
-            <li class="nav-item active">
-              <a class="nav-link" routerLink='input-invoice'><img src="/assets/images/dienthoai.png"></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><img src="/assets/images/laptop.png"></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><img src="/assets/images/tablet.png"></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-bs-toggle="dropdown">
-                <img src="/assets/images/phukien.png">
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                <a class="dropdown-item" href="#">Phụ Kiện Di Động</a>
-                <a class="dropdown-item" href="#">Phụ Kiện Laptop</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Thiết Bị Âm Thanh</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Thiết Bị Lưu Trữ</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><img src="/assets/images/smartwatch.png"></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><img src="/assets/images/maycu.png"></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown2" role="button" data-bs-toggle="dropdown">
-                <img src="/assets/images/pc.png">
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                <a class="dropdown-item" href="#">Máy In</a>
-                <a class="dropdown-item" href="#">Mực In</a>
-                <a class="dropdown-item" href="#">Màn Hình Máy Tính</a><a class="dropdown-item" href="#">Máy Tính Để Bàn</a>
-              </div>
-            </li>
-          </ul>
+      </div>
+      <div [hidden]="!isLoggedIn">
+        <div class="d-flex position-relative justify-content-between align-items-center">
+          <span class="text-light">Xin chào: {{username}}</span>
+          <a href="#" class="dropdown-item" (click)="logOut()">Đăng xuất</a>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </div>
-
+</div>
