@@ -6,6 +6,7 @@ import {HomePageComponent} from "./shared/home-page/home-page.component";
 
 
 const routes: Routes = [
+
   {
     path: 'login',
     loadChildren: () => import('./model/security/security.module').then(module => module.SecurityModule),
@@ -30,8 +31,13 @@ const routes: Routes = [
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
     canActivate: [AuthGuard],
-  },
+  {
+    path: 'product',
+    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
+    // canActivate: [AuthGuard,RoleGuard],
+    // data: { roles: ['ADMIN','BUSINESS','SALE',"STORAGE"]}
 
+  },
   {
     path: 'api/managerPurchaseHistory',
     loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module').then(module => module.ManagerPurchaseHistoryModule),

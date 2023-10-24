@@ -30,9 +30,9 @@
           <input type="text" placeholder="Nhập tên cần tìm và ấn tìm kiếm" class="form-control smaller-font"
                  aria-label="Product search" id="productName" formControlName="productName" name="productName"
                  #productName>
-          <!--          <p style="color: red"-->
-          <!--             *ngIf="searchForm.controls.productName.hasError('maxLength') && searchForm.controls.productName.touched">-->
-          <!--            Tên cần tìm không được vượt quá 30 ký tự</p>-->
+          <p style="color: red"
+             *ngIf="searchForm.controls.productName.hasError('maxlength') && searchForm.controls.productName.touched">
+            Tên cần tìm không được vượt quá 30 ký tự</p>
         </div>
         <div class="col-2 col-md-1 col-lg-1 mt-2 text-end">
           <button class="ms-2 search-icon" style="float: left" [disabled]="!searchForm.valid"
@@ -105,7 +105,7 @@
             <td>{{i + 1}}</td>
             <td>{{product.productName}}</td>
             <td>{{product.brand.brandName}}</td>
-            <td>{{product.sellingPrice}}</td>
+            <td>{{product.sellingPrice | number:'1.0-0'}}</td>
             <td>{{product.productCpu}}</td>
             <td>{{product.productStorage}}</td>
             <td>{{product.quantity}}</td>

@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getProductList('', '', '', '', true);
     this.searchForm = new FormGroup({
-      productName: new FormControl('', [Validators.maxLength(3)])
+      productName: new FormControl('', [Validators.maxLength(30)])
     });
   }
 
