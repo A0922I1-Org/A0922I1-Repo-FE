@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
 const ROLE_KEY = 'auth-role';
+const NAME_KEY ='name-key';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,15 @@ export class tokenStorageService {
     window.sessionStorage.removeItem(ROLE_KEY);
     window.sessionStorage.setItem(ROLE_KEY, JSON.stringify(role));
   }
+  public saveNameLocal(name: string) {
+    window.localStorage.removeItem(NAME_KEY);
+    window.localStorage.setItem(NAME_KEY, JSON.stringify(name));
+  }
+
+  public saveNameSession(name: string) {
+    window.sessionStorage.removeItem(NAME_KEY);
+    window.sessionStorage.setItem(NAME_KEY, JSON.stringify(name));
+  }
 
   public getToken(): string {
     if (localStorage.getItem(TOKEN_KEY) !== null) {
@@ -66,6 +76,15 @@ export class tokenStorageService {
       return JSON.parse(localStorage.getItem(ROLE_KEY));
     } else {
       return JSON.parse(sessionStorage.getItem(ROLE_KEY));
+    }
+  }
+
+  getName() {
+    const nameData = localStorage.getItem(NAME_KEY) || sessionStorage.getItem(NAME_KEY);
+    if (nameData) {
+      return JSON.parse(nameData);
+    } else {
+      return null;
     }
   }
 

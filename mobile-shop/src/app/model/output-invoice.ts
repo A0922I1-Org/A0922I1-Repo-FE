@@ -1,6 +1,6 @@
 import {Customer} from './customer';
 
-export interface OutputInvoice {
+export class OutputInvoice {
   paymentMethod: string;
   totalPrice: number;
   dateOutputInvoice: Date;

@@ -2,7 +2,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './auth.guard';
 import {RoleGuard} from './role.guard';
+<<<<<<< HEAD
 import {HomePageComponent} from './shared/home-page/home-page.component';
+=======
+import {HomePageComponent} from "./shared/home-page/home-page.component";
+import {NoAuthGuard} from "./NoAuthGuard";
+>>>>>>> 5923e2f8b4f3c8212815c121b4073a5a7f5e26fb
 
 
 const routes: Routes = [
@@ -10,11 +15,16 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./model/security/security.module').then(module => module.SecurityModule),
+    canActivate: [NoAuthGuard]
   },
   {
     path: 'signUp',
     loadChildren: () => import('./model/user/user-routing.module').then(module => module.UserRoutingModule),
+<<<<<<< HEAD
     canActivate: [AuthGuard, RoleGuard], // Áp dụng AuthGuard cho route này
+=======
+    canActivate: [AuthGuard, RoleGuard],
+>>>>>>> 5923e2f8b4f3c8212815c121b4073a5a7f5e26fb
     data: {roles: ['ADMIN']}
   },
   {
@@ -31,6 +41,7 @@ const routes: Routes = [
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
     canActivate: [AuthGuard]
+<<<<<<< HEAD
   },
   {
     path: 'product',
@@ -38,7 +49,10 @@ const routes: Routes = [
     // canActivate: [AuthGuard,RoleGuard],
     // data: { roles: ['ADMIN','BUSINESS','SALE',"STORAGE"]}
 
+=======
+>>>>>>> 5923e2f8b4f3c8212815c121b4073a5a7f5e26fb
   },
+
   {
     path: 'api/managerPurchaseHistory',
     // tslint:disable-next-line:max-line-length
@@ -68,13 +82,18 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomePageComponent
-  }
+  },
+  {
+    path: 'payment',
+    loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
+    canActivate: [AuthGuard, RoleGuard],
+    data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
+  },
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)]
 })
 
 

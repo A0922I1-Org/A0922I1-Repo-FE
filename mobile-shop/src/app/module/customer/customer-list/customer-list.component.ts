@@ -3,6 +3,7 @@ import {ServiceCustomerService} from "../../../service/serviceCustomer/service-c
 import {Router} from "@angular/router";
 import {Customer} from "../../../model/customer";
 import {Page} from "../../../model/page";
+import {ShareDataService} from "../../../service/outputInvoiceService/share-data.service";
 
 
 
@@ -17,7 +18,8 @@ export class CustomerListComponent implements OnInit {
   customers: Customer [];
   option: string;
   constructor(private serviceCustomerService: ServiceCustomerService,
-              private router: Router) {
+              private router: Router,
+              private shareData: ShareDataService) {
 
   }
 
@@ -37,7 +39,7 @@ export class CustomerListComponent implements OnInit {
   findByIdCustomer(id: number) {
     this.serviceCustomerService.findById(id).subscribe(data => {
       this.customer = data;
-      console.log(data);
+      this.shareData.setCustomerData(data)
     });
   }
 
