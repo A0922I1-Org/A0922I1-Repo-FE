@@ -11,12 +11,12 @@
     .container {
       display: grid;
       width: 70%;
-      margin: 0 auto;
       padding: 20px;
       border: 3px solid #ffd400;
       background-color: #f7f7f7;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      margin-top: 40px;
     }
 
     .header {
@@ -27,6 +27,11 @@
       padding: 10px;
       margin: -10px -10px 20px;
       border-radius: 10px;
+    }
+    .header h2{
+      text-align: center;
+      margin-top: 20px;
+      font-size: 35px;
     }
 
     .title {
@@ -115,7 +120,7 @@
         <input type="radio" formControlName="reportType" name="reportType" value="All" (change)="onReportTypeChange()"> Tất cả
       </label>
       <label class="radio-option">
-        <input type="radio" formControlName="reportType" name="reportType" value="MaSp" (change)="onReportTypeChange()"> MaSp
+        <input type="radio" formControlName="reportType" name="reportType" value="MaSp" (change)="onReportTypeChange()"> Mã Sản Phẩm
       </label>
     </div>
     <div class="form-group col-md-6">
@@ -125,7 +130,7 @@
         chưa nhập</p>
     </div>
     <div class="btn-submit">
-      <button type="submit" [disabled]="reportForm.invalid" class="btn btn-primary">Xem</button>
+      <button type="submit" [disabled]="reportForm.invalid" class="btn btn-outline-primary">Xem</button>
     </div>
   </form>
   <div class="chart">
@@ -135,7 +140,7 @@
   </div>
 </div>
 <div class="btn-back">
-  <button  type="button" class="btn btn-outline-dark ">Quay lại</button>
+  <button  type="button" [routerLink]="['/home']" class="btn btn-outline-dark ">Quay lại</button>
 </div>
 </body>
 </html>
