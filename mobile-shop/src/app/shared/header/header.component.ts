@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Check if the current route is '/'
-        if (event.url === '/') {
+        if (event.url === '/home') {
           this.showSearchInput = true;
         } else {
           this.showSearchInput = false;
@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authorize.signOut();
-    location.reload();
+    // @ts-ignore
+    window.location.href = 'http://localhost:4200/';
   }
 }
