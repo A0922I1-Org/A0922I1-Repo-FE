@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Check if the current route is '/'
-        if (event.url === '/') {
+        if (event.url === '/home') {
           this.showSearchInput = true;
         } else {
           this.showSearchInput = false;
