@@ -7,7 +7,7 @@ import {UpdateSupplierComponent} from './update-supplier/update-supplier.compone
 
 const routes: Routes = [
   {
-    path: 'supplier',
+    path: '',
     component: SupplierListComponent
   },
   {

@@ -3,6 +3,7 @@ import {Product} from '../../../model/product';
 import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Brand} from '../../../model/brand';
 
 @Component({
   selector: 'app-product-list',
@@ -14,7 +15,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productService: ProductService, private router: Router) {
   }
-
+  selectedBrand = '';
+  brands: Brand [] = [];
   products: Product [] = [];
   chooseProductId = 0;
   chooseProductName = '';
@@ -28,7 +30,7 @@ export class ProductListComponent implements OnInit {
   sort: string;
 
   ngOnInit(): void {
-    this.getProductList('', '', '', '', true);
+    this.getProductList('', '', '', '', false);
     this.searchForm = new FormGroup({
       productName: new FormControl('', [Validators.maxLength(30)])
     });
@@ -37,7 +39,7 @@ export class ProductListComponent implements OnInit {
   doDelete(deleteProductId: number) {
     this.productService.deleteProduct(deleteProductId).subscribe(() => {
       alert('Xóa sản phẩm thành công');
-      this.getProductList('', '', '', '', true);
+      this.getProductList('', '', '', '', false);
     });
   }
 
@@ -50,33 +52,37 @@ export class ProductListComponent implements OnInit {
     }
     this.sort = sort;
     if (check === true) {
-      this.productService.getProductList(brandName, sellingPrice, productName, 1, 8, sort, true).subscribe((response: any) => {
+      this.productService.getResponseProduct(brandName, sellingPrice, productName, 1, 8, sort, true).subscribe((response: any) => {
         if (response == null) {
+          this.brands = [];
           this.products = [];
           this.totalPages = 0;
           this.currentPage = 0;
           this.pageSize = 0;
         } else {
-          this.products = response.content;
-          this.totalPages = response.totalPages;
-          this.currentPage = response.number;
-          this.pageSize = response.size;
+          this.products = response.productPage.content;
+          this.brands = response.brandList;
+          this.totalPages = response.productPage.totalPages;
+          this.currentPage = response.productPage.number;
+          this.pageSize = response.productPage.size;
         }
       });
       this.check = check;
     } else if (check === false) {
       {
-        this.productService.getProductList(brandName, sellingPrice, productName, 1, 8, sort, false).subscribe((response: any) => {
+        this.productService.getResponseProduct(brandName, sellingPrice, productName, 1, 8, sort, false).subscribe((response: any) => {
           if (response == null) {
+            this.brands = [];
             this.products = [];
             this.totalPages = 0;
             this.currentPage = 0;
             this.pageSize = 0;
           } else {
-            this.products = response.content;
-            this.totalPages = response.totalPages;
-            this.currentPage = response.number;
-            this.pageSize = response.size;
+            this.products = response.productPage.content;
+            this.brands = response.brandList;
+            this.totalPages = response.productPage.totalPages;
+            this.currentPage = response.productPage.number;
+            this.pageSize = response.productPage.size;
           }
         });
         this.check = check;
@@ -91,24 +97,26 @@ export class ProductListComponent implements OnInit {
 
   onPrevPage() {
     if (this.currentPage > 0) {
-      this.productService.getProductList(this.brand, this.price, this.name, this.currentPage,
+      this.productService.getResponseProduct(this.brand, this.price, this.name, this.currentPage,
         this.pageSize, this.sort, this.check).subscribe((response: any) => {
-        this.products = response.content;
-        this.totalPages = response.totalPages;
-        this.currentPage = response.number;
-        this.pageSize = response.size;
+        this.products = response.productPage.content;
+        this.brands = response.brandList;
+        this.totalPages = response.productPage.totalPages;
+        this.currentPage = response.productPage.number;
+        this.pageSize = response.productPage.size;
       });
     }
   }
 
   onNextPage() {
     if (this.currentPage < this.totalPages) {
-      this.productService.getProductList(this.brand, this.price, this.name, this.currentPage + 2,
+      this.productService.getResponseProduct(this.brand, this.price, this.name, this.currentPage + 2,
         this.pageSize, this.sort, this.check).subscribe((response: any) => {
-        this.products = response.content;
-        this.totalPages = response.totalPages;
-        this.currentPage = response.number;
-        this.pageSize = response.size;
+        this.products = response.productPage.content;
+        this.brands = response.brandList;
+        this.totalPages = response.productPage.totalPages;
+        this.currentPage = response.productPage.number;
+        this.pageSize = response.productPage.size;
       });
     }
   }
