@@ -4,6 +4,7 @@ import {SharedDataService} from '../../service/shared-data.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {tokenStorageService} from "../../model/security/service/token-storage.service";
 import {shareService} from "../../model/security/service/share.service";
+import {AuthService} from "../../model/security/service/auth.service";
 
 
 @Component({
@@ -20,9 +21,12 @@ export class HeaderComponent implements OnInit {
   searchQuery: string = '';
   showSearchInput: boolean;
 
-  constructor(private searchService: SearchService, private sharedDataService: SharedDataService, private router: Router,
+  constructor(private searchService: SearchService,
+              private sharedDataService: SharedDataService,
+              private router: Router,
               private authorize: tokenStorageService,
-              private share: shareService) {
+              private share: shareService,
+              private authService: AuthService) {
 //phan quyen
 //     this.userRole = this.authorize.getRole().authority;
     this.share.getClickEvent().subscribe(() => {
@@ -44,12 +48,14 @@ export class HeaderComponent implements OnInit {
 
   loadHeader() {
     if (this.authorize.getToken()) {
-      this.userRole = this.authorize.getRole().authority;
+      this.userRole = this.authorize.getRole()?.authority || 'USER';
       this.username = this.authorize.getName();
-      console.log(this.username);
-      console.log("role hien tai la " + this.userRole);
+      this.isLoggedIn = true;
+    } else {
+      this.userRole = '';
+      this.username = '';
+      this.isLoggedIn = false;
     }
-    this.isLoggedIn = this.username != null
   }
 
   ngOnInit(): void {
