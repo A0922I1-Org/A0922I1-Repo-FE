@@ -1,17 +1,6 @@
-import {ProductListComponent} from './module/product/product-list/product-list.component';
-
-
-import {ProductCreateComponent} from './module/product/product-create/product-create.component';
-import {ProductEditComponent} from './module/product/product-edit/product-edit.component';
-
-
-import {ReportCreateComponent} from './module/report/report-create/report-create.component';
-
 
 import {SupplierModule} from './module/supplier/supplier.module';
 import {InputInvoiceDetailModule} from './module/input-invoice-detail/input-invoice-detail.module';
-import {CustomerListComponent} from './module/customer/customer-list/customer-list.component';
-import {LoginComponent} from './model/security/login/login.component';
 import {AddUserComponent} from './model/user/add-user/add-user.component';
 import {CommonModule, DatePipe} from '@angular/common';
 import {DateFormatPipe} from './date-format.pipe';
@@ -29,14 +18,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CarouselModule} from 'ngx-owl-carousel-o';
 import {HeaderComponent} from './shared/header/header.component';
 import {FooterComponent} from './shared/footer/footer.component';
-import {BodyComponent} from './shared/body/body.component';
-import {ImageScrollComponent} from './shared/image-scroll/image-scroll.component';
 import {PhoneDetailsComponent} from './shared/phone-details/phone-details.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {RouterModule, RouterOutlet} from "@angular/router";
 import {SharedModule} from "./shared/shared.module";
 import {SecurityModule} from "./model/security/security.module";
-import {HomePageComponent} from "./shared/home-page/home-page.component";
+
 
 
 import {
@@ -45,15 +32,17 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule
 } from 'angularx-social-login';
+import {CustomerModule} from "./module/customer/customer.module";
+import {HomePageComponent} from "./shared/home-page/home-page.component";
+import {BodyComponent} from "./shared/body/body.component";
+import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
+import {LoginComponent} from "./model/security/login/login.component";
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductCreateComponent,
-    ProductEditComponent,
-    ReportCreateComponent,
-    CustomerListComponent,
     AddUserComponent,
     DateFormatPipe,
     ChangePasswordComponent,
@@ -73,11 +62,11 @@ import {
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    CustomerModule,
     SupplierModule,
     InputInvoiceDetailModule,
     NgbModule,
     ModalModule.forRoot(),
-    ReactiveFormsModule,
     BrowserAnimationsModule,
     CarouselModule,
     MatDialogModule,
