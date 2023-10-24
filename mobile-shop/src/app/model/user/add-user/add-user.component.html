@@ -6,20 +6,20 @@
           <h4>Sign Up</h4>
         </div>
         <div class="card-body">
-          <form [formGroup]="formSignUp">
+          <form [formGroup]="formSignUp" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label class="form-label">Họ Và Tên</label>
               <input formControlName="nameEmployee" type="text" id="inputNameEmployee" class="form-control"
-                     placeholder="nhập họ và tên">
+                     placeholder="Nhập họ và tên">
               <div *ngIf="formSignUp.get('nameEmployee').invalid && formSignUp.get('nameEmployee').touched"
                    class="text-danger">
                 Tên không hợp lệ
               </div>
             </div>
             <div class="mb-3">
-              <label class="form-label">Ngày sinh </label>
+              <label class="form-label">Ngày sinh</label>
               <input formControlName="birthdayEmployee" type="date" id="inputBirthdayEmployee" class="form-control"
-                     placeholder="nhập ngày Sinh">
+                     placeholder="Nhập ngày sinh">
               <div *ngIf="formSignUp.get('birthdayEmployee').invalid && formSignUp.get('birthdayEmployee').touched"
                    class="text-danger">
                 Ngày không hợp lệ
@@ -27,8 +27,8 @@
             </div>
             <div class="mb-3">
               <label class="form-label">Địa chỉ</label>
-              <input formControlName="addressEmployee" type="text" id="inputAddressEmployee" class="form-control"
-                     placeholder="nhập địa chỉ">
+              <input formControlName="addressEmployee" type="text" id="inputAddressEmployee" class ="form-control"
+              placeholder="Nhập địa chỉ">
               <div *ngIf="formSignUp.get('addressEmployee').invalid && formSignUp.get('addressEmployee').touched"
                    class="text-danger">
                 Địa chỉ không để trống
@@ -38,7 +38,7 @@
               <label class="form-label">Số điện thoại</label>
               <input formControlName="numberPhoneEmployee" type="text" id="inputNumberPhoneEmployee"
                      class="form-control"
-                     placeholder="nhập số điện thoại">
+                     placeholder="Nhập số điện thoại">
               <div
                 *ngIf="formSignUp.get('numberPhoneEmployee').invalid && formSignUp.get('numberPhoneEmployee').touched"
                 class="text-danger">
@@ -49,18 +49,21 @@
               <label class="form-label">Quyền Hạn</label>
               <select formControlName="role" id="inputRole" class="form-select">
                 <option value="" selected disabled>--Chọn vị trí--</option>
-                <option value="sale">sale</option>
-                <option value="business">business</option>
+                <option value="sale">Sale</option>
+                <option value="business">Business</option>
                 <option value="storage">Storage</option>
               </select>
-            </div>
-            <div *ngIf="formSignUp.get('role').invalid && formSignUp.get('role').touched" class="text-danger">
-              Vui lòng chọn quyền hạn
+              <div *ngIf="formSignUp.get('role').invalid && formSignUp.get('role').touched" class="text-danger">
+                Vui lòng chọn quyền hạn
+              </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Email</label>
               <input formControlName="email" type="text" id="inputEmail" class="form-control"
                      placeholder="...@abc.com">
+              <div *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched" class="text-danger">
+                Email không hợp lệ
+              </div>
             </div>
             <div *ngIf="formSignUp.hasError('emailMismatch')" class="text-danger">
               Email và xác thực email không khớp.
@@ -69,14 +72,14 @@
               <label class="form-label">Tên tài khoản</label>
               <input formControlName="username" type="text" id="inputUsername" class="form-control"
                      placeholder="Nhập tên tài khoản" autocomplete="username">
-            </div>
-            <div *ngIf="formSignUp.get('username').invalid && formSignUp.get('username').touched" class="text-danger">
-              Vui lòng không để trống
+              <div *ngIf="formSignUp.get('username').invalid && formSignUp.get('username').touched" class="text-danger">
+                Vui lòng không để trống
+              </div>
             </div>
             <div class="mb-3">
               <label class="form-label">Mật khẩu</label>
               <input formControlName="password" type="password" id="inputPassword" class="form-control"
-                     placeholder="nhập password" autocomplete="new-password">
+                     placeholder="Nhập mật khẩu" autocomplete="new-password">
               <div *ngIf="formSignUp.get('password').invalid && formSignUp.get('password').touched" class="text-danger">
                 Không được để trống
               </div>
@@ -84,17 +87,13 @@
             <div class="mb-3">
               <label class="form-label">Xác thực mật khẩu</label>
               <input formControlName="confirmPassword" type="password" id="confirmPassword" class="form-control"
-                     placeholder="xác thực lại password" autocomplete="new-password">
+                     placeholder="Xác thực lại mật khẩu" autocomplete="new-password">
               <div *ngIf="formSignUp.hasError('passwordMismatch')" class="text-danger">
                 Mật khẩu và xác thực mật khẩu không khớp.
               </div>
             </div>
-            <button type="button" (click)="onSubmit()" class="btn btn-primary" [disabled]="formSignUp.invalid">Sign Up
-            </button>
+            <button type="submit" class="btn btn-primary" [disabled]="formSignUp.invalid">Sign Up</button>
             <button type="button" class="btn btn-primary">Back</button>
           </form>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+

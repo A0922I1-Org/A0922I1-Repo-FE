@@ -99,27 +99,16 @@ export class AddUserComponent implements OnInit {
     this.userService.checkExistingUsername(username).pipe(
       switchMap((usernameExists) => {
         if (usernameExists) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Lỗi...',
-            text: 'Tài khoản đã tồn tại!',
-          });
-          return throwError(new Error('Tài khoản đã tồn tại!'));
+          return throwError('Tài khoản đã tồn tại!');
         } else {
           return this.userService.checkExistingEmail(email);
         }
       }),
       switchMap((emailExists) => {
         if (emailExists) {
-          Swal.fire({
-            icon: 'error',
-            title: 'Lỗi...',
-            text: 'Email đã tồn tại!',
-          });
-          return throwError(new Error('Email đã tồn tại!'));
+          return throwError('Email đã tồn tại!');
         } else {
           const employee = this.createEmployee();
-          console.log(this.employee)
           return this.userService.addEmployee(employee);
         }
       }),
@@ -127,16 +116,16 @@ export class AddUserComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Lỗi...',
-          text: 'Đã xảy ra lỗi.',
+          text: error,
         });
         console.log('Error:', error);
-        return throwError(new Error('Đã xảy ra lỗi.'));
+        return throwError(error);
       })
     ).subscribe(
       (data) => {
         localStorage.setItem('tempAccount', JSON.stringify(data));
         this.formSignUp.reset();
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('/home');
 
         Swal.fire({
           icon: 'success',
@@ -148,11 +137,13 @@ export class AddUserComponent implements OnInit {
         Swal.fire({
           icon: 'error',
           title: 'Lỗi...',
-          text: error.message,
+          text: error,
         });
       }
     );
   }
+
+
 
   createEmployee() {
     return {
