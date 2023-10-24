@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authorize.signOut();
-    location.reload();
+    // @ts-ignore
+    window.location.href = 'http://localhost:4200/';
   }
 }

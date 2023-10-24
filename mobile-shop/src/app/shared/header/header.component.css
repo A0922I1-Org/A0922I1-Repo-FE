@@ -71,9 +71,10 @@
 .logout-button:hover {
   background-color: #c0392b; /* Darker red on hover */
 }
-.nav-item.active a {
+.nav-item.active-link a {
   background-color: black; /* Highlight color for active item */
   color: #fff; /* Text color for active item */
 }
+
 
 
