@@ -52,7 +52,14 @@ export class SupplierService {
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
 
-    return this.http.get<Page<Supplier>>(this.apiUrl + '/search', { params });
+    return this.http.get<Page<Supplier>>(this.apiUrl + '/list', { params });
+  }
+
+  getSuppliers(name: string, address: string, phone: string,
+               pageNo: number, pageSize: number, sort: string, direction: boolean): Observable<any> {
+    return this.http.get('http://localhost:8080/api/suppliers/list?name=' +
+      name + '&address=' + address + '&phone=' + phone +
+      '&pageNo=' + pageNo + '&pageSize=' + pageSize + '&sort=' + sort + '&direction=' + direction);
   }
 
   sortByNameSupplier(
