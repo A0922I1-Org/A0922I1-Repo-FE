@@ -16,15 +16,15 @@
             </div>
             <div class="custom-control custom-checkbox mb-3">
               <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="remember_me">
-              <label class="custom-control-label" for="customCheck1">Ghi nhớ đăng nhập lần sau</label>
+              <label class="custom-control-label" for="customCheck1">Lưu trạng thái đăng nhập</label>
             </div>
-            <!-- Nút đăng nhập thông thường -->
-            <button class="btn btn-lg btn-primary text-uppercase" type="button" (click)="onLogin()">Đăng nhập</button>
-            <!-- Nút đăng nhập bằng Google -->
-            <a href="http://localhost:8080/oauth2/authorization/google">Login with Google</a>
-            <button class="btn btn-lg btn-secondary text-uppercase" routerLink="" data-dismiss="modal" type="button">
-              Huỷ
-            </button>
+            <div class="my-custom-container">
+              <button class="btn btn-lg btn-primary text-uppercase" type="button" (click)="onLogin()">Đăng nhập</button>
+              <a href="http://localhost:8080/oauth2/authorization/google" class="google-login-link">
+                <i class="fa fa-google" aria-hidden="true"></i>
+              </a>
+              <button class="btn btn-lg btn-secondary text-uppercase" routerLink="" data-dismiss="modal" type="button">Huỷ</button>
+            </div>
           </form>
         </div>
       </div>

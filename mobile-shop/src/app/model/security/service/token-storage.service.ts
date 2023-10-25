@@ -11,9 +11,14 @@ const NAME_KEY ='name-key';
 export class tokenStorageService {
 
   signOut() {
-    window.localStorage.clear();
-    window.sessionStorage.clear();
+    window.localStorage.removeItem('auth-token');
+    window.sessionStorage.removeItem('auth-token');
+    window.localStorage.removeItem('auth-role');
+    window.sessionStorage.removeItem('auth-role');
+    window.localStorage.removeItem('name-key');
+    window.sessionStorage.removeItem('name-key');
   }
+
 
   public saveTokenLocal(token: string) {
     window.localStorage.removeItem(TOKEN_KEY);
