@@ -2,14 +2,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {AuthGuard} from './auth.guard';
 import {RoleGuard} from './role.guard';
-<<<<<<< HEAD
 import {HomePageComponent} from './shared/home-page/home-page.component';
-=======
-import {HomePageComponent} from "./shared/home-page/home-page.component";
-import {NoAuthGuard} from "./NoAuthGuard";
->>>>>>> 5923e2f8b4f3c8212815c121b4073a5a7f5e26fb
-
-
+import {NoAuthGuard} from './NoAuthGuard';
 const routes: Routes = [
 
   {
@@ -20,11 +14,8 @@ const routes: Routes = [
   {
     path: 'signUp',
     loadChildren: () => import('./model/user/user-routing.module').then(module => module.UserRoutingModule),
-<<<<<<< HEAD
     canActivate: [AuthGuard, RoleGuard], // Áp dụng AuthGuard cho route này
-=======
-    canActivate: [AuthGuard, RoleGuard],
->>>>>>> 5923e2f8b4f3c8212815c121b4073a5a7f5e26fb
+    // canActivate: [AuthGuard, RoleGuard],
     data: {roles: ['ADMIN']}
   },
   {
@@ -41,16 +32,12 @@ const routes: Routes = [
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
     canActivate: [AuthGuard]
-<<<<<<< HEAD
   },
   {
     path: 'product',
     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
     // canActivate: [AuthGuard,RoleGuard],
     // data: { roles: ['ADMIN','BUSINESS','SALE',"STORAGE"]}
-
-=======
->>>>>>> 5923e2f8b4f3c8212815c121b4073a5a7f5e26fb
   },
 
   {
