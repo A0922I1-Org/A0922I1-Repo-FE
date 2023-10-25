@@ -6,6 +6,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      font-size: 16px;
     }
 
     .container {
@@ -28,19 +29,16 @@
       margin: -10px -10px 20px;
       border-radius: 10px;
     }
-    .header h2{
+
+    .header h2 {
       text-align: center;
       margin-top: 20px;
-      font-size: 35px;
-    }
-
-    .title {
-      margin-bottom: 20px;
-      font-size: 18px;
+      font-size: 32px;
     }
 
     label {
       font-weight: bold;
+      margin-top: 20px;
     }
 
     input[type="date"], input[type="text"] {
@@ -55,13 +53,12 @@
       display: flex;
       flex-direction: column;
       margin-bottom: 20px;
-      margin-top : 10px;
+      margin-top: 10px;
     }
 
     .radio-option {
       display: flex;
       align-items: center;
-      font-size: 18px;
       margin-bottom: 10px;
     }
 
@@ -85,15 +82,25 @@
       text-align: right;
       margin: 20px;
     }
-    .btn-back button{
+
+    .btn-back button {
       margin-top: 10px;
     }
+
+    .text-danger {
+      font-family: 'Arial', sans-serif;
+    }
+    /*h1{*/
+    /*  background-color: #cccccc;*/
+    /*  font-weight: bold;*/
+    /*  color: #c0392b;*/
+    /*}*/
   </style>
 </head>
 <body>
 <div class="container" style="margin-top: 40px">
   <div class="header">
-    <h2>Báo cáo bán hàng</h2>
+    <h2><i class="fa fa-area-chart" aria-hidden="true"></i>  Báo Cáo Bán Hàng</h2>
   </div>
   <form [formGroup]="reportForm" (ngSubmit)="submit()">
     <div class="borderReport">
@@ -109,23 +116,27 @@
       <input type="date" id="toDate" formControlName="toDate">
       <p class="text-danger" *ngIf="reportForm.get('toDate').errors?.required && reportForm.get('toDate').touched">
         Không được để trống</p>
-      <p class="text-danger" *ngIf="reportForm.get('toDate').hasError('pattern')">Không đúng format</p>
       <p class="text-danger"
          *ngIf="reportForm.get('toDate').hasError('invalidDate') && reportForm.get('toDate').touched">Thời gian
         không hợp lệ</p>
     </div>
     <div class="radio-group">
-      <label class="title">Báo cáo:</label>
+      <label class="title"> Loại Báo cáo:</label>
       <label class="radio-option">
-        <input type="radio" formControlName="reportType" name="reportType" value="All" (change)="onReportTypeChange()"> Tất cả
+        <input type="radio" formControlName="reportType" name="reportType" value="All" (change)="onReportTypeChange()">
+        Tất Cả
       </label>
       <label class="radio-option">
-        <input type="radio" formControlName="reportType" name="reportType" value="MaSp" (change)="onReportTypeChange()"> Mã Sản Phẩm
+        <input type="radio" formControlName="reportType" name="reportType" value="MaSp" (change)="onReportTypeChange()">
+        Mã Sản Phẩm
       </label>
     </div>
     <div class="form-group col-md-6">
       <label>Nhập Mã Sản Phẩm :</label>
       <input type="text" formControlName="productId">
+      <p class="text-danger"
+         *ngIf="reportForm.get('productId').errors?.required && reportForm.get('productId').touched">
+        Không được để trống</p>
       <p class="text-danger" *ngIf="reportForm.get('productId').hasError('pattern')">Mã sản phẩm không tồn tại hoặc
         chưa nhập</p>
     </div>
@@ -140,7 +151,7 @@
   </div>
 </div>
 <div class="btn-back">
-  <button  type="button" [routerLink]="['/home']" class="btn btn-outline-dark ">Quay lại</button>
+  <button type="button" [routerLink]="['/home']" class="btn btn-outline-dark ">Quay lại</button>
 </div>
 </body>
 </html>
