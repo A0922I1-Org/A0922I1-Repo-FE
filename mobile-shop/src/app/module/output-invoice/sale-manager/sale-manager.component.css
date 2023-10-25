@@ -9,7 +9,7 @@ body {
   color: #333;
   overflow: hidden;
   height: 900px;
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .card {
@@ -244,11 +244,11 @@ input {
   font-size: 14px;
   transition: border-color 0.2s ease;
   margin-right: 50px;
-  margin-top: 9px;
+  margin-top: 15px;
 }
 
 label {
-  margin-top: 4px;
+  margin-top: 10px;
   position: absolute;
   top: 0;
   color: dimgray;
@@ -328,7 +328,7 @@ input:valid + label::after {
   color: red;
   margin-left: 5px;
   margin-bottom: 10px;
-  margin-top: -16px;
+  margin-top: -13px;
 }
 
 .error-message.active {

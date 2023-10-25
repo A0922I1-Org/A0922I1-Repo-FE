@@ -44,8 +44,8 @@ h2{
   height: 40px;
   font-size: 0.9em;
   padding: 0 0;
-  margin-bottom: 5px;
-  margin-top: -20px;
+  margin-bottom: 10px;
+  margin-top: -2px;
 }
 .hover:hover {
   background-color: lightgray;

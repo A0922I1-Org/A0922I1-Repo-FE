@@ -106,7 +106,7 @@
                 </div>
                 <button class="custom-outline-button" type="submit"
                         [disabled]="!isLessThan99(newProduct.qty) || !productForm.valid || checkQuantity(newProduct.qty) || isSubmitDisabled"
-                        style="margin-left: -390px; margin-top: 5px">+ Thêm sản phẩm
+                        style="margin-left: -395px; margin-top: 12px">+ Thêm sản phẩm
                 </button>
 
               </form>
@@ -159,7 +159,7 @@
                   </p>
                 </div>
                 <div>
-                  <p for="cashRadio" style="margin-top: -76px; margin-left: 310px;">Tiền mặt
+                  <p for="cashRadio" style="margin-top: -83px; margin-left: 310px;">Tiền mặt
                     <input type="radio" id="cashRadio" name="paymentMethod" value="Tiền mặt"
                            [(ngModel)]="invoice.paymentMethod" (change)="onRadioChange()">
                   </p>
