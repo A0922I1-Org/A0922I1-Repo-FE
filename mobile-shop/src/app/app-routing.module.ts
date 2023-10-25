@@ -37,6 +37,7 @@ const routes: Routes = [
 
   {
     path: 'api/managerPurchaseHistory',
+    // tslint:disable-next-line:max-line-length
     loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module').then(module => module.ManagerPurchaseHistoryModule),
     canActivate: [AuthGuard, RoleGuard],
     data: {roles: ['ADMIN', 'BUSINESS']}

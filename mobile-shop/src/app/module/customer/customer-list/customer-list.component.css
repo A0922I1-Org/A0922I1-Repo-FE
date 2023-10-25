@@ -40,17 +40,17 @@ h2{
   text-align: center;
 }
 .custom-button{
-  margin-left: -355px;
+  margin-left: -360px;
   width: 140px;
   height: 40px;
   font-size: 0.9em;
   padding: 0 0;
-  background: #007bff;
-  margin-bottom: 5px;
-  margin-top: -8px;
+  margin-bottom: 2px;
+  margin-top: -38px;
+  display: inline-block;
 }
 .hover:hover {
-  background-color: lightgray; /* Màu nền khi hover */
-  cursor: pointer; /* Thay đổi hình dạng con trỏ khi hover */
-  transition: background-color 0.3s; /* Tạo hiệu ứng chuyển đổi màu nền */
+  background-color: lightgray;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
