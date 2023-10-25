@@ -75,21 +75,19 @@
               <form [formGroup]="productForm" (ngSubmit)="saveProduct()" #register="ngForm">
                 <div class="input-container" style="margin-top: -15px">
                   <input type="text" id="productName" formControlName="productName" [(ngModel)]="products.productName"
-                         (input)="saveProductData()"
                          name="productName" class="disabled" required>
                   <label for="productName">Tên sản phẩm</label>
                 </div>
 
 
                 <div class="input-container">
-                  <input type="text" id="price" formControlName="price" [(ngModel)]="products.sellingPrice" name="price"
-                         (input)="saveProductData()" class="disabled" required>
+                  <input type="text" id="price" formControlName="price" [(ngModel)]="products.sellingPrice" name="price" class="disabled" required>
                   <label for="price">Giá</label>
                 </div>
 
                 <div class="input-container">
                   <input type="text" id="quantity" formControlName="quantity" [(ngModel)]="newProduct.qty"
-                         (change)="onQuantityChange($event)" required (input)="saveProductData()">
+                         (change)="onQuantityChange($event)" required>
                   <label for="quantity">Số lượng</label>
                   <p class="error-message active">
                     <ng-container *ngIf="productForm.controls.quantity.touched && productForm.controls.quantity.errors?.required; else elseBlock1">
