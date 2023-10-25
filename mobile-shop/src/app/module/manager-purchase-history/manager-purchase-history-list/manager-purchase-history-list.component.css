@@ -133,4 +133,9 @@ table.table td a {
   color: #566787;
   display: inline
 }
+.btn btn-outline-primary{
+  display: flex;
+  justify-content: space-between;
+}
+
 
