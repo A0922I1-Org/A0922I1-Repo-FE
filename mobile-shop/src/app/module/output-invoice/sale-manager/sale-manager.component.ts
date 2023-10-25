@@ -3,15 +3,14 @@ import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import Swal from 'sweetalert2'
-import {$} from "protractor";
-import {PaymentService} from "../../../service/outputInvoiceService/payment.service";
-import {OrderService} from "../../../service/outputInvoiceService/order.service";
-import {ShareDataService} from "../../../service/outputInvoiceService/share-data.service";
-import {CustomerDto} from "../../../dto/customer-dto";
-import {ProductDto} from "../../../dto/product-dto";
-import {OutputInvoice} from "../../../model/output-invoice";
-import {OutputInvoiceDetail} from "../../../model/output-invoice-detail";
+import Swal from 'sweetalert2';
+import {PaymentService} from '../../../service/outputInvoiceService/payment.service';
+import {OrderService} from '../../../service/outputInvoiceService/order.service';
+import {ShareDataService} from '../../../service/outputInvoiceService/share-data.service';
+import {CustomerDto} from '../../../dto/customer-dto';
+import {ProductDto} from '../../../dto/product-dto';
+import {OutputInvoice} from '../../../model/output-invoice';
+import {OutputInvoiceDetail} from '../../../model/output-invoice-detail';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -44,9 +43,9 @@ export class SaleManagerComponent implements OnInit {
     id: null, name: '', price: null, qty: null, subtotal: null
   };
   productForm: FormGroup = new FormGroup({
-    productName: new FormControl(""),
+    productName: new FormControl(''),
     price: new FormControl(0),
-    quantity: new FormControl(""),
+    quantity: new FormControl(''),
   });
 
   onRadioChange() {
@@ -54,12 +53,10 @@ export class SaleManagerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('da init');
     this.productForm = new FormGroup({
       quantity: new FormControl([Validators.required, Validators.max(99), Validators.min(1)]),
     });
     this.loadCustomerData();
-    this.loadProductData();
     const storedProductList = localStorage.getItem('productList');
     if (storedProductList) {
       this.productList = JSON.parse(storedProductList);
@@ -76,8 +73,6 @@ export class SaleManagerComponent implements OnInit {
       price: new FormControl(),
     });
   }
-
-  //get data
   getCustomer() {
     this.shareData.getCustomerData().subscribe(data => {
       if (data) {
@@ -125,20 +120,21 @@ export class SaleManagerComponent implements OnInit {
     const existingProduct = this.productList.find(product => product.productId === newProduct.productId);
 
     if (existingProduct) {
+      // tslint:disable-next-line:radix
       const totalQty = parseInt(String(existingProduct.qty)) + parseInt(String(newProduct.qty));
 
       if (totalQty <= this.products.quantity) {
         existingProduct.qty = totalQty;
         this.isSubmitDisabled = false;
       } else {
-        this.errorMessage = "Số lượng vượt quá tồn kho.";
+        this.errorMessage = 'Số lượng vượt quá tồn kho.';
         this.isSubmitDisabled = true;
       }
     } else {
       if (newProduct.qty <= this.products.quantity) {
         this.productList.push(newProduct);
       } else {
-        this.errorMessage = "Số lượng vượt quá tồn kho.";
+        this.errorMessage = 'Số lượng vượt quá tồn kho.';
         this.isSubmitDisabled = true;
       }
     }
@@ -146,21 +142,20 @@ export class SaleManagerComponent implements OnInit {
     localStorage.setItem('productList', JSON.stringify(this.productList));
     localStorage.setItem('totalPrice', JSON.stringify(this.totalAmount));
     this.resetFormFields();
-    localStorage.clear();
   }
 
   resetFormFields() {
     this.products.productId = null;
     this.products.productName = '';
-    this.products.sellingPrice = null;
-    this.products.quantity = null;
-    this.newProduct.qty = null;
+    this.products.sellingPrice = undefined;
+    this.products.quantity = undefined;
+    this.newProduct.qty = '';
     this.errorMessage = '';
   }
 
   // function save invoice and invoice details into database
   savePayment() {
-    console.log(this.productList)
+    console.log(this.productList);
     this.productList.forEach(res => {
       const invoiceDetail: OutputInvoiceDetail = new OutputInvoiceDetail();
       invoiceDetail.productDTO = {
@@ -234,6 +229,10 @@ export class SaleManagerComponent implements OnInit {
 //  function print invoice-pdf
 // tslint:disable-next-line:typedef
   generatePDF(action = 'open') {
+    let productListText = '\nSản phẩm đã mua: \n';
+    this.productList.forEach(product => {
+      productListText += `Tên sản phẩm: ${product.productName}\nGiá: ${product.sellingPrice}\nSố lượng: ${product.qty}\n\n`;
+    });
     const docDefinition = {
       content: [
         {
@@ -299,7 +298,8 @@ export class SaleManagerComponent implements OnInit {
         {
           columns: [
             [{
-              qr: `${'Khang hang: '+this.customer.customerName +'\n'+ this.customer.customerPhone +'\n' + this.customer.customerAddress +'\n' + this.customer.customerAddress}`,
+              // tslint:disable-next-line:max-line-length
+              qr: `Khách hàng: \nTên: ${this.customer.customerName} \nSố điện thoại: ${this.customer.customerPhone} \nĐịa chỉ: ${this.customer.customerAddress} \nEmail: ${this.customer.customerEmail} \n${productListText}`,
               fit: '80'
             }],
             [{text: 'Chữ ký', alignment: 'right', italics: true, margin: [0, 30, 30, 0]}],
@@ -383,7 +383,7 @@ export class SaleManagerComponent implements OnInit {
         timer: 2000
       });
     } else {
-      this.VNPay()
+      this.VNPay();
     }
   }
 
@@ -394,23 +394,6 @@ export class SaleManagerComponent implements OnInit {
     this.customer.customerAddress = localStorage.getItem('customerAddress') || '';
     this.customer.customerEmail = localStorage.getItem('customerEmail') || '';
   }
-
-  saveProductData() {
-    localStorage.setItem('productName', this.products.productName);
-    localStorage.setItem('costPrice', String(this.products.sellingPrice));
-    localStorage.setItem('quantity', String(this.products.quantity));
-    localStorage.setItem('qty', this.newProduct.qty);
-    localStorage.setItem('errorMessage', this.errorMessage);
-  }
-
-  loadProductData() {
-    this.products.productName = localStorage.getItem('productName') || '';
-    this.products.sellingPrice = localStorage.getItem('costPrice') ? parseInt(localStorage.getItem('costPrice')) : null;
-    this.products.quantity = localStorage.getItem('quantity') ? parseInt(localStorage.getItem('quantity')) : null;
-    this.newProduct.qty = localStorage.getItem('qty') ? parseInt(localStorage.getItem('qty')) : null;
-    this.errorMessage = localStorage.getItem('errorMessage') || '';
-  }
-
   saveCustomerData() {
     localStorage.setItem('customerName', this.customer.customerName);
     localStorage.setItem('customerPhone', this.customer.customerPhone);
@@ -418,5 +401,8 @@ export class SaleManagerComponent implements OnInit {
     localStorage.setItem('customerEmail', this.customer.customerEmail);
   }
 
+  formatCurrency(value: number, currencySymbol: string): string {
+    return new Intl.NumberFormat('vi-VN', {style: 'currency', currency: currencySymbol}).format(value);
+  }
 
 }
