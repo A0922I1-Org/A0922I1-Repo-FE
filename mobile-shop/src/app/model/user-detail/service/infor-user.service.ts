@@ -13,7 +13,6 @@ export class EmployeeService {
 
   // Gửi yêu cầu GET để lấy thông tin người dùng từ máy chủ
     getEmployeeByUsername(username: string): Observable<any> {
-    console.log(username)
     return this.httpClient.get(`${this.apiUrl}?username=${username}`);
   }
 }
