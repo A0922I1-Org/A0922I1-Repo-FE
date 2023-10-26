@@ -10,8 +10,17 @@
               <div class="col-md-6">
                 <label class="form-label">Họ Và Tên</label>
                 <input formControlName="nameEmployee" type="text" class="form-control" placeholder="Nhập họ và tên">
+<<<<<<< HEAD
                 <div *ngIf="isFieldInvalid('nameEmployee')" class="text-danger">
                   {{ getFieldErrorMessage ( 'nameEmployee' ) }}
+=======
+<!--                <div *ngIf="isFieldInvalid('nameEmployee')" class="text-danger">-->
+<!--                  {{ getFieldErrorMessage ( 'nameEmployee' ) }}-->
+<!--                </div>-->
+                <div
+                  *ngIf="formSignUp.get('nameEmployee').hasError('minlength')" class="text-danger">
+                  Tên phải chứa ít nhất 5 ký tự.
+>>>>>>> 5511ed54ec82c0ca6c32a49ac85e608ea224287e
                 </div>
                 <div *ngIf="formSignUp.get('nameEmployee').hasError('noNumbers')" class="text-danger">
                   Tên nhân viên không được chứa số.
