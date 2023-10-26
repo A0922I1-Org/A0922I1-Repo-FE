@@ -56,10 +56,10 @@
             </span>
               <span *ngIf="supplierPhone.invalid && (supplierPhone.dirty || supplierPhone.touched)">
                 <span *ngIf="supplierPhone.errors.required">
-                  Số điện thoại phải đủ 10 số và bắt đầu từ 0
+                  Số điện thoại không được để trống
                 </span>
                 <span *ngIf="supplierPhone.errors.pattern">
-                  Nhập sai định dạng số điện thoại
+                  Số điện thoại phải đủ 10 số và bắt đầu từ 0
                 </span>
               </span>
             </div>
