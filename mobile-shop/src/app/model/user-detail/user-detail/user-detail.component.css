@@ -1,45 +1,16 @@
-/* Đặt màu nền cho toàn bộ trang */
 body {
-  background-color: #f4f5f7;
-  font-family: Arial, sans-serif; /* Thay đổi phông chữ theo sở thích của bạn */
+  margin-top: 20px;
+  text-align: left;
 }
 
-/* Đặt kích thước và căn giữa phần card */
-.card {
-  border-radius: 0.5rem;
+.main-body {
+  padding: 15px;
 }
 
-/* Đặt màu nền và border-radius cho phần bên trái của card */
-.gradient-custom {
-  background: linear-gradient(45deg, #007bff, #6610f2);
-  border-top-left-radius: 0.5rem;
-  border-bottom-left-radius: 0.5rem;
+.card-yellow-border {
+  border: 2px solid #ffd400;
 }
 
-/* Đặt màu chữ và padding cho phần thông tin cá nhân */
-.card-body h6 {
-  color: #007bff;
-}
-
-/* Đặt margin cho hàng dữ liệu thông tin cá nhân */
-.col-6.mb-3 {
-  margin-bottom: 15px;
-}
-
-/* Đặt màu chữ và font size cho các thông tin cá nhân */
-.text-muted {
-  color: #333;
-  font-size: 16px;
-}
-
-/* Đặt màu chữ và font size cho tên và ngày sinh */
-.col-md-4 h5,
-.col-md-4 p {
-  color: #fff;
-  font-size: 18px;
-}
-
-/* Đặt padding cho nút "Đổi Mật Khẩu" */
-.btn-outline-primary.ml-2 {
-  padding: 5px 15px;
+h6{
+  font-size: 15px;
 }

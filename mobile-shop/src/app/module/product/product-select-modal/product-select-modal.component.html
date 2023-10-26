@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <title>Chọn sản phẩm</title>
-<button type="button" (click)="getProductList('','','','','',true)" class="btn btn-primary custom-button" data-bs-toggle="modal" data-bs-target="#myModal">
+<button type="button" (click)="getProductList('','','','','',true)" class="btn btn-outline-primary custom-button" data-bs-toggle="modal" data-bs-target="#myModal">
   Chọn sản phẩm
 </button>
 <!-- The Modal -->
@@ -119,13 +119,15 @@
               </tbody>
             </table>
           </div>
-          <div style="text-align: center ">
+          <div style="text-align: center; margin-left: -350px ">
             <label style="margin-left: 500px">
               <button type="button" class="btn btn-outline-primary" style="margin: 5px" [disabled]="currentPage === 0" (click)="onPrevPage()">Trước</button>
               <a>{{currentPage + 1}}/{{totalPages}}</a>
               <button type="button" class="btn btn-outline-primary" style="margin: 5px" [disabled]="(currentPage+1) === totalPages" (click)="onNextPage()">sau</button>
             </label>
-            <button type="button" class="btn btn-outline-dark" style="margin-left: 450px">Thoát</button>
+
+            <button type="button" class="btn btn-outline-dark" style="margin-left: 300px; margin-right: -500px">Thoát</button>
+
           </div>
         </div>
       </div>

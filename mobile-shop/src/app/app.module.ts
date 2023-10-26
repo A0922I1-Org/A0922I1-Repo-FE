@@ -1,7 +1,6 @@
 
 import {SupplierModule} from './module/supplier/supplier.module';
 import {InputInvoiceDetailModule} from './module/input-invoice-detail/input-invoice-detail.module';
-import {AddUserComponent} from './model/user/add-user/add-user.component';
 import {CommonModule, CurrencyPipe, DatePipe} from '@angular/common';
 import {DateFormatPipe} from './date-format.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -36,10 +35,13 @@ import {CustomerModule} from "./module/customer/customer.module";
 import {HomePageComponent} from "./shared/home-page/home-page.component";
 import {BodyComponent} from "./shared/body/body.component";
 import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
-// import {NgxPaginationModule} from "ngx-pagination";
 import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module";
+<<<<<<< HEAD
 import {ToastrModule} from 'ngx-toastr';
 
+=======
+import {AddUserComponent} from "./model/user/add-user/add-user.component";
+>>>>>>> 290509be0da37a675919552e350363ea26d06719
 
 
 @NgModule({

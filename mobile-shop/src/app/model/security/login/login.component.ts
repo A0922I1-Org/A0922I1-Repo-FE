@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HeaderComponent} from "../../../shared/header/header.component";
 declare var gapi: any;
 @Component({
   selector: 'app-login',
@@ -18,7 +19,6 @@ export class LoginComponent implements OnInit {
   roles: String[];
   returnUrl: string;
   showPassword = false;
-  loggedIn: boolean;
 
 
   constructor(private authService: AuthService,
@@ -47,6 +47,8 @@ export class LoginComponent implements OnInit {
       this.authService.isLoggedIn = true;
       this.roles = this.tokenStorageService.getRole();
       this.username = this.tokenStorageService.getUser();
+      this.formLogin.get('username').setValue(user.username);
+      console.log( this.formLogin.get('username').setValue(user))
     }
   }
 

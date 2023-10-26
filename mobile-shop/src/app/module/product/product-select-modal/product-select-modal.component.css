@@ -17,7 +17,7 @@ button{
 h2{
   color: black;
   size: 35px;
-  font-family: Arial;
+  font-family: Arial, serif;
   font-weight: bold;
 }
 .header{
@@ -44,12 +44,11 @@ h2{
   height: 40px;
   font-size: 0.9em;
   padding: 0 0;
-  background: #007bff;
-  margin-bottom: 5px;
-  margin-top: -8px;
+  margin-bottom: 10px;
+  margin-top: -2px;
 }
 .hover:hover {
-  background-color: lightgray; /* Màu nền khi hover */
-  cursor: pointer; /* Thay đổi hình dạng con trỏ khi hover */
-  transition: background-color 0.3s; /* Tạo hiệu ứng chuyển đổi màu nền */
+  background-color: lightgray;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }

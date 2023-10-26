@@ -4,6 +4,8 @@ import {SharedDataService} from '../../service/shared-data.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {tokenStorageService} from "../../model/security/service/token-storage.service";
 import {shareService} from "../../model/security/service/share.service";
+import {AuthService} from "../../model/security/service/auth.service";
+import {EmployeeService} from "../../model/user-detail/service/infor-user.service";
 
 
 @Component({
@@ -16,23 +18,27 @@ export class HeaderComponent implements OnInit {
   userRole: string;
   username: string;
   isLoggedIn = false;
-
+  employeeInfo: any;
   searchQuery: string = '';
   showSearchInput: boolean;
 
-  constructor(private searchService: SearchService, private sharedDataService: SharedDataService, private router: Router,
+  constructor(private searchService: SearchService,
+              private sharedDataService: SharedDataService,
+              private router: Router,
               private authorize: tokenStorageService,
-              private share: shareService) {
-//phan quyen
-//     this.userRole = this.authorize.getRole().authority;
+              private share: shareService,
+              private authService: AuthService,
+              private employeeService: EmployeeService) {
     this.share.getClickEvent().subscribe(() => {
       this.loadHeader()
     });
 
+
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Check if the current route is '/'
-        if (event.url === '/') {
+        if (event.url === '/home') {
           this.showSearchInput = true;
         } else {
           this.showSearchInput = false;
@@ -44,12 +50,17 @@ export class HeaderComponent implements OnInit {
 
   loadHeader() {
     if (this.authorize.getToken()) {
-      this.userRole = this.authorize.getRole().authority;
-      this.username = this.authorize.getName();
-      console.log(this.username);
-      console.log("role hien tai la " + this.userRole);
+      this.userRole = this.authorize.getRole()?.authority || 'USER';
+      this.username = this.authService.getUsernameFromToken()
+      this.employeeService.getEmployeeByUsername(this.username).subscribe(data => {
+        this.employeeInfo = data;
+      });
+      this.isLoggedIn = true;
+    } else {
+      this.userRole = '';
+      this.username = '';
+      this.isLoggedIn = false;
     }
-    this.isLoggedIn = this.username != null
   }
 
   ngOnInit(): void {
@@ -66,6 +77,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.authorize.signOut();
-    location.reload();
+    // @ts-ignore
+    window.location.href = 'http://localhost:4200/';
   }
 }
