@@ -30,18 +30,27 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
     // Khởi tạo FormGroup và FormControl
     this.formSignUp = this.formBuilder.group({
-      nameEmployee: ['', Validators.required],
+      nameEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
       birthdayEmployee: ['', [Validators.required, this.validateBirthdayValidator]],
-      addressEmployee: ['', Validators.required],
-      numberPhoneEmployee: ['', Validators.required],
-      username: ['', Validators.required],
-      role: ['', Validators.required],
+      addressEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
+      numberPhoneEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
+      username: ['', [Validators.required, this.lengthValidator(5, 35)]],
+      role: ['', [Validators.required]],
       email: ['', [Validators.required, this.customEmailValidator]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      password: ['', [Validators.required, this.lengthValidator(5, 35)]],
+      confirmPassword: ['', [Validators.required, this.lengthValidator(5, 35)]],
     }, {
       validators: this.matchPasswords
     });
+  }
+  lengthValidator(min: number, max: number) {
+    return (control: AbstractControl) => {
+      const value = control.value;
+      if (value && (value.length < min || value.length > max)) {
+        return { 'lengthInvalid': true };
+      }
+      return null;
+    };
   }
 
   validateBirthdayValidator(control: AbstractControl): { [key: string]: boolean } | null {
@@ -90,29 +99,33 @@ export class AddUserComponent implements OnInit {
     this.userService.checkExistingUsername(username).pipe(
       switchMap((usernameExists) => {
         if (usernameExists) {
-          return throwError(new Error('Tài khoản đã tồn tại!'));
+          return throwError('Tài khoản đã tồn tại!');
         } else {
           return this.userService.checkExistingEmail(email);
         }
       }),
       switchMap((emailExists) => {
         if (emailExists) {
-          return throwError(new Error('Email đã tồn tại!'));
+          return throwError('Email đã tồn tại!');
         } else {
           const employee = this.createEmployee();
-          console.log(this.employee)
           return this.userService.addEmployee(employee);
         }
       }),
       catchError((error) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Lỗi...',
+          text: error,
+        });
         console.log('Error:', error);
-        return throwError(new Error('Đã xảy ra lỗi.'));
+        return throwError(error);
       })
     ).subscribe(
       (data) => {
         localStorage.setItem('tempAccount', JSON.stringify(data));
         this.formSignUp.reset();
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('/home');
 
         Swal.fire({
           icon: 'success',
@@ -123,12 +136,14 @@ export class AddUserComponent implements OnInit {
       (error) => {
         Swal.fire({
           icon: 'error',
-          title: 'Bị lỗi rồi!',
-          text: error.message,
+          title: 'Lỗi...',
+          text: error,
         });
       }
     );
   }
+
+
 
   createEmployee() {
     return {

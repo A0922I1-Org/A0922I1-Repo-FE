@@ -25,7 +25,7 @@ export class ReportCreateComponent implements OnInit {
     fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
     toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
     reportType: new FormControl('', ),
-    productId: new FormControl( '', [Validators.pattern(/^\d+$/)]),
+    productId: new FormControl( '', [Validators.required, Validators.pattern(/^\d+$/)]),
   });
 
   constructor(private reportService: ReportService, private router: Router) {
@@ -67,14 +67,14 @@ export class ReportCreateComponent implements OnInit {
     const chartData = {
       labels: ['Doanh thu'], // Các nhãn của biểu đồ
       datasets: [{
-        label: 'TotalInvoice',
+        label: 'Số đơn hàng',
         data: [result.totalInvoice], // Dữ liệu của biểu đồ
         backgroundColor: 'rgba(75, 192, 192, 0.2)', // Màu nền cột
         borderColor: 'rgba(75, 192, 192, 1)', // Màu viền cột
         borderWidth: 1 // Độ dày viền
       },
         {
-          label: 'totalRevenue',
+          label: 'Lợi nhuận',
           data: [result.totalRevenue], // Dữ liệu của biểu đồ
           backgroundColor: 'rgba(252,147,65,0.5)', // Màu nền cột
           borderColor: 'rgba(75, 192, 192, 1)', // Màu viền cột

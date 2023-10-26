@@ -47,8 +47,11 @@ export class LoginComponent implements OnInit {
       this.authService.isLoggedIn = true;
       this.roles = this.tokenStorageService.getRole();
       this.username = this.tokenStorageService.getUser();
+      this.formLogin.get('username').setValue(user.username);
+      console.log( this.formLogin.get('username').setValue(user))
     }
   }
+
 
   onLogin() {
     if (this.formLogin.invalid) {
@@ -98,11 +101,13 @@ export class LoginComponent implements OnInit {
             sessionStorage.clear();
             this.tokenStorageService.saveTokenLocal(data.token);
             this.tokenStorageService.saveUserLocal(data.username);
+            this.tokenStorageService.saveNameLocal(data.name);
             this.tokenStorageService.saveRoleLocal(data.roles[0]);
           } else {
             localStorage.clear();
             this.tokenStorageService.saveTokenSession(data.token);
             this.tokenStorageService.saveUserSession(data.username);
+            this.tokenStorageService.saveNameLocal(data.name);
             this.tokenStorageService.saveRoleSession(data.roles[0]);
           }
           this.authService.isLoggedIn = true;

@@ -21,6 +21,7 @@
 .navbar-nav .nav-item {
   flex: 1;
   text-align: center;
+  font-size: large;
 }
 
 .searchbar {
@@ -30,14 +31,63 @@
   /*width: 5cm;*/
 }
 
-.form-control{
+.form-control {
   width: 50%;
   margin-left: 6cm;
 }
-.navbar-brand{
+
+.navbar-brand {
   margin-left: 6cm;
 }
 
+.user-info-container {
+  font-family: 'Arial', sans-serif;
+  margin: 10px;
+}
 
+.profile-link {
+  text-decoration: none;
+}
 
+.greeting-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.highlight-text {
+  color: #3498db; /* or any color you prefer */
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.logout-button {
+  background-color: #e74c3c; /* Red color for the button */
+  color: #fff; /* White text color */
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 15px; /* Add margin to the left */
+}
+
+.logout-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+.nav-item.active-link a {
+  background-color: black; /* Highlight color for active item */
+  color: #fff; /* Text color for active item */
+}
+
+.nav-item:hover {
+  background-color: #ffc107;
+}
+.highlight-text:hover{
+  background-color: #cccccc;
+}
+.navbar-nav .nav-item .nav-link {
+  white-space: nowrap;
+}
 

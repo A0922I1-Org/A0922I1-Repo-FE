@@ -1,6 +1,8 @@
 <meta charset="UTF-8">
 <title>Chọn sản phẩm</title>
-
+<button type="button" (click)="getProductList('','','','','',true)" class="btn btn-outline-primary custom-button" data-bs-toggle="modal" data-bs-target="#myModal">
+  Chọn sản phẩm
+</button>
 <!-- The Modal -->
 <ng-container *ngIf="products">
   <div class="modal" id="myModal">
@@ -78,7 +80,7 @@
                     </svg>
                   </button>
                 </th>
-                <th *ngIf="!isOnInput; else isOnInput" class="col-2 col-md-2 col-lg-2">Giá bán (VND)
+                <th *ngIf="!isOnInput" class="col-2 col-md-2 col-lg-2">Giá bán (VND)
                   <button style="border: none; background: white"
                           (click)="getProductList(brand,price,name, cpu,'selling_price_product',true)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up"
@@ -96,34 +98,34 @@
                     </svg>
                   </button>
                 </th>
-                <ng-template #isOnInput>
-                  <th class="col-2 col-md-2 col-lg-2">Giá nhập (VND)</th>
-                </ng-template>
+
+                  <th *ngIf="isOnInput" class="col-2 col-md-2 col-lg-2">Giá nhập (VND)</th>
+
                 <th class="col-2 col-md-2 col-lg-2">CPU</th>
                 <th class="col-1 col-md-1 col-lg-1">Lưu trữ</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let product of products; let i = index" (click)="findByIdProduct(product.productId)" style="color: darkgreen" data-bs-dismiss="modal">
+              <tr *ngFor="let product of products; let i = index" (click)="findByIdProduct(product.productId)" class="hover" data-bs-dismiss="modal">
                 <td>{{i + 1}}</td>
                 <td>{{product.productName}}</td>
-                <td *ngIf="!isOnInput; else isOnInput">{{product.sellingPrice}}</td>
-                <ng-template #isOnInput>
-                  <td >{{product.costPrice}}</td>
-                </ng-template>
+                <td *ngIf="!isOnInput">{{product.sellingPrice}}</td>
+
+                  <td *ngIf="isOnInput">{{product.costPrice}}</td>
+
                 <td>{{product.productCpu}}</td>
                 <td>{{product.productStorage}}</td>
               </tr>
               </tbody>
             </table>
           </div>
-          <div style="text-align: center ">
+          <div style="text-align: center; margin-left: -350px ">
             <label style="margin-left: 500px">
               <button type="button" class="btn btn-outline-primary" style="margin: 5px" [disabled]="currentPage === 0" (click)="onPrevPage()">Trước</button>
               <a>{{currentPage + 1}}/{{totalPages}}</a>
               <button type="button" class="btn btn-outline-primary" style="margin: 5px" [disabled]="(currentPage+1) === totalPages" (click)="onNextPage()">sau</button>
             </label>
-            <button type="button" class="btn btn-outline-dark" style="margin-left: 450px">Thoát</button>
+            <button type="button" class="btn btn-outline-dark" style="margin-left: 300px; margin-right: -500px">Thoát</button>
           </div>
         </div>
       </div>

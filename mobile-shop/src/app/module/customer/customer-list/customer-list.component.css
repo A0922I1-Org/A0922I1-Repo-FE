@@ -13,9 +13,7 @@ button{
 .table table-striped{
   margin: 30px;
 }
-.hover:hover{
-  color: darkgreen;
-}
+
 
 h2{
   color: black;
@@ -41,4 +39,18 @@ h2{
 .modal-button{
   text-align: center;
 }
-
+.custom-button{
+  margin-left: -360px;
+  width: 140px;
+  height: 40px;
+  font-size: 0.9em;
+  padding: 0 0;
+  margin-bottom: 10px;
+  margin-top: -8px;
+  display: inline-block;
+}
+.hover:hover {
+  background-color: lightgray;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}

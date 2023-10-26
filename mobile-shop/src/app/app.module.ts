@@ -1,12 +1,7 @@
 
-import {ProductCreateComponent} from './module/product/product-create/product-create.component';
-import {ProductEditComponent} from './module/product/product-edit/product-edit.component';
-import {ReportCreateComponent} from './module/report/report-create/report-create.component';
 import {SupplierModule} from './module/supplier/supplier.module';
 import {InputInvoiceDetailModule} from './module/input-invoice-detail/input-invoice-detail.module';
-import {CustomerListComponent} from './module/customer/customer-list/customer-list.component';
-import {AddUserComponent} from './model/user/add-user/add-user.component';
-import {CommonModule, DatePipe} from '@angular/common';
+import {CommonModule, CurrencyPipe, DatePipe} from '@angular/common';
 import {DateFormatPipe} from './date-format.pipe';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ModalModule} from 'ngx-bootstrap/modal';
@@ -40,7 +35,8 @@ import {CustomerModule} from "./module/customer/customer.module";
 import {HomePageComponent} from "./shared/home-page/home-page.component";
 import {BodyComponent} from "./shared/body/body.component";
 import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
-
+import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module";
+import {AddUserComponent} from "./model/user/add-user/add-user.component";
 
 
 @NgModule({
@@ -76,7 +72,9 @@ import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component
     BrowserAnimationsModule,
     CarouselModule,
     MatDialogModule,
-    SocialLoginModule
+    SocialLoginModule,
+    // NgxPaginationModule,
+    OutputInvoiceModule
   ],
   providers: [DatePipe],
   exports: [],

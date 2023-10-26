@@ -1,97 +1,116 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-header">
-          <h4>Sign Up</h4>
-        </div>
-        <div class="card-body">
-          <form [formGroup]="formSignUp">
-            <div class="mb-3">
-              <label class="form-label">Họ Và Tên</label>
-              <input formControlName="nameEmployee" type="text" id="inputNameEmployee" class="form-control"
-                     placeholder="nhập họ và tên">
-              <div *ngIf="formSignUp.get('nameEmployee').invalid && formSignUp.get('nameEmployee').touched"
-                   class="text-danger">
-                Tên không hợp lệ
+<div class="form-body">
+  <div class="row">
+    <div class="form-holder">
+      <div class="form-content">
+        <div class="form-items">
+          <h3 style="color: #000000; background-color: #ffffd400">Đăng ký tài khoản</h3>
+          <hr>
+          <form class="requires-validation" [formGroup]="formSignUp" (ngSubmit)="onSubmit()">
+
+            <div class="form-row">
+              <div class="col-md-6">
+                <label class="form-label">Họ Và Tên</label>
+                <input formControlName="nameEmployee" type="text" id="inputNameEmployee" class="form-control"
+                       placeholder="Nhập họ và tên">
+                <div *ngIf="formSignUp.get('nameEmployee').invalid && formSignUp.get('nameEmployee').touched"
+                     class="text-danger">
+                  Tên không hợp lệ
+                </div>
               </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Ngày sinh </label>
-              <input formControlName="birthdayEmployee" type="date" id="inputBirthdayEmployee" class="form-control"
-                     placeholder="nhập ngày Sinh">
-              <div *ngIf="formSignUp.get('birthdayEmployee').invalid && formSignUp.get('birthdayEmployee').touched"
-                   class="text-danger">
-                Ngày không hợp lệ
+
+              <div class="col-md-6">
+                <label class="form-label">Mật khẩu</label>
+                <input formControlName="password" type="password" id="inputPassword" class="form-control"
+                       placeholder="Nhập mật khẩu" autocomplete="new-password">
+                <div *ngIf="formSignUp.get('password').invalid && formSignUp.get('password').touched"
+                     class="text-danger">
+                  Không được để trống
+                </div>
               </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Địa chỉ</label>
-              <input formControlName="addressEmployee" type="text" id="inputAddressEmployee" class="form-control"
-                     placeholder="nhập địa chỉ">
-              <div *ngIf="formSignUp.get('addressEmployee').invalid && formSignUp.get('addressEmployee').touched"
-                   class="text-danger">
-                Địa chỉ không để trống
+
+              <div class="col-md-6">
+                <label class="form-label">Địa chỉ</label>
+                <input formControlName="addressEmployee" type="text" id="inputAddressEmployee" class="form-control"
+                       placeholder="Nhập địa chỉ">
+                <div *ngIf="formSignUp.get('addressEmployee').invalid && formSignUp.get('addressEmployee').touched"
+                     class="text-danger">
+                  Địa chỉ không để trống
+                </div>
               </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Số điện thoại</label>
-              <input formControlName="numberPhoneEmployee" type="text" id="inputNumberPhoneEmployee"
-                     class="form-control"
-                     placeholder="nhập số điện thoại">
-              <div
-                *ngIf="formSignUp.get('numberPhoneEmployee').invalid && formSignUp.get('numberPhoneEmployee').touched"
-                class="text-danger">
-                Số điện thoại không hợp lệ
+
+              <div class="col-md-6">
+                <label class="form-label">Xác thực mật khẩu</label>
+                <input formControlName="confirmPassword" type="password" id="confirmPassword" class="form-control"
+                       placeholder="Xác thực lại mật khẩu" autocomplete="new-password">
+                <div *ngIf="formSignUp.hasError('passwordMismatch')" class="text-danger">
+                  Mật khẩu và xác thực mật khẩu phải khớp!!!!
+                </div>
               </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Quyền Hạn</label>
-              <select formControlName="role" id="inputRole" class="form-select">
-                <option value="" selected disabled>--Chọn vị trí--</option>
-                <option value="sale">sale</option>
-                <option value="business">business</option>
-                <option value="storage">Storage</option>
-              </select>
-            </div>
-            <div *ngIf="formSignUp.get('role').invalid && formSignUp.get('role').touched" class="text-danger">
-              Vui lòng chọn quyền hạn
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input formControlName="email" type="text" id="inputEmail" class="form-control"
-                     placeholder="...@abc.com">
-            </div>
-            <div *ngIf="formSignUp.hasError('emailMismatch')" class="text-danger">
-              Email và xác thực email không khớp.
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Tên tài khoản</label>
-              <input formControlName="username" type="text" id="inputUsername" class="form-control"
-                     placeholder="Nhập tên tài khoản" autocomplete="username">
-            </div>
-            <div *ngIf="formSignUp.get('username').invalid && formSignUp.get('username').touched" class="text-danger">
-              Vui lòng không để trống
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Mật khẩu</label>
-              <input formControlName="password" type="password" id="inputPassword" class="form-control"
-                     placeholder="nhập password" autocomplete="new-password">
-              <div *ngIf="formSignUp.get('password').invalid && formSignUp.get('password').touched" class="text-danger">
-                Không được để trống
+
+              <div class="col-md-6">
+                <label class="form-label">Quyền hạn</label>
+                <select formControlName="role" id="inputRole" class="form-select">
+                  <option [ngValue]="null" >--Chọn vị trí--</option>
+                  <option value="sale">Sale</option>
+                  <option value="business">Business</option>
+                  <option value="storage">Storage</option>
+                </select>
+                <div *ngIf="formSignUp.get('role').invalid && formSignUp.get('role').touched" class="text-danger">
+                  Vui lòng chọn quyền hạn
+                </div>
               </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Xác thực mật khẩu</label>
-              <input formControlName="confirmPassword" type="password" id="confirmPassword" class="form-control"
-                     placeholder="xác thực lại password" autocomplete="new-password">
-              <div *ngIf="formSignUp.hasError('passwordMismatch')" class="text-danger">
-                Mật khẩu và xác thực mật khẩu không khớp.
+
+              <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input formControlName="email" type="text" id="inputEmail" class="form-control"
+                       placeholder="...@abc.com">
+                <div *ngIf="formSignUp.get('email').invalid && formSignUp.get('email').touched" class="text-danger">
+                  Email không hợp lệ
+                </div>
+                <div *ngIf="formSignUp.hasError('emailMismatch')" class="text-danger">
+                  Email và xác thực email không khớp.
+                </div>
               </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Tên tài khoản</label>
+                <input formControlName="username" type="text" id="inputUsername" class="form-control"
+                       placeholder="Nhập tên tài khoản" autocomplete="username">
+                <div *ngIf="formSignUp.get('username').invalid && formSignUp.get('username').touched"
+                     class="text-danger">
+                  Vui lòng không để trống
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Ngày sinh</label>
+                <input formControlName="birthdayEmployee" type="date" id="inputBirthdayEmployee" class="form-control"
+                       placeholder="Nhập ngày sinh">
+                <div *ngIf="formSignUp.get('birthdayEmployee').invalid && formSignUp.get('birthdayEmployee').touched"
+                     class="text-danger">
+                  Ngày không hợp lệ
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Số điện thoại</label>
+                <input formControlName="numberPhoneEmployee" type="text" id="inputNumberPhoneEmployee"
+                       class="form-control"
+                       placeholder="Nhập số điện thoại">
+                <div
+                  *ngIf="formSignUp.get('numberPhoneEmployee').invalid && formSignUp.get('numberPhoneEmployee').touched"
+                  class="text-danger">
+                  Số điện thoại không hợp lệ
+                </div>
+              </div>
+
             </div>
-            <button type="button" (click)="onSubmit()" class="btn btn-primary" [disabled]="formSignUp.invalid">Sign Up
-            </button>
-            <button type="button" class="btn btn-primary">Back</button>
+
+
+            <div class="form-button mt-3">
+              <button type="submit" class="btn btn-primary" [disabled]="formSignUp.invalid">Sign Up</button>
+              <button type="submit" class="btn btn-outline-dark" routerLink="/home">Hủy</button>
+            </div>
           </form>
         </div>
       </div>

@@ -1,0 +1,375 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  overflow: hidden;
+  height: 900px;
+  margin-top: 15px;
+}
+
+.card {
+  max-width: 1200px;
+  margin: 2vh;
+}
+
+.card-top {
+  padding: 0.7rem 5rem;
+}
+
+.card-top a {
+  float: left;
+  margin-top: 0.7rem;
+}
+
+#logo {
+  font-family: 'Dancing Script',serif;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+.card-body {
+  padding: 0 5rem 5rem 5rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+.row {
+  margin: 0;
+}
+
+.upper {
+  padding: 1rem 0;
+  justify-content: space-evenly;
+}
+
+#three {
+  border-radius: 1rem;
+  width: 22px;
+  height: 22px;
+  margin-right: 3px;
+  border: 1px solid blue;
+  text-align: center;
+  display: inline-block;
+}
+
+#payment {
+  margin: 0;
+  color: blue;
+}
+
+.icons {
+  margin-left: auto;
+}
+
+form span {
+  color: rgb(179, 179, 179);
+}
+
+form {
+  padding: 2vh 0;
+}
+
+input {
+  border: 1px solid rgba(0, 0, 0, 0.137);
+  padding: 1vh;
+  margin-bottom: 2vh;
+  outline: none;
+  width: 80%;
+  background-color: rgb(247, 247, 247);
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.header {
+  font-size: 1.5rem;
+}
+
+.left {
+  background-color: #ffffff;
+  padding: 2vh;
+}
+
+.left img {
+  width: 2rem;
+}
+
+.left .col-4 {
+  padding-left: 0;
+}
+
+.right .item {
+  padding: 0.3rem 0;
+}
+
+.right {
+  background-color: #ffffff;
+  padding: 2vh;
+}
+
+.col-8 {
+  padding: 0 1vh;
+}
+
+.lower {
+  line-height: 2;
+}
+
+.btn {
+  background-color: rgb(23, 4, 189);
+  border-color: rgb(23, 4, 189);
+  color: white;
+  width: 100%;
+  font-size: 0.7rem;
+  margin: 4vh 0 1.5vh 0;
+  padding: 1.5vh;
+  border-radius: 0;
+}
+
+.btn:focus {
+  box-shadow: none;
+  outline: none;
+  color: white;
+  -webkit-box-shadow: none;
+  -webkit-user-select: none;
+  transition: none;
+}
+
+.btn:hover {
+  color: white;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+input[type=checkbox] {
+  width: unset;
+  margin-bottom: unset;
+}
+
+#cvv {
+  background-image: linear-gradient(to left, rgba(255, 255, 255, 0.575), rgba(255, 255, 255, 0.541)), url("https://img.icons8.com/material-outlined/24/000000/help.png");
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+}
+
+#cvv:hover {
+
+}
+
+.back-to-shop {
+  background-color: #007bff;
+  color: #fff;
+  padding: 7px 7px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: -60px;
+}
+
+.back-to-shop:hover {
+  background-color: #0056b3;
+}
+
+.print_bill {
+  margin-left: 15px;
+}
+
+
+
+body {
+  text-align: center;
+}
+
+body:before {
+  content: '';
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+button {
+  margin-left: -380px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  position: relative;
+  border-radius: 5px;
+  width: 140px;
+  height: 40px;
+  font-size: 0.9em;
+  padding: 0 0;
+  cursor: pointer;
+  transition: 800ms ease all;
+  outline: none;
+}
+form label {
+  display: block;
+  text-align: left;
+}
+
+
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-container {
+  z-index: 1;
+  position: relative;
+  margin-bottom: 1px;
+}
+
+input {
+  width: 90%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  margin-right: 50px;
+  margin-top: 15px;
+}
+
+label {
+  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  color: dimgray;
+  left: 10px;
+  pointer-events: none;
+  transform: translateY(70%);
+  transition: transform 0.2s ease, font-size 0.2s ease;
+}
+
+input:focus + label,
+input:valid + label{
+  transform: translateY(-30%);
+  font-size: 13px;
+  z-index: 2;
+}
+
+input:focus + label::before,
+input:valid + label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: white;
+  z-index: -1;
+}
+
+
+input:focus + label::after,
+input:valid + label::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgb(247, 247, 247);
+  z-index: -1;
+}
+.delete-icon {
+  cursor: pointer;
+  color: red;
+  font-size: 18px;
+  margin-left: 10px;
+}
+.payment-container {
+  position: relative;
+}
+
+.payment-button {
+  visibility: hidden;
+  position: absolute;
+  margin-left: -180px;
+}
+
+.payment-button[hidden="false"] {
+  visibility: visible;
+}
+
+.payment-button + button {
+  margin-top: 20px;
+}
+
+
+.payment-button:hover::after {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  color: red;
+  cursor: pointer;
+}
+.error-message {
+  font-size: 14px;
+  visibility: hidden;
+  position: absolute;
+  color: red;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  margin-top: -13px;
+}
+
+.error-message.active {
+  visibility: visible;
+}
+
+.disabled {
+  pointer-events: none;
+  /*background-color: #f2f2f2;*/
+  /*color: #999;*/
+}
+
+/*.custom-button:disabled {*/
+/*  background-color: #3399FF;*/
+/*}*/
+
+.custom-button{
+  margin-left: -355px;
+  width: 140px;
+  height: 40px;
+  font-size: 0.9em;
+  padding: 0 0;
+  margin-bottom: 5px;
+  margin-top: -8px;
+}
+.custom-outline-button {
+  background-color: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.custom-outline-button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.custom-outline-button:disabled {
+  cursor: not-allowed;
+}
+
+

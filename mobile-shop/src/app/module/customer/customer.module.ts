@@ -9,7 +9,6 @@ import {CustomerListComponent} from "./customer-list/customer-list.component";
 // @ts-ignore
 @NgModule({
   declarations: [
-    CustomerListComponent
   ],
   imports: [
     CommonModule,

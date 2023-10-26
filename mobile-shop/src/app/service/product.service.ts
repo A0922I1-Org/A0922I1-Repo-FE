@@ -30,6 +30,13 @@ export class ProductService {
       '&page=' + currentPage + '&size=' + pageSize + '&sort=' + sort + '&direction=' + direction);
   }
 
+  getResponseProduct(brandName: string, sellingPrice: string, productName: string,
+                     currentPage: number, pageSize: number, sort: string, direction: boolean): Observable<any> {
+    return this.httpClient.get('http://localhost:8080/api/product?brandName=' +
+      brandName + '&sellingPrice=' + sellingPrice + '&productName=' + productName +
+      '&page=' + currentPage + '&size=' + pageSize + '&sort=' + sort + '&direction=' + direction);
+  }
+
   createProduct(productDto: ProductDto): Observable<ProductDto> {
     return this.httpClient.post<ProductDto>(this.API_URL_CREATE_PRODUCT, productDto);
   }

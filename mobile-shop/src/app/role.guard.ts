@@ -35,7 +35,7 @@ export class RoleGuard implements CanActivate {
       showConfirmButton: false,
       timer: 1500
     });
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
     return false;
   }
 }
