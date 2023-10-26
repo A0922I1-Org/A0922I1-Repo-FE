@@ -13,10 +13,6 @@
                 <div *ngIf="isFieldInvalid('nameEmployee')" class="text-danger">
                   {{ getFieldErrorMessage ( 'nameEmployee' ) }}
                 </div>
-                <div
-                  *ngIf="formSignUp.get('nameEmployee').hasError('minlength')" class="text-danger">
-                  Tên phải chứa ít nhất 5 ký tự.
-                </div>
                 <div *ngIf="formSignUp.get('nameEmployee').hasError('noNumbers')" class="text-danger">
                   Tên nhân viên không được chứa số.
                 </div>
@@ -98,7 +94,7 @@
               <div class="col-md-6">
                 <label class="form-label">Số điện thoại</label>
                 <input formControlName="numberPhoneEmployee" type="text" class="form-control"
-                       placeholder="Nhập số điện thoại">
+                       placeholder="0934xxxxxx">
                 <div *ngIf="isFieldInvalid('numberPhoneEmployee')" class="text-danger">
                   {{ getFieldErrorMessage ( 'numberPhoneEmployee' ) }}
                 </div>

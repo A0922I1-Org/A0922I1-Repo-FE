@@ -16,6 +16,7 @@ export class AddUserComponent implements OnInit {
   formSignUp: FormGroup;
   fieldErrors: { [key: string]: string } = {};
 
+
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
   }
 
@@ -24,7 +25,7 @@ export class AddUserComponent implements OnInit {
       nameEmployee: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), this.noNumbersValidator()]],
       birthdayEmployee: ['', [Validators.required, this.validateBirthday]],
       addressEmployee: ['', [Validators.required, Validators.maxLength(45)]],
-      numberPhoneEmployee: ['', [Validators.required, Validators.maxLength(14)]],
+      numberPhoneEmployee: ['', [Validators.required, Validators.maxLength(14), this.invalidNumberPhone]],
       username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
       role: ['', [Validators.required]],
       email: ['', [Validators.required, this.customEmailValidator]],
@@ -73,6 +74,15 @@ export class AddUserComponent implements OnInit {
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!pattern.test(email)) {
       return {invalidEmail: true};
+    }
+    return null;
+  }
+
+  invalidNumberPhone(control: AbstractControl): { [key: string]: boolean } | null {
+    const numberPhone = control.value;
+    const pattern = /^(0[1-9]\d{8})$/;
+    if (!pattern.test(numberPhone)) {
+      return {invalidNumberPhone: true};
     }
     return null;
   }
@@ -134,6 +144,11 @@ export class AddUserComponent implements OnInit {
       }
     }
 
+    if (fieldName === 'numberPhoneEmployee') {
+      if (this.formSignUp.get(fieldName).hasError('invalidNumberPhone')) {
+        return 'Không đúng định dạng số Việt Nam';
+      }
+    }
 
     if (fieldName === 'birthdayEmployee') {
       if (this.formSignUp.get(fieldName).hasError('invalidBirthday')) {
