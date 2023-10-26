@@ -10,9 +10,9 @@
               <div class="col-md-6">
                 <label class="form-label">Họ Và Tên</label>
                 <input formControlName="nameEmployee" type="text" class="form-control" placeholder="Nhập họ và tên">
-                <div *ngIf="isFieldInvalid('nameEmployee')" class="text-danger">
-                  {{ getFieldErrorMessage ( 'nameEmployee' ) }}
-                </div>
+<!--                <div *ngIf="isFieldInvalid('nameEmployee')" class="text-danger">-->
+<!--                  {{ getFieldErrorMessage ( 'nameEmployee' ) }}-->
+<!--                </div>-->
                 <div
                   *ngIf="formSignUp.get('nameEmployee').hasError('minlength')" class="text-danger">
                   Tên phải chứa ít nhất 5 ký tự.
