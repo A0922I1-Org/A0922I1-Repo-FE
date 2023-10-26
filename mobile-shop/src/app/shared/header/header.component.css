@@ -32,8 +32,9 @@
 }
 
 .form-control {
-  width: 50%;
-  margin-left: 6cm;
+  /*width: 50%;*/
+  /*margin-left: 6cm;*/
+  width: 80%;
 }
 
 .navbar-brand {
@@ -91,3 +92,20 @@
   white-space: nowrap;
 }
 
+/*CSS của mạnh*/
+.func-tab{
+  margin-top: 18px;
+}
+
+
+@media screen and (max-width: 1086px){
+  /*div.manh-nav{*/
+  /*  height: 148px;*/
+  /*}*/
+  div.manh-nav input{
+    width: 70%;
+  }
+nav button.navbar-toggler {
+  align-self: center;
+}
+}

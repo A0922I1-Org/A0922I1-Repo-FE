@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SearchService} from '../../service/search.service';
 import {SharedDataService} from '../../service/shared-data.service';
 import {NavigationEnd, Router} from '@angular/router';
@@ -18,8 +18,10 @@ export class HeaderComponent implements OnInit {
   username: string;
   isLoggedIn = false;
 
+
   searchQuery: string = '';
   showSearchInput: boolean;
+
 
   constructor(private searchService: SearchService,
               private sharedDataService: SharedDataService,

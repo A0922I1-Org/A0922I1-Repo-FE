@@ -95,7 +95,7 @@ body {
   font-size: 24px; /* Độ lớn của biểu tượng */
 }
 
-//* Định dạng checkbox */
+/* Định dạng checkbox */
 .custom-control-input:checked ~ .custom-control-label::before {
   background-color: #f44336; /* Màu khi checkbox được chọn */
   border: 2px solid #f44336; /* Viền của checkbox khi được chọn */
@@ -113,8 +113,5 @@ body {
 .custom-control-label:hover {
   text-decoration: underline; /* Gạch chân tiêu đề khi di chuột qua */
 }
-
-
-
 
 
