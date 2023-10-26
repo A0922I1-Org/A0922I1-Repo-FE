@@ -15,14 +15,14 @@ const routes: Routes = [
     component: CreateSupplierComponent
   },
   {
-    path: 'edit/:id',
+    path: 'edit/:supplierId',
+
     component: UpdateSupplierComponent
   }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SupplierRoutingModule { }
+export class SupplierRoutingModule{ }

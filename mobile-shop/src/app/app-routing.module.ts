@@ -35,7 +35,7 @@ const routes: Routes = [
      loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
        canActivate: [AuthGuard,RoleGuard],
         data: { roles: ['ADMIN','BUSINESS','SALE',"STORAGE"]}
-  
+
   },
   {
     path: 'managerPurchaseHistory',
@@ -71,7 +71,8 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [AuthGuard, NoAuthGuard]
   },
   {
     path: 'payment',

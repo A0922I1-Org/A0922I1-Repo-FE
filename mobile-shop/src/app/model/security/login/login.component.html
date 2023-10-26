@@ -1,33 +1,65 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-      <div class="card card-signin my-5">
-        <div class="card-body">
-          <h5 class="card-title text-isLoggedIncenter"> Đăng Nhập</h5>
-          <form class="form-signin" [formGroup]="formLogin">
-            <!-- Các trường nhập tài khoản và mật khẩu -->
-            <div class="form-label-group">
-              <input formControlName="username" type="text" id="inputEmail" class="form-control"
-                     placeholder="Tên tài khoản" autocomplete="current-username">
-            </div>
-            <div class="form-label-group">
-              <input formControlName="password" type="password" id="inputPassword" class="form-control"
-                     placeholder="Mật khẩu" autocomplete="current-password">
-            </div>
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="remember_me">
-              <label class="custom-control-label" for="customCheck1">Lưu trạng thái đăng nhập</label>
-            </div>
-            <div class="my-custom-container">
-              <button class="btn btn-lg btn-primary text-uppercase" type="button" (click)="onLogin()">Đăng nhập</button>
-              <a href="http://localhost:8080/oauth2/authorization/google" class="google-login-link">
-                <i class="fa fa-google" aria-hidden="true"></i>
-              </a>
-              <button class="btn btn-lg btn-secondary text-uppercase" routerLink="" data-dismiss="modal" type="button">Huỷ</button>
-            </div>
-          </form>
-        </div>
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">-->
+<!--      <div class="card card-signin my-5">-->
+<!--        <div class="card-body">-->
+<!--          <h5 class="card-title text-isLoggedIncenter"> Đăng Nhập</h5>-->
+<!--          <form class="form-signin" [formGroup]="formLogin">-->
+<!--            &lt;!&ndash; Các trường nhập tài khoản và mật khẩu &ndash;&gt;-->
+<!--            <div class="form-label-group">-->
+<!--              <input formControlName="username" type="text" id="inputEmail" class="form-control"-->
+<!--                     placeholder="Tên tài khoản" autocomplete="current-username">-->
+<!--            </div>-->
+<!--            <div class="form-label-group">-->
+<!--              <input formControlName="password" type="password" id="inputPassword" class="form-control"-->
+<!--                     placeholder="Mật khẩu" autocomplete="current-password">-->
+<!--            </div>-->
+<!--            <div class="custom-control custom-checkbox mb-3">-->
+<!--              <input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="remember_me">-->
+<!--              <label class="custom-control-label" for="customCheck1">Lưu trạng thái đăng nhập</label>-->
+<!--            </div>-->
+<!--            <div class="my-custom-container">-->
+<!--              <button class="btn btn-lg btn-primary text-uppercase" type="button" (click)="onLogin()">Đăng nhập</button>-->
+<!--              <a href="http://localhost:8080/oauth2/authorization/google" class="google-login-link">-->
+<!--                <i class="fa fa-google" aria-hidden="true"></i>-->
+<!--              </a>-->
+<!--              <button class="btn btn-lg btn-secondary text-uppercase" routerLink="" data-dismiss="modal" type="button">Huỷ</button>-->
+<!--            </div>-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="container" id="container">
+  <div class="form-container sign-in-container">
+    <form action="#" [formGroup]="formLogin">
+      <h1>Sign in</h1>
+      <div class="social-container">
+        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>Sử dụng tài khoản nếu bạn là nhân viên</span>
+      <input formControlName="username" type="text" id="inputEmail" class="form-control"
+             placeholder="Tên tài khoản" autocomplete="current-username">
+      <input formControlName="password" type="password" id="inputPassword" class="form-control"
+             placeholder="Mật khẩu" autocomplete="current-password">
+      <div class="form-check checkbox-container mt-3 mb-3 text-start">
+      <input style="display: inline;width: 30px" type="checkbox" class="" id="customCheck1" formControlName="remember_me">
+      <label style="display: inline" class="form-check-label custom-control-label" for="customCheck1">Lưu trạng thái đăng nhập</label>
+    </div>
+      <button type="button" (click)="onLogin()">Đăng nhập</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-right">
+        <h1>Chào Mừng Bạn!!!</h1>
+        <p>Cảm ơn bạn đã lựa chọn đến trang web quản lý bán hàng của chúng tôi </p>
       </div>
     </div>
   </div>
 </div>
+

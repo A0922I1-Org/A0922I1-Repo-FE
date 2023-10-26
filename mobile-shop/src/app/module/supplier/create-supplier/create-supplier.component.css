@@ -1,45 +1,85 @@
-.container {
-  display: flex;
-}
-
-.column-3,
-.column-6 {
-  padding: 5px;
-}
-
-.column-3 {
-  flex-basis: 25%;
-}
-
-.column-6 {
-  flex-basis: 50%;
-}
-.borderSupplier1{
-  text-align: center;
-  font-size: 20px;
-  margin: 1px 1px 20px;
+.header, .footer {
   background-color: #ffd400;
+  margin: 5px 3px 3px;
 }
-.borderSupplier2{
-  margin-left: 20px ;
-  margin-right: 20px;
-  padding: 20px;
-}
-input{
+
+td{
+  font-size: 15px;
+  height: 40px;
+  margin: auto;
   display: flex;
+  justify-content: center;
+
+}
+.td1{
+  height: 25px;
+  width: 400px;
+  float: left;
+  color: red;
+  display: block;
+}
+td input{width: 400px;
+  height: 40px;
+  border: black solid 1px;
+}
+td textarea{
+  height: 80px;
+  width: 400px;
+  resize: none;
+  border: black solid 1px;
 }
 button{
   float: right;
-  margin: 10px;
-}
-div.alert.alert-danger{
+  margin: 3px;
   font-size: 15px;
-  margin: 1px;
   padding: 1px;
+
 }
-table tr td{
-  height: 30px;
+div.alert-danger{
+
+  justify-content: left;
+  height: 25px;
+  width: 400px;
+  font-size: 15px;
+  padding: 0;
+  margin: 0;
+  float: left;
+  display: inline;
 }
-.lowercase{
-  text-transform: lowercase;
+
+.td_title{
+  font-weight: bold;
+  height: 20px;
+  font-size: 15px;
+  text-align: left;
+  width: 400px;
+  display: block;
 }
+.success-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+  width: 800px;
+  text-align: center;
+  font-size: xx-large;
+  height: 60px;
+}
+.border{
+  margin: 50px 100px 20px;
+  padding: 5px;
+  border-radius: 10px;
+
+
+}
+.border_radius{
+  border-radius: 5px;
+
+}
+
+

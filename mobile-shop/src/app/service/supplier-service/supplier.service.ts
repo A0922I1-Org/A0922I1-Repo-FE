@@ -18,7 +18,7 @@ export class SupplierService {
     return this.http.post<Supplier>(this.apiUrl + '/create', supplier);
   }
   findBySupplierId(supplierId: number): Observable<Supplier> {
-    return this.http.get<Supplier>(this.apiUrl + '/edit' + supplierId);
+    return this.http.get<Supplier>(this.apiUrl + '/edit/' + supplierId);
   }
   updateSupplier(supplier): Observable<Supplier> {
     return this.http.post<Supplier>(this.apiUrl + '/update', supplier);
