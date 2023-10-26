@@ -20,7 +20,10 @@ function dateValidator(control: AbstractControl): { [key: string]: boolean } | n
 })
 export class ReportCreateComponent implements OnInit {
   private chart: Chart;
-  result: any;
+  result: any = {
+    totalInvoice: 0,
+    totalRevenue: 0,
+  };
   reportForm: FormGroup = new FormGroup({
     fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
     toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
@@ -32,9 +35,8 @@ export class ReportCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.createChart(this.result);
   }
-
   submit() {
     if (this.reportForm.valid) {
       const data = this.reportForm.value;
