@@ -36,12 +36,8 @@ import {HomePageComponent} from "./shared/home-page/home-page.component";
 import {BodyComponent} from "./shared/body/body.component";
 import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
 import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module";
-<<<<<<< HEAD
-import {ToastrModule} from 'ngx-toastr';
-
-=======
 import {AddUserComponent} from "./model/user/add-user/add-user.component";
->>>>>>> 290509be0da37a675919552e350363ea26d06719
+
 
 
 @NgModule({
