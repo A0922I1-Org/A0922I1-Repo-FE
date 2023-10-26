@@ -11,7 +11,11 @@
                 <label class="form-label">Họ Và Tên</label>
                 <input formControlName="nameEmployee" type="text" class="form-control" placeholder="Nhập họ và tên">
                 <div *ngIf="isFieldInvalid('nameEmployee')" class="text-danger">
-                  {{ getFieldErrorMessage('nameEmployee') }}
+                  {{ getFieldErrorMessage ( 'nameEmployee' ) }}
+                </div>
+                <div
+                  *ngIf="formSignUp.get('nameEmployee').hasError('minlength')" class="text-danger">
+                  Tên phải chứa ít nhất 5 ký tự.
                 </div>
                 <div *ngIf="formSignUp.get('nameEmployee').hasError('noNumbers')" class="text-danger">
                   Tên nhân viên không được chứa số.
@@ -23,7 +27,7 @@
                 <input formControlName="password" type="password" class="form-control"
                        placeholder="Nhập mật khẩu" autocomplete="new-password">
                 <div *ngIf="isFieldInvalid('password')" class="text-danger">
-                  {{ getFieldErrorMessage('password') }}
+                  {{ getFieldErrorMessage ( 'password' ) }}
                 </div>
               </div>
 
@@ -32,7 +36,7 @@
                 <input formControlName="addressEmployee" type="text" class="form-control"
                        placeholder="Nhập địa chỉ">
                 <div *ngIf="isFieldInvalid('addressEmployee')" class="text-danger">
-                  {{ getFieldErrorMessage('addressEmployee') }}
+                  {{ getFieldErrorMessage ( 'addressEmployee' ) }}
                 </div>
               </div>
 
@@ -41,7 +45,7 @@
                 <input formControlName="confirmPassword" type="password" class="form-control"
                        placeholder="Xác thực lại mật khẩu" autocomplete="new-password">
                 <div *ngIf="isFieldInvalid('confirmPassword')" class="text-danger">
-                  {{ getFieldErrorMessage('confirmPassword') }}
+                  {{ getFieldErrorMessage ( 'confirmPassword' ) }}
                 </div>
               </div>
 
@@ -54,7 +58,7 @@
                   <option value="storage">Storage</option>
                 </select>
                 <div *ngIf="isFieldInvalid('role')" class="text-danger">
-                  {{ getFieldErrorMessage('role') }}
+                  {{ getFieldErrorMessage ( 'role' ) }}
                 </div>
               </div>
 
@@ -62,7 +66,7 @@
                 <label class="form-label">Email</label>
                 <input formControlName="email" type="text" class="form-control" placeholder="...@abc.com">
                 <div *ngIf="isFieldInvalid('email')" class="text-danger">
-                  {{ getFieldErrorMessage('email') }}
+                  {{ getFieldErrorMessage ( 'email' ) }}
                 </div>
                 <div *ngIf="formSignUp.get('email').hasError('invalidEmail')" class="text-danger">
                   Email phải đúng định dạng!!
@@ -74,7 +78,11 @@
                 <input formControlName="username" type="text" class="form-control"
                        placeholder="Nhập tên tài khoản" autocomplete="username">
                 <div *ngIf="isFieldInvalid('username')" class="text-danger">
-                  {{ getFieldErrorMessage('username') }}
+                  {{ getFieldErrorMessage ( 'username' ) }}
+                </div>
+                <div
+                  *ngIf="formSignUp.get('username').hasError('minlength')" class="text-danger">
+                  Tên phải chứa ít nhất 5 ký tự.
                 </div>
               </div>
 
@@ -83,7 +91,7 @@
                 <input formControlName="birthdayEmployee" type="date" class="form-control"
                        placeholder="Nhập ngày sinh">
                 <div *ngIf="isFieldInvalid('birthdayEmployee')" class="text-danger">
-                  {{ getFieldErrorMessage('birthdayEmployee') }}
+                  {{ getFieldErrorMessage ( 'birthdayEmployee' ) }}
                 </div>
               </div>
 
@@ -92,7 +100,7 @@
                 <input formControlName="numberPhoneEmployee" type="text" class="form-control"
                        placeholder="Nhập số điện thoại">
                 <div *ngIf="isFieldInvalid('numberPhoneEmployee')" class="text-danger">
-                  {{ getFieldErrorMessage('numberPhoneEmployee') }}
+                  {{ getFieldErrorMessage ( 'numberPhoneEmployee' ) }}
                 </div>
               </div>
 
