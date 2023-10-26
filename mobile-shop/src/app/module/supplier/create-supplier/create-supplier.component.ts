@@ -15,7 +15,7 @@ export class CreateSupplierComponent implements OnInit {
   supplier: Supplier;
   errorData: Map<String, string[]> = new Map();
   textLower: string = '';
-  public phoneVN = /^(0[2-9]\d{8,9})$/;
+  public phoneVN = /^(0[1-9]\d{8})$/;
   public vietnamese = /^[a-zA-Z0-9-()*_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$/;
   public emailRegex = /^[a-zA-Z0-9.]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}$/;
   @ViewChild('successNotification') successNotification: ElementRef;
