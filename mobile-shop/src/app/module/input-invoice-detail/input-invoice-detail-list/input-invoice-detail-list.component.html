@@ -63,13 +63,13 @@
 
     <div class="row">
       <div class="col">
-        <table class="table table-list table-striped table-bordered">
-          <tr>
+        <table class="table">
+          <tr style="height: 38px">
             <th>STT</th>
             <th>
               Ngày
             </th>
-            <th>Tên hàng</th>
+            <th style="width: 220px">Tên hàng</th>
             <th>Tên nhà cung cấp</th>
             <th>Số lượng nhập</th>
             <th class="responsive-field">Đơn giá (VND)</th>
@@ -120,9 +120,9 @@
           <tr style="height: 50px"  *ngIf="inputInvoiceList.length===0">
             <td colspan="7" style="font-size: 25px;color: red">Không tìm thấy</td>
           </tr>
-          <tr>
-            <td colspan="7">
-              <div class=" paging-bar mt-3 mb-3">
+          <tr style="background-color: white;border: none">
+            <td colspan="7" style="border: none">
+              <div class=" paging-bar mt-3 mb-3" style="background-color: white">
                 <button class="btn btn-outline-primary" (click)="getInputDetail(page.number - 1)"
                         [disabled]="page.first">Trước
                 </button>
@@ -132,8 +132,8 @@
                 </button>
               </div>
             </td>
-            <td colspan="1">
-              <div *ngIf="isSearch">
+            <td colspan="1" style="border: none;">
+              <div *ngIf="isSearch" style="background-color: white">
                 <button (click)="cancelSearch(0)" class="btn btn-outline-dark">Quay về</button>
               </div>
             </td>
