@@ -21,6 +21,7 @@
 .navbar-nav .nav-item {
   flex: 1;
   text-align: center;
+  font-size: large;
 }
 
 .searchbar {
@@ -55,6 +56,9 @@
 
 .highlight-text {
   color: #3498db; /* or any color you prefer */
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
 .logout-button {
@@ -71,10 +75,19 @@
 .logout-button:hover {
   background-color: #c0392b; /* Darker red on hover */
 }
+
 .nav-item.active-link a {
   background-color: black; /* Highlight color for active item */
   color: #fff; /* Text color for active item */
 }
 
-
+.nav-item:hover {
+  background-color: #ffc107;
+}
+.highlight-text:hover{
+  background-color: #cccccc;
+}
+.navbar-nav .nav-item .nav-link {
+  white-space: nowrap;
+}
 

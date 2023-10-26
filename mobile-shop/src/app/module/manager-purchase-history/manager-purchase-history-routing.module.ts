@@ -5,7 +5,7 @@ import {ManagerPurchaseHistoryListComponent} from './manager-purchase-history-li
 
 const routes: Routes = [
   {
-  path: 'managerPurchaseHistory',
+  path: '',
   component: ManagerPurchaseHistoryListComponent},
 ];
 

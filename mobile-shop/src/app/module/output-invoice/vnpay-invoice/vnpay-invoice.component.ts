@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -22,10 +22,19 @@ export class VnpayInvoiceComponent implements OnInit {
       this.vnpAmount = params.vnp_Amount;
       this.vnpBankCode = params.vnp_BankCode;
       this.vnpOrderInfo = params.vnp_OrderInfo;
-      this.vnpPayDate = params.vnp_PayDate  ;
+      this.vnpPayDate = params.vnp_PayDate;
       this.vnpResponseCode = params.vnp_ResponseCode;
       this.vnTransactionNo = params.vnp_TransactionNo;
     });
+  }
+
+  convertAmount(value: string): string {
+    const numericValue = parseFloat(value);
+    if (!isNaN(numericValue)) {
+      return (numericValue / 100).toString();
+    } else {
+      return value;
+    }
   }
 
 }

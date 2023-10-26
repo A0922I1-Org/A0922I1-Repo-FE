@@ -4,6 +4,7 @@ import {Supplier} from '../../../model/supplier';
 import {InputInvoiceService} from '../../../service/input-invoice/input-invoice.service';
 import {InputInvoiceDetailService} from '../../../service/input-invoice/input-invoice-detail.service';
 import {InputInvoiceDto} from '../../../dto/InputInvoiceDto';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-input-invoice-preview-list',
@@ -20,6 +21,8 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges {
   totalCostOfInvoice = 0;
   isSupplierSelected = false;
   haveItemInList = false;
+  productToDeleteId:number;
+  productToDeleteName:string;
   constructor(private inputInvoiceService: InputInvoiceService,
               private inputInvoiceDetailService: InputInvoiceDetailService) {
   }
@@ -66,7 +69,15 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges {
     console.log(this.previewListInputItem);
     this.inputInvoiceDto = new InputInvoiceDto(this.previewListInputItem, this.supplier);
     this.inputInvoiceService.addInputInvoiceList(this.inputInvoiceDto).subscribe(
-      next => {console.log('ok'); this.previewListInputItem = [];
+      next => {console.log('ok');
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Đã nhập kho thành công',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.previewListInputItem = [];
                this.totalCostOfInvoice = 0;
                this.supplierName = '';
                this.isSupplierSelected = false;
@@ -77,5 +88,10 @@ export class InputInvoicePreviewListComponent implements OnInit, OnChanges {
     // this.inputInvoiceService.addInputInvoiceList(this.supplier).subscribe(
     //   next => this.inputInvoiceDetailService.addInputInvoiceDetail(this.previewListInputItem).
     // )
+  }
+
+  getProductDelete(i:number,name:string){
+    this.productToDeleteId = i;
+    this.productToDeleteName = name;
   }
 }

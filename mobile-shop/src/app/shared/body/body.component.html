@@ -12,8 +12,7 @@
     <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
       <div *ngFor="let product of getPaginatedProducts()">
         <div class="col mb-5">
-
-          <div class="card h-100">
+          <div class="card h-100 border-2">
             <!-- Product image-->
             <img class="card-img-top" src="{{product.imageUrl}}" alt="..."/>
             <!-- Product details-->
@@ -39,8 +38,8 @@
     </div>
   </div>
   <div class="text-center mt-3">
-    <button class="btn btn-outline-dark mx-2" (click)="goToPreviousPage()" [disabled]="!canGoToPreviousPage()">Previous</button>
-    <button class="btn btn-outline-dark mx-2" (click)="goToNextPage()" [disabled]="!canGoToNextPage()">Next</button>
+    <button class="btn btn-outline-dark mx-2" (click)="goToPreviousPage()" [disabled]="!canGoToPreviousPage()">Trước</button>
+    <button class="btn btn-outline-dark mx-2" (click)="goToNextPage()" [disabled]="!canGoToNextPage()">Sau</button>
   </div>
 </section>
 

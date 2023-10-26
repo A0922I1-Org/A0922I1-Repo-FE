@@ -27,8 +27,10 @@
 </div>
 
 <nav class="navbar navbar-light">
-  <div class="searchbar" >
-    <a *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'||userRole=='STORAGE'" class="navbar-brand" href="/home"><img src="/assets/images/logo1.png"></a>
+  <div class="searchbar">
+    <a *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'||userRole=='STORAGE'" class="navbar-brand"
+       href="/home"><img src="/assets/images/logo1.png"></a>
+    
     <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..."
            aria-label="Search" [(ngModel)]="searchQuery" (keyup.enter)="onSearch()">
   </div>
@@ -50,21 +52,33 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav flex-fill">
-          <li *ngIf="userRole=='ADMIN'||userRole=='STORAGE'" class="nav-item active" [routerLink]="['input-invoice']" routerLinkActive="active-link">
+          <li *ngIf="userRole=='ADMIN'||userRole=='STORAGE'" class="nav-item active" [routerLink]="['input-invoice']"
+              routerLinkActive="active-link">
             <a class="nav-link" routerLink='input-invoice'><i class="fa fa-archive" aria-hidden="true"></i> Nhập kho</a>
           </li>
-          <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item" [routerLink]="['product']" routerLinkActive="active-link">
-            <a class="nav-link" routerLink='product'><i class="fa fa-tablet" ></i> Quản lý sản phẩm
+          <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item"
+              [routerLink]="['product']" routerLinkActive="active-link">
+            <a class="nav-link" routerLink='product'><i class="fa fa-tablet"></i> Quản lý sản phẩm
             </a>
           </li>
-          <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item" [routerLink]="['api/managerPurchaseHistory']" routerLinkActive="active-link">
-            <a class="nav-link" routerLink="api/managerPurchaseHistory"><i class="fa fa-history" aria-hidden="true"></i> Lịch sử bán hàng</a>
+          <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item"
+              [routerLink]="['payment']" routerLinkActive="active-link">
+            <a class="nav-link" routerLink="payment"><i class="fa fa-calculator" aria-hidden="true"></i>
+              Bán hàng</a>
           </li>
-          <li *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'" class="nav-item" [routerLink]="['report']" routerLinkActive="active-link">
+          <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item"
+              [routerLink]="['api/managerPurchaseHistory']" routerLinkActive="active-link">
+            <a class="nav-link" routerLink="api/managerPurchaseHistory"><i class="fa fa-history" aria-hidden="true"></i>
+              Lịch sử bán hàng</a>
+          </li>
+          <li *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'" class="nav-item" [routerLink]="['report']"
+              routerLinkActive="active-link">
             <a class="nav-link" routerLink='report'><i class="fa fa-area-chart" aria-hidden="true"></i> Báo cáo doanh số</a>
           </li>
-          <li *ngIf="userRole=='ADMIN'||userRole=='STORAGE'||userRole=='BUSINESS'" class="nav-item" [routerLink]="['supplier']" routerLinkActive="active-link">
-            <a class="nav-link" routerLink='supplier'> <i class="fa fa-building" aria-hidden="true"></i> Nhà cung cấp</a>
+          <li *ngIf="userRole=='ADMIN'||userRole=='STORAGE'||userRole=='BUSINESS'" class="nav-item"
+              [routerLink]="['supplier']" routerLinkActive="active-link">
+            <a class="nav-link" routerLink='supplier'> <i class="fa fa-building" aria-hidden="true"></i> Nhà cung
+              cấp</a>
           </li>
           <li *ngIf="userRole=='ADMIN'" class="nav-item" [routerLink]="['signUp']" routerLinkActive="active-link">
             <a class="nav-link" routerLink='signUp'><i class="fa fa-user-plus" aria-hidden="true"></i> Tạo tài khoản</a>

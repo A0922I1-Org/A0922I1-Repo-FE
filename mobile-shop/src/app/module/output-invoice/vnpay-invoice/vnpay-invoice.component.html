@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 style="text-align: center">Trạng thái thanh toán:</h2>
+  <h2 style="text-align: center; font-size: 30px">Trạng thái thanh toán:</h2>
   <div *ngIf="vnpResponseCode === '00'" >
-    <h4 style="text-align: center" class="text-success">Thanh toán thành công</h4>
+    <h4 style="text-align: center; font-size: 24px" class="text-success">Thanh toán thành công</h4>
 
     <p>Mã ngân hàng: {{ vnpBankCode }}</p>
     <!-- Hiển thị chi tiết đơn hàng từ VNPayDTO -->
@@ -14,8 +14,10 @@
       </tr>
       <tr>
         <td>Tổng tiền:</td>
-        <td><span>{{ vnpAmount | currency:'VND':'symbol':'1.0-0' }}</span></td>
+        <td><span>{{ convertAmount(vnpAmount) | currency:'VND':'symbol':'1.0-2' }}</span></td>
       </tr>
+
+
       <tr>
         <td>Thời gian thanh toán:</td>
         <td>
@@ -33,7 +35,7 @@
     </table>
   </div>
   <div *ngIf="vnpResponseCode !== '00'" >
-    <h4 style="text-align: center" class="text-danger">Thanh toán thất bại</h4>
+    <h4 style="text-align: center; font-size: 24px" class="text-danger">Thanh toán thất bại</h4>
 
     <!-- Hiển thị chi tiết đơn hàng từ VNPayDTO -->
     <h2>Chi tiết đơn hàng:</h2>
@@ -61,7 +63,7 @@
     </table>
   </div>
   <div>
-    <button type="submit" routerLink="/" class="btn btn-primary" style="margin-left: 620px">Quay lại trang chủ</button>
+    <button type="submit" routerLink="/payment" class="btn btn-outline-primary" style="margin-left: 550px">Quay lại trang thanh toán</button>
   </div>
 
 

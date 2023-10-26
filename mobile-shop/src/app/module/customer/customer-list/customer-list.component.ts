@@ -81,6 +81,9 @@ export class CustomerListComponent implements OnInit {
       console.log(data);
     });
   }
+  deleteCustomer() {
+    this.shareData.deleteCustomer();
+  }
 }
 
 
