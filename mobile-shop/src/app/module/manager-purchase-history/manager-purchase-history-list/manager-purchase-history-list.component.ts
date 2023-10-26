@@ -4,7 +4,7 @@ import {Page} from '../../../model/page';
 import {ManagerPurchaseHistoryServiceService} from '../../../service/manager-purchase-history-service.service';
 @Component({
   selector: 'app-manager-purchase-history-list',
-  templateUrl:'./manager-purchase-history-list.component.html',
+  templateUrl: './manager-purchase-history-list.component.html',
   styleUrls: ['./manager-purchase-history-list.component.css']
 })
 export class ManagerPurchaseHistoryListComponent implements OnInit {
@@ -60,12 +60,18 @@ export class ManagerPurchaseHistoryListComponent implements OnInit {
           });
     }
   }
-  convertToTime(dateTime: Date) {
-    const date = new Date(dateTime);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
-    return `${hours}:${minutes}:${seconds}`;
+  formatTime(timeArray: number[]): string {
+    const hours = timeArray[3];
+    const minutes = timeArray[4];
+    const formattedHours = hours < 10 ? `0${hours}` : `${hours}`;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    return `${formattedHours}:${formattedMinutes}`;
+  }
+  formatDate(dateArray: number[]): string {
+    const day = dateArray[2];
+    const month = dateArray[1];
+    const year = dateArray[0];
+    return `${day}/${month}/${year}`;
   }
 }
 
