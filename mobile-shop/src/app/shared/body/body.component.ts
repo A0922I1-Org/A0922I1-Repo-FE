@@ -13,7 +13,7 @@ import {SharedDataService} from '../../service/shared-data.service';
 export class BodyComponent implements OnInit {
     products: any[];
     currentPage: number = 1;
-    itemsPerPage: number = 5;
+    itemsPerPage: number = 8;
 
     constructor(private dialog: MatDialog, private phoneDataService: PhoneDataService, private homePageService: HomePageService,
                 private sharedDataService: SharedDataService) {
