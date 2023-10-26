@@ -4,6 +4,7 @@ import {AuthGuard} from './auth.guard';
 import {RoleGuard} from './role.guard';
 import {HomePageComponent} from './shared/home-page/home-page.component';
 import {NoAuthGuard} from './NoAuthGuard';
+
 const routes: Routes = [
 
   {
@@ -27,17 +28,17 @@ const routes: Routes = [
     loadChildren: () => import('./model/user-detail/infor-user-routing.module').then(module => module.InforUserRoutingModule),
     canActivate: [AuthGuard]
   },
-   {
-     path: 'product',
-     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
-       canActivate: [AuthGuard, RoleGuard],
-        data: { roles: ['ADMIN', 'BUSINESS', 'SALE', 'STORAGE']}
+  {
+    path: 'product',
+    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
+    canActivate: [AuthGuard, RoleGuard],
+    data: {roles: ['ADMIN', 'BUSINESS', 'SALE', 'STORAGE']}
 
   },
   {
     path: 'managerPurchaseHistory',
     loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module')
-    .then(module => module.ManagerPurchaseHistoryModule),
+      .then(module => module.ManagerPurchaseHistoryModule),
     canActivate: [AuthGuard, RoleGuard],
     data: {roles: ['ADMIN', 'BUSINESS']}
   },
