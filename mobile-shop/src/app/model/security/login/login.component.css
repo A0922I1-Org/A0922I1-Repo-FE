@@ -357,8 +357,10 @@ footer p {
   margin: 10px 0;
 }
 
+
 footer i {
   color: red;
+
 }
 
 footer a {
@@ -374,9 +376,5 @@ footer a {
 #customCheck1 {
   margin-right: 5px; /* Adjust the margin between the checkbox and label */
 }
-
-
-
-
 
 
