@@ -59,13 +59,6 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
 
   }
 
-  doDelete(deleteProductId: number) {
-    this.productService.deleteProduct(deleteProductId).subscribe(() => {
-      alert('Xóa sản phẩm thành công');
-      this.getProductList('', '', '', '', '', true);
-    });
-  }
-
   getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string,  sort: string, check: boolean) {
     this.brand = brandName;
     this.price = sellingPrice;
@@ -78,9 +71,7 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
     if (check === true) {
       this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, true).subscribe((response: any) => {
         if (response == null) {
-
           console.log(response);
-
           this.products = [];
           this.totalPages = 0;
           this.currentPage = 0;
@@ -113,11 +104,6 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
         this.check = check;
       }
     }
-  }
-
-  findProduct(productId, productName) {
-    this.chooseProductId = productId;
-    this.chooseProductName = productName;
   }
 
   onPrevPage() {

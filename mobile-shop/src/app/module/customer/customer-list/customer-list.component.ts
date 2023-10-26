@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {Customer} from "../../../model/customer";
 import {Page} from "../../../model/page";
 import {ShareDataService} from "../../../service/outputInvoiceService/share-data.service";
+import Swal from "sweetalert2";
+import {isEmpty} from "rxjs/operators";
 
 
 
@@ -42,44 +44,24 @@ export class CustomerListComponent implements OnInit {
       this.shareData.setCustomerData(data)
     });
   }
-
-  // searchCustomer(search: HTMLInputElement, numberPhone: HTMLInputElement) {
-  //   if (search.value === null && this.option === null) {
-  //     this.serviceCustomerService.searchNumberPhone(numberPhone.value).subscribe(data => {
-  //       this.customers = data.content;
-  //       this.page = data;
-  //       console.log(data);
-  //     })
-  //     } if (numberPhone.value === null && this.option !== null && search.value !== null){
-  //         this.serviceCustomerService.search(this.option, search.value).subscribe(data =>{
-  //           this.customers = data.content;
-  //           this.page = data;
-  //           console.log(data);
-  //         })
-  //     }
-  //     else {
-  //       this.serviceCustomerService.searchAll(this.option, search.value, numberPhone.value).subscribe(data => {
-  //         this.customers = data.content;
-  //         this.page = data;
-  //         console.log(data);
-  //       })
-  //     }
-  //   }
-  // searchCustomer(search: HTMLInputElement, numberPhone: HTMLInputElement) {
-  //   if (search.value === null && this.option === null && numberPhone !== null){
-  //     this.serviceCustomerService.searchAll(this.option, search.value, numberPhone.value).subscribe(data =>{
-  //       this.customers = data.content;
-  //       this.page = data;
-  //       console.log(data);
-  //     })
-  //   }
-  // }
   searchCustomer(search: HTMLInputElement, numberPhone: HTMLInputElement) {
     this.serviceCustomerService.searchAll(this.option, search.value, numberPhone.value).subscribe(data => {
-      this.customers = data.content;
-      this.page = data;
+      if (data && data.content){
+       this.customers = data.content;
+       this.page = data;
+      }else {
+       Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Tìm kiếm không thấy',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+
+      }
       console.log(data);
     });
+
   }
   deleteCustomer() {
     this.shareData.deleteCustomer();

@@ -17,8 +17,8 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="input-group align-items-center">
-                        <label> Tìm Kiếm Theo: </label>
-                        <div class="col-6 col-md-6 col-lg-3 dropdown mt-2">
+                        <label class="me-2" style="font-weight: bold"> Tìm Kiếm Theo: </label>
+                        <div class="col-6 col-md-6 col-lg-4 dropdown mt-2">
                           <select class="btn dropdown-toggle w-100 smaller-font" id="sellingPrice" name="sellingPrice"
                                   aria-expanded="false" style="font-weight: bold" #sellingPrice>
                             <option value="">Mức giá (VND)</option>
@@ -30,20 +30,10 @@
                             <option value="30000000-100000000">Mức giá: 30,000,000 trở lên</option>
                           </select>
                         </div>
-                        <input type="text" class="form-control custom-width-35" placeholder="tìm kiếm theo Tên Sản Phẩm "  #productName>
-                        <input type="text" class="form-control custom-width-35" placeholder="tìm kiếm theo dung lượng"  #productCpu>
-                        <div class="col-2 col-md-1 col-lg-1 mt-2 text-end">
-                          <button class="ms-2 search-icon" style="float: left" [disabled]="!searchForm.valid"
-                                  (click)="getProductList('',sellingPrice.value,productName.value, productCpu.value,'', true)">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                 class="bi bi-search" viewBox="0 0 16 16">
-                              <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                            </svg>
-                          </button>
-                        </div>
+                        <input type="text" class="form-control custom-width-35" placeholder="Tìm Tên Sản Phẩm "  #productName>
+                        <input type="text" class="form-control custom-width-35" placeholder="tìm Dung Lượng"  #productCpu>
+                        <button (click)="getProductList('',sellingPrice.value,productName.value, productCpu.value,'', true)" class="btn btn-outline-dark m-2 ">Tìm Kiếm</button>
                       </div>
-
 
                     </div>
                     <div class="col-2">
@@ -62,10 +52,10 @@
               <thead id="navbar-sticky">
               <tr>
                 <th class="col-1 col-md-1 col-lg-1">STT</th>
-                <th class="col-2 col-md-2 col-lg-2 ">Tên
-                  <button style="border: none; background: white"
+                <th class="col-1 col-md-1 col-lg-3 ">Tên Hàng Hoá
+                  <button style="border: none; background: white; margin-left: 2px"
                           (click)="getProductList(brand,price,name, cpu,'name_product',true)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-sort-up"
                          viewBox="0 0 16 16">
                       <path
                         d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707V12.5zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
@@ -80,7 +70,7 @@
                     </svg>
                   </button>
                 </th>
-                <th *ngIf="!isOnInput" class="col-2 col-md-2 col-lg-2">Giá bán (VND)
+                <th *ngIf="!isOnInput" class="col-1 col-md-1 col-lg-3">Giá bán (VND)
                   <button style="border: none; background: white"
                           (click)="getProductList(brand,price,name, cpu,'selling_price_product',true)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up"
@@ -102,30 +92,30 @@
                   <th *ngIf="isOnInput" class="col-2 col-md-2 col-lg-2">Giá nhập (VND)</th>
 
                 <th class="col-2 col-md-2 col-lg-2">CPU</th>
-                <th class="col-1 col-md-1 col-lg-1">Lưu trữ</th>
+                <th class="col-1 col-md-1 col-lg-1">Tồn Kho</th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let product of products; let i = index" (click)="findByIdProduct(product.productId)" class="hover" data-bs-dismiss="modal">
                 <td>{{i + 1}}</td>
                 <td>{{product.productName}}</td>
-                <td *ngIf="!isOnInput">{{product.sellingPrice}}</td>
-
+                <td *ngIf="!isOnInput">{{product.sellingPrice | number:'1.0-0'}}</td>
                   <td *ngIf="isOnInput">{{product.costPrice}}</td>
-
                 <td>{{product.productCpu}}</td>
                 <td>{{product.productStorage}}</td>
               </tr>
               </tbody>
             </table>
           </div>
-          <div style="text-align: center; margin-left: -350px ">
-            <label style="margin-left: 500px">
+          <div style="text-align: center; margin-left: -250px ">
+            <div *ngIf="totalPages > 1">
+            <label style="margin-left: 540px">
               <button type="button" class="btn btn-outline-primary" style="margin: 5px" [disabled]="currentPage === 0" (click)="onPrevPage()">Trước</button>
               <a>{{currentPage + 1}}/{{totalPages}}</a>
               <button type="button" class="btn btn-outline-primary" style="margin: 5px" [disabled]="(currentPage+1) === totalPages" (click)="onNextPage()">sau</button>
             </label>
-            <button type="button" class="btn btn-outline-dark" style="margin-left: 300px; margin-right: -500px">Thoát</button>
+            <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 300px; margin-right: -350px">Thoát</button>
+            </div>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@
                     </select>
                     <input #search type="text" class="form-control custom-width-35" placeholder="tìm kiếm ">
                     <input #numberPhone type="number" class="form-control custom-width-35" placeholder="tìm kiếm theo số điện thoại">
-                    <button (click)="searchCustomer(search, numberPhone)" class="btn btn-outline-dark m-2 ">Tìm kiếm</button>
+                    <button (click)="searchCustomer(search, numberPhone)" class="btn btn-outline-dark m-2 ">Tìm Kiếm</button>
                   </div>
                 </div>
                 <div class="col-2">
@@ -58,7 +58,6 @@
           </thead>
           <tbody>
           <tr *ngFor="let cs of customers; index as i" (click)="findByIdCustomer(cs.customerId)" class="hover" data-bs-dismiss="modal">
-<!--                <th scope="row">{{i+1}}</th>-->
                 <th scope="row">{{cs.customerId}}</th>
                 <td>{{cs.customerName}}</td>
                 <td>{{cs.customerPhone}}</td>
@@ -66,21 +65,22 @@
                 <td>{{cs.customerAge}}</td>
                 <td>{{cs.customerEmail}}</td>
             </tr>
+          <tr *ngIf="customers.length===0" class="alert alert-warning">
+            <td colspan="8" style="color: red; text-align: center">Dữ liệu không có, vui lòng tìm kiếm lại</td>
+          </tr>
           </tbody>
         </table>
       </div>
-<!--       Modal footer-->
-              <div class="modal-footer" style="width: 1000px; margin-left: 20px">
-                <div>
-                  <div *ngIf="page.totalPages > 0">
-                    <button name="{{page.number}}}" (click)="getListCustomer(page.number - 1)" [disabled]="page.first"  type="button" class="btn btn-outline-primary" style="margin: 5px">Trước</button>
-                  <a>{{page.number+1}}/{{page.totalPages}}</a>
-                    <button (click)="getListCustomer(page.number + 1)" [disabled]="page.last" type="button" class="btn btn-outline-primary" style="margin: 5px">sau</button>
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-outline-danger" (click)="deleteCustomer()" style="margin-left: 90px;">Xóa khách hàng hiện tại</button>
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 50px;">Thoát</button>
-                  </div>
-                </div>
-              </div>
+      <div class="modal-footer" style="width: 1000px; margin-left: 20px; text-align: center">
+        <div>
+          <div *ngIf="page.totalPages > 0">
+            <button name="{{page.number}}}" (click)="getListCustomer(page.number - 1)" [disabled]="page.first" type="button" class="btn btn-outline-primary" style="margin-right: 5px">Trước</button>
+            <a>{{page.number+1}}/{{page.totalPages}}</a>
+            <button (click)="getListCustomer(page.number + 1)" [disabled]="page.last" type="button" class="btn btn-outline-primary" style="margin-left: 5px; margin-right: 5px">sau</button>
+            <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 350px;">Thoát</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
