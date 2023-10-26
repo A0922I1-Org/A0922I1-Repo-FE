@@ -26,7 +26,7 @@
   </button>
 </div>
 
-<nav class="navbar navbar-light" >
+<nav class="navbar navbar-light">
   <div class="searchbar" >
     <a *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'||userRole=='STORAGE'" class="navbar-brand" href="/home"><img src="/assets/images/logo1.png"></a>
     <input *ngIf="showSearchInput" class="form-control mr-sm-2" type="search" placeholder="bạn tìm gì..."
@@ -35,14 +35,14 @@
   <div [hidden]="!isLoggedIn" class="user-info-container">
     <div class="d-flex position-relative justify-content-between align-items-center">
       <a class="nav-link profile-link" routerLink="profile">
-        <span class="greeting-text">Xin chào: <span class="highlight-text">{{username}}</span></span>
+        <span class="greeting-text">Xin chào: <span class="highlight-text">{{employeeInfo.nameEmployee}}</span></span>
       </a>
       <button class="logout-button" (click)="logOut()">Đăng xuất</button>
     </div>
   </div>
 </nav>
 
-<div class="navbar">
+<div class="navbar" id="navbar">
   <div class="container-fluid">
     <nav class="navbar navbar-expand-md navbar-light navbar-expand-xl py-0">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
