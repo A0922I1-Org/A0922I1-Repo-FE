@@ -6,6 +6,7 @@ import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/r
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HeaderComponent} from "../../../shared/header/header.component";
 declare var gapi: any;
 @Component({
   selector: 'app-login',
@@ -18,7 +19,6 @@ export class LoginComponent implements OnInit {
   roles: String[];
   returnUrl: string;
   showPassword = false;
-  loggedIn: boolean;
 
   constructor(private authService: AuthService,
               private shareService: shareService,
