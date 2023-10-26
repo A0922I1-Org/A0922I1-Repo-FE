@@ -21,8 +21,8 @@ import {FooterComponent} from './shared/footer/footer.component';
 import {PhoneDetailsComponent} from './shared/phone-details/phone-details.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {RouterModule, RouterOutlet} from "@angular/router";
-import {SharedModule} from "./shared/shared.module";
-import {SecurityModule} from "./model/security/security.module";
+import {SharedModule} from './shared/shared.module';
+import {SecurityModule} from './model/security/security.module';
 
 
 
@@ -38,6 +38,7 @@ import {BodyComponent} from "./shared/body/body.component";
 import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
 // import {NgxPaginationModule} from "ngx-pagination";
 import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module";
+import {ToastrModule} from 'ngx-toastr';
 
 
 
