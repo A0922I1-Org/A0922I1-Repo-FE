@@ -4,6 +4,7 @@ import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Brand} from '../../../model/brand';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-list',
@@ -13,9 +14,8 @@ import {Brand} from '../../../model/brand';
 export class ProductListComponent implements OnInit {
   searchForm: FormGroup;
 
-  constructor(private productService: ProductService, private router: Router) {
+  constructor(private productService: ProductService) {
   }
-  selectedBrand = '';
   brands: Brand [] = [];
   products: Product [] = [];
   chooseProductId = 0;
@@ -32,13 +32,21 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.getProductList('', '', '', '', false);
     this.searchForm = new FormGroup({
-      productName: new FormControl('', [Validators.maxLength(30)])
+      brand: new FormControl(''),
+      price: new FormControl(''),
+      name: new FormControl('', [Validators.maxLength(30)], ),
     });
   }
 
   doDelete(deleteProductId: number) {
     this.productService.deleteProduct(deleteProductId).subscribe(() => {
-      alert('Xóa sản phẩm thành công');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Đã xóa thành công',
+        showConfirmButton: false,
+        timer: 1500,
+      });
       this.getProductList('', '', '', '', false);
     });
   }
@@ -88,6 +96,29 @@ export class ProductListComponent implements OnInit {
         this.check = check;
       }
     }
+  }
+
+  searchProductList() {
+    this.brand = this.searchForm.value.brand;
+    this.price = this.searchForm.value.price;
+    this.name = this.searchForm.value.name;
+    this.sort = 'product_id';
+    this.productService.getResponseProduct(this.brand, this.price, this.name, 1, 8, this.sort, true).subscribe((response: any) => {
+      if (response == null) {
+        this.brands = [];
+        this.products = [];
+        this.totalPages = 0;
+        this.currentPage = 0;
+        this.pageSize = 0;
+      } else {
+        this.products = response.productPage.content;
+        this.brands = response.brandList;
+        this.totalPages = response.productPage.totalPages;
+        this.currentPage = response.productPage.number;
+        this.pageSize = response.productPage.size;
+      }
+    });
+    this.check = true;
   }
 
   findProduct(productId, productName) {

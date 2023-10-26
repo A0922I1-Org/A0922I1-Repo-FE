@@ -4,17 +4,17 @@
       <h1 style="margin-top: 15px; margin-bottom: 15px; font-size: xx-large">Danh sách sản phẩm</h1>
     </div>
     <div class="row mt-0 mb-3">
-      <form [formGroup]="searchForm" class="row g-3 mt-0 align-items-center">
+      <form [formGroup]="searchForm" class="row g-3 mt-0 align-items-center" (ngSubmit)="searchProductList()">
         <div class="col-6 col-md-6 col-lg-2 dropdown mt-2">
           <select class="btn dropdown-toggle w-100 smaller-font" id="brandName" name="brandName"
-                  aria-expanded="false" style="font-weight: bold" #brandName>
+                  aria-expanded="false" style="font-weight: bold" formControlName="brand" #brandName>
             <option value="">Hãng</option>
-            <option *ngFor="let brand of brands" [value]="brand.brandName" (click)="selectedBrand = brand.brandName">{{brand.brandName}}</option>
+            <option *ngFor="let b of brands" ngValue="{{b.brandName}}">{{b.brandName}}</option>
           </select>
         </div>
         <div class="col-6 col-md-6 col-lg-4 dropdown mt-2">
           <select class="btn dropdown-toggle w-100 smaller-font" id="sellingPrice" name="sellingPrice"
-                  aria-expanded="false" style="font-weight: bold" #sellingPrice>
+                  aria-expanded="false" style="font-weight: bold" formControlName="price" #sellingPrice>
             <option value="">Mức giá (VND)</option>
             <option value="0-1999999">Giá: 0 - 1,999,999</option>
             <option value="2000000-4999999">Giá: 2,000,000 - 4,999,999</option>
@@ -26,15 +26,14 @@
         </div>
         <div class="col-10 col-md-8 col-lg-3 mt-2">
           <input type="text" placeholder="Nhập tên hàng và ấn tìm" class="form-control smaller-font"
-                 aria-label="Product search" id="productName" formControlName="productName" name="productName"
+                 aria-label="Product search" id="productName" formControlName="name" name="productName"
                  #productName>
           <p style="color: red"
-             *ngIf="searchForm.controls.productName.hasError('maxlength') && searchForm.controls.productName.touched">
+             *ngIf="searchForm.controls.name.hasError('maxlength') && searchForm.controls.productName.touched">
             Tên cần tìm không được vượt quá 30 ký tự</p>
         </div>
         <div class="col-2 col-md-1 col-lg-1 mt-2 text-end">
-          <button class="ms-2 search-icon" style="float: left" [disabled]="!searchForm.valid"
-                  (click)="getProductList(brandName.value,sellingPrice.value,productName.value,'', true)">
+          <button class="ms-2 search-icon" style="float: left" [disabled]="!searchForm.valid" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                  class="bi bi-search" viewBox="0 0 16 16">
               <path
@@ -139,7 +138,8 @@
           </button>
         </div>
         <div class="col-2 ">
-          <button class="btn btn-outline-dark smaller-button2" style="float: right" [routerLink]="['/home']">Thoát</button>
+          <button class="btn btn-outline-dark smaller-button2" style="float: right" [routerLink]="['/home']">Thoát
+          </button>
         </div>
       </div>
     </div>
