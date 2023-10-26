@@ -20,7 +20,7 @@ export class CreateSupplierComponent implements OnInit {
   public emailRegex = /^[a-zA-Z0-9.]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}$/;
   @ViewChild('successNotification') successNotification: ElementRef;
 
-
+s
   constructor(private supplierService: SupplierService, private router: Router) {
     this.supplierForm = new FormGroup({
       supplierId: new FormControl(),
