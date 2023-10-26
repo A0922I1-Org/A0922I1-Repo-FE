@@ -97,7 +97,9 @@
   margin-top: 18px;
 }
 
-
+div.col-12{
+  height:150px;
+}
 @media screen and (max-width: 1086px){
   /*div.manh-nav{*/
   /*  height: 148px;*/
