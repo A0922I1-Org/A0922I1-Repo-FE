@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-vnpay-invoice',
@@ -17,6 +18,7 @@ export class VnpayInvoiceComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router) {
   }
+
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.vnpAmount = params.vnp_Amount;
@@ -25,6 +27,25 @@ export class VnpayInvoiceComponent implements OnInit {
       this.vnpPayDate = params.vnp_PayDate;
       this.vnpResponseCode = params.vnp_ResponseCode;
       this.vnTransactionNo = params.vnp_TransactionNo;
+      if (this.vnpResponseCode === '00') {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Thanh toán thành công',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      if (this.vnpResponseCode !== '00') {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Thanh toán thất bại',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+
     });
   }
 

@@ -30,8 +30,8 @@ export class SaleManagerComponent implements OnInit {
   errorMessage: string | null = null;
   isSubmitDisabled = false;
   radioSelected = false;
-  isValidNumberInput = true;
   dataReceived = false;
+  isNewCustomer = false;
 
   constructor(private paymentService: PaymentService,
               private orderService: OrderService,
@@ -73,6 +73,7 @@ export class SaleManagerComponent implements OnInit {
       price: new FormControl(),
     });
   }
+
   getCustomer() {
     this.shareData.getCustomerData().subscribe(data => {
       if (data) {
@@ -81,6 +82,7 @@ export class SaleManagerComponent implements OnInit {
         this.saveCustomerData();
       }
     });
+    this.isNewCustomer = false;
   }
 
   deleteCustomer() {
@@ -96,6 +98,7 @@ export class SaleManagerComponent implements OnInit {
   getCustomerAndDeleteCustomer() {
     this.getCustomer();
     this.deleteCustomer();
+    this.isNewCustomer = false;
   }
 
   getProduct() {
@@ -105,6 +108,19 @@ export class SaleManagerComponent implements OnInit {
       }
     });
 
+  }
+
+  toggleIsNewCustomer() {
+    this.isNewCustomer = !this.isNewCustomer;
+    if (this.isNewCustomer) {
+      this.customer.customerId = null;
+      this.customer.customerName = '';
+      this.customer.customerPhone = '';
+      this.customer.customerAddress = '';
+      this.customer.customerEmail = '';
+      this.dataReceived = false;
+      this.saveCustomerData();
+    }
   }
 
   // function save product in product list on local
@@ -286,18 +302,33 @@ export class SaleManagerComponent implements OnInit {
             widths: ['*', 'auto', 'auto', 'auto'],
             body: [
               ['Tên sản phẩm', 'Giá', 'Số lượng', 'Tổng tiền'],
-              ...this.productList.map(p => ([p.productName, p.sellingPrice, p.qty, (p.sellingPrice * p.qty).toFixed(2)])),
-              [{
-                text: 'Tổng tiền cần thanh toán',
-                colSpan: 3
-              }, {}, {}, this.productList.reduce((sum, p) => sum + (p.qty * p.sellingPrice), 0).toFixed(2)]
+              ...this.productList.map(p => ([
+                p.productName,
+                p.sellingPrice.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'}), // Format price as Vietnamese currency
+                p.qty,
+                (p.sellingPrice * p.qty).toLocaleString('vi-VN', {style: 'currency', currency: 'VND'}) // Format total as currency
+              ])),
+              [
+                {
+                  text: 'Tổng tiền cần thanh toán',
+                  colSpan: 3
+                },
+                {},
+                {},
+                // tslint:disable-next-line:max-line-length
+                this.productList.reduce((sum, p) => sum + (p.qty * p.sellingPrice), 0).toLocaleString('vi-VN', {
+                  style: 'currency',
+                  currency: 'VND'
+                }) // Format total as currency
+              ]
             ]
           }
         },
-        {text: 'Hình thức thanh toán:  ' + this.invoice.paymentMethod},
+        {text: '\nHình thức thanh toán:  ' + this.invoice.paymentMethod},
         {
           columns: [
             [{
+              text: '\nQRCode thông tin đơn hàng\n',
               // tslint:disable-next-line:max-line-length
               qr: `Khách hàng: \nTên: ${this.customer.customerName} \nSố điện thoại: ${this.customer.customerPhone} \nĐịa chỉ: ${this.customer.customerAddress} \nEmail: ${this.customer.customerEmail} \n${productListText}`,
               fit: '80'
@@ -394,6 +425,7 @@ export class SaleManagerComponent implements OnInit {
     this.customer.customerAddress = localStorage.getItem('customerAddress') || '';
     this.customer.customerEmail = localStorage.getItem('customerEmail') || '';
   }
+
   saveCustomerData() {
     localStorage.setItem('customerName', this.customer.customerName);
     localStorage.setItem('customerPhone', this.customer.customerPhone);
