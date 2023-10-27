@@ -95,24 +95,6 @@ body {
   font-size: 24px; /* Độ lớn của biểu tượng */
 }
 
-//* Định dạng checkbox */
-.custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #f44336; /* Màu khi checkbox được chọn */
-  border: 2px solid #f44336; /* Viền của checkbox khi được chọn */
-}
-
-/* Định dạng chữ tiêu đề */
-.custom-control-label {
-  color: #000; /* Màu văn bản của tiêu đề */
-  font-weight: bold; /* Độ đậm của văn bản tiêu đề */
-  cursor: pointer; /* Con trỏ khi di chuột qua tiêu đề */
-  margin-left: 10px; /* Khoảng cách từ checkbox đến tiêu đề */
-}
-
-/* Định dạng tiêu đề khi di chuột qua */
-.custom-control-label:hover {
-  text-decoration: underline; /* Gạch chân tiêu đề khi di chuột qua */
-}
 
 
 

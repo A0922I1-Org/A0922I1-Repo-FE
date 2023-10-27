@@ -5,7 +5,7 @@
 
 <!-- Button to Open the Modal -->
 <button type="button" (click)="getListCustomer(0)" class="btn custom-button hover-effect btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal1">
-  Chọn Khách Hàng Cũ
+  Chọn khách hàng cũ
 </button>
 <!-- The Modal -->
 <ng-container *ngIf="customers">
@@ -70,14 +70,13 @@
         </table>
       </div>
 <!--       Modal footer-->
-              <div class="modal-footer" style="width: 1000px; margin-left: 20px">
+              <div class="modal-footer" style="width: 1000px; margin-left: -50px">
                 <div>
                   <div *ngIf="page.totalPages > 0">
                     <button name="{{page.number}}}" (click)="getListCustomer(page.number - 1)" [disabled]="page.first"  type="button" class="btn btn-outline-primary" style="margin: 5px">Trước</button>
                   <a>{{page.number+1}}/{{page.totalPages}}</a>
                     <button (click)="getListCustomer(page.number + 1)" [disabled]="page.last" type="button" class="btn btn-outline-primary" style="margin: 5px">sau</button>
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-outline-danger" (click)="deleteCustomer()" style="margin-left: 90px;">Xóa khách hàng hiện tại</button>
-                    <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 50px;">Thoát</button>
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-outline-dark" style="margin-left: 300px;">Thoát</button>
                   </div>
                 </div>
               </div>

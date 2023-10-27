@@ -2,21 +2,26 @@
   <body>
   <div class="card" xmlns="http://www.w3.org/1999/html" style="height: 95%; margin-top: -50px">
     <div class="card-top border-bottom text-center" style="background: #ffd400; height: 50px">
-      <span id="logo" style="margin-bottom: 100px">Quản lý bán hàng</span>
+      <span id="logo" style="margin-bottom: 100px">Bán Hàng</span>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="border: 5px solid #ffd400; border-radius: 10px; height: 950px">
       <div class="row upper">
       </div>
       <form #register="ngForm" (ngSubmit)="register.form.valid">
         <div class="row">
           <div class="col-md-7">
-            <div class="left border" style="margin-top: -15px">
+            <div class="left border" style="margin-top: -30px">
               <div class="row">
                 <div class="icons" style="margin-left: 210px">
                 </div>
                   <h4 style="color: black; font-size: 23px">Thông tin khách hàng</h4>
               </div>
-              <app-customer-list (click)="customer&&getCustomerAndDeleteCustomer()"></app-customer-list>
+
+              <app-customer-list (click)="customer&&getCustomer()"></app-customer-list>
+              <div class="radio-button-container" style="margin-top: -5px; margin-bottom: -7px">
+                <input type="radio" id="isNewCustomer" [checked]="isNewCustomer" (click)="toggleIsNewCustomer()" style="margin-left: -620px; margin-top: -10px; margin-bottom: -10px">
+                <span class="radio-text" style="margin-left: -290px; margin-top: -20px">Nhập khách hàng mới</span>
+              </div>
 
 
               <div class="input-container">
@@ -28,8 +33,6 @@
                   <span *ngIf="customerName.touched && customerName.errors.required" style="color: red">Trường này không được để trống</span>
                 </p>
               </div>
-
-
               <div class="input-container">
                 <input type="text" id="phoneNumber" [(ngModel)]="customer.customerPhone" #phoneNumber='ngModel'
                        [ngClass]="{'disabled': dataReceived}"
@@ -65,10 +68,7 @@
                   <span *ngIf="email.touched && !email.errors?.required && !isValidEmail(customer.customerEmail)"
                         style="color: red">Địa chỉ email không hợp lệ</span>
                 </p>
-
               </div>
-
-
               <span class="header" style="color: black; margin-left: -10px">Thông tin sản phẩm</span>
               <br>
               <app-product-select-modal (click)="products && getProduct()"></app-product-select-modal>
@@ -104,16 +104,17 @@
                   </p>
 
                 </div>
-                <button class="custom-outline-button" type="submit"
-                        [disabled]="!isLessThan99(newProduct.qty) || !productForm.valid || checkQuantity(newProduct.qty) || isSubmitDisabled"
-                        style="margin-left: -395px; margin-top: 12px">+ Thêm sản phẩm
-                </button>
-
+                <div>
+                  <button class="custom-outline-button" type="submit" style="margin-top: 7px; margin-left: -390px"
+                          [disabled]="!isLessThan99(newProduct.qty) || !productForm.valid || checkQuantity(newProduct.qty) || isSubmitDisabled">
+                    + Thêm sản phẩm
+                  </button>
+                </div>
               </form>
             </div>
           </div>
           <div class="col-md-5">
-            <div class="right border" style="margin-top: -15px" >
+            <div class="right border" style="margin-top: -30px">
               <div class="header">Sản phẩm đang mua</div>
               <div class="row item">
                 <div class="col-8" *ngFor="let product of productList | paginate: {itemsPerPage: 2, currentPage: p}; let i = index">
