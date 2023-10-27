@@ -13,14 +13,15 @@ export class CreateSupplierComponent implements OnInit {
 
   supplierForm: FormGroup;
   supplier: Supplier;
-  errorData: Map<String, string[]> = new Map();
-  textLower: string = '';
+  // tslint:disable-next-line:ban-types
+  errorData: Map<String , string[]> = new Map();
+  textLower = '';
   public phoneVN = /^(0[1-9]\d{8})$/;
   public vietnamese = /^[a-zA-Z0-9-()*_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễếệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ \n]+$/;
   public emailRegex = /^[a-zA-Z0-9.]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}$/;
   @ViewChild('successNotification') successNotification: ElementRef;
 
-s
+
   constructor(private supplierService: SupplierService, private router: Router) {
     this.supplierForm = new FormGroup({
       supplierId: new FormControl(),

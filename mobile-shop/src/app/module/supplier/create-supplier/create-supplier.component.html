@@ -1,8 +1,8 @@
 
 <form [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
 <div class="container border border-5 border-warning">
-    <div class="row text-center header border_radius">
-      <h2 style="margin-top: 15px; margin-bottom: 15px">Thêm mới nhà cung cấp</h2>
+    <div class="mt-2  row text-center header border_radius">
+      <h1><i class="fa fa-building me-3 mt-2" aria-hidden="true"></i>Thêm mới nhà cung cấp</h1>
     </div>
     <input class="col-12" placeholder="Tên nhà cung cấp" type="hidden" formControlName="supplierId"><br>
     <div class="table-responsive">
@@ -115,7 +115,7 @@
           </td>
         </tr>
         <tr>
-          <td style="margin-top: 80px">
+          <td class="text-center" style="margin-top: 80px">
             <button style="float: right; margin-left: 120px"  type="button" class="btn btn-outline-dark col-md-1" routerLink="/supplier">Huỷ bỏ</button>
             <button  type="submit" class="btn btn-outline-warning col-md-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Lưu</button>
           </td>
