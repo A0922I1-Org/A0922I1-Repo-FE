@@ -3,22 +3,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 14px;
+  /*font-family: Helvetica,Arial , sans-serif;*/
+  /*font-size: 14px;*/
   line-height: 1.5;
   color: #333;
   overflow: hidden;
-  height: 900px;
+  height: 950px;
   margin-top: 15px;
 }
 
 .card {
   max-width: 1200px;
   margin: 2vh;
+  border: 5px solid #ffd400;
+  border-radius: 10px;
 }
 
 .card-top {
   padding: 0.7rem 5rem;
+  border: 5px solid #ffd400;
+  border-radius: 10px;
 }
 
 .card-top a {
@@ -26,14 +30,14 @@ body {
   margin-top: 0.7rem;
 }
 
-#logo {
-  font-family: 'Dancing Script',serif;
-  font-weight: bold;
-  font-size: 1.6rem;
-}
+/*#logo {*/
+/*  font-family: 'Dancing Script',serif;*/
+/*  font-weight: bold;*/
+/*  font-size: 1.6rem;*/
+/*}*/
 
 .card-body {
-  padding: 0 5rem 5rem 5rem;
+  padding: 0 5rem 0 4rem;
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -371,5 +375,17 @@ input:valid + label::after {
 .custom-outline-button:disabled {
   cursor: not-allowed;
 }
+.radio-label-container {
+  display: flex;
+  align-items: center;
+}
 
+.radio-label-container input[type="radio"] {
+  margin-right: 5px;
+}
 
+ h1{
+  font-size: 34px;
+  margin: auto;
+  font-weight: 500;
+}

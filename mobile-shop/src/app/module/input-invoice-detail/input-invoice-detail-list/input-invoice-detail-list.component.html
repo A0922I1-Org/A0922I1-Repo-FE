@@ -1,7 +1,11 @@
-<div style="width: 99%;height: 90%; margin: 10px auto; position: relative">
-  <div class="container-fluid border ">
-    <div class="row border-bottom text-center header">
-      <h1 style="margin-top: 15px; margin-bottom: 15px; font-size: xx-large">Quản lý nhập kho</h1>
+<div style="width: 80%;height: 90%; margin: 10px auto; position: relative">
+  <div class="container-fluid main-content">
+    <div class="row">
+      <div class="col">
+        <div class="header">
+          <h1 class="text-center mt-3"><i class="fa fa-archive me-3 mt-3" aria-hidden="true"></i>Quản lý nhập kho</h1>
+        </div>
+      </div>
     </div>
 
     <div class="row mt-3 mb-lg-3 mb-xxl-3">
@@ -133,6 +137,7 @@
               </div>
             </td>
             <td colspan="1" style="border: none;">
+              <button routerLink="/home" class="btn btn-outline-dark">Thoát</button>
               <div *ngIf="isSearch" style="background-color: white">
                 <button (click)="cancelSearch(0)" class="btn btn-outline-dark">Quay về</button>
               </div>
@@ -140,8 +145,6 @@
           </tr>
         </table>
       </div>
-    </div>
-    <div class="row border-top footer">
     </div>
   </div>
 </div>
