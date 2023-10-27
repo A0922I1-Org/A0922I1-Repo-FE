@@ -67,5 +67,10 @@ export class BodyComponent implements OnInit {
         const totalPages = Math.ceil(this.products.length / this.itemsPerPage);
         return this.currentPage < totalPages;
     }
+
+  getTotalPages() {
+    const totalPages = Math.ceil(this.products.length / this.itemsPerPage);
+    return totalPages;
+  }
 }
 

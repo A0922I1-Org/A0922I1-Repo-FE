@@ -6,6 +6,7 @@ import {tokenStorageService} from "../../model/security/service/token-storage.se
 import {shareService} from "../../model/security/service/share.service";
 import {AuthService} from "../../model/security/service/auth.service";
 import {EmployeeService} from "../../model/user-detail/service/infor-user.service";
+import {HomePageService} from "../../service/home-page.service";
 
 
 @Component({
@@ -30,7 +31,8 @@ export class HeaderComponent implements OnInit {
               private authorize: tokenStorageService,
               private share: shareService,
               private authService: AuthService,
-              private employeeService: EmployeeService) {
+              private employeeService: EmployeeService,
+              private homePageService: HomePageService) {
     this.share.getClickEvent().subscribe(() => {
       this.loadHeader()
     });
@@ -69,14 +71,6 @@ export class HeaderComponent implements OnInit {
     this.loadHeader();
   }
 
-  // onSearch() {
-  //   if (this.searchQuery.trim() !== '') {
-  //     this.searchService.search(this.searchQuery).subscribe(results => {
-  //       this.sharedDataService.updateSearchResults(results);
-  //     });
-  //   }
-  // }
-
   logOut() {
     this.authorize.signOut();
     // @ts-ignore
@@ -86,10 +80,11 @@ export class HeaderComponent implements OnInit {
     if (this.searchQuery.trim() !== '') {
       this.searchService.search(this.searchQuery).subscribe(results => {
         this.sharedDataService.updateSearchResults(results);
-
         // Check if there are no results and display a message
         if (results.length === 0) {
           this.noDataMessage = 'No data valid';
+        } if (this.searchQuery.trim() === ''){
+
         } else {
           // Clear the message if there are results
           this.noDataMessage = '';
