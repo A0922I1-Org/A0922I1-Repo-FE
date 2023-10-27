@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import jwtDecode from "jwt-decode";
 import {tokenStorageService} from "./token-storage.service";
+import {User} from "../../user/module/user";
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
 

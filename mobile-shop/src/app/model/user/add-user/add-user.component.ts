@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import Swal from "sweetalert2";
-import {UserService} from "../service/user.service";
-import {Router} from "@angular/router";
-import {catchError, switchMap} from "rxjs/operators";
-import {Employee} from "../module/employee";
-import {User} from "../module/user";
-import {Role} from "../module/role";
-import {throwError} from "rxjs";
+import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {UserService} from '../service/user.service';
+import {Router} from '@angular/router';
+import {catchError, switchMap} from 'rxjs/operators';
+import {throwError} from 'rxjs';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-add-user',
@@ -16,59 +14,58 @@ import {throwError} from "rxjs";
 })
 export class AddUserComponent implements OnInit {
   formSignUp: FormGroup;
-  employee: Employee = new Employee();
-  user: User = new User();
-  role: Role = new Role();
+  fieldErrors: { [key: string]: string } = {};
 
 
-  constructor(private formBuilder: FormBuilder,
-              private userService: UserService,
-              private router: Router) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
   }
-
 
   ngOnInit(): void {
-    // Khởi tạo FormGroup và FormControl
     this.formSignUp = this.formBuilder.group({
-      nameEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
-      birthdayEmployee: ['', [Validators.required, this.validateBirthdayValidator]],
-      addressEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
-      numberPhoneEmployee: ['', [Validators.required, this.lengthValidator(5, 35)]],
-      username: ['', [Validators.required, this.lengthValidator(5, 35)]],
+      nameEmployee: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), this.noNumbersValidator()]],
+      birthdayEmployee: ['', [Validators.required, this.validateBirthday]],
+      addressEmployee: ['', [Validators.required, Validators.maxLength(45)]],
+      numberPhoneEmployee: ['', [Validators.required, Validators.maxLength(14), this.invalidNumberPhone]],
+      username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
       role: ['', [Validators.required]],
       email: ['', [Validators.required, this.customEmailValidator]],
-      password: ['', [Validators.required, this.lengthValidator(5, 35)]],
-      confirmPassword: ['', [Validators.required, this.lengthValidator(5, 35)]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(35)]],
+      confirmPassword: ['', [Validators.required]],
     }, {
-      validators: this.matchPasswords
+      validators: [this.matchPasswords, this.passwordMatch]
     });
   }
-  lengthValidator(min: number, max: number) {
-    return (control: AbstractControl) => {
-      const value = control.value;
-      if (value && (value.length < min || value.length > max)) {
-        return { 'lengthInvalid': true };
-      }
-      return null;
+
+  noNumbersValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const forbidden = /\d/.test(control.value);
+
+      return forbidden ? {noNumbers: true} : null;
     };
   }
 
-  validateBirthdayValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  validateBirthday(control: any) {
     const birthday = new Date(control.value);
     const currentDate = new Date();
-    if (birthday > currentDate) {
-      return {'invalidBirthday': true};
-    }
-    return null;
+    return birthday <= currentDate ? null : {invalidBirthday: true};
   }
 
-  matchPasswords(control: AbstractControl): { [key: string]: boolean } | null {
+  matchPasswords(control: any) {
     const password = control.get('password').value;
-    console.log(password)
     const confirmPassword = control.get('confirmPassword').value;
-    if (password !== confirmPassword) {
-      return {'passwordMismatch': true};
+    return password === confirmPassword ? null : {passwordMismatch: true};
+  }
+
+  passwordMatch(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.get('password');
+    const confirmPassword = control.get('confirmPassword');
+
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({passwordMismatch: true});
+    } else {
+      confirmPassword.setErrors(null);
     }
+
     return null;
   }
 
@@ -76,10 +73,91 @@ export class AddUserComponent implements OnInit {
     const email = control.value;
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!pattern.test(email)) {
-      return {'invalidEmail': true};
+      return {invalidEmail: true};
     }
     return null;
   }
+
+  invalidNumberPhone(control: AbstractControl): { [key: string]: boolean } | null {
+    const numberPhone = control.value;
+    const pattern = /^(0[1-9]\d{8})$/;
+    if (!pattern.test(numberPhone)) {
+      return {invalidNumberPhone: true};
+    }
+    return null;
+  }
+
+  isFieldInvalid(fieldName: string) {
+    const control = this.formSignUp.get(fieldName);
+    if (control.invalid && control.touched) {
+      this.fieldErrors[fieldName] = this.getFieldErrorMessage(fieldName);
+    }
+    return control.invalid && control.touched;
+  }
+
+
+  getFieldErrorMessage(fieldName: string): string {
+    if (this.formSignUp.get(fieldName).hasError('required')) {
+      if (fieldName === 'nameEmployee') {
+        return 'Tên không được để trống.';
+      } else if (fieldName === 'password') {
+        return 'Mật khẩu không được để trống.';
+      } else if (fieldName === 'addressEmployee') {
+        return 'Địa chỉ không được để trống.';
+      } else if (fieldName === 'role') {
+        return 'Vui lòng chọn quyền hạn.';
+      } else if (fieldName === 'email') {
+        return 'Email không được để trống.';
+      } else if (fieldName === 'username') {
+        return 'Tên tài khoản không được để trống.';
+      } else if (fieldName === 'birthdayEmployee') {
+        return 'Ngày không hợp lệ.';
+      } else if (fieldName === 'numberPhoneEmployee') {
+        return 'Số điện thoại không hợp lệ.';
+      }
+    }
+
+    if (fieldName === 'confirmPassword' && this.formSignUp.hasError('passwordMismatch')) {
+      return 'Mật khẩu và xác thực mật khẩu không khớp.';
+    }
+
+
+    if (this.formSignUp.get(fieldName).hasError('maxlength')) {
+      if (fieldName === 'nameEmployee') {
+        return 'Tên không được quá 20 kí tự.';
+      } else if (fieldName === 'addressEmployee') {
+        return 'Địa chỉ không được quá 45 kí tự.';
+      } else if (fieldName === 'numberPhoneEmployee') {
+        return 'Số điện thoại không được quá 14 kí tự.';
+      } else if (fieldName === 'username') {
+        return 'Tên tài khoản không được quá 15 kí tự.';
+      } else if (fieldName === 'password') {
+        return 'Mật khẩu không được quá 35 kí tự.';
+      }
+    }
+
+    if (this.formSignUp.get(fieldName).hasError('minlength')) {
+      if (fieldName === 'nameEmployee') {
+        return 'Họ và tên trên 5 kí tự.';
+      } else if (fieldName === 'username') {
+        return 'Tên tài khoản trên 5 kí tự.';
+      }
+    }
+
+    if (fieldName === 'numberPhoneEmployee') {
+      if (this.formSignUp.get(fieldName).hasError('invalidNumberPhone')) {
+        return 'Không đúng định dạng số Việt Nam';
+      }
+    }
+
+    if (fieldName === 'birthdayEmployee') {
+      if (this.formSignUp.get(fieldName).hasError('invalidBirthday')) {
+        return 'Ngày không hợp lệ.';
+      }
+    }
+    return '';
+  }
+
 
   onSubmit() {
     if (this.formSignUp.invalid) {
@@ -96,54 +174,54 @@ export class AddUserComponent implements OnInit {
     const username = this.formSignUp.get('username').value;
     const email = this.formSignUp.get('email').value;
 
-    this.userService.checkExistingUsername(username).pipe(
-      switchMap((usernameExists) => {
-        if (usernameExists) {
-          return throwError('Tài khoản đã tồn tại!');
-        } else {
-          return this.userService.checkExistingEmail(email);
-        }
-      }),
-      switchMap((emailExists) => {
-        if (emailExists) {
-          return throwError('Email đã tồn tại!');
-        } else {
-          const employee = this.createEmployee();
-          return this.userService.addEmployee(employee);
-        }
-      }),
-      catchError((error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Lỗi...',
-          text: error,
-        });
-        console.log('Error:', error);
-        return throwError(error);
-      })
-    ).subscribe(
-      (data) => {
-        localStorage.setItem('tempAccount', JSON.stringify(data));
-        this.formSignUp.reset();
-        this.router.navigateByUrl('/home');
+    this.userService.checkExistingUsername(username)
+      .pipe(
+        switchMap((usernameExists) => {
+          if (usernameExists) {
+            return throwError('Tài khoản đã tồn tại!');
+          } else {
+            return this.userService.checkExistingEmail(email);
+          }
+        }),
+        switchMap((emailExists) => {
+          if (emailExists) {
+            return throwError('Email đã tồn tại!');
+          } else {
+            const employee = this.createEmployee();
+            return this.userService.addEmployee(employee);
+          }
+        }),
+        catchError((error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Lỗi...',
+            text: error,
+          });
+          console.log('Error:', error);
+          return throwError(error);
+        })
+      )
+      .subscribe(
+        (data) => {
+          localStorage.setItem('tempAccount', JSON.stringify(data));
+          this.formSignUp.reset();
+          this.router.navigateByUrl('/home');
 
-        Swal.fire({
-          icon: 'success',
-          title: 'Đăng ký thành công!',
-          text: 'Tài khoản của bạn đã được tạo thành công.',
-        });
-      },
-      (error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Lỗi...',
-          text: error,
-        });
-      }
-    );
+          Swal.fire({
+            icon: 'success',
+            title: 'Đăng ký thành công!',
+            text: 'Tài khoản của bạn đã được tạo thành công.',
+          });
+        },
+        (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Lỗi...',
+            text: error,
+          });
+        }
+      );
   }
-
-
 
   createEmployee() {
     return {
@@ -161,5 +239,4 @@ export class AddUserComponent implements OnInit {
       role: [this.formSignUp.get('role').value]
     };
   }
-
 }

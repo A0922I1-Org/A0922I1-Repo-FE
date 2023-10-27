@@ -8,12 +8,14 @@ import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import {FormsModule} from '@angular/forms';
 
 
-@NgModule({
-    declarations: [
-      SupplierListComponent,
-      CreateSupplierComponent,
-      UpdateSupplierComponent],
 
+@NgModule({
+    declarations:
+      [
+        SupplierListComponent
+        ,CreateSupplierComponent
+        ,UpdateSupplierComponent
+      ],
     exports: [
         SupplierListComponent,
       CreateSupplierComponent,
@@ -26,10 +28,5 @@ import {FormsModule} from '@angular/forms';
     ReactiveFormsModule
   ]
 })
-export class SupplierModule { }
 
-
-
-
-
-
+export class SupplierModule{}

@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AuthService} from "../service/auth.service";
 import {shareService} from "../service/share.service";
 import {tokenStorageService} from "../service/token-storage.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import Swal from 'sweetalert2';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HeaderComponent} from "../../../shared/header/header.component";
 declare var gapi: any;
 @Component({
   selector: 'app-login',
@@ -18,8 +19,6 @@ export class LoginComponent implements OnInit {
   roles: String[];
   returnUrl: string;
   showPassword = false;
-  loggedIn: boolean;
-
 
   constructor(private authService: AuthService,
               private shareService: shareService,
@@ -50,6 +49,7 @@ export class LoginComponent implements OnInit {
       this.formLogin.get('username').setValue(user.username);
       console.log( this.formLogin.get('username').setValue(user))
     }
+
   }
 
 
@@ -152,5 +152,7 @@ export class LoginComponent implements OnInit {
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
+
+
 
 }

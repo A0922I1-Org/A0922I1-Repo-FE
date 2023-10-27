@@ -1,18 +1,44 @@
 td, tr {
   text-align: center;
 }
+tr{
+  border-bottom: 1px solid lightgray;
+  border-top: 1px solid lightgray;
+}
+td{
+  border: 1px solid lightgray;
+}
+table{
+  border: 1px solid lightgray;
+}
+tr:hover,
+tr:hover div{
+  background-color: #e9ecef;
+}
+
 td{
   vertical-align: middle;
 }
 
-.header, .footer {
+.header {
   background-color: #ffd400;
+  border-radius: 10px;
+  height: 74px;
+  margin: auto;
+}
+.header h1{
+  font-size: 34px;
+  margin: auto;
+  font-weight: 500;
 }
 div.search-bar input.col {
   margin-left: 5px;
   margin-right: 5px;
 }
-
+div.main-content{
+  border: 5px solid rgb(255, 212, 0);
+  border-radius:10px;
+}
 
 button.add-new.responsive-icon {
   margin-top: 11px;
@@ -23,9 +49,6 @@ div.paging-bar button {
   margin: 0 5px;
 }
 
-.footer{
-  height: 30px;
-}
 button.responsive-icon,
 button.responsive-icon-add,
 button.responsive-button-search{

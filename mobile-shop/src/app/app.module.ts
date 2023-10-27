@@ -19,9 +19,9 @@ import {HeaderComponent} from './shared/header/header.component';
 import {FooterComponent} from './shared/footer/footer.component';
 import {PhoneDetailsComponent} from './shared/phone-details/phone-details.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import {RouterModule, RouterOutlet} from "@angular/router";
-import {SharedModule} from "./shared/shared.module";
-import {SecurityModule} from "./model/security/security.module";
+import {RouterModule, RouterOutlet} from '@angular/router';
+import {SharedModule} from './shared/shared.module';
+import {SecurityModule} from './model/security/security.module';
 
 
 
@@ -31,12 +31,13 @@ import {
   SocialAuthServiceConfig,
   SocialLoginModule
 } from 'angularx-social-login';
-import {CustomerModule} from "./module/customer/customer.module";
-import {HomePageComponent} from "./shared/home-page/home-page.component";
-import {BodyComponent} from "./shared/body/body.component";
-import {ImageScrollComponent} from "./shared/image-scroll/image-scroll.component";
-import {OutputInvoiceModule} from "./module/output-invoice/output-invoice.module";
-import {AddUserComponent} from "./model/user/add-user/add-user.component";
+import {CustomerModule} from './module/customer/customer.module';
+import {HomePageComponent} from './shared/home-page/home-page.component';
+import {BodyComponent} from './shared/body/body.component';
+import {ImageScrollComponent} from './shared/image-scroll/image-scroll.component';
+import {OutputInvoiceModule} from './module/output-invoice/output-invoice.module';
+import {AddUserComponent} from './model/user/add-user/add-user.component';
+
 
 
 @NgModule({

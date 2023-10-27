@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SearchService} from '../../service/search.service';
 import {SharedDataService} from '../../service/shared-data.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {tokenStorageService} from "../../model/security/service/token-storage.service";
 import {shareService} from "../../model/security/service/share.service";
 import {AuthService} from "../../model/security/service/auth.service";
+import {EmployeeService} from "../../model/user-detail/service/infor-user.service";
 
 
 @Component({
@@ -17,21 +18,23 @@ export class HeaderComponent implements OnInit {
   userRole: string;
   username: string;
   isLoggedIn = false;
-
+  employeeInfo: any;
   searchQuery: string = '';
   showSearchInput: boolean;
+
 
   constructor(private searchService: SearchService,
               private sharedDataService: SharedDataService,
               private router: Router,
               private authorize: tokenStorageService,
               private share: shareService,
-              private authService: AuthService) {
-//phan quyen
-//     this.userRole = this.authorize.getRole().authority;
+              private authService: AuthService,
+              private employeeService: EmployeeService) {
     this.share.getClickEvent().subscribe(() => {
       this.loadHeader()
     });
+
+
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -49,7 +52,10 @@ export class HeaderComponent implements OnInit {
   loadHeader() {
     if (this.authorize.getToken()) {
       this.userRole = this.authorize.getRole()?.authority || 'USER';
-      this.username = this.authorize.getName();
+      this.username = this.authService.getUsernameFromToken()
+      this.employeeService.getEmployeeByUsername(this.username).subscribe(data => {
+        this.employeeInfo = data;
+      });
       this.isLoggedIn = true;
     } else {
       this.userRole = '';
