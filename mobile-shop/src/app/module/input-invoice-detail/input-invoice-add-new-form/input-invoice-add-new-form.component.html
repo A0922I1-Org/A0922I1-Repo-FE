@@ -1,6 +1,7 @@
-<div class="container-fluid parent">
-  <div class="row border-bottom text-center header">
-    <h1 style="margin-top: 15px; margin-bottom: 15px; font-size: xx-large">Nhập kho</h1>
+<div style="width: 80%;height: 90%; margin: 10px auto; position: relative">
+<div class="container-fluid parent ">
+  <div class="border-bottom text-center header mt-3">
+    <h1> <i class="fa fa-archive me-3 mt-3" aria-hidden="true"></i>Nhập kho</h1>
   </div>
 
   <div class="row">
@@ -8,7 +9,7 @@
       <div class="row">
         <div class="col ms-2">
           <div class="row">
-            <div class="main-content col">
+            <div class="add-form col">
               <div class="row">
                 <button [disabled]="isNewProduct" class="me-2 col-sm-10 col-md-auto select-option btn btn-outline-secondary"
                         data-bs-toggle="modal" data-bs-target="#myModal">
@@ -97,5 +98,6 @@
       <app-input-invoice-preview-list (reloadProductListModalSignal)="reloadProductListModal($event)" [item]="productToListValidated"></app-input-invoice-preview-list>
     </div>
   </div>
+</div>
 </div>
 <app-product-select-modal [reload]="reload" (productEmitted)="chooseProductInPast($event)"></app-product-select-modal>
