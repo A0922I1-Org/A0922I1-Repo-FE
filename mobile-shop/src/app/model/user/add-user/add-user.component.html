@@ -15,7 +15,9 @@
                 <label class="form-label">Họ Và Tên</label>
                 <input formControlName="nameEmployee" type="text" class="form-control" placeholder="Nhập họ và tên">
                 <div *ngIf="isFieldInvalid('nameEmployee')" class="text-danger">
+
                   {{ getFieldErrorMessage('nameEmployee') }}
+
                   <div
                     *ngIf="formSignUp.get('nameEmployee').hasError('minlength')" class="text-danger">
                     Tên phải chứa ít nhất 5 ký tự.
@@ -24,14 +26,18 @@
                     Tên nhân viên không được chứa số.
                   </div>
                 </div>
+
               </div>
+
 
                 <div class="col-md-6">
                   <label class="form-label">Mật khẩu</label>
                   <input formControlName="password" type="password" class="form-control"
                          placeholder="Nhập mật khẩu" autocomplete="new-password">
                   <div *ngIf="isFieldInvalid('password')" class="text-danger">
+
                     {{ getFieldErrorMessage('password') }}
+
                   </div>
                 </div>
 
@@ -40,7 +46,9 @@
                   <input formControlName="addressEmployee" type="text" class="form-control"
                          placeholder="Nhập địa chỉ">
                   <div *ngIf="isFieldInvalid('addressEmployee')" class="text-danger">
+
                     {{ getFieldErrorMessage('addressEmployee') }}
+
                   </div>
                 </div>
 
@@ -49,7 +57,9 @@
                   <input formControlName="confirmPassword" type="password" class="form-control"
                          placeholder="Xác thực lại mật khẩu" autocomplete="new-password">
                   <div *ngIf="isFieldInvalid('confirmPassword')" class="text-danger">
+
                     {{ getFieldErrorMessage('confirmPassword') }}
+
                   </div>
                 </div>
 
@@ -62,7 +72,9 @@
                     <option value="storage">Storage</option>
                   </select>
                   <div *ngIf="isFieldInvalid('role')" class="text-danger">
+
                     {{ getFieldErrorMessage('role') }}
+
                   </div>
                 </div>
 
@@ -70,7 +82,9 @@
                   <label class="form-label">Email</label>
                   <input formControlName="email" type="text" class="form-control" placeholder="...@abc.com">
                   <div *ngIf="isFieldInvalid('email')" class="text-danger">
+
                     {{ getFieldErrorMessage('email') }}
+
                   </div>
                   <div *ngIf="formSignUp.get('email').hasError('invalidEmail')" class="text-danger">
                     Email phải đúng định dạng!!
@@ -82,7 +96,9 @@
                   <input formControlName="username" type="text" class="form-control"
                          placeholder="Nhập tên tài khoản" autocomplete="username">
                   <div *ngIf="isFieldInvalid('username')" class="text-danger">
+
                     {{ getFieldErrorMessage('username') }}
+
                   </div>
                   <div
                     *ngIf="formSignUp.get('username').hasError('minlength')" class="text-danger">
@@ -95,7 +111,9 @@
                   <input formControlName="birthdayEmployee" type="date" class="form-control"
                          placeholder="Nhập ngày sinh">
                   <div *ngIf="isFieldInvalid('birthdayEmployee')" class="text-danger">
+
                     {{ getFieldErrorMessage('birthdayEmployee') }}
+
                   </div>
                 </div>
 
@@ -104,6 +122,7 @@
                   <input formControlName="numberPhoneEmployee" type="text" class="form-control"
                          placeholder="0934xxxxxx">
                   <div *ngIf="isFieldInvalid('numberPhoneEmployee')" class="text-danger">
+
                     {{ getFieldErrorMessage('numberPhoneEmployee') }}
                   </div>
                 </div>
@@ -112,6 +131,7 @@
               <div class="form-button mt-3">
                 <button type="submit" class="btn btn-primary" [disabled]="formSignUp.invalid">Sign Up</button>
                 <button type="submit" class="btn btn-outline-dark" routerLink="/home">Thoát</button>
+
               </div>
             </div>
           </form>
