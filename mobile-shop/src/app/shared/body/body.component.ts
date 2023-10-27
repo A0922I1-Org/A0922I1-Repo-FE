@@ -15,6 +15,7 @@ export class BodyComponent implements OnInit {
     currentPage: number = 1;
     itemsPerPage: number = 8;
 
+
     constructor(private dialog: MatDialog, private phoneDataService: PhoneDataService, private homePageService: HomePageService,
                 private sharedDataService: SharedDataService) {
     }

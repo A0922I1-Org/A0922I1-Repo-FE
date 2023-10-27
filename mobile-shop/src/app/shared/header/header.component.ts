@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   employeeInfo: any;
   searchQuery: string = '';
   showSearchInput: boolean;
+  noDataMessage: string;
 
 
   constructor(private searchService: SearchService,
@@ -68,17 +69,33 @@ export class HeaderComponent implements OnInit {
     this.loadHeader();
   }
 
-  onSearch() {
-    if (this.searchQuery.trim() !== '') {
-      this.searchService.search(this.searchQuery).subscribe(results => {
-        this.sharedDataService.updateSearchResults(results);
-      });
-    }
-  }
+  // onSearch() {
+  //   if (this.searchQuery.trim() !== '') {
+  //     this.searchService.search(this.searchQuery).subscribe(results => {
+  //       this.sharedDataService.updateSearchResults(results);
+  //     });
+  //   }
+  // }
 
   logOut() {
     this.authorize.signOut();
     // @ts-ignore
     window.location.href = 'http://localhost:4200/';
   }
+  onSearch() {
+    if (this.searchQuery.trim() !== '') {
+      this.searchService.search(this.searchQuery).subscribe(results => {
+        this.sharedDataService.updateSearchResults(results);
+
+        // Check if there are no results and display a message
+        if (results.length === 0) {
+          this.noDataMessage = 'No data valid';
+        } else {
+          // Clear the message if there are results
+          this.noDataMessage = '';
+        }
+      });
+    }
+  }
+
 }
