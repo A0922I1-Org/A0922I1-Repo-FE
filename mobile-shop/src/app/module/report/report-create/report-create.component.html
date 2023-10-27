@@ -1,112 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Báo cáo bán hàng</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #ffffff;
-    }
 
-    .container {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      width: 80%;
-      border: 3px solid #ffd400;
-      background-color: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-    }
-
-    .left {
-      padding: 20px;
-      background-color: #ffffff;
-    }
-
-    .right {
-      padding: 20px;
-      border-left: 3px solid #ffd400;
-    }
-
-    .header {
-      background-color: #ffd400;
-      border: 3px solid #ffd400;
-      color: black;
-      text-align: center;
-      padding: 10px;
-      border-radius: 10px;
-    }
-
-    .title {
-      margin-bottom: 20px;
-      font-size: 18px;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    input[type="date"], input[type="text"] {
-      width: 100%;
-      padding: 5px;
-      margin: 5px 0;
-      border: 2px solid #ddd;
-      border-radius: 5px;
-    }
-
-    .radio-group {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 20px;
-      margin-top: 10px;
-    }
-
-    .radio-option {
-      display: flex;
-      align-items: center;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .radio-option input {
-      margin-right: 10px;
-      width: 20px;
-      height: 20px;
-    }
-
-    .btn-submit {
-      text-align: center;
-      margin-top: 10px;
-    }
-
-    .chart {
-      width: 100%;
-    }
-
-    .btn-back {
-      text-align: center;
-      margin-top: auto; /* Đặt nút "Quay lại" xuống dưới */
-      margin-bottom: 20px; /* Tạo khoảng cách giữa nút và phần dưới màn hình */
-    }
-
-    .btn-back button {
-      margin-top: 10px;
-    }
-  </style>
-</head>
-<body>
-<div class="container" style="margin-top: 40px">
+<div class="container" style="width: 85%;height: 90%; margin: 10px auto; position: relative">
   <div class="left">
-    <div class="header">
-      <h2>Báo cáo bán hàng</h2>
+    <div class="header text-center">
+      <h1><i class="fa fa-area-chart mt-3" aria-hidden="true"></i>Báo cáo doanh số</h1>
     </div>
     <div class="chart">
       <canvas id="myChart"></canvas>
@@ -117,7 +13,8 @@
       <div class="borderReport">
         <label for="fromDate">Từ ngày:</label>
         <input type="date" id="fromDate" formControlName="fromDate">
-        <p class="text-danger" *ngIf="reportForm.get('fromDate').errors?.required && reportForm.get('fromDate').touched">
+        <p class="text-danger"
+           *ngIf="reportForm.get('fromDate').errors?.required && reportForm.get('fromDate').touched">
           Không được để trống</p>
         <p class="text-danger"
            *ngIf="reportForm.get('fromDate').hasError('invalidDate') && reportForm.get('fromDate').touched">Thời gian
@@ -135,26 +32,31 @@
       <div class="radio-group">
         <label class="title">Báo cáo:</label>
         <label class="radio-option">
-          <input type="radio" formControlName="reportType" name="reportType" value="All" (change)="onReportTypeChange()"> Tất cả
+          <input type="radio" formControlName="reportType" name="reportType" value="All"
+                 (change)="onReportTypeChange()"> Tất cả
         </label>
         <label class="radio-option">
-          <input type="radio" formControlName="reportType" name="reportType" value="MaSp" (change)="onReportTypeChange()"> MaSp
+          <input type="radio" formControlName="reportType" name="reportType" value="MaSp"
+                 (change)="onReportTypeChange()"> Theo mã sản phẩm
         </label>
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-12">
         <label>Nhập Mã Sản Phẩm :</label>
-        <input type="text" formControlName="productId">
+        <input type="text" class="d-inline" formControlName="productId">
+        <input type="button" class="d-inline btn btn-outline-secondary" data-bs-toggle="modal"
+                 data-bs-target="#myModal" value="Tìm sản phẩm" [disabled]="reportTypeControlAll">
         <p class="text-danger" *ngIf="reportForm.get('productId').hasError('pattern')">Mã sản phẩm không tồn tại hoặc
           chưa nhập</p>
       </div>
       <div class="btn-submit">
-        <button type="submit" [disabled]="reportForm.invalid" class="btn btn-outline-primary">Xem</button>
+        <button type="submit" [disabled]="reportForm.invalid" class="btn btn-outline-primary">Xem báo cáo</button>
       </div>
     </form>
   </div>
 </div>
 <div class="btn-back">
-  <button type="button" class="btn btn-outline-dark " routerLink="/home" style="margin-bottom: 160px">Quay lại</button>
+  <button type="button" class="btn btn-outline-dark " routerLink="/home">Thoát</button>
 </div>
-</body>
-</html>
+<app-product-select-modal (productEmitted)="chooseProductInPast($event)"></app-product-select-modal>
+
+

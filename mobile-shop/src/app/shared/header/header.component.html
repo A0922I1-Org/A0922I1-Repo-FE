@@ -4,7 +4,7 @@
       <div class="row mt-3 mb-2">
         <div class="col-2 text-end">
           <img style="width: 240px" src="/assets/images/logo1.png" alt="" [hidden]="isLoggedIn">
-          <a [routerLink]="['/home']">
+          <a href="localhost:4200/home">
             <img style="width: 240px"
                  *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'||userRole=='STORAGE'"
                  src="/assets/images/logo1.png">
@@ -57,7 +57,7 @@
                       Bán hàng</a>
                   </li>
                   <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item"
-                      [routerLink]="['api/managerPurchaseHistory']" routerLinkActive="active-link">
+                      [routerLink]="['managerPurchaseHistory']" routerLinkActive="active-link">
                     <a class="nav-link" routerLink="managerPurchaseHistory"><i class="fa fa-history"
                                                                                aria-hidden="true"></i>
                       Lịch sử bán hàng</a>

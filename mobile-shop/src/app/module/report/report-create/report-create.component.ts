@@ -4,9 +4,12 @@ import {ReportService} from '../../../service/report.service';
 import {Router} from '@angular/router';
 import * as Chart from 'chart.js';
 import {DatePipe} from '@angular/common';
+import {Product} from "../../../model/product";
+import {ProductInputDto} from "../../../dto/ProductInputDto";
 function dateValidator(control: AbstractControl): { [key: string]: boolean } | null {
   const selectedDate = new Date(control.value);
   const currentDate = new Date();
+
 
   if (selectedDate <= currentDate) {
     return null;
@@ -20,6 +23,7 @@ function dateValidator(control: AbstractControl): { [key: string]: boolean } | n
 })
 export class ReportCreateComponent implements OnInit {
   private chart: Chart;
+  reportTypeControlAll:boolean;
   result: any = {
     totalInvoice: 0,
     totalRevenue: 0,
@@ -60,8 +64,12 @@ export class ReportCreateComponent implements OnInit {
 
     if (reportTypeControl.value === 'All') {
       productIdControl.disable();
+      this.reportTypeControlAll = true;
+      this.reportForm.get('productId').setValue('');
     } else {
       productIdControl.enable();
+      this.reportTypeControlAll = false;
+      this.reportForm.get('productId').setValue('');
     }
   }
 
@@ -100,5 +108,9 @@ export class ReportCreateComponent implements OnInit {
     // Tạo biểu đồ trên canvas có id là 'myChart'
     const canvas = document.getElementById('myChart') as HTMLCanvasElement;
     this.chart = new Chart(canvas, chartConfig);
+  }
+
+  chooseProductInPast(productEmitted: Product) {
+    this.reportForm.get('productId').setValue(productEmitted.productId);
   }
 }
