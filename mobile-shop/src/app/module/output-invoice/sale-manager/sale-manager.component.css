@@ -15,10 +15,14 @@ body {
 .card {
   max-width: 1200px;
   margin: 2vh;
+  border: 5px solid #ffd400;
+  border-radius: 10px;
 }
 
 .card-top {
   padding: 0.7rem 5rem;
+  border: 5px solid #ffd400;
+  border-radius: 10px;
 }
 
 .card-top a {
