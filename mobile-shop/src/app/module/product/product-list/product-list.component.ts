@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../../model/product';
 import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class ProductListComponent implements OnInit {
   searchForm: FormGroup;
+  @ViewChild('view') view: ElementRef;
 
   constructor(private productService: ProductService) {
   }
@@ -47,7 +48,7 @@ export class ProductListComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
-      this.getProductList('', '', '', '', false);
+      this.searchProductList();
     });
   }
 
@@ -137,6 +138,7 @@ export class ProductListComponent implements OnInit {
         this.pageSize = response.productPage.size;
       });
     }
+    this.view.nativeElement.scrollIntoView();
   }
 
   onNextPage() {
@@ -150,5 +152,6 @@ export class ProductListComponent implements OnInit {
         this.pageSize = response.productPage.size;
       });
     }
+    this.view.nativeElement.scrollIntoView();
   }
 }
