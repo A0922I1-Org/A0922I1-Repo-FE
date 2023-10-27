@@ -70,20 +70,24 @@ div.alert-danger{
   font-size: xx-large;
   height: 60px;
 }
-.border{
-  margin: 50px 100px 20px;
-  padding: 5px;
-  border-radius: 5px;
+/*.border{*/
+/*  margin: 50px 100px 20px;*/
+/*  padding: 10px;*/
+/*  border-radius: 10px;*/
 
-}
+/*}*/
 .border_radius{
-  border-radius: 5px;
+  border-radius: 10px;
 
 }
-container{
-  border: 3px solid #ffd400;
+.header h1{
+  font-size: 34px;
+  margin: auto;
+  font-weight: 500;
 }
-container border{
-
+.header {
+  background-color: #ffd400;
+  border-radius: 10px;
+  height: 74px;
+  margin: auto;
 }
-

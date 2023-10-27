@@ -42,11 +42,11 @@
   display: inline-block;
   float: right;
 }
-.custom2{
-  margin-left: 20px ;
-  margin-right: 20px;
-  padding: 20px;
-}
+/*.custom2{*/
+/*  margin-left: 20px ;*/
+/*  margin-right: 20px;*/
+/*  padding: 20px;*/
+/*}*/
 .custom1{
   text-align: center;
   margin-top: 20px;
@@ -100,3 +100,14 @@ strong{
 }
 
 
+.header {
+  background-color: #ffd400;
+  border-radius: 10px;
+  height: 74px;
+  margin: auto;
+}
+.header h1{
+  font-size: 34px;
+  margin: auto;
+  font-weight: 500;
+}

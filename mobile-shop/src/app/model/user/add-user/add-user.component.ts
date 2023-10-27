@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from "@angular/forms";
-import Swal from "sweetalert2";
-import {UserService} from "../service/user.service";
-import {Router} from "@angular/router";
-import {catchError, switchMap} from "rxjs/operators";
-import {throwError} from "rxjs";
+import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {UserService} from '../service/user.service';
+import {Router} from '@angular/router';
+import {catchError, switchMap} from 'rxjs/operators';
+import {throwError} from 'rxjs';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-add-user',
@@ -15,15 +16,16 @@ export class AddUserComponent implements OnInit {
   formSignUp: FormGroup;
   fieldErrors: { [key: string]: string } = {};
 
+
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.formSignUp = this.formBuilder.group({
-      nameEmployee: ['', [Validators.required, Validators.maxLength(20), this.noNumbersValidator()]],
+      nameEmployee: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20), this.noNumbersValidator()]],
       birthdayEmployee: ['', [Validators.required, this.validateBirthday]],
       addressEmployee: ['', [Validators.required, Validators.maxLength(45)]],
-      numberPhoneEmployee: ['', [Validators.required, Validators.maxLength(14)]],
+      numberPhoneEmployee: ['', [Validators.required, Validators.maxLength(14), this.invalidNumberPhone]],
       username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
       role: ['', [Validators.required]],
       email: ['', [Validators.required, this.customEmailValidator]],
@@ -38,7 +40,7 @@ export class AddUserComponent implements OnInit {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const forbidden = /\d/.test(control.value);
 
-      return forbidden ? {'noNumbers': true} : null;
+      return forbidden ? {noNumbers: true} : null;
     };
   }
 
@@ -71,7 +73,16 @@ export class AddUserComponent implements OnInit {
     const email = control.value;
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!pattern.test(email)) {
-      return {'invalidEmail': true};
+      return {invalidEmail: true};
+    }
+    return null;
+  }
+
+  invalidNumberPhone(control: AbstractControl): { [key: string]: boolean } | null {
+    const numberPhone = control.value;
+    const pattern = /^(0[1-9]\d{8})$/;
+    if (!pattern.test(numberPhone)) {
+      return {invalidNumberPhone: true};
     }
     return null;
   }
@@ -84,10 +95,11 @@ export class AddUserComponent implements OnInit {
     return control.invalid && control.touched;
   }
 
+
   getFieldErrorMessage(fieldName: string): string {
     if (this.formSignUp.get(fieldName).hasError('required')) {
       if (fieldName === 'nameEmployee') {
-        return 'Tên không được để trống .';
+        return 'Tên không được để trống.';
       } else if (fieldName === 'password') {
         return 'Mật khẩu không được để trống.';
       } else if (fieldName === 'addressEmployee') {
@@ -95,15 +107,16 @@ export class AddUserComponent implements OnInit {
       } else if (fieldName === 'role') {
         return 'Vui lòng chọn quyền hạn.';
       } else if (fieldName === 'email') {
-        return 'Email không được để trống';
+        return 'Email không được để trống.';
       } else if (fieldName === 'username') {
-        return 'Tên tài khoản không để trống.';
+        return 'Tên tài khoản không được để trống.';
       } else if (fieldName === 'birthdayEmployee') {
         return 'Ngày không hợp lệ.';
       } else if (fieldName === 'numberPhoneEmployee') {
         return 'Số điện thoại không hợp lệ.';
       }
     }
+
     if (fieldName === 'confirmPassword' && this.formSignUp.hasError('passwordMismatch')) {
       return 'Mật khẩu và xác thực mật khẩu không khớp.';
     }
@@ -123,13 +136,25 @@ export class AddUserComponent implements OnInit {
       }
     }
 
+    if (this.formSignUp.get(fieldName).hasError('minlength')) {
+      if (fieldName === 'nameEmployee') {
+        return 'Họ và tên trên 5 kí tự.';
+      } else if (fieldName === 'username') {
+        return 'Tên tài khoản trên 5 kí tự.';
+      }
+    }
+
+    if (fieldName === 'numberPhoneEmployee') {
+      if (this.formSignUp.get(fieldName).hasError('invalidNumberPhone')) {
+        return 'Không đúng định dạng số Việt Nam';
+      }
+    }
 
     if (fieldName === 'birthdayEmployee') {
       if (this.formSignUp.get(fieldName).hasError('invalidBirthday')) {
         return 'Ngày không hợp lệ.';
       }
     }
-
     return '';
   }
 
