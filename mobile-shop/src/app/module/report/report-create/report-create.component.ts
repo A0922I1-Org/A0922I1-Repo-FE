@@ -24,6 +24,7 @@ export class ReportCreateComponent implements OnInit {
     totalInvoice: 0,
     totalRevenue: 0,
   };
+  fromDateValue: string;
   reportForm: FormGroup = new FormGroup({
     fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
     toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
