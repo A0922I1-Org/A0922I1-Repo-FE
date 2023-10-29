@@ -31,7 +31,7 @@
                           </select>
                         </div>
                         <input type="text" class="form-control custom-width-35" placeholder="Tìm Tên Sản Phẩm "  #productName>
-                        <input type="text" class="form-control custom-width-35" placeholder="tìm Dung Lượng"  #productCpu>
+                        <input type="text" class="form-control custom-width-35" placeholder="tìm CPU"  #productCpu>
                         <button (click)="getProductList('',sellingPrice.value,productName.value, productCpu.value,'', true)" class="btn btn-outline-dark m-2 ">Tìm Kiếm</button>
                       </div>
 
@@ -92,7 +92,7 @@
                   <th *ngIf="isOnInput" class="col-2 col-md-2 col-lg-2">Giá nhập (VND)</th>
 
                 <th class="col-2 col-md-2 col-lg-2">CPU</th>
-                <th class="col-1 col-md-1 col-lg-1">Tồn Kho</th>
+                <th class="col-1 col-md-1 col-lg-1">Lưu Trữ</th>
               </tr>
               </thead>
               <tbody>
@@ -102,7 +102,10 @@
                 <td *ngIf="!isOnInput">{{product.sellingPrice | number:'1.0-0'}}</td>
                   <td *ngIf="isOnInput">{{product.costPrice}}</td>
                 <td>{{product.productCpu}}</td>
-                <td>{{product.quantity}}</td>
+                <td>{{product.productStorage}}</td>
+              </tr>
+              <tr *ngIf="products.length===0" class="alert alert-warning">
+                <td colspan="8" style="color: red; text-align: center">Dữ liệu không có, vui lòng tìm kiếm lại</td>
               </tr>
               </tbody>
             </table>

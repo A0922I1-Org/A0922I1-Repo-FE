@@ -4,7 +4,7 @@
       <div class="row mt-3 mb-2">
         <div class="col-2 text-end">
           <img style="width: 240px" src="/assets/images/logo1.png" alt="" [hidden]="isLoggedIn">
-          <a href="localhost:4200/home">
+          <a href="./home">
             <img style="width: 240px"
                  *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'||userRole=='STORAGE'"
                  src="/assets/images/logo1.png">
@@ -46,12 +46,12 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav flex-fill">
-                  <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item"
+                  <li *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'||userRole=='STORAGE'" class="nav-item"
                       [routerLink]="['product']" routerLinkActive="active-link">
                     <a class="nav-link" routerLink='product'><i class="fa fa-tablet"></i> Quản lý sản phẩm
                     </a>
                   </li>
-                  <li *ngIf="userRole=='ADMIN'||userRole=='SALE'||userRole=='BUSINESS'" class="nav-item"
+                  <li *ngIf="userRole=='ADMIN'||userRole=='SALE'" class="nav-item"
                       [routerLink]="['payment']" routerLinkActive="active-link">
                     <a class="nav-link" routerLink="payment"><i class="fa fa-calculator" aria-hidden="true"></i>
                       Bán hàng</a>
