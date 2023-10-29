@@ -47,11 +47,13 @@ export class UpdateSupplierComponent implements OnInit {
           ]),
           supplierEmail: new FormControl(this.textLower = supplier.supplierEmail, [
             Validators.required,
+            Validators.maxLength(40),
             Validators.pattern(this.emailRegex)
 
           ]),
           supplierAddress: new FormControl(supplier.supplierAddress, [
             Validators.required,
+            Validators.maxLength(200),
             Validators.pattern(this.address)
           ])
         });
