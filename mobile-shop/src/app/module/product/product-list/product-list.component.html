@@ -99,27 +99,31 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let product of products; let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{product.productName}}</td>
-            <td>{{product.brand.brandName}}</td>
-            <td>{{product.sellingPrice | number:'1.0-0'}}</td>
-            <td>{{product.productCpu}}</td>
-            <td>{{product.productStorage}}</td>
-            <td>{{product.quantity}}</td>
-            <td>
-              <div class="d-flex flex-column flex-md-row">
-                <button type="button" class="btn btn-outline-danger smaller-button me-md-2 mb-2 mb-md-0"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        (click)="findProduct(product.productId, product.productName)">
-                  Xóa
-                </button>
-                <button type="button" class="btn btn-outline-secondary smaller-button me-md-2 mb-2 mb-md-0">Chỉnh sửa
-                </button>
-              </div>
-            </td>
-          </tr>
+            <tr *ngFor="let product of products; let i = index" >
+              <td  [ngStyle]="{'background-color':product.isPublish?'none':'orange'}" >
+                {{i + 1}}
+              </td>
+              <td>{{product.productName}}  <span *ngIf="!product.isPublish" class="badge bg-secondary">Chưa bán</span></td>
+              <td>{{product.brand.brandName}}</td>
+              <td>{{product.sellingPrice | number:'1.0-0'}}</td>
+              <td>{{product.productCpu}}</td>
+              <td>{{product.productStorage}}</td>
+              <td>{{product.quantity}}</td>
+              <td>
+                <div class="d-flex flex-column flex-md-row">
+                  <button type="button" class="btn btn-outline-danger smaller-button me-md-2 mb-2 mb-md-0"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                          (click)="findProduct(product.productId, product.productName)">
+                    Xóa
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary smaller-button me-md-2 mb-2 mb-md-0">Chỉnh sửa
+                  </button>
+                </div>
+              </td>
+
+            </tr>
+
           <tr *ngIf="products.length===0">
             <td colspan="8" style="color: red; text-align: center">KHÔNG TÌM THẤY DỮ LIỆU CẦN TÌM</td>
           </tr>

@@ -119,6 +119,7 @@ export class ProductListComponent implements OnInit {
       }
     });
     this.check = true;
+    console.log(this.products)
   }
 
   findProduct(productId, productName) {

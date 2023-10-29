@@ -14,7 +14,6 @@ div.search-bar input.col {
   margin-left: 5px;
   margin-right: 5px;
 }
-
 button.add-new.responsive-icon {
   margin-top: 11px;
 }
@@ -155,4 +154,7 @@ strong {
   border-radius: 10px;
   height: 74px;
   margin: auto;
+}
+.tooltip:hover {
+  visibility: visible;
 }
