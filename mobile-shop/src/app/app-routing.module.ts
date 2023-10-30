@@ -40,7 +40,7 @@ const routes: Routes = [
     loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module')
       .then(module => module.ManagerPurchaseHistoryModule),
     canActivate: [AuthGuard, RoleGuard],
-    data: {roles: ['ADMIN', 'BUSINESS','SALE']}
+    data: {roles: ['ADMIN', 'BUSINESS', 'SALE']}
   },
   {
     path: 'report',
@@ -76,7 +76,7 @@ const routes: Routes = [
     path: 'payment',
     loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
     canActivate: [AuthGuard, RoleGuard],
-    data: {roles: ['ADMIN','SALE']}
+    data: {roles: ['ADMIN', 'SALE']}
   },
 
 ];

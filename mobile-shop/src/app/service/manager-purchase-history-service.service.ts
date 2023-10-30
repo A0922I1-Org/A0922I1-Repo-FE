@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ManagerPurchaseHistory} from '../model/manager-purchase-history';
 import {Page} from '../model/page';
+import {DetailHistory} from '../model/detail-history';
 
 @Injectable({
   providedIn: 'root'
@@ -17,34 +18,55 @@ export class ManagerPurchaseHistoryServiceService {
       .set('pageSize', pageSize.toString());
     return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=' , {params});
   }
-  sortByCustomerName(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+  sortByCustomerNameASC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
     const params = new HttpParams()
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
-    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=customerName', {params});
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=customerNameASC', {params});
   }
-  sortByProductName(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+  sortByCustomerNameDESC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
     const params = new HttpParams()
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
-    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=productName', {params});
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=customerNameDESC', {params});
   }
-  sortByTotalPrice(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+  sortByProductNameDESC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
     const params = new HttpParams()
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
-    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=totalPrice', {params});
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=productNameDESC', {params});
   }
-  sortByQuantity(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+  sortByProductNameASC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
     const params = new HttpParams()
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
-    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=quantity', {params});
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=productNameASC', {params});
   }
-  sortByDateOutputInvoice(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+  sortByTotalPriceDESC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
     const params = new HttpParams()
       .set('pageNo', pageNo.toString())
       .set('pageSize', pageSize.toString());
-    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=time', {params});
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=totalPriceDESC', {params});
+  }
+  sortByTotalPriceASC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+    const params = new HttpParams()
+      .set('pageNo', pageNo.toString())
+      .set('pageSize', pageSize.toString());
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=totalPriceASC', {params});
+  }
+  sortByDateOutputInvoiceDESC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+    const params = new HttpParams()
+      .set('pageNo', pageNo.toString())
+      .set('pageSize', pageSize.toString());
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=timeDESC', {params});
+  }
+  sortByDateOutputInvoiceASC(pageNo: number, pageSize: number): Observable<Page<ManagerPurchaseHistory>> {
+    const params = new HttpParams()
+      .set('pageNo', pageNo.toString())
+      .set('pageSize', pageSize.toString());
+    return this.httpClient.get<Page<ManagerPurchaseHistory>>(this.API + '?sort=timeASC', {params});
+  }
+  findById(id: number): Observable<DetailHistory[]> {
+    return this.httpClient.get<DetailHistory[]>(`${this.API}/${id}`)  ;
   }
 }

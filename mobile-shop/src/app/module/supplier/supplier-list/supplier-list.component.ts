@@ -1,9 +1,9 @@
   import {Component, OnInit} from '@angular/core';
-import {Page} from '../../../model/page';
-import {Supplier} from '../../../model/supplier';
-import {SupplierService} from '../../../service/supplier-service/supplier.service';
+  import {Page} from '../../../model/page';
+  import {Supplier} from '../../../model/supplier';
+  import {SupplierService} from '../../../service/supplier-service/supplier.service';
 
-@Component({
+  @Component({
   selector: 'app-supplier-list',
   templateUrl: './supplier-list.component.html',
   styleUrls: ['./supplier-list.component.css']
@@ -122,7 +122,7 @@ export class SupplierListComponent implements OnInit {
     this.supplierService.deleteSupplier(supplierId).subscribe(() => {});
     this.hideDeleteConfirmModal();
     alert('xoá nhà cung cấp thành công');
-    this.loadSuppliers(1, 8);
+    this.getList('', '', '', '', true);
 
   }
 
