@@ -1,10 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {HomePageService} from '../../service/home-page.service';
 import {MatDialog} from '@angular/material/dialog';
 import {PhoneDetailsComponent} from '../phone-details/phone-details.component';
 import {PhoneDataService} from '../../service/phone-data.service';
 import {SharedDataService} from '../../service/shared-data.service';
-import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {ScrollUpService} from '../../service/scroll-up.service';
 
 
