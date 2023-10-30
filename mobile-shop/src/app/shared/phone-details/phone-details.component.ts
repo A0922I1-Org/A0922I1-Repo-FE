@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {PhoneDataService} from "../../service/phone-data.service";
+import {PhoneDataService} from '../../service/phone-data.service';
 
 @Component({
   selector: 'app-phone-details',
@@ -19,7 +19,7 @@ export class PhoneDetailsComponent implements OnInit {
 
   formatCurrency(value) {
 
-    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
 }
