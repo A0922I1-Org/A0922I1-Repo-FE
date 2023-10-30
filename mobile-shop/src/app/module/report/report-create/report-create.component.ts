@@ -56,7 +56,7 @@ export class ReportCreateComponent implements OnInit {
   reportForm: FormGroup = new FormGroup({
     fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
     toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateRangeValidator, dateValidator]),
-    reportType: new FormControl('', ),
+    reportType: new FormControl('', Validators.required ),
     productId: new FormControl( '', [Validators.required, Validators.pattern(/^\d+$/)]),
   });
 
@@ -68,7 +68,7 @@ export class ReportCreateComponent implements OnInit {
     this.reportForm = new FormGroup({
       fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
       toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
-      reportType: new FormControl(),
+      reportType: new FormControl('',[Validators.required]),
       productId: new FormControl('', [Validators.pattern(/^\d+$/)]),
     });
 
