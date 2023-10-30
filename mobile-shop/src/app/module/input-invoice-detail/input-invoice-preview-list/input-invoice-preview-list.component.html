@@ -36,8 +36,8 @@
             <td>{{i+1}}</td>
             <td>{{item.productName}}</td>
             <td>{{item.quantity}}</td>
-            <td>{{item.costPrice| currency :'VND':'symbol'}}</td>
-            <td>{{item.costPrice*item.quantity| currency :'VND':'symbol'}}</td>
+            <td>{{item.costPrice| number:'1.0'}}</td>
+            <td>{{item.costPrice*item.quantity| number:'1.0'}}</td>
             <td><input type="button"  class="btn btn-outline-danger" data-bs-toggle="modal"  (click)="getProductDelete(i,item.productName)"
                        data-bs-target="#exampleModal-delete" value="Xóa"></td>
           </tr>
@@ -46,7 +46,7 @@
             <td></td>
             <td></td>
             <th>Tổng</th>
-            <td>{{totalCostOfInvoice| currency :'VND':'symbol'}}</td>
+            <td>{{totalCostOfInvoice| number:'1.0'}}</td>
             <td>VND</td>
           </tr>
         </table>
