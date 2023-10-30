@@ -122,7 +122,7 @@ export class SupplierListComponent implements OnInit {
     this.supplierService.deleteSupplier(supplierId).subscribe(() => {});
     this.hideDeleteConfirmModal();
     alert('xoá nhà cung cấp thành công');
-    this.loadSuppliers(1, 8);
+    this.getList('', '', '', '', true);
 
   }
 

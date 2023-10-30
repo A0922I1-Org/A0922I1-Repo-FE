@@ -1,4 +1,4 @@
-<div style="width: 80%;height: 90%; margin: 10px auto; position: relative">
+<div style="width: 80%;height: 90%; margin: 10px auto; position: relative" id="view" #view>
   <div style="border: 5px solid rgb(255, 212, 0);border-radius:10px;">
   <div class="container-fluid mt-3" style="width: 100%; height: 90%">
     <div class="row text-center header">
@@ -94,32 +94,36 @@
             </th>
             <th class="col-2 col-md-2 col-lg-2">CPU</th>
             <th class="col-1 col-md-1 col-lg-1">Lưu trữ</th>
-            <th class="col-1 col-md-1 col-lg-1">Số lượng</th>
+            <th class="col-1 col-md-1 col-lg-1">Số lượng (cái)</th>
             <th class="col-2 col-md-2 col-lg-2">Hành động</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let product of products; let i = index">
-            <td>{{i + 1}}</td>
-            <td>{{product.productName}}</td>
-            <td>{{product.brand.brandName}}</td>
-            <td>{{product.sellingPrice | number:'1.0-0'}}</td>
-            <td>{{product.productCpu}}</td>
-            <td>{{product.productStorage}}</td>
-            <td>{{product.quantity}}</td>
-            <td>
-              <div class="d-flex flex-column flex-md-row">
-                <button type="button" class="btn btn-outline-danger smaller-button me-md-2 mb-2 mb-md-0"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        (click)="findProduct(product.productId, product.productName)">
-                  Xóa
-                </button>
-                <button type="button" class="btn btn-outline-secondary smaller-button me-md-2 mb-2 mb-md-0">Chỉnh sửa
-                </button>
-              </div>
-            </td>
-          </tr>
+            <tr *ngFor="let product of products; let i = index" >
+              <td  [ngStyle]="{'background-color':product.isPublish?'none':'orange'}" >
+                {{i + 1}}
+              </td>
+              <td>{{product.productName}}  <span *ngIf="!product.isPublish" class="badge bg-secondary">Chưa bán</span></td>
+              <td>{{product.brand.brandName}}</td>
+              <td>{{product.sellingPrice | number:'1.0-0'}}</td>
+              <td>{{product.productCpu}}</td>
+              <td>{{product.productStorage}}</td>
+              <td>{{product.quantity}}</td>
+              <td>
+                <div class="d-flex flex-column flex-md-row">
+                  <button type="button" class="btn btn-outline-danger smaller-button me-md-2 mb-2 mb-md-0"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                          (click)="findProduct(product.productId, product.productName)">
+                    Xóa
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary smaller-button me-md-2 mb-2 mb-md-0">Chỉnh sửa
+                  </button>
+                </div>
+              </td>
+
+            </tr>
+
           <tr *ngIf="products.length===0">
             <td colspan="8" style="color: red; text-align: center">KHÔNG TÌM THẤY DỮ LIỆU CẦN TÌM</td>
           </tr>
@@ -135,7 +139,8 @@
           </button>
           <span>   {{currentPage + 1}}/{{totalPages}}   </span>
           <button class="btn btn-outline-primary smaller-button2" [disabled]="(currentPage+1) === totalPages"
-                  (click)="onNextPage()">Sau
+                  (click)="onNextPage()">
+              Sau
           </button>
         </div>
         <div class="col-2 ">
@@ -151,12 +156,14 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Xác nhận: </h5>
+      <div class="modal-header pb-0">
+        <h2 class="modal-title pb-0 mb-0" id="exampleModalLabel">Xác nhận: </h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         Bạn có chắc chắn xóa sản phẩm <strong>{{chooseProductName}}</strong> ?
+        <br>
+        Lưu ý: Hành động này  sẽ không thể hoàn tác
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Đóng</button>

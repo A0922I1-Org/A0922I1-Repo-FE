@@ -17,4 +17,5 @@ export interface Product {
   description: string;
   category: Category;
   brand: Brand;
+  isPublish?: number
 }

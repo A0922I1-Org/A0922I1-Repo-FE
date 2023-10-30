@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <title>Chọn sản phẩm</title>
-<button type="button" (click)="getProductList('','','','','',true)" class="btn btn-outline-primary custom-button" data-bs-toggle="modal" data-bs-target="#myModal">
+<button type="button" (click)="getProductList('','','','','',true, isOnSaleScreen)" class="btn btn-outline-primary custom-button" data-bs-toggle="modal" data-bs-target="#myModal">
   Chọn sản phẩm
 </button>
 <!-- The Modal -->
@@ -34,7 +34,7 @@
                         <input type="text" class="form-control custom-width-35" placeholder="tìm kiếm theo dung lượng"  #productCpu>
                         <div class="col-2 col-md-1 col-lg-1 mt-2 text-end">
                           <button class="ms-2 search-icon" style="float: left" [disabled]="!searchForm.valid"
-                                  (click)="getProductList('',sellingPrice.value,productName.value, productCpu.value,'', true)">
+                                  (click)="getProductList('',sellingPrice.value,productName.value, productCpu.value,'', true, isOnSaleScreen)">
                             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                                  class="bi bi-search" viewBox="0 0 16 16">
                               <path
@@ -64,7 +64,7 @@
                 <th class="col-1 col-md-1 col-lg-1">STT</th>
                 <th class="col-2 col-md-2 col-lg-2 ">Tên
                   <button style="border: none; background: white"
-                          (click)="getProductList(brand,price,name, cpu,'name_product',true)">
+                          (click)="getProductList(brand,price,name, cpu,'name_product',true, isOnSaleScreen)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up"
                          viewBox="0 0 16 16">
                       <path
@@ -72,7 +72,7 @@
                     </svg>
                   </button>
                   <button style="border: none; background: white"
-                          (click)="getProductList(brand,price,name, cpu,'name_product',false)">
+                          (click)="getProductList(brand,price,name, cpu,'name_product',false, isOnSaleScreen)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-sort-down" viewBox="0 0 16 16">
                       <path
@@ -82,7 +82,7 @@
                 </th>
                 <th *ngIf="!isOnInput" class="col-2 col-md-2 col-lg-2">Giá bán (VND)
                   <button style="border: none; background: white"
-                          (click)="getProductList(brand,price,name, cpu,'selling_price_product',true)">
+                          (click)="getProductList(brand,price,name, cpu,'selling_price_product',true, isOnSaleScreen)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up"
                          viewBox="0 0 16 16">
                       <path
@@ -90,7 +90,7 @@
                     </svg>
                   </button>
                   <button style="border: none; background: white"
-                          (click)="getProductList(brand,price,name, cpu,'selling_price_product',false)">
+                          (click)="getProductList(brand,price,name, cpu,'selling_price_product',false, isOnSaleScreen)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-sort-down" viewBox="0 0 16 16">
                       <path

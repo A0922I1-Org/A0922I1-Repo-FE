@@ -32,7 +32,7 @@ const routes: Routes = [
      path: 'product',
      loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
      canActivate: [AuthGuard, RoleGuard],
-     data: { roles: ['ADMIN', 'BUSINESS', 'SALE', 'STORAGE']}
+     data: { roles: ['ADMIN', 'BUSINESS', 'STORAGE']}
 
   },
   {
@@ -40,13 +40,13 @@ const routes: Routes = [
     loadChildren: () => import('./module/manager-purchase-history/manager-purchase-history.module')
       .then(module => module.ManagerPurchaseHistoryModule),
     canActivate: [AuthGuard, RoleGuard],
-    data: {roles: ['ADMIN', 'BUSINESS']}
+    data: {roles: ['ADMIN', 'BUSINESS', 'SALE']}
   },
   {
     path: 'report',
     loadChildren: () => import('./module/report/report.module').then(module => module.ReportModule),
     canActivate: [AuthGuard, RoleGuard],
-    data: {roles: ['ADMIN', 'SALE', 'BUSINESS']}
+    data: {roles: ['ADMIN', 'BUSINESS']}
   },
 
   {
@@ -75,10 +75,9 @@ const routes: Routes = [
   {
     path: 'payment',
     loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
-    // canActivate: [AuthGuard, RoleGuard],
-    // data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
+    canActivate: [AuthGuard, RoleGuard],
+    data: {roles: ['ADMIN', 'SALE']}
   },
-
 ];
 
 @NgModule({
