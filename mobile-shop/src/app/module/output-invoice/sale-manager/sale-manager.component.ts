@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -28,10 +28,11 @@ export class SaleManagerComponent implements OnInit {
   productList: ProductDto[] = [];
   products = new ProductDto();
   errorMessage: string | null = null;
-  isSubmitDisabled = false;
+  isSubmitDisabled: boolean;
   radioSelected = false;
   dataReceived = false;
   isNewCustomer = false;
+  showError = true;
 
   constructor(private paymentService: PaymentService,
               private orderService: OrderService,
@@ -130,9 +131,9 @@ export class SaleManagerComponent implements OnInit {
       productName: this.products.productName,
       sellingPrice: this.products.sellingPrice,
       quantity: this.products.quantity,
-      qty: this.newProduct.qty
+      qty: this.newProduct.qty,
+      imageUrl: this.products.imageUrl
     };
-
     const existingProduct = this.productList.find(product => product.productId === newProduct.productId);
 
     if (existingProduct) {
@@ -143,21 +144,30 @@ export class SaleManagerComponent implements OnInit {
         existingProduct.qty = totalQty;
         this.isSubmitDisabled = false;
       } else {
-        this.errorMessage = 'Số lượng vượt quá tồn kho.';
-        this.isSubmitDisabled = true;
+        Swal.fire({
+          icon: 'warning',
+          title: 'Không đủ sản phẩm cung cấp',
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
     } else {
       if (newProduct.qty <= this.products.quantity) {
         this.productList.push(newProduct);
       } else {
-        this.errorMessage = 'Số lượng vượt quá tồn kho.';
-        this.isSubmitDisabled = true;
+        Swal.fire({
+          icon: 'warning',
+          title: 'Không đủ sản phẩm cung cấp',
+          showConfirmButton: false,
+          timer: 1500
+        });
       }
     }
     this.calculateTotalAmount();
     localStorage.setItem('productList', JSON.stringify(this.productList));
     localStorage.setItem('totalPrice', JSON.stringify(this.totalAmount));
     this.resetFormFields();
+    this.showError = false;
   }
 
   resetFormFields() {
@@ -169,9 +179,35 @@ export class SaleManagerComponent implements OnInit {
     this.errorMessage = '';
   }
 
+  decreaseQuantity(product: any) {
+    if (product.qty > 1) {
+      product.qty--;
+    }
+    this.calculateTotalAmount();
+    localStorage.setItem('productList', JSON.stringify(this.productList));
+    localStorage.setItem('totalPrice', JSON.stringify(this.totalAmount));
+  }
+
+  increaseQuantity(product: any) {
+    if (product.qty < 100 && product.qty < product.quantity) {
+      product.qty++;
+    }
+    if (product.qty === product.quantity) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Thông báo',
+        text: 'Sản phẩm trong kho không đủ',
+        showConfirmButton: false,
+        timer: 2000
+      });
+    }
+    this.calculateTotalAmount();
+    localStorage.setItem('productList', JSON.stringify(this.productList));
+    localStorage.setItem('totalPrice', JSON.stringify(this.totalAmount));
+  }
+
   // function save invoice and invoice details into database
   savePayment() {
-    console.log(this.productList);
     this.productList.forEach(res => {
       const invoiceDetail: OutputInvoiceDetail = new OutputInvoiceDetail();
       invoiceDetail.productDTO = {
@@ -180,11 +216,18 @@ export class SaleManagerComponent implements OnInit {
         sellingPrice: res.sellingPrice,
         quantity: res.quantity,
         qty: res.qty,
+        imageUrl: this.products.imageUrl
       };
       invoiceDetail.productDTO.productId = res.productId;
       invoiceDetail.quantity = res.qty;
       this.invoiceDetailList.push(invoiceDetail);
-
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Thanh toán thành công',
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
     this.paymentService.savePayment(this.customer, this.invoice.paymentMethod, this.invoiceDetailList).subscribe({
       next: res => {
@@ -223,15 +266,22 @@ export class SaleManagerComponent implements OnInit {
   }
 
   // function delete product on local
-  deleteProductByIndex(index
-                         :
-                         number
-  ) {
+  deleteProductByIndex(index: number) {
     if (index >= 0 && index < this.productList.length) {
-      this.productList.splice(index, 1); // Loại bỏ sản phẩm khỏi danh sách
-      this.calculateTotalAmount();
-      localStorage.setItem('productList', JSON.stringify(this.productList));
-      localStorage.setItem('totalPrice', JSON.stringify(this.totalAmount));
+      Swal.fire({
+        text: 'Bạn có muốn xóa sản phẩm này không?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Xóa',
+        cancelButtonText: 'Hủy'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.productList.splice(index, 1);
+          this.calculateTotalAmount();
+          localStorage.setItem('productList', JSON.stringify(this.productList));
+          localStorage.setItem('totalPrice', JSON.stringify(this.totalAmount));
+        }
+      });
     }
   }
 
@@ -304,9 +354,18 @@ export class SaleManagerComponent implements OnInit {
               ['Tên sản phẩm', 'Giá', 'Số lượng', 'Tổng tiền'],
               ...this.productList.map(p => ([
                 p.productName,
-                p.sellingPrice.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'}), // Format price as Vietnamese currency
-                p.qty,
-                (p.sellingPrice * p.qty).toLocaleString('vi-VN', {style: 'currency', currency: 'VND'}) // Format total as currency
+                {
+                  text: p.sellingPrice.toLocaleString('vi-VN', {style: 'currency', currency: 'VND'}),
+                  style: 'centeredText' // Áp dụng lớp CSS "centeredText" cho cột "Số lượng"
+                },
+                {
+                  text: p.qty,
+                  style: 'cssqty' // Áp dụng lớp CSS "centeredText" cho cột "Số lượng"
+                },
+                {
+                  text: (p.sellingPrice * p.qty).toLocaleString('vi-VN', {style: 'currency', currency: 'VND'}),
+                  style: 'centeredText' // Áp dụng lớp CSS "centeredText" cho cột "Tổng tiền"
+                }
               ])),
               [
                 {
@@ -328,7 +387,6 @@ export class SaleManagerComponent implements OnInit {
         {
           columns: [
             [{
-              text: '\nQRCode thông tin đơn hàng\n',
               // tslint:disable-next-line:max-line-length
               qr: `Khách hàng: \nTên: ${this.customer.customerName} \nSố điện thoại: ${this.customer.customerPhone} \nĐịa chỉ: ${this.customer.customerAddress} \nEmail: ${this.customer.customerEmail} \n${productListText}`,
               fit: '80'
@@ -354,8 +412,12 @@ export class SaleManagerComponent implements OnInit {
           decoration: 'underline',
           fontSize: 14,
           margin: [0, 15, 0, 15]
+        },
+        cssqty: {
+          alignment: 'center'
         }
       }
+
     };
 
     if (action === 'download') {
@@ -373,8 +435,10 @@ export class SaleManagerComponent implements OnInit {
   }
 
   // validator function
-
-  isValidEmail(email: string):
+  isValidEmail(email
+                 :
+                 string
+  ):
     boolean {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailPattern.test(email);
@@ -386,16 +450,26 @@ export class SaleManagerComponent implements OnInit {
   }
 
 
-  onQuantityChange(event: any) {
+  onQuantityChange(event
+                     :
+                     any
+  ) {
     if (this.newProduct.qty < 0) {
       this.newProduct.qty = 1;
     }
   }
 
-  isLessThan99(value: number): boolean {
+  isLessThan99(value
+                 :
+                 number
+  ):
+    boolean {
     if (value != null) {
-      return value > 0 && value <= 99;
+      if (value % 1 === 0) {
+        return value > 0 && value <= 99;
+      }
     }
+    return false;
   }
 
   checkQuantity(value: number): boolean {
@@ -433,8 +507,8 @@ export class SaleManagerComponent implements OnInit {
     localStorage.setItem('customerEmail', this.customer.customerEmail);
   }
 
-  formatCurrency(value: number, currencySymbol: string): string {
+  formatCurrency(value: number, currencySymbol: string):
+    string {
     return new Intl.NumberFormat('vi-VN', {style: 'currency', currency: currencySymbol}).format(value);
   }
-
 }
