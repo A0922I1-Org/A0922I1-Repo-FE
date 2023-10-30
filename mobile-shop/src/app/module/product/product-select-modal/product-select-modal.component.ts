@@ -26,6 +26,7 @@ isOnSaleScreen: boolean;
   @Output() productEmitted = new EventEmitter<Product>();
 
   constructor(private productService: ProductServiceService, private router: Router, private shareData: ShareDataService) {
+    console.log("da khoi tao modal")
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Check if the current route is '/'
@@ -34,6 +35,8 @@ isOnSaleScreen: boolean;
           this.isOnSaleScreen = false;
         } else if(event.url === '/payment') {
           this.isOnInput = false;
+          this.isOnSaleScreen = true;
+        } else{
           this.isOnSaleScreen = true;
         }
       }
