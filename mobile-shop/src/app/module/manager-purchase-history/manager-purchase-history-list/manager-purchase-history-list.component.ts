@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import {ManagerPurchaseHistory} from '../../../model/manager-purchase-history';
 import {Page} from '../../../model/page';
 import {ManagerPurchaseHistoryServiceService} from '../../../service/manager-purchase-history-service.service';
+import {DetailHistory} from '../../../model/detail-history';
 @Component({
   selector: 'app-manager-purchase-history-list',
   templateUrl: './manager-purchase-history-list.component.html',
   styleUrls: ['./manager-purchase-history-list.component.css']
 })
 export class ManagerPurchaseHistoryListComponent implements OnInit {
-  page: Page<ManagerPurchaseHistory>;
+    page: Page<ManagerPurchaseHistory>;
+    details: DetailHistory[];
   sort = '';
+  managerPurchaseHistory: ManagerPurchaseHistory[];
   constructor(private managerPurchaseHistoryService: ManagerPurchaseHistoryServiceService) {
   }
 
@@ -23,32 +26,50 @@ export class ManagerPurchaseHistoryListComponent implements OnInit {
       this.sort = sort;
     }
     switch (this.sort) {
-      case 'customerName':
-        this.managerPurchaseHistoryService.sortByCustomerName(pageNo, pageSize)
+      case 'customerNameDESC':
+        this.managerPurchaseHistoryService.sortByCustomerNameDESC(pageNo, pageSize)
           .subscribe(data => {
             this.page = data;
           });
         break;
-      case 'time':
-        this.managerPurchaseHistoryService.sortByDateOutputInvoice(pageNo, pageSize)
+      case 'timeĐESC':
+        this.managerPurchaseHistoryService.sortByDateOutputInvoiceDESC(pageNo, pageSize)
           .subscribe(data => {
             this.page = data;
           });
         break;
-      case 'productName':
-        this.managerPurchaseHistoryService.sortByProductName(pageNo, pageSize)
+      case 'productNameDESC':
+        this.managerPurchaseHistoryService.sortByProductNameDESC(pageNo, pageSize)
           .subscribe(data => {
             this.page = data;
           });
         break;
-      case 'totalPrice':
-        this.managerPurchaseHistoryService.sortByTotalPrice(pageNo, pageSize)
+      case 'totalPriceDESC':
+        this.managerPurchaseHistoryService.sortByTotalPriceDESC(pageNo, pageSize)
           .subscribe(data => {
             this.page = data;
           });
         break;
-      case 'quantity':
-        this.managerPurchaseHistoryService.sortByQuantity(pageNo, pageSize)
+      case 'totalPriceASC':
+        this.managerPurchaseHistoryService.sortByTotalPriceASC(pageNo, pageSize)
+          .subscribe(data => {
+            this.page = data;
+          });
+        break;
+      case 'productNameASC':
+        this.managerPurchaseHistoryService.sortByProductNameASC(pageNo, pageSize)
+          .subscribe(data => {
+            this.page = data;
+          });
+        break;
+      case 'customerNameASC':
+        this.managerPurchaseHistoryService.sortByCustomerNameASC(pageNo, pageSize)
+          .subscribe(data => {
+            this.page = data;
+          });
+        break;
+      case 'timeASC':
+        this.managerPurchaseHistoryService.sortByDateOutputInvoiceASC(pageNo, pageSize)
           .subscribe(data => {
             this.page = data;
           });
@@ -70,8 +91,19 @@ export class ManagerPurchaseHistoryListComponent implements OnInit {
   formatDate(dateArray: number[]): string {
     const day = dateArray[2];
     const month = dateArray[1];
+    const formatterDay = day < 10 ? `0${day}` : `${day}`;
+    const formatterMonth = month < 10 ? `0${month}` : `${month}`;
     const year = dateArray[0];
-    return `${day}/${month}/${year}`;
+    return `${formatterDay}/${formatterMonth}/${year}`;
+  }
+  formatCurrency(value: number): string {
+    if (isNaN(value)) { return ''; }
+    return value.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }).replace(/\u20AB/g, '');
+  }
+  getDetail(id: number) {
+    this.managerPurchaseHistoryService.findById(id).subscribe(data => {
+      this.details = data;
+    });
   }
 }
 

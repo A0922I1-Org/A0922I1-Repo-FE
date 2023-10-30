@@ -564,4 +564,8 @@ h2{
 
 
 
-
+ h1{
+  font-size: 34px;
+  margin: auto;
+  font-weight: 500;
+}

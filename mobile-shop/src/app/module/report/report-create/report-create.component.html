@@ -1,11 +1,10 @@
-
 <div class="container" style="width: 85%;height: 90%; margin: 10px auto; position: relative">
   <div class="left">
     <div class="header text-center">
       <h1><i class="fa fa-area-chart mt-3" aria-hidden="true"></i>Báo cáo doanh số</h1>
     </div>
     <div class="chart">
-      <canvas id="myChart"></canvas>
+      <div id="myChart"></div>
     </div>
   </div>
   <div class="right">
@@ -28,6 +27,9 @@
         <p class="text-danger"
            *ngIf="reportForm.get('toDate').hasError('invalidDate') && reportForm.get('toDate').touched">Thời gian
           không hợp lệ</p>
+        <p class="text-danger" *ngIf="reportForm.hasError('dateRange') && reportForm.get('toDate').touched">
+          Lỗi validate
+        </p>
       </div>
       <div class="radio-group">
         <label class="title">Báo cáo:</label>
@@ -44,7 +46,7 @@
         <label>Nhập Mã Sản Phẩm :</label>
         <input type="text" class="d-inline" formControlName="productId">
         <input type="button" class="d-inline btn btn-outline-secondary" data-bs-toggle="modal"
-                 data-bs-target="#myModal" value="Tìm sản phẩm" [disabled]="reportTypeControlAll">
+               data-bs-target="#myModal" value="Tìm sản phẩm" [disabled]="reportTypeControlAll">
         <p class="text-danger" *ngIf="reportForm.get('productId').hasError('pattern')">Mã sản phẩm không tồn tại hoặc
           chưa nhập</p>
       </div>
