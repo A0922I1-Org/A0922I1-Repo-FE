@@ -26,10 +26,11 @@ export class ProductServiceService {
   }
 
   getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string,
-                 currentPage: number, pageSize: number, sort: string, direction: boolean): Observable<any> {
+                 currentPage: number, pageSize: number, sort: string, direction: boolean,isOnSaleScreen: boolean): Observable<any> {
+    console.log("ddax vao getProductList")
     return this.httpClient.get(this.API_URL_LIST + '?brandName=' + brandName +
       '&sellingPrice=' + sellingPrice + '&productName=' + productName + '&productCpu=' + productCpu +
-      '&page=' + currentPage + '&size=' + pageSize + '&sort=' + sort + '&direction=' + direction);
+      '&page=' + currentPage + '&size=' + pageSize + '&sort=' + sort + '&direction=' + direction + '&isOnSaleScreen=' +isOnSaleScreen);
   }
   findById(id: number): Observable<Product> {
     return this.httpClient.get<Product>(this.API_URL_FIND_BY_ID + '/' + id);

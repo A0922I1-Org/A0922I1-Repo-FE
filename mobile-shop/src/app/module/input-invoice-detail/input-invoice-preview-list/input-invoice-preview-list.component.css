@@ -66,7 +66,8 @@ img.product-image{
   width: 100px;
   width: 100px;
 }
-.error{
+.error,
+.must-have{
   color: red;
 }
 

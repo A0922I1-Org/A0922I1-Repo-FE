@@ -6,11 +6,10 @@
     </div>
     <input class="col-12" placeholder="Tên nhà cung cấp" type="hidden" formControlName="supplierId"><br>
     <div class="table-responsive">
-
       <table class="table">
         <tr>
           <td class="td_title">
-            Tên nhà cung cấp(<span style="color: red">*</span>):
+            Tên nhà cung cấp<span class="required-marker">*</span> :
           </td>
           <td>
             <input (click)="hideError('1')" class="border-1; border_radius" placeholder="Nhập tên nhà cung cấp" type="text" [ngClass]="{'hasError': supplierName.invalid && checkValid('supplierName')}" formControlName="supplierName">
@@ -28,11 +27,11 @@
                 <span *ngIf="supplierName.errors.required">
                   Tên nhà cung cấp không được để trống
                 </span>
-                <span *ngIf="supplierName.errors.maxLength">
-                  Tên nhà cung cấp không đươc vượt qua 50 kí tự
+                <span *ngIf="supplierName.hasError('maxlength')">
+                  Tên nhà cung cấp không đươc vượt qua 40 kí tự
                 </span>
                 <span *ngIf="supplierName.errors.pattern">
-                  Tên nhà cung cấp không đươc có các kí tự đặc biệt
+                    Tên nhà cung cấp không đươc có các kí tự đặc biệt
                 </span>
               </span>
             </div>
@@ -40,7 +39,7 @@
         </tr>
         <tr>
         <td class="td_title">
-          Số điện thoại(<span style="color: red">*</span>):
+          Số điện thoại<span class="required-marker">*</span> :
         </td>
           <td>
             <input (click)="hideError('2')" class="border-1; border_radius" placeholder="Số điện thoại" type="text" formControlName="supplierPhone">
@@ -58,16 +57,20 @@
                 <span *ngIf="supplierPhone.errors.required">
                   Số điện thoại không được để trống
                 </span>
+                <span></span>
                 <span *ngIf="supplierPhone.errors.pattern">
-                  Số điện thoại phải đủ 10 số và bắt đầu từ 0
+                  Số điện thoại phải bắt đầu từ số 0.
                 </span>
+                <span *ngIf="supplierForm.get('supplierPhone').value.length !== 10 && supplierForm.get('supplierPhone').value.length >=2">
+                      Số điện thoại không được vượt quá hoặc ít hơn 10 kí tự.
+                  </span>
               </span>
             </div>
           </td>
         </tr>
         <tr>
         <td class="td_title">
-          Email(<span style="color: red">*</span>):
+          Email<span class="required-marker">*</span>  :
         </td>
           <td>
             <input (click)="hideError('3')" class="border-1; border_radius" [(ngModel)]="textLower" (ngModelChange)="textToLower($event)" placeholder="Nhập email" type="text" formControlName="supplierEmail">
@@ -86,7 +89,10 @@
                   Email không được để trống
                 </span>
                 <span *ngIf="supplierEmail.errors.pattern">
-                  Email chưa đúng định dạng xxx@xxx.xxx
+                  Email chưa đúng định dạng xxx@xxx.xx
+                </span>
+                <span *ngIf="supplierEmail.hasError('maxlength')">
+                  Email không đươc vượt qua 40 kí tự
                 </span>
               </span>
             </div>
@@ -94,7 +100,7 @@
         </tr>
         <tr>
           <td class="td_title">
-            Địa chỉ:
+            Địa chỉ<span class="required-marker">*</span> :
           </td>
           <td>
             <textarea (click)="hideError('4')" class="border-1; border_radius" placeholder="Nhập địa chỉ" type="text" formControlName="supplierAddress"></textarea>
@@ -110,6 +116,9 @@
                 <span *ngIf="supplierAddress.errors.pattern">
                   Địa chỉ không được chứa kí tự đặc biệt
                 </span>
+                <span *ngIf="supplierAddress.hasError('maxlength')">
+                  Địa chỉ không được vượt quá 200 kí tự
+                </span>
               </span>
             </div>
           </td>
@@ -124,6 +133,4 @@
     </div>
   </div>
 </form>
-<div #successNotification class="success-notification">
-  <h1>Thêm mới thành công</h1>
-</div>
+

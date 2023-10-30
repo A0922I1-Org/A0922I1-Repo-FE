@@ -9,14 +9,15 @@ td{
   margin: auto;
   display: flex;
   justify-content: center;
-
 }
 .td1{
-  height: 25px;
+  height: 60px;
   width: 400px;
   float: left;
   color: red;
   display: block;
+  padding: 0;
+  margin: 0;
 }
 td input{width: 400px;
   height: 40px;
@@ -33,14 +34,12 @@ button{
   margin: 3px;
   font-size: 15px;
   padding: 1px;
-
 }
 div.alert-danger{
-
   justify-content: left;
   height: 25px;
   width: 400px;
-  font-size: 15px;
+  font-size: 10px;
   padding: 0;
   margin: 0;
   float: left;
@@ -54,6 +53,7 @@ div.alert-danger{
   text-align: left;
   width: 400px;
   display: block;
+  margin-top: 10px;
 }
 .success-notification {
   position: fixed;
@@ -70,15 +70,12 @@ div.alert-danger{
   font-size: xx-large;
   height: 60px;
 }
-/*.border{*/
-/*  margin: 50px 100px 20px;*/
-/*  padding: 10px;*/
-/*  border-radius: 10px;*/
-
-/*}*/
+.border{
+  padding: 5px;
+  border-radius: 10px;
+}
 .border_radius{
   border-radius: 10px;
-
 }
 .header h1{
   font-size: 34px;
@@ -90,4 +87,9 @@ div.alert-danger{
   border-radius: 10px;
   height: 74px;
   margin: auto;
+}
+.required-marker {
+  color: red;
+  padding: 0;
+  margin: 0;
 }

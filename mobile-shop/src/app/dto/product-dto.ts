@@ -4,5 +4,6 @@ export class ProductDto {
   sellingPrice: number;
   quantity: number;
   qty: number;
+  imageUrl: string;
 }
 
