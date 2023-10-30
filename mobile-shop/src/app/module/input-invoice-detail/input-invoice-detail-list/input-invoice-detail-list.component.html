@@ -89,8 +89,8 @@
             <td>{{invoice.product.productName}}</td>
             <td>{{invoice.inputInvoice.supplier.supplierName}}</td>
             <td>{{invoice.amount}}</td>
-            <td class="responsive-field">{{invoice.inputInvoiceCost / invoice.amount | currency :'VND':'symbol'}}</td>
-            <td>{{invoice.inputInvoiceCost|currency :'VND':'symbol'}}</td>
+            <td class="responsive-field">{{invoice.inputInvoiceCost | number:'1.0'}}</td>
+            <td>{{invoice.inputInvoiceCost * invoice.amount| number:'1.0'}}</td>
             <td class=" text-center">
 
                 <div class="d-inline-block"><button class="btn btn-outline-danger responsive-button" data-bs-toggle="modal"
