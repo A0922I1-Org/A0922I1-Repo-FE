@@ -31,7 +31,7 @@ export class CreateSupplierComponent implements OnInit {
       supplierName: new FormControl('',
         [Validators.required,
           Validators.maxLength(40),
-          Validators.pattern(this.name)
+          Validators.pattern(this.vietnamese)
         ]),
       supplierPhone: new FormControl('', [
         Validators.required,
@@ -45,7 +45,7 @@ export class CreateSupplierComponent implements OnInit {
       ]),
       supplierAddress: new FormControl('', [
         Validators.required,
-        Validators.pattern(this.address),
+        Validators.pattern(this.vietnamese),
         Validators.maxLength(200),
       ])
     });
