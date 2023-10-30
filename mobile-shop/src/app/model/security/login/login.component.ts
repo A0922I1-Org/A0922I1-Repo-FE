@@ -1,13 +1,15 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AuthService} from "../service/auth.service";
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../service/auth.service';
 import {shareService} from "../service/share.service";
 import {tokenStorageService} from "../service/token-storage.service";
-import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import Swal from 'sweetalert2';
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {HeaderComponent} from "../../../shared/header/header.component";
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {ToastrService} from "ngx-toastr";
+import Swal from "sweetalert2";
+
 declare var gapi: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +18,7 @@ declare var gapi: any;
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   username = '';
+  // tslint:disable-next-line:ban-types
   roles: String[];
   returnUrl: string;
   showPassword = false;
@@ -25,7 +28,8 @@ export class LoginComponent implements OnInit {
               private tokenStorageService: tokenStorageService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private httpClient: HttpClient) {
+              private httpClient: HttpClient,
+              private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -47,7 +51,7 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorageService.getRole();
       this.username = this.tokenStorageService.getUser();
       this.formLogin.get('username').setValue(user.username);
-      console.log( this.formLogin.get('username').setValue(user))
+      console.log(this.formLogin.get('username').setValue(user));
     }
 
   }
@@ -75,7 +79,7 @@ export class LoginComponent implements OnInit {
           b.textContent = String(Swal.getTimerLeft());
           timerInterval = setInterval(() => {
             b.textContent = String(Swal.getTimerLeft());
-          }, 100);
+          }, 500);
         }
       },
       willClose: () => {
@@ -122,7 +126,7 @@ export class LoginComponent implements OnInit {
           console.log(roles);
           this.authService.setToken(data.token);
           this.formLogin.reset();
-          this.router.navigateByUrl("/home");
+          this.router.navigateByUrl('/home');
           this.shareService.sendClickEvent();
         }
       },
@@ -149,10 +153,10 @@ export class LoginComponent implements OnInit {
     );
   }
 
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
-
 
 
 }

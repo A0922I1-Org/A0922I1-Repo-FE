@@ -15,8 +15,8 @@ const routes: Routes = [
   {
     path: 'signUp',
     loadChildren: () => import('./model/user/user-routing.module').then(module => module.UserRoutingModule),
-    canActivate: [AuthGuard, RoleGuard],
-    data: {roles: ['ADMIN']}
+    // canActivate: [AuthGuard, RoleGuard],
+    // data: {roles: ['ADMIN']}
   },
   {
     path: 'profile',
@@ -75,10 +75,9 @@ const routes: Routes = [
   {
     path: 'payment',
     loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
-    // canActivate: [AuthGuard, RoleGuard],
-    // data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
+    canActivate: [AuthGuard, RoleGuard],
+    data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
   },
-
 ];
 
 @NgModule({
