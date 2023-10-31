@@ -1,23 +1,24 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProductServiceService} from '../../../service/serviceProduct/product-service.service';
 import {Product} from '../../../model/product';
-import {Page} from '../../../model/page';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NavigationEnd, Router} from "@angular/router";
 import {ShareDataService} from "../../../service/outputInvoiceService/share-data.service";
+
 @Component({
   selector: 'app-product-select-modal',
   templateUrl: './product-select-modal.component.html',
   styleUrls: ['./product-select-modal.component.css']
 })
 export class ProductSelectModalComponent implements OnInit, OnChanges {
+isOnSaleScreen: boolean;
 
   @Input() reload: boolean;
   isOnInput: boolean;
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.reload && this.reload) {
-      this.getProductList('', '', '', '', '', true);
+      this.getProductList('', '', '', '', '', true,this.isOnSaleScreen);
     }
   }
 
@@ -25,19 +26,24 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
   @Output() productEmitted = new EventEmitter<Product>();
 
   constructor(private productService: ProductServiceService, private router: Router, private shareData: ShareDataService) {
-    this.getProductList('', '', '', '', '', true);
-    this.searchForm = new FormGroup({
-      productName: new FormControl('', [Validators.maxLength(3)]),
-    });
+    console.log("da khoi tao modal")
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Check if the current route is '/'
         if (event.url === '/input-invoice/new') {
           this.isOnInput = true;
-        } else {
+          this.isOnSaleScreen = false;
+        } else if(event.url === '/payment') {
           this.isOnInput = false;
+          this.isOnSaleScreen = true;
+        } else{
+          this.isOnSaleScreen = true;
         }
       }
+      this.getProductList('', '', '', '', '', true,this.isOnSaleScreen);
+      this.searchForm = new FormGroup({
+        productName: new FormControl('', [Validators.maxLength(3)]),
+      });
     });
   }
 
@@ -62,11 +68,12 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
   doDelete(deleteProductId: number) {
     this.productService.deleteProduct(deleteProductId).subscribe(() => {
       alert('Xóa sản phẩm thành công');
-      this.getProductList('', '', '', '', '', true);
+      this.getProductList('', '', '', '', '', true,this.isOnSaleScreen);
     });
   }
 
-  getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string,  sort: string, check: boolean) {
+  getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string,  sort: string, check: boolean,isOnSaleScreen: boolean) {
+    console.log("da vao")
     this.brand = brandName;
     this.price = sellingPrice;
     this.name = productName;
@@ -76,7 +83,7 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
     }
     this.sort = sort;
     if (check === true) {
-      this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, true).subscribe((response: any) => {
+      this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, true,isOnSaleScreen).subscribe((response: any) => {
         if (response == null) {
 
           console.log(response);
@@ -97,7 +104,7 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
       this.check = check;
     } else if (check === false) {
       {
-        this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, false).subscribe((response: any) => {
+        this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, false, isOnSaleScreen).subscribe((response: any) => {
           if (response == null) {
             this.products = [];
             this.totalPages = 0;
@@ -123,7 +130,7 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
   onPrevPage() {
     if (this.currentPage > 0) {
       this.productService.getProductList(this.brand, this.price, this.name, this.cpu,  this.currentPage,
-        this.pageSize, this.sort, this.check).subscribe((response: any) => {
+        this.pageSize, this.sort, this.check,this.isOnSaleScreen).subscribe((response: any) => {
         this.products = response.content;
         this.totalPages = response.totalPages;
         this.currentPage = response.number;
@@ -135,7 +142,7 @@ export class ProductSelectModalComponent implements OnInit, OnChanges {
   onNextPage() {
     if (this.currentPage < this.totalPages) {
       this.productService.getProductList(this.brand, this.price, this.name, this.cpu, this.currentPage + 2,
-        this.pageSize, this.sort, this.check).subscribe((response: any) => {
+        this.pageSize, this.sort, this.check,this.isOnSaleScreen).subscribe((response: any) => {
         this.products = response.content;
         this.totalPages = response.totalPages;
         this.currentPage = response.number;

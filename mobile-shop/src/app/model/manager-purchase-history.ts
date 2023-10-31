@@ -3,4 +3,5 @@ export interface ManagerPurchaseHistory {
   productName?: string;
   totalPrice?: number;
   dateOutputInvoice?: Date;
+  outputInvoiceId?: number;
 }

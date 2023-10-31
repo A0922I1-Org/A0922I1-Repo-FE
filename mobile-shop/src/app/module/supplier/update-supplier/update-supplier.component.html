@@ -1,15 +1,14 @@
 <form [formGroup]="supplierForm" (ngSubmit)="onUpdate()">
   <div class="container border border-5 border-warning">
-    <div class="row text-center header border_radius">
-      <h2 style="margin-top: 15px; margin-bottom: 15px">Chỉnh sửa nhà cung cấp</h2>
+    <div class="mt-2  row text-center header border_radius">
+      <h1><i class="fa fa-building me-3 mt-2" aria-hidden="true"></i>Chỉnh sửa nhà cung cấp</h1>
     </div>
     <input class="col-12" placeholder="Tên nhà cung cấp" type="hidden" formControlName="supplierId"><br>
     <div class="table-responsive">
-
       <table class="table">
         <tr>
           <td class="td_title">
-            Tên nhà cung cấp(<span style="color: red">*</span>):
+            Tên nhà cung cấp<span class="required-marker">*</span> :
           </td>
           <td>
             <input (click)="hideError('1')" class="border-1; border_radius" placeholder="Nhập tên nhà cung cấp" type="text" [ngClass]="{'hasError': supplierName.invalid && checkValid('supplierName')}" formControlName="supplierName">
@@ -27,11 +26,11 @@
                 <span *ngIf="supplierName.errors.required">
                   Tên nhà cung cấp không được để trống
                 </span>
-                <span *ngIf="supplierName.errors.maxLength">
-                  Tên nhà cung cấp không đươc vượt qua 50 kí tự
+                <span *ngIf="supplierName.hasError('maxlength')">
+                  Tên nhà cung cấp không đươc vượt qua 40 kí tự
                 </span>
                 <span *ngIf="supplierName.errors.pattern">
-                  Tên nhà cung cấp không đươc có các kí tự đặc biệt
+                    Tên nhà cung cấp không đươc có các kí tự đặc biệt
                 </span>
               </span>
             </div>
@@ -39,7 +38,7 @@
         </tr>
         <tr>
           <td class="td_title">
-            Số điện thoại(<span style="color: red">*</span>):
+            Số điện thoại<span class="required-marker">*</span> :
           </td>
           <td>
             <input (click)="hideError('2')" class="border-1; border_radius" placeholder="Số điện thoại" type="text" formControlName="supplierPhone">
@@ -57,16 +56,20 @@
                 <span *ngIf="supplierPhone.errors.required">
                   Số điện thoại không được để trống
                 </span>
+                <span></span>
                 <span *ngIf="supplierPhone.errors.pattern">
-                  Số điện thoại phải đủ 10 số và bắt đầu từ 0
+                  Số điện thoại phải bắt đầu từ số 0.
                 </span>
+                  <span *ngIf="supplierForm.get('supplierPhone').value.length !== 10 && supplierForm.get('supplierPhone').value.length >=2  ">
+                      Số điện thoại không được vượt quá hoặc ít hơn 10 kí tự.
+                  </span>
               </span>
             </div>
           </td>
         </tr>
         <tr>
           <td class="td_title">
-            Email(<span style="color: red">*</span>):
+            Email<span class="required-marker">*</span>  :
           </td>
           <td>
             <input (click)="hideError('3')" class="border-1; border_radius" [(ngModel)]="textLower" (ngModelChange)="textToLower($event)" placeholder="Nhập email" type="text" formControlName="supplierEmail">
@@ -85,7 +88,10 @@
                   Email không được để trống
                 </span>
                 <span *ngIf="supplierEmail.errors.pattern">
-                  Email chưa đúng định dạng xxx@xxx.xxx
+                  Email chưa đúng định dạng xxx@xxx.xx
+                </span>
+                <span *ngIf="supplierEmail.hasError('maxlength')">
+                  Email không đươc vượt qua 40 kí tự
                 </span>
               </span>
             </div>
@@ -93,7 +99,7 @@
         </tr>
         <tr>
           <td class="td_title">
-            Địa chỉ:
+            Địa chỉ<span class="required-marker">*</span> :
           </td>
           <td>
             <textarea (click)="hideError('4')" class="border-1; border_radius" placeholder="Nhập địa chỉ" type="text" formControlName="supplierAddress"></textarea>
@@ -109,22 +115,23 @@
                 <span *ngIf="supplierAddress.errors.pattern">
                   Địa chỉ không được chứa kí tự đặc biệt
                 </span>
+                <span *ngIf="supplierAddress.hasError('maxlength')">
+                  Địa chỉ không được vượt quá 200 kí tự
+                </span>
               </span>
             </div>
           </td>
         </tr>
         <tr>
+          <td class="text-center" style="margin-top: 80px">
           <td style="margin-top: 80px">
             <button style="float: right; margin-left: 120px" routerLink="/supplier" type="button" class="btn btn-outline-dark col-md-1">Hủy Bỏ</button>
             <button type="submit" class="btn btn-outline-warning col-md-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Lưu</button>
-         </td>
+          </td>
         </tr>
       </table>
     </div>
   </div>
 </form>
-<div #successNotification class="success-notification">
-  <h1>Sửa nhà cung cấp thành công</h1>
-</div>
 
 

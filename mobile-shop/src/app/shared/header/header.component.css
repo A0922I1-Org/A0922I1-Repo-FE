@@ -73,9 +73,6 @@
   margin-left: 15px; /* Add margin to the left */
 }
 
-.logout-button:hover {
-  background-color: #c0392b; /* Darker red on hover */
-}
 
 .nav-item.active-link a {
   background-color: black; /* Highlight color for active item */
@@ -84,9 +81,6 @@
 
 .nav-item:hover {
   background-color: #ffc107;
-}
-.highlight-text:hover{
-  background-color: #cccccc;
 }
 .navbar-nav .nav-item .nav-link {
   white-space: nowrap;
@@ -111,3 +105,4 @@ nav button.navbar-toggler {
   align-self: center;
 }
 }
+
