@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
     let timerInterval;
     Swal.fire({
       title: 'Loading....',
-      timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading();
         const b = Swal.getHtmlContainer()?.querySelector('b');
