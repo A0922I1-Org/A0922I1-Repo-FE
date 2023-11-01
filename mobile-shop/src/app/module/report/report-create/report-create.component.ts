@@ -52,12 +52,14 @@ export class ReportCreateComponent implements OnInit {
     totalInvoice: 0,
     totalRevenue: 0,
   };
+  showMessage = false;
+
   fromDateValue: string;
   reportForm: FormGroup = new FormGroup({
-    fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
-    toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateRangeValidator, dateValidator]),
-    reportType: new FormControl('',[Validators.required] ),
-    productId: new FormControl( '', [Validators.required, Validators.pattern(/^\d+$/)]),
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+    reportType: new FormControl( ),
+    productId: new FormControl( ),
   });
 
 
@@ -68,12 +70,12 @@ export class ReportCreateComponent implements OnInit {
     this.reportForm = new FormGroup({
       fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
       toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
-      reportType: new FormControl('',[Validators.required]),
-      productId: new FormControl('', [Validators.pattern(/^\d+$/)]),
+      reportType: new FormControl('', [Validators.required]),
+      productId: new FormControl('', [Validators.required , Validators.pattern(/^\d+$/)]),
     });
 
-    this.reportForm.setValidators(dateRangeValidator);
 
+    this.reportForm.setValidators(dateRangeValidator);
     this.createChart(this.result);
   }
   submit() {
@@ -82,16 +84,25 @@ export class ReportCreateComponent implements OnInit {
       this.reportService.sendReportData(data).subscribe(
         (response) => {
           this.result = response;
-          this.createChart(response);
+
+          // Kiểm tra dữ liệu và đặt showMessage tương ứng
+          if (response && response.totalInvoice > 0 && response.totalRevenue > 0) {
+            this.createChart(response);
+            this.showMessage = false; // Không hiển thị thông báo
+          } else {
+            this.createChart(response);
+            this.showMessage = true; // Hiển thị thông báo
+          }
         },
-        (error => {
+        (error) => {
           console.error('Error', error);
-        })
+        }
       );
     } else {
-
+      // Thực hiện xử lý khi form không hợp lệ
     }
   }
+
 
   onReportTypeChange() {
     const reportTypeControl = this.reportForm.get('reportType');
