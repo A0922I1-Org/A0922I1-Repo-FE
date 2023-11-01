@@ -68,26 +68,6 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
-    let timerInterval;
-    Swal.fire({
-      title: 'Loading....',
-      didOpen: () => {
-        Swal.showLoading();
-        const b = Swal.getHtmlContainer()?.querySelector('b');
-        if (b) {
-          b.textContent = String(Swal.getTimerLeft());
-          timerInterval = setInterval(() => {
-            b.textContent = String(Swal.getTimerLeft());
-          }, 500);
-        }
-      },
-      willClose: () => {
-        clearInterval(timerInterval);
-      },
-      // Thêm một thời gian chờ tối đa (timeout) 15 giây
-      timer: 10000, // Thời gian chờ tối đa trong mili giây (15 giây)
-    });
-
     this.authService.login(this.formLogin.value).subscribe(
       (data) => {
         if (data && data.error) {
