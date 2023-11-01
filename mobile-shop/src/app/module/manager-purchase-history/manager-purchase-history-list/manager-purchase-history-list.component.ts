@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {ManagerPurchaseHistory} from '../../../model/manager-purchase-history';
 import {Page} from '../../../model/page';
 import {ManagerPurchaseHistoryServiceService} from '../../../service/manager-purchase-history-service.service';
 import {DetailHistory} from '../../../model/detail-history';
+import {ScrollUpService} from "../../../service/scroll-up.service";
 @Component({
   selector: 'app-manager-purchase-history-list',
   templateUrl: './manager-purchase-history-list.component.html',
@@ -13,11 +14,16 @@ export class ManagerPurchaseHistoryListComponent implements OnInit {
     details: DetailHistory[];
   sort = '';
   managerPurchaseHistory: ManagerPurchaseHistory[];
-  constructor(private managerPurchaseHistoryService: ManagerPurchaseHistoryServiceService) {
+  constructor(private managerPurchaseHistoryService: ManagerPurchaseHistoryServiceService,
+              private scrollUpService: ScrollUpService,
+              private renderer: Renderer2) {
   }
 
   ngOnInit(): void {
     this.loadManagerPurchaseHistory(1, 8, this.sort);
+    this.scrollUpService.getScrollObservable().subscribe(() => {
+      this.scrollToTop();
+    });
   }
   loadManagerPurchaseHistory(pageNo: number, pageSize: number, sort: string): void {
     if (sort == null) {
@@ -79,7 +85,9 @@ export class ManagerPurchaseHistoryListComponent implements OnInit {
           .subscribe(data => {
             this.page = data;
           });
+
     }
+    this.scrollUpService.scrollUp();
   }
   formatTime(timeArray: number[]): string {
     const hours = timeArray[3];
@@ -104,6 +112,12 @@ export class ManagerPurchaseHistoryListComponent implements OnInit {
     this.managerPurchaseHistoryService.findById(id).subscribe(data => {
       this.details = data;
     });
+  }
+
+//Để bấm nút chuyển trang thì tự lên top
+  scrollToTop() {
+    this.renderer.setProperty(document.body, 'scrollTop', 0);
+    this.renderer.setProperty(document.documentElement, 'scrollTop', 0);
   }
 }
 

@@ -16,7 +16,6 @@ import {ScrollUpService} from '../../service/scroll-up.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  //phan quyen
   userRole: string;
   username: string;
   isLoggedIn = false;

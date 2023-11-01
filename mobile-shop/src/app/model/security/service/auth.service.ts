@@ -35,7 +35,6 @@ export class AuthService {
     }, this.httpOptions);
   }
 
-  // Hàm này để lấy giá trị username từ token
   getUsernameFromToken(): string {
     const token = tokenStorageService.getToken();
     if (token) {
@@ -48,7 +47,6 @@ export class AuthService {
     return null;
   }
 
-  // Hàm này để lưu token sau khi đăng nhập
   setToken(token: string): void {
     this.token = token;
   }

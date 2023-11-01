@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Renderer2} from '@angular/core';
 import {InputInvoiceDetailService} from '../../../service/input-invoice/input-invoice-detail.service';
 import {InputInvoiceDetail} from '../../../model/input-invoice-detail';
 import {Page} from '../../../model/page';
+import {ScrollUpService} from "../../../service/scroll-up.service";
 
 @Component({
   selector: 'app-input-invoice-detail-list',
@@ -14,58 +15,66 @@ export class InputInvoiceDetailListComponent implements OnInit {
   inputInvoiceList: InputInvoiceDetail[];
 
   //Lưu giá trị search từ input để gởi về server
-  supplierName='';
-  productName='';
-  startDate='';
-  endDate='';
-  isSearch=false;
+  supplierName = '';
+  productName = '';
+  startDate = '';
+  endDate = '';
+  isSearch = false;
 
-  constructor(private inputInvoiceService: InputInvoiceDetailService) {
-    // this.inputInvoiceService.getInputInvoiceList(this.supplierName, this.productName, this.startDate, this.endDate,0).subscribe(
-    //   next => {
-    //    this.inputInvoiceList = next.content;
-    //    this.page = next;
-    // }
-    // );
-      this.getInputDetail(0);
+  constructor(private inputInvoiceService: InputInvoiceDetailService,
+              private scrollUpService: ScrollUpService,
+              private renderer: Renderer2) {
+    this.scrollUpService.getScrollObservable().subscribe(() => {
+      this.scrollToTop();
+    });
+    this.getInputDetail(0);
   }
 
   ngOnInit(): void {
   }
 
   getInputDetail(pageNo: number) {
-    this.inputInvoiceService.getInputInvoiceList(this.supplierName,this.productName,this.startDate,this.endDate,pageNo).subscribe(
+    this.inputInvoiceService.getInputInvoiceList(this.supplierName, this.productName, this.startDate, this.endDate, pageNo).subscribe(
       next => {
         this.inputInvoiceList = next.content;
         this.page = next;
       }
     );
     console.log(this.isSearch);
+    this.scrollUpService.scrollUp();
   }
-  cancelSearch(pageNo: number){
-    this.supplierName='';
-    this.productName='';
-    this.startDate='';
-    this.endDate='';
-    this.inputInvoiceService.getInputInvoiceList(this.supplierName,this.productName,this.startDate,this.endDate,pageNo).subscribe(
+
+  cancelSearch(pageNo: number) {
+    this.supplierName = '';
+    this.productName = '';
+    this.startDate = '';
+    this.endDate = '';
+    this.inputInvoiceService.getInputInvoiceList(this.supplierName, this.productName, this.startDate, this.endDate, pageNo).subscribe(
       next => {
         this.inputInvoiceList = next.content;
         this.page = next;
-        this.isSearch=false;
+        this.isSearch = false;
       }
     );
+    this.scrollUpService.scrollUp();
   }
-  search(pageNo:number){
-    this.inputInvoiceService.search(this.supplierName, this.productName, this.startDate, this.endDate,pageNo).subscribe(
+
+  search(pageNo: number) {
+    this.inputInvoiceService.search(this.supplierName, this.productName, this.startDate, this.endDate, pageNo).subscribe(
       next => {
         this.inputInvoiceList = next.content;
         this.page = next
-        if (this.supplierName!=''||this.productName!=''||this.startDate!=''||this.endDate!=''){
-          this.isSearch=true;
+        if (this.supplierName != '' || this.productName != '' || this.startDate != '' || this.endDate != '') {
+          this.isSearch = true;
         }
       }
     )
+    this.scrollUpService.scrollUp();
   }
 
-
+//Để bấm nút chuyển trang thì tự lên top
+  scrollToTop() {
+    this.renderer.setProperty(document.body, 'scrollTop', 0);
+    this.renderer.setProperty(document.documentElement, 'scrollTop', 0);
+  }
 }

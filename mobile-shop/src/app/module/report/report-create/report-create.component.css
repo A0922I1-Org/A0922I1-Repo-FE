@@ -74,6 +74,7 @@ input[type="date"], input[type="text"] {
 }
 
 .chart {
+  margin-top: 10px;
   width: 100%;
 }
 

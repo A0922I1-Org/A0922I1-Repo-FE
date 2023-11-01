@@ -5,6 +5,9 @@
     </div>
     <div class="chart">
       <div id="myChart"></div>
+      <div class="text-danger" style="font-size: 20px">
+      <div   *ngIf="showMessage">KHÔNG CÓ DỮ LIỆU TRONG KHOẢNG THỜI GIAN NÀY</div>
+      </div>
     </div>
   </div>
   <div class="right">
@@ -28,7 +31,7 @@
            *ngIf="reportForm.get('toDate').hasError('invalidDate') && reportForm.get('toDate').touched">Thời gian
           không hợp lệ</p>
         <p class="text-danger" *ngIf="reportForm.hasError('dateRange') && reportForm.get('toDate').touched">
-          Lỗi validate
+          Ngày kết thúc không được bé hơn ngày bắt đầu
         </p>
       </div>
       <div class="radio-group">
@@ -60,5 +63,3 @@
   <button type="button" class="btn btn-outline-dark " routerLink="/home">Thoát</button>
 </div>
 <app-product-select-modal (productEmitted)="chooseProductInPast($event)"></app-product-select-modal>
-
-
