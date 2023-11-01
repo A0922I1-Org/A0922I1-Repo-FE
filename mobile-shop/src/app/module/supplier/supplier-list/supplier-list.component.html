@@ -172,6 +172,7 @@
                 class="responsive-icon"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
+                (click)="showDeleteConfirmModal(supplier)"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +187,8 @@
                   />
                 </svg>
               </button>
-              <button class="responsive-icon">
+              <button class="responsive-icon"
+                      [routerLink]="['/edit', supplier.supplierId]">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"

@@ -4,7 +4,6 @@
   }
 }
 @media screen and (max-width: 1200px) {
-  /* Đây là nơi bạn đặt các quy tắc CSS mà bạn muốn áp dụng khi màn hình nhỏ hơn 1200px */
   .responsive-icon {
     display: block;
   }
@@ -18,7 +17,6 @@
   }
   .add-supplier{
     float: right;
-    /*margin-top: 10px;*/
   }
 
 
