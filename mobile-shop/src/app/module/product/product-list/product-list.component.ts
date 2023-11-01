@@ -1,4 +1,6 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+
 import {Product} from '../../../model/product';
 import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
@@ -9,6 +11,7 @@ import {AuthService} from "../../../model/security/service/auth.service";
 import {EmployeeService} from "../../../model/user-detail/service/infor-user.service";
 import {tokenStorageService} from "../../../model/security/service/token-storage.service";
 import {shareService} from "../../../model/security/service/share.service";
+import {ScrollUpService} from "../../../service/scroll-up.service";
 
 @Component({
   selector: 'app-product-list',
@@ -21,10 +24,9 @@ export class ProductListComponent implements OnInit {
   userRole: string;
 
   constructor(private productService: ProductService,
-              private authService: AuthService,
               private tokenStorageService: tokenStorageService,
-              private employeeService: EmployeeService,
-              private share: shareService) {
+              private scrollUpService: ScrollUpService,
+              private renderer: Renderer2) {
   }
   brands: Brand [] = [];
   products: Product [] = [];
@@ -42,6 +44,9 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
       this.userRole = this.tokenStorageService.getRole()?.authority || 'USER';
+    this.scrollUpService.getScrollObservable().subscribe(() => {
+      this.scrollToTop();
+    });
     this.getProductList('', '', '', '', false);
     this.searchForm = new FormGroup({
       brand: new FormControl(''),
@@ -150,7 +155,8 @@ export class ProductListComponent implements OnInit {
         this.pageSize = response.productPage.size;
       });
     }
-    this.view.nativeElement.scrollIntoView();
+    // this.view.nativeElement.scrollIntoView();
+    this.scrollUpService.scrollUp();
   }
 
   onNextPage() {
@@ -164,7 +170,12 @@ export class ProductListComponent implements OnInit {
         this.pageSize = response.productPage.size;
       });
     }
-    this.view.nativeElement.scrollIntoView();
+    // this.view.nativeElement.scrollIntoView();
+    this.scrollUpService.scrollUp();
   }
-
+//Để bấm chuyển trang thì lên top
+  scrollToTop() {
+    this.renderer.setProperty(document.body, 'scrollTop', 0);
+    this.renderer.setProperty(document.documentElement, 'scrollTop', 0);
+  }
 }
