@@ -21,7 +21,7 @@
                 <div class="col-md-6">
                   <label class="form-label">Mật khẩu</label>
                   <input formControlName="password" type="password" class="form-control"
-                         placeholder="Nhập mật khẩu" autocomplete="new-password">
+                          autocomplete="new-password">
                   <div *ngIf="isFieldInvalid('password')" class="text-danger">
                     {{ getFieldErrorMessage ( 'password' ) }}
                   </div>
@@ -30,7 +30,7 @@
                 <div class="col-md-6">
                   <label class="form-label">Địa chỉ</label>
                   <input formControlName="addressEmployee" type="text" class="form-control"
-                         placeholder="Nhập địa chỉ">
+                         >
                   <div *ngIf="isFieldInvalid('addressEmployee')" class="text-danger">
                     {{ getFieldErrorMessage ( 'addressEmployee' ) }}
                   </div>
@@ -39,7 +39,7 @@
                 <div class="col-md-6">
                   <label class="form-label">Xác thực mật khẩu</label>
                   <input formControlName="confirmPassword" type="password" class="form-control"
-                         placeholder="Xác thực lại mật khẩu" autocomplete="new-password">
+                        autocomplete="new-password">
                   <div *ngIf="isFieldInvalid('confirmPassword')" class="text-danger">
                     {{ getFieldErrorMessage ( 'confirmPassword' ) }}
                   </div>
@@ -68,8 +68,7 @@
 
                 <div class="col-md-6">
                   <label class="form-label">Tên tài khoản</label>
-                  <input formControlName="username" type="text" class="form-control"
-                         placeholder="Nhập tên tài khoản" autocomplete="username">
+                  <input formControlName="username" type="text" class="form-control" autocomplete="username">
                   <div *ngIf="isFieldInvalid('username')" class="text-danger">
                     {{ getFieldErrorMessage ( 'username' ) }}
                   </div>
@@ -77,8 +76,7 @@
 
                 <div class="col-md-6">
                   <label class="form-label">Ngày sinh</label>
-                  <input formControlName="birthdayEmployee" type="date" class="form-control"
-                         placeholder="Nhập ngày sinh">
+                  <input formControlName="birthdayEmployee" type="date" class="form-control">
                   <div *ngIf="isFieldInvalid('birthdayEmployee')" class="text-danger">
                     {{ getFieldErrorMessage ( 'birthdayEmployee' ) }}
                   </div>
