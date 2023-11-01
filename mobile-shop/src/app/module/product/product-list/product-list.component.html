@@ -43,7 +43,7 @@
           </button>
         </div>
         <div class="col-12 col-md-3 col-lg-2 mt-2">
-          <button type="button" class="btn btn-outline-warning w-100 smaller-button2">
+          <button type="button" class="btn btn-outline-warning w-100 smaller-button2" *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'||userRole=='STORAGE'">
             Thêm mới
           </button>
         </div>
@@ -95,7 +95,7 @@
             <th class="col-2 col-md-2 col-lg-2">CPU</th>
             <th class="col-1 col-md-1 col-lg-1">Lưu trữ</th>
             <th class="col-1 col-md-1 col-lg-1">Số lượng (cái)</th>
-            <th class="col-2 col-md-2 col-lg-2">Hành động</th>
+            <th class="col-2 col-md-2 col-lg-2" *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'||userRole=='STORAGE'">Hành động</th>
           </tr>
           </thead>
           <tbody>
@@ -109,7 +109,7 @@
               <td>{{product.productCpu}}</td>
               <td>{{product.productStorage}}</td>
               <td>{{product.quantity}}</td>
-              <td>
+              <td *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'||userRole=='STORAGE'">
                 <div class="d-flex flex-column flex-md-row">
                   <button type="button" class="btn btn-outline-danger smaller-button me-md-2 mb-2 mb-md-0"
                           data-bs-toggle="modal"

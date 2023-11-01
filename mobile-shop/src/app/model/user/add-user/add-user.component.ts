@@ -38,7 +38,7 @@ export class AddUserComponent implements OnInit {
 
   noNumbersValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const forbidden = /\d/.test(control.value);
+      const forbidden = /[0-9!@#$%^&*]/.test(control.value);
 
       return forbidden ? {noNumbers: true} : null;
     };
@@ -71,7 +71,7 @@ export class AddUserComponent implements OnInit {
 
   customEmailValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const email = control.value;
-    const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    const pattern = /^\w+([.-]?\w+)*@gmail\.com$/;
     if (!pattern.test(email)) {
       return {invalidEmail: true};
     }
@@ -99,11 +99,11 @@ export class AddUserComponent implements OnInit {
   getFieldErrorMessage(fieldName: string): string {
     if (this.formSignUp.get(fieldName).hasError('required')) {
       if (fieldName === 'nameEmployee') {
-        return 'Tên không được để trống.';
+        return 'Họ và tên không được để trống.';
       } else if (fieldName === 'password') {
         return 'Mật khẩu không được để trống.';
       } else if (fieldName === 'addressEmployee') {
-        return 'Địa chỉ không được để trống.';
+        return 'Ðịa chỉ không được để trống.';
       } else if (fieldName === 'role') {
         return 'Vui lòng chọn quyền hạn.';
       } else if (fieldName === 'email') {
@@ -111,14 +111,14 @@ export class AddUserComponent implements OnInit {
       } else if (fieldName === 'username') {
         return 'Tên tài khoản không được để trống.';
       } else if (fieldName === 'birthdayEmployee') {
-        return 'Ngày không hợp lệ.';
+        return 'Ngày sinh không hợp lệ';
       } else if (fieldName === 'numberPhoneEmployee') {
-        return 'Số điện thoại không hợp lệ.';
+        return 'số điện thoại không được để trống';
       }
     }
 
     if (fieldName === 'confirmPassword' && this.formSignUp.hasError('passwordMismatch')) {
-      return 'Mật khẩu và xác thực mật khẩu không khớp.';
+      return 'Mật khẩu và mật khẩu xác thực không khớp!!';
     }
 
 
@@ -126,11 +126,11 @@ export class AddUserComponent implements OnInit {
       if (fieldName === 'nameEmployee') {
         return 'Tên không được quá 20 kí tự.';
       } else if (fieldName === 'addressEmployee') {
-        return 'Địa chỉ không được quá 45 kí tự.';
+        return 'Ðịa chỉ không được quá 45 kí tự.';
       } else if (fieldName === 'numberPhoneEmployee') {
         return 'Số điện thoại không được quá 14 kí tự.';
       } else if (fieldName === 'username') {
-        return 'Tên tài khoản không được quá 15 kí tự.';
+        return 'Tên tài khỏan không được quá 15 kí tự.';
       } else if (fieldName === 'password') {
         return 'Mật khẩu không được quá 35 kí tự.';
       }
@@ -143,16 +143,27 @@ export class AddUserComponent implements OnInit {
         return 'Tên tài khoản trên 5 kí tự.';
       }
     }
-
     if (fieldName === 'numberPhoneEmployee') {
       if (this.formSignUp.get(fieldName).hasError('invalidNumberPhone')) {
         return 'Không đúng định dạng số Việt Nam';
       }
     }
 
+    if (fieldName === 'nameEmployee') {
+      if (this.formSignUp.get(fieldName).hasError('noNumbers')) {
+        return 'Họ và tên không cho phép chứa kí tự đặc biệt!!';
+      }
+    }
+
     if (fieldName === 'birthdayEmployee') {
       if (this.formSignUp.get(fieldName).hasError('invalidBirthday')) {
-        return 'Ngày không hợp lệ.';
+        return 'Ngày không không hợp lệ.';
+      }
+    }
+
+    if (fieldName === 'email') {
+      if (this.formSignUp.get(fieldName).hasError('invalidEmail')) {
+        return 'Email phải đúng định dạng!!!';
       }
     }
     return '';
@@ -185,7 +196,7 @@ export class AddUserComponent implements OnInit {
         }),
         switchMap((emailExists) => {
           if (emailExists) {
-            return throwError('Email đã tồn tại!');
+            return throwError('Email dã tồn tại!');
           } else {
             const employee = this.createEmployee();
             return this.userService.addEmployee(employee);
@@ -209,8 +220,8 @@ export class AddUserComponent implements OnInit {
 
           Swal.fire({
             icon: 'success',
-            title: 'Đăng ký thành công!',
-            text: 'Tài khoản của bạn đã được tạo thành công.',
+            title: 'Ðang ký thành công!',
+            text: 'Tài khoản của bạn đã tạo thành công.',
           });
         },
         (error) => {
@@ -222,6 +233,7 @@ export class AddUserComponent implements OnInit {
         }
       );
   }
+
 
   createEmployee() {
     return {

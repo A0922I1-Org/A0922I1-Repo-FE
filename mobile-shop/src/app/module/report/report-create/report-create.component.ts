@@ -52,6 +52,8 @@ export class ReportCreateComponent implements OnInit {
     totalInvoice: 0,
     totalRevenue: 0,
   };
+  showMessage = false;
+
   fromDateValue: string;
   reportForm: FormGroup = new FormGroup({
     fromDate: new FormControl(),
@@ -72,8 +74,8 @@ export class ReportCreateComponent implements OnInit {
       productId: new FormControl('', [Validators.pattern(/^\d+$/)]),
     });
 
-    this.reportForm.setValidators(dateRangeValidator);
 
+    this.reportForm.setValidators(dateRangeValidator);
     this.createChart(this.result);
   }
   submit() {
@@ -82,16 +84,25 @@ export class ReportCreateComponent implements OnInit {
       this.reportService.sendReportData(data).subscribe(
         (response) => {
           this.result = response;
-          this.createChart(response);
+
+          // Kiểm tra dữ liệu và đặt showMessage tương ứng
+          if (response && response.totalInvoice > 0 && response.totalRevenue > 0) {
+            this.createChart(response);
+            this.showMessage = false; // Không hiển thị thông báo
+          } else {
+            this.createChart(response);
+            this.showMessage = true; // Hiển thị thông báo
+          }
         },
-        (error => {
+        (error) => {
           console.error('Error', error);
-        })
+        }
       );
     } else {
-
+      // Thực hiện xử lý khi form không hợp lệ
     }
   }
+
 
   onReportTypeChange() {
     const reportTypeControl = this.reportForm.get('reportType');

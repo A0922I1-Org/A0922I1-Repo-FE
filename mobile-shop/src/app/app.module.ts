@@ -37,6 +37,8 @@ import {BodyComponent} from './shared/body/body.component';
 import {ImageScrollComponent} from './shared/image-scroll/image-scroll.component';
 import {OutputInvoiceModule} from './module/output-invoice/output-invoice.module';
 import {AddUserComponent} from './model/user/add-user/add-user.component';
+import {ToastrModule} from "ngx-toastr";
+import { PasswordStrengthDirective } from './password-strength.directive';
 
 
 
@@ -50,7 +52,8 @@ import {AddUserComponent} from './model/user/add-user/add-user.component';
     FooterComponent,
     HomePageComponent,
     BodyComponent,
-    ImageScrollComponent
+    ImageScrollComponent,
+    PasswordStrengthDirective
   ],
   entryComponents: [PhoneDetailsComponent],
 
@@ -75,10 +78,13 @@ import {AddUserComponent} from './model/user/add-user/add-user.component';
     MatDialogModule,
     SocialLoginModule,
     // NgxPaginationModule,
-    OutputInvoiceModule
+    OutputInvoiceModule,
+    ToastrModule.forRoot()
   ],
   providers: [DatePipe],
-  exports: [],
+    exports: [
+        PasswordStrengthDirective
+    ],
 
   bootstrap: [AppComponent]
 })

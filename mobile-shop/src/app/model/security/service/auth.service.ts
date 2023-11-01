@@ -28,7 +28,6 @@ export class AuthService {
     };
   }
 
-  //hàm này để lấy value đưa về back-end
   login(obj): Observable<any> {
     return this.httpClient.post(AUTH_API + 'signIn', {
       username: obj.username,
