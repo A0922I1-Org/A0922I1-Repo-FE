@@ -15,8 +15,8 @@ const routes: Routes = [
   {
     path: 'signUp',
     loadChildren: () => import('./model/user/user-routing.module').then(module => module.UserRoutingModule),
-    // canActivate: [AuthGuard, RoleGuard],
-    // data: {roles: ['ADMIN']}
+    canActivate: [AuthGuard, RoleGuard],
+    data: {roles: ['ADMIN']}
   },
   {
     path: 'profile',

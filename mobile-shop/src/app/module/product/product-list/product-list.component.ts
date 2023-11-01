@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../../model/product';
 import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
@@ -18,10 +18,11 @@ import {shareService} from "../../../model/security/service/share.service";
 export class ProductListComponent implements OnInit {
   searchForm: FormGroup;
   @ViewChild('view') view: ElementRef;
+  userRole: string;
 
   constructor(private productService: ProductService,
               private authService: AuthService,
-              private authorize: tokenStorageService,
+              private tokenStorageService: tokenStorageService,
               private employeeService: EmployeeService,
               private share: shareService) {
   }
@@ -38,16 +39,9 @@ export class ProductListComponent implements OnInit {
   name: string;
   sort: string;
 
-  //phan quyen hien thi cac nut
-  userRole: string;
-  username: string;
-  isLoggedIn = false;
-  employeeInfo: any;
 
   ngOnInit(): void {
-    this.share.getClickEvent().subscribe(() => {
-      this.loadHeader();
-    });
+      this.userRole = this.tokenStorageService.getRole()?.authority || 'USER';
     this.getProductList('', '', '', '', false);
     this.searchForm = new FormGroup({
       brand: new FormControl(''),
@@ -173,18 +167,4 @@ export class ProductListComponent implements OnInit {
     this.view.nativeElement.scrollIntoView();
   }
 
-  loadHeader() {
-    if (this.authorize.getToken()) {
-      this.userRole = this.authorize.getRole()?.authority || 'USER';
-      this.username = this.authService.getUsernameFromToken();
-      this.employeeService.getEmployeeByUsername(this.username).subscribe(data => {
-        this.employeeInfo = data;
-      });
-      this.isLoggedIn = true;
-    } else {
-      this.userRole = '';
-      this.username = '';
-      this.isLoggedIn = false;
-    }
-  }
 }
