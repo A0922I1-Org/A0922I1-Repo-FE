@@ -1,8 +1,9 @@
-  import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+  import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
   import {Page} from '../../../model/page';
   import {Supplier} from '../../../model/supplier';
   import {SupplierService} from '../../../service/supplier-service/supplier.service';
   import Swal from "sweetalert2";
+  import {ScrollUpService} from "../../../service/scroll-up.service";
 
   @Component({
   selector: 'app-supplier-list',
@@ -20,7 +21,9 @@ export class SupplierListComponent implements OnInit {
   @ViewChild('view') view: ElementRef;
 
 
-    constructor(private supplierService: SupplierService) {
+    constructor(private supplierService: SupplierService,
+                private scrollUpService: ScrollUpService,
+                private renderer: Renderer2) {
   }
   suppliers: Supplier [] = [];
   totalPages = 0;
@@ -33,6 +36,9 @@ export class SupplierListComponent implements OnInit {
   sort: string;
 
   ngOnInit(): void {
+    this.scrollUpService.getScrollObservable().subscribe(() => {
+      this.scrollToTop();
+    });
     // this.loadSuppliers(1, 8);
     this.getList('', '', '', '', true);
   }
@@ -90,6 +96,7 @@ export class SupplierListComponent implements OnInit {
         this.pageSize = response.size;
       });
     }
+    this.scrollUpService.scrollUp();
   }
 
   onNextPage() {
@@ -102,6 +109,7 @@ export class SupplierListComponent implements OnInit {
         this.pageSize = response.size;
       });
     }
+    this.scrollUpService.scrollUp();
   }
 
   loadSuppliers(pageNo: number, pageSize: number): void {
@@ -109,6 +117,7 @@ export class SupplierListComponent implements OnInit {
       .subscribe(data => {
         this.page = data;
       });
+    this.scrollUpService.scrollUp();
   }
 
   showDeleteConfirmModal(supplier: Supplier): void {
@@ -145,6 +154,7 @@ export class SupplierListComponent implements OnInit {
         this.page = data;
         this.isConfirmModalVisible = false;
       });
+    this.scrollUpService.scrollUp();
   }
 
 
@@ -155,6 +165,7 @@ export class SupplierListComponent implements OnInit {
         this.page = data;
         this.isConfirmModalVisible = false;
       });
+    this.scrollUpService.scrollUp();
   }
 
   sortById() {
@@ -164,5 +175,12 @@ export class SupplierListComponent implements OnInit {
         this.page = data;
         this.isConfirmModalVisible = false;
       });
+    this.scrollUpService.scrollUp();
   }
+
+    //Để bấm nút chuyển trang thì tự lên top
+    scrollToTop() {
+      this.renderer.setProperty(document.body, 'scrollTop', 0);
+      this.renderer.setProperty(document.documentElement, 'scrollTop', 0);
+    }
 }

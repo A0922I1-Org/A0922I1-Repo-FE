@@ -99,7 +99,7 @@
           </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let product of products; let i = index" >
+            <tr *ngFor="let product of products; let i = index" style="height: 63px">
               <td  [ngStyle]="{'background-color':product.isPublish?'none':'orange'}" >
                 {{i + 1}}
               </td>
