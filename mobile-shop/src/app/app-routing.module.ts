@@ -76,11 +76,7 @@ const routes: Routes = [
     path: 'payment',
     loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
     canActivate: [AuthGuard, RoleGuard],
-<<<<<<< HEAD
-    data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
-=======
     data: {roles: ['ADMIN', 'SALE']}
->>>>>>> c81e4dad9d9232a558a78b3d192bee63687d06e3
   },
 ];
 
