@@ -9,7 +9,7 @@ body {
   color: #333;
   overflow: hidden;
   height: 100%;
-  margin-top: 1px;
+  margin-top: -10px;
 }
 
 .card {
@@ -510,7 +510,7 @@ h2{
     font-size: 24px;
   }
   .custom-header{
-    height: 10%; margin-top: 20px; width: 98%;
+    height: 20%; margin-top: 20px; width: 98%;
   }
   .product-item{
     margin-top: -24%;

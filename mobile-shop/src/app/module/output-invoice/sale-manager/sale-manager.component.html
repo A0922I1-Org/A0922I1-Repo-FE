@@ -33,13 +33,13 @@
 
               <div class="input-container">
                 <input type="text" id="customerName" [(ngModel)]="customer.customerName" name="customerName"
-                       [ngClass]="{'disabled': dataReceived}"
-                       #customerName="ngModel" maxlength="50" required (input)="saveCustomerData()">
+                       [ngClass]="{'disabled': dataReceived}" maxlength="50" required (input)="saveCustomerData()" (blur)="validateCustomerName()">
                 <label for="customerName">Họ và tên</label>
-                <p class="error-message active" *ngIf="customerName.touched  && customerName.errors">
-                  <span *ngIf="customerName.touched && customerName.errors.required" style="color: red">Vui lòng nhập tên khách hàng</span>
+                <p class="error-message active" *ngIf="errorMessage1">
+                  <span style="color: red">{{ errorMessage1 }}</span>
                 </p>
               </div>
+
               <div class="input-container">
                 <input type="text" id="phoneNumber" [(ngModel)]="customer.customerPhone" #phoneNumber='ngModel'
                        [ngClass]="{'disabled': dataReceived}"
@@ -56,9 +56,11 @@
 
               <div class="input-container">
                 <input type="text" id="address" [(ngModel)]="customer.customerAddress" #address="ngModel" name="address"
-                       [ngClass]="{'disabled': dataReceived}"
-                       required (input)="saveCustomerData()">
+                       [ngClass]="{'disabled': dataReceived}" required (input)="saveCustomerData()" (blur)="validateCustomerAddress()">
                 <label for="address">Địa chỉ</label>
+                <p class="error-message active" *ngIf="errorMessage2">
+                  <span style="color: red">{{ errorMessage2 }}</span>
+                </p>
               </div>
 
               <div class="input-container">
@@ -191,9 +193,10 @@
                 <br>
                 <br>
                 <button class="btn custom-btn" type="button" data-bs-toggle="modal" data-bs-target="#myModal2" style="margin-bottom: 40px"
-                        [disabled]="register.form.status==='INVALID'||!isValidEmail(customer.customerEmail)||!isValidPhoneNumber(customer.customerPhone)|| !radioSelected|| productList.length===0">
+                        [disabled]="register.form.status === 'INVALID' || !isValidEmail(customer.customerEmail) || !isValidPhoneNumber(customer.customerPhone) || !radioSelected || productList.length === 0 || errorMessage1">
                   Tiến hành thanh toán
                 </button>
+
               </div>
               <!-- The Modal -->
               <ng-container>

@@ -15,8 +15,8 @@ const routes: Routes = [
   {
     path: 'signUp',
     loadChildren: () => import('./model/user/user-routing.module').then(module => module.UserRoutingModule),
-    // canActivate: [AuthGuard, RoleGuard],
-    // data: {roles: ['ADMIN']}
+    canActivate: [AuthGuard, RoleGuard],
+    data: {roles: ['ADMIN']}
   },
   {
     path: 'profile',
@@ -28,11 +28,11 @@ const routes: Routes = [
     loadChildren: () => import('./model/user-detail/infor-user-routing.module').then(module => module.InforUserRoutingModule),
     canActivate: [AuthGuard]
   },
-   {
-     path: 'product',
-     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
-     canActivate: [AuthGuard, RoleGuard],
-     data: { roles: ['ADMIN', 'BUSINESS', 'STORAGE']}
+  {
+    path: 'product',
+    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
+    canActivate: [AuthGuard, RoleGuard],
+    data: { roles: ['ADMIN', 'BUSINESS', 'STORAGE']}
 
   },
   {
@@ -76,11 +76,7 @@ const routes: Routes = [
     path: 'payment',
     loadChildren: () => import('./module/output-invoice/output-invoice.module').then(module => module.OutputInvoiceModule),
     canActivate: [AuthGuard, RoleGuard],
-<<<<<<< HEAD
-    data: {roles: ['ADMIN', 'STORAGE', 'BUSINESS']}
-=======
     data: {roles: ['ADMIN', 'SALE']}
->>>>>>> c81e4dad9d9232a558a78b3d192bee63687d06e3
   },
 ];
 

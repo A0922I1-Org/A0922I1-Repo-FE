@@ -27,6 +27,8 @@ export class SaleManagerComponent implements OnInit {
   customer = new CustomerDto();
   productList: ProductDto[] = [];
   products = new ProductDto();
+  errorMessage1: string | null = null;
+  errorMessage2: string | null = null;
   errorMessage: string | null = null;
   isSubmitDisabled: boolean;
   radioSelected = false;
@@ -95,13 +97,6 @@ export class SaleManagerComponent implements OnInit {
       }
     });
   }
-
-  getCustomerAndDeleteCustomer() {
-    this.getCustomer();
-    this.deleteCustomer();
-    this.isNewCustomer = false;
-  }
-
   getProduct() {
     this.shareData.getProductData().subscribe(data => {
       if (data) {
@@ -498,6 +493,7 @@ export class SaleManagerComponent implements OnInit {
     this.customer.customerPhone = localStorage.getItem('customerPhone') || '';
     this.customer.customerAddress = localStorage.getItem('customerAddress') || '';
     this.customer.customerEmail = localStorage.getItem('customerEmail') || '';
+    this.dataReceived = true;
   }
 
   saveCustomerData() {
@@ -510,5 +506,29 @@ export class SaleManagerComponent implements OnInit {
   formatCurrency(value: number, currencySymbol: string):
     string {
     return new Intl.NumberFormat('vi-VN', {style: 'currency', currency: currencySymbol}).format(value);
+  }
+  validateCustomerName() {
+    const customerName = this.customer.customerName;
+
+    if (!customerName) {
+      this.errorMessage1 = 'Vui lòng nhập tên khách hàng';
+    } else if (customerName.length < 5) {
+      this.errorMessage1 = 'Tên khách hàng phải có ít nhất 5 ký tự';
+    } else if (/[^a-zA-Z0-9\sÀ-ỹ]+/u.test(customerName)) {
+      this.errorMessage1 = 'Tên khách hàng không chứa ký tự đặc biệt';
+    } else {
+      this.errorMessage1 = '';
+    }
+  }
+  validateCustomerAddress() {
+    const customerAddress = this.customer.customerAddress;
+
+    if (!customerAddress) {
+      this.errorMessage2 = 'Vui lòng nhập địa chỉ';
+    } else if (customerAddress.length < 5) {
+      this.errorMessage2 = 'Địa chỉ phải có ít nhất 5 ký tự';
+    } else {
+      this.errorMessage2 = '';
+    }
   }
 }

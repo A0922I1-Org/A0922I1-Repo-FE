@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {ProductServiceService} from '../../../service/serviceProduct/product-service.service';
 import {Product} from '../../../model/product';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {NavigationEnd, Router} from "@angular/router";
-import {ShareDataService} from "../../../service/outputInvoiceService/share-data.service";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {NavigationEnd, Router} from '@angular/router';
+import {ShareDataService} from '../../../service/outputInvoiceService/share-data.service';
 
 @Component({
   selector: 'app-product-select-modal',
@@ -11,42 +11,28 @@ import {ShareDataService} from "../../../service/outputInvoiceService/share-data
   styleUrls: ['./product-select-modal.component.css']
 })
 export class ProductSelectModalComponent implements OnInit, OnChanges {
-isOnSaleScreen: boolean;
-
-  @Input() reload: boolean;
-  isOnInput: boolean;
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes.reload && this.reload) {
-      this.getProductList('', '', '', '', '', true,this.isOnSaleScreen);
-    }
-  }
-
-  searchForm: FormGroup;
-  @Output() productEmitted = new EventEmitter<Product>();
 
   constructor(private productService: ProductServiceService, private router: Router, private shareData: ShareDataService) {
-    console.log("da khoi tao modal")
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Check if the current route is '/'
         if (event.url === '/input-invoice/new') {
           this.isOnInput = true;
           this.isOnSaleScreen = false;
-        } else if(event.url === '/payment') {
+        } else if (event.url === '/payment') {
           this.isOnInput = false;
           this.isOnSaleScreen = true;
-        } else{
+        } else {
           this.isOnSaleScreen = true;
         }
       }
-      this.getProductList('', '', '', '', '', true,this.isOnSaleScreen);
+      this.getProductList('', '', '', '', '', true, this.isOnSaleScreen);
       this.searchForm = new FormGroup({
         productName: new FormControl('', [Validators.maxLength(3)]),
       });
     });
   }
-
+  isOnSaleScreen: boolean;
   products: Product [] = [];
   product: Product;
   chooseProductId = 0;
@@ -60,6 +46,17 @@ isOnSaleScreen: boolean;
   name: string;
   cpu: string;
   sort: string;
+  searchForm: FormGroup;
+
+  @Input() reload: boolean;
+  isOnInput: boolean;
+  @Output() productEmitted = new EventEmitter<Product>();
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.reload && this.reload) {
+      this.getProductList('', '', '', '', '', true, this.isOnSaleScreen);
+    }
+  }
 
   ngOnInit(): void {
 
@@ -68,12 +65,12 @@ isOnSaleScreen: boolean;
   doDelete(deleteProductId: number) {
     this.productService.deleteProduct(deleteProductId).subscribe(() => {
       alert('Xóa sản phẩm thành công');
-      this.getProductList('', '', '', '', '', true,this.isOnSaleScreen);
+      this.getProductList('', '', '', '', '', true, this.isOnSaleScreen);
     });
   }
 
-  getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string,  sort: string, check: boolean,isOnSaleScreen: boolean) {
-    console.log("da vao")
+  // tslint:disable-next-line:max-line-length
+  getProductList(brandName: string, sellingPrice: string, productName: string, productCpu: string, sort: string, check: boolean, isOnSaleScreen: boolean) {
     this.brand = brandName;
     this.price = sellingPrice;
     this.name = productName;
@@ -83,7 +80,8 @@ isOnSaleScreen: boolean;
     }
     this.sort = sort;
     if (check === true) {
-      this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, true,isOnSaleScreen).subscribe((response: any) => {
+      // tslint:disable-next-line:max-line-length
+      this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, true, isOnSaleScreen).subscribe((response: any) => {
         if (response == null) {
 
           console.log(response);
@@ -104,6 +102,7 @@ isOnSaleScreen: boolean;
       this.check = check;
     } else if (check === false) {
       {
+        // tslint:disable-next-line:max-line-length
         this.productService.getProductList(brandName, sellingPrice, productName, productCpu, 1, 8, sort, false, isOnSaleScreen).subscribe((response: any) => {
           if (response == null) {
             this.products = [];
@@ -129,8 +128,8 @@ isOnSaleScreen: boolean;
 
   onPrevPage() {
     if (this.currentPage > 0) {
-      this.productService.getProductList(this.brand, this.price, this.name, this.cpu,  this.currentPage,
-        this.pageSize, this.sort, this.check,this.isOnSaleScreen).subscribe((response: any) => {
+      this.productService.getProductList(this.brand, this.price, this.name, this.cpu, this.currentPage,
+        this.pageSize, this.sort, this.check, this.isOnSaleScreen).subscribe((response: any) => {
         this.products = response.content;
         this.totalPages = response.totalPages;
         this.currentPage = response.number;
@@ -142,7 +141,7 @@ isOnSaleScreen: boolean;
   onNextPage() {
     if (this.currentPage < this.totalPages) {
       this.productService.getProductList(this.brand, this.price, this.name, this.cpu, this.currentPage + 2,
-        this.pageSize, this.sort, this.check,this.isOnSaleScreen).subscribe((response: any) => {
+        this.pageSize, this.sort, this.check, this.isOnSaleScreen).subscribe((response: any) => {
         this.products = response.content;
         this.totalPages = response.totalPages;
         this.currentPage = response.number;
@@ -156,7 +155,7 @@ isOnSaleScreen: boolean;
     this.productService.findById(productId).subscribe(data => {
       this.product = data;
       this.productEmitted.emit(this.product);
-      this.shareData.setProductData(data)
+      this.shareData.setProductData(data);
     });
 
   }

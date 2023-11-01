@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {VnpayService} from "../../../service/outputInvoiceService/vnpay.service";
-import {OrderService} from "../../../service/outputInvoiceService/order.service";
+import {VnpayService} from '../../../service/outputInvoiceService/vnpay.service';
+import {OrderService} from '../../../service/outputInvoiceService/order.service';
+
 
 
 @Component({
@@ -12,6 +13,8 @@ export class VNPayComponent implements OnInit {
   orderTotal: number;
   orderInfo: string;
   formattedOrderTotal: string;
+  errorMessage: string | null = null;
+
   constructor(private vnpayService: VnpayService,
               private orderService: OrderService) {
 
@@ -23,7 +26,6 @@ export class VNPayComponent implements OnInit {
 
   // The function redirects to the payment execution page
   submitOrder() {
-    console.log('before' + this.orderTotal);
     this.vnpayService.submitOrder(this.orderTotal, this.orderInfo).subscribe(
       (response) => {
         if (response && response.vnpayUrl) {
@@ -31,12 +33,20 @@ export class VNPayComponent implements OnInit {
         } else {
         }
       },
-      (error) => {
-      }
     );
   }
   private formatCurrency(num: number): string {
     return num.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
   }
 
+  validateOrderInfo() {
+    const orderInfo = this.orderInfo;
+    if (!orderInfo) {
+      this.errorMessage = 'Trường này không được để trống';
+    } else if (/[^a-zA-Z0-9\s]+/u.test(orderInfo)) {
+      this.errorMessage = 'Không được nhập ký tự đặc biệt';
+    } else {
+      this.errorMessage = '';
+    }
+  }
 }

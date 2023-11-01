@@ -1,26 +1,27 @@
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-md-6">
-      <div class="card">
+      <div class="card payment-card">
         <div class="card-body">
-          <img src="assets/images/vnpay.png" style="width: 200px" alt="">
-          <h2 class="card-title" style="font-size: 25px">Thanh Toán Đơn Hàng</h2>
+          <img src="assets/images/vnpay.png" alt="VNPAY Logo" class="logo">
+          <h2 class="card-title">Thanh Toán Đơn Hàng</h2>
           <form (ngSubmit)="submitOrder()" #register="ngForm">
             <div class="form-group">
-              <label for="amount">Số tiền:</label>
+              <label for="amount" style="margin-left: -90%">Số tiền:</label>
               <input type="text" class="form-control" id="amount" name="amount" required [(ngModel)]="formattedOrderTotal" disabled>
             </div>
             <div class="form-group">
-              <label for="orderInfo">Thông tin đơn hàng:</label>
-              <input type="text" class="form-control" id="orderInfo" name="orderInfo" required [(ngModel)]="this.orderInfo" #info="ngModel">
-              <p class="error-message active" *ngIf="info.touched && !info.value || info.value===''">
-                <span style="color: red">Trường này không được để trống</span>
+              <label for="orderInfo" style="margin-left: -75%">Thông tin đơn hàng:</label>
+              <input type="text" class="form-control" id="orderInfo" name="orderInfo" required [(ngModel)]="orderInfo" #info="ngModel" maxlength="100" (input)="validateOrderInfo()">
+              <p class="error-message active" *ngIf="info.touched && errorMessage" style="color: red">
+                {{ errorMessage }}
               </p>
             </div>
 
-            <div>
-            <button type="submit" class="btn btn-outline-primary" [disabled]="register.form.status==='INVALID'"  style="margin-top: 10px">Thanh toán</button>
-            <button type="submit" routerLink="/payment" class="btn btn-outline-primary" style="margin-left: 400px; margin-top: 10px">Quay lại</button>
+
+            <div class="button-group">
+              <button type="submit" class="btn btn-outline-primary" [disabled]="register.form.status === 'INVALID'||errorMessage">Thanh toán</button>
+              <button type="submit" routerLink="/payment" class="btn btn-outline-secondary">Quay lại</button>
             </div>
           </form>
         </div>
@@ -28,4 +29,3 @@
     </div>
   </div>
 </div>
-
