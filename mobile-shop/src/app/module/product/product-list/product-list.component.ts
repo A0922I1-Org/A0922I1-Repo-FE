@@ -1,10 +1,14 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {Product} from '../../../model/product';
 import {ProductService} from '../../../service/product.service';
 import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Brand} from '../../../model/brand';
 import Swal from 'sweetalert2';
+import {AuthService} from "../../../model/security/service/auth.service";
+import {EmployeeService} from "../../../model/user-detail/service/infor-user.service";
+import {tokenStorageService} from "../../../model/security/service/token-storage.service";
+import {shareService} from "../../../model/security/service/share.service";
 
 @Component({
   selector: 'app-product-list',
@@ -14,8 +18,13 @@ import Swal from 'sweetalert2';
 export class ProductListComponent implements OnInit {
   searchForm: FormGroup;
   @ViewChild('view') view: ElementRef;
+  userRole: string;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private authService: AuthService,
+              private tokenStorageService: tokenStorageService,
+              private employeeService: EmployeeService,
+              private share: shareService) {
   }
   brands: Brand [] = [];
   products: Product [] = [];
@@ -30,7 +39,9 @@ export class ProductListComponent implements OnInit {
   name: string;
   sort: string;
 
+
   ngOnInit(): void {
+      this.userRole = this.tokenStorageService.getRole()?.authority || 'USER';
     this.getProductList('', '', '', '', false);
     this.searchForm = new FormGroup({
       brand: new FormControl(''),
@@ -155,4 +166,5 @@ export class ProductListComponent implements OnInit {
     }
     this.view.nativeElement.scrollIntoView();
   }
+
 }

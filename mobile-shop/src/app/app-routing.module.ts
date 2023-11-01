@@ -28,11 +28,11 @@ const routes: Routes = [
     loadChildren: () => import('./model/user-detail/infor-user-routing.module').then(module => module.InforUserRoutingModule),
     canActivate: [AuthGuard]
   },
-  {
-    path: 'product',
-    loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
-    canActivate: [AuthGuard, RoleGuard],
-    data: { roles: ['ADMIN', 'BUSINESS', 'STORAGE']}
+   {
+     path: 'product',
+     loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
+     canActivate: [AuthGuard, RoleGuard],
+     data: { roles: ['ADMIN', 'BUSINESS', 'STORAGE','SALE']}
 
   },
   {
