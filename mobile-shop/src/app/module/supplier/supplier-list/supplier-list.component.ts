@@ -1,7 +1,8 @@
-  import {Component, OnInit} from '@angular/core';
+  import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
   import {Page} from '../../../model/page';
   import {Supplier} from '../../../model/supplier';
   import {SupplierService} from '../../../service/supplier-service/supplier.service';
+  import Swal from "sweetalert2";
 
   @Component({
   selector: 'app-supplier-list',
@@ -16,8 +17,10 @@ export class SupplierListComponent implements OnInit {
   searchAddress = '';
   searchPhone = '';
   flag = 0;
+  @ViewChild('view') view: ElementRef;
 
-  constructor(private supplierService: SupplierService) {
+
+    constructor(private supplierService: SupplierService) {
   }
   suppliers: Supplier [] = [];
   totalPages = 0;
@@ -121,7 +124,13 @@ export class SupplierListComponent implements OnInit {
     const supplierId = this.supplierToDelete.supplierId;
     this.supplierService.deleteSupplier(supplierId).subscribe(() => {});
     this.hideDeleteConfirmModal();
-    alert('xoá nhà cung cấp thành công');
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Đã xóa thành công',
+      showConfirmButton: false,
+      timer: 1500,
+    });
     this.getList('', '', '', '', true);
 
   }

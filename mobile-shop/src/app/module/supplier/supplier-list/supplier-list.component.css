@@ -1,6 +1,6 @@
 @media screen and (max-width: 768px) {
   .custom99{
-    margin-top: 10px !important;
+    /*margin-top: 10px !important;*/
   }
 }
 @media screen and (max-width: 1200px) {
@@ -18,7 +18,7 @@
   }
   .add-supplier{
     float: right;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
   }
 
 
@@ -27,6 +27,42 @@
 
   .responsive-icon {
     display: none;
+  }
+}
+
+@media screen and (max-width: 992px)  and (min-width:766px) {
+
+  .parentP {
+    position: relative;
+
+  }
+
+  .childP {
+    position: absolute;
+    top: 200px;
+    right: 45px;
+
+  }
+}
+
+@media screen and (max-width: 765px)  and (min-width:500px) {
+
+  .fw {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 766px)  {
+
+  .parentP {
+    position: relative;
+
+  }
+
+  .childP {
+    position: absolute;
+    top: 22.6%;
+    right: 11%;
+
   }
 }
 
@@ -74,6 +110,7 @@ strong{
   background: white;
   width: 30px;
   height: 30px;
+  line-height: 30px;
 }
 
 .sort-icon{
