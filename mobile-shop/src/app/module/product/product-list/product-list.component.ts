@@ -5,6 +5,10 @@ import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Brand} from '../../../model/brand';
 import Swal from 'sweetalert2';
+import {AuthService} from "../../../model/security/service/auth.service";
+import {EmployeeService} from "../../../model/user-detail/service/infor-user.service";
+import {tokenStorageService} from "../../../model/security/service/token-storage.service";
+import {shareService} from "../../../model/security/service/share.service";
 
 @Component({
   selector: 'app-product-list',
@@ -15,7 +19,11 @@ export class ProductListComponent implements OnInit {
   searchForm: FormGroup;
   @ViewChild('view') view: ElementRef;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService,
+              private authService: AuthService,
+              private authorize: tokenStorageService,
+              private employeeService: EmployeeService,
+              private share: shareService) {
   }
   brands: Brand [] = [];
   products: Product [] = [];
@@ -30,7 +38,16 @@ export class ProductListComponent implements OnInit {
   name: string;
   sort: string;
 
+  //phan quyen hien thi cac nut
+  userRole: string;
+  username: string;
+  isLoggedIn = false;
+  employeeInfo: any;
+
   ngOnInit(): void {
+    this.share.getClickEvent().subscribe(() => {
+      this.loadHeader();
+    });
     this.getProductList('', '', '', '', false);
     this.searchForm = new FormGroup({
       brand: new FormControl(''),
@@ -154,5 +171,20 @@ export class ProductListComponent implements OnInit {
       });
     }
     this.view.nativeElement.scrollIntoView();
+  }
+
+  loadHeader() {
+    if (this.authorize.getToken()) {
+      this.userRole = this.authorize.getRole()?.authority || 'USER';
+      this.username = this.authService.getUsernameFromToken();
+      this.employeeService.getEmployeeByUsername(this.username).subscribe(data => {
+        this.employeeInfo = data;
+      });
+      this.isLoggedIn = true;
+    } else {
+      this.userRole = '';
+      this.username = '';
+      this.isLoggedIn = false;
+    }
   }
 }

@@ -32,7 +32,7 @@ const routes: Routes = [
      path: 'product',
      loadChildren: () => import('./module/product/product.module').then(module => module.ProductModule),
      canActivate: [AuthGuard, RoleGuard],
-     data: { roles: ['ADMIN', 'BUSINESS', 'STORAGE']}
+     data: { roles: ['ADMIN', 'BUSINESS', 'STORAGE','SALE']}
 
   },
   {

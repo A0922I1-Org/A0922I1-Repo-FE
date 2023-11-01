@@ -77,7 +77,7 @@
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav flex-fill">
-                  <li *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'||userRole=='STORAGE'" class="nav-item"
+                  <li *ngIf="userRole=='ADMIN'||userRole=='BUSINESS'||userRole=='STORAGE'||userRole=='SALE'" class="nav-item"
                       [routerLink]="['product']" routerLinkActive="active-link">
                     <a class="nav-link" routerLink='product'><i class="fa fa-tablet"></i> Quản lý SP
                     </a>
