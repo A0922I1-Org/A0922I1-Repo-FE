@@ -71,7 +71,7 @@ export class ReportCreateComponent implements OnInit {
       fromDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
       toDate: new FormControl('', [Validators.required, Validators.pattern(/^\d{4}\-\d{2}\-\d{2}$/), dateValidator]),
       reportType: new FormControl('', [Validators.required]),
-      productId: new FormControl('', [Validators.pattern(/^\d+$/)]),
+      productId: new FormControl('', [Validators.required , Validators.pattern(/^\d+$/)]),
     });
 
 
